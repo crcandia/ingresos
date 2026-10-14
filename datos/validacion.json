@@ -1,0 +1,689 @@
+{
+  "pass": true,
+  "domains": 180,
+  "originalRows": 93458,
+  "occupied": 38729,
+  "occupied20Plus": 38380,
+  "mainOccupation20Plus": 38226,
+  "residualOccupation20Plus": [
+    {
+      "codigo": 10,
+      "n": 128,
+      "personas": 25760.42594820586
+    },
+    {
+      "codigo": 999,
+      "n": 26,
+      "personas": 7164.898460836343
+    }
+  ],
+  "psus": 5440,
+  "strata": 232,
+  "singletonStrata": 0,
+  "nationalMean": 962944.6993102246,
+  "nationalMeanSE": 11502.910826247813,
+  "referenceAgeValidation": true,
+  "partitionAgeValidation": true,
+  "partitionSexValidation": true,
+  "histogramsSum100": true,
+  "curvesMonotonic": true,
+  "strictJSONNoNaN": true,
+  "crosschecksAgainstOriginalDesign": [
+    {
+      "key": "all|all|all",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|all",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|20_29",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "all|all|60_mas",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "1|1|all",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "1|2|20_29",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "2|2|30_39",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "5|all|50_59",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "6|2|20_29",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "8|2|60_mas",
+      "threshold": 21000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 0,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 50000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 500000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 1000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 2000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 3000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 4000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 5000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 7000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 10000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 15000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 20000000,
+      "pass": true
+    },
+    {
+      "key": "9|1|40_49",
+      "threshold": 21000000,
+      "pass": true
+    }
+  ],
+  "cells90SampleMin": 8,
+  "cells90SampleMax": 1219,
+  "cells90Under60": 8,
+  "dashboardBytes": 1991905,
+  "dashboardSHA256": "4d65eb30103c3c8457740c5608b3ed14d0d433463cbce4816caf7586cea272e2",
+  "runtimeSeconds": 11.915165541999158
+}

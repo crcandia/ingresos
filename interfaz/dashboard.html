@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Explora la distribución de ingresos laborales en Chile por ocupación, edad y sexo con los microdatos de la ESI 2025.">
+<title>Ingresos en Chile · ESI 2025</title>
+<style>/*__STYLES__*/</style>
+</head>
+<body>
+<a class="skip" href="#explorar">Ir a los datos</a>
+<header class="topbar">
+ <div class="brand"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M2 25V15h5v10M11 25V4h5v21M20 25V10h5v15"/></svg><span>Ingresos en Chile</span><span class="edition">ESI 2025</span></div>
+ <nav aria-label="Acciones"><button id="about" class="quiet">Cómo leer los datos</button><button id="save" class="outline"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>Guardar copia</button></nav>
+</header>
+<main>
+ <section class="hero" aria-labelledby="title">
+  <div><p class="eyebrow">UNA MIRADA AL TRABAJO EN CHILE</p><h1 id="title">Los ingresos, <em>en perspectiva.</em></h1><p class="intro">Explora cuánto se gana según ocupación, edad y sexo. Cada cifra describe al grupo que eliges.</p></div>
+  <div class="source-stamp"><span class="status-dot"></span><span>Microdatos INE<br><strong>Pesos de octubre de 2025</strong></span></div>
+ </section>
+ <section class="filters" id="explorar" aria-label="Filtros de población">
+  <div class="occupation-control"><label for="occupation">Ocupación</label><select id="occupation"></select></div>
+  <fieldset class="sex-control"><legend>Sexo</legend><div class="segmented" id="sex-buttons"><button data-sex="all" aria-pressed="true">Total</button><button data-sex="1" aria-pressed="false">Hombres</button><button data-sex="2" aria-pressed="false">Mujeres</button></div></fieldset>
+  <fieldset class="age-control" aria-describedby="universe-note"><legend>Edad del grupo principal</legend><div class="age-chips" id="age-buttons"></div></fieldset>
+ </section>
+ <p id="universe-note" class="universe-note"><strong>Universo: personas ocupadas de 20 años o más.</strong> “Total (20+)” reúne los cinco tramos de edad para la ocupación y sexo elegidos. Excluye a los menores de 20 años.</p>
+ <div class="selection-line"><p id="selection-label"></p><button class="text-button" id="reset">Restablecer</button></div>
+ <div id="sample-warning" class="notice" role="status" hidden></div>
+ <section class="metrics" aria-label="Resumen del grupo seleccionado">
+  <article class="metric"><div class="metric-name">Ingreso mediano <span class="mini-tag">Percentil 50</span></div><div class="metric-value" id="median"></div><p>El punto medio de la distribución de ingresos.</p></article>
+  <article class="metric"><div class="metric-name">Ingreso promedio</div><div class="metric-value" id="mean"></div><p id="mean-note"></p></article>
+  <article class="metric"><div class="metric-name">Personas representadas</div><div class="metric-value" id="population"></div><p id="population-note"></p></article>
+ </section>
+ <section class="analysis-grid" aria-label="Distribución y consulta por ingreso">
+  <article class="surface distribution-card">
+   <div class="section-head"><div><p class="eyebrow">DISTRIBUCIÓN</p><h2>¿Dónde se concentran los ingresos?</h2></div><div class="small-segmented" id="range-buttons" aria-label="Rango del gráfico"><button data-range="3" aria-pressed="true">Hasta $3M</button><button data-range="21" aria-pressed="false">Todo</button></div></div>
+   <div class="legend"><span><i class="swatch"></i>Personas del grupo</span><span><i class="line-key median-key"></i>Mediana</span><span><i class="line-key mean-key"></i>Promedio</span></div>
+   <div class="plot" id="distribution"></div>
+   <p class="chart-note" id="distribution-note"></p>
+  </article>
+  <article class="threshold-card" aria-labelledby="threshold-title">
+   <p class="eyebrow">CONSULTA UN INGRESO</p><h2 id="threshold-title">¿Cuántas personas ganan <br>este monto o más?</h2>
+   <label class="amount-label" for="amount">Ingreso neto mensual</label><div class="amount-field"><span>$</span><input id="amount" type="number" value="1000000" min="0" max="20000000" step="50000" inputmode="numeric" aria-describedby="amount-help"><span>CLP</span></div>
+   <input class="amount-slider" id="amount-slider" type="range" min="0" max="20000000" step="50000" value="1000000" aria-label="Elegir ingreso mensual">
+   <div class="quick-amounts" id="quick-amounts"><button data-amount="1000000">$1M</button><button data-amount="2000000">$2M</button><button data-amount="3000000">$3M</button><button data-amount="4000000">$4M</button><button data-amount="5000000">$5M</button></div>
+   <div class="threshold-result" aria-live="polite" aria-atomic="true"><div id="threshold-percent" class="threshold-percent"></div><p id="threshold-people" class="threshold-people"></p><p id="threshold-interval" class="threshold-interval"></p></div>
+   <div id="threshold-quality" class="quality-box"></div><p id="amount-help" class="microcopy">Consulta en pasos de $50.000. Incluye a quienes ganan exactamente el monto.</p>
+  </article>
+ </section>
+ <section class="surface survival-card" aria-labelledby="survival-title">
+  <div class="section-head"><div><p class="eyebrow">INGRESOS ALTOS · DESDE $1 MILLÓN</p><h2 id="survival-title">Cuántos alcanzan cada monto</h2></div><fieldset class="scale-control"><legend>Escala del porcentaje</legend><div class="small-segmented" id="survival-scale-buttons" aria-describedby="survival-scale-note"><button data-survival-scale="linear" aria-pressed="true">Lineal</button><button data-survival-scale="log" aria-pressed="false">Logarítmica</button></div></fieldset></div>
+  <div class="plot" id="survival"></div><p class="chart-note" id="survival-scale-note" aria-live="polite"></p><p class="chart-note" id="survival-note">La curva muestra quiénes ganan el monto del eje o más. Banda: intervalo de confianza puntual del 95%. Trazo discontinuo: precisión limitada. Consulta los puntos con el cursor o las flechas del teclado.</p>
+ </section>
+ <section class="age-section" aria-labelledby="age-title">
+  <div class="section-head"><div><p class="eyebrow">COMPARACIÓN POR EDAD</p><h2 id="age-title">Cinco etapas, una misma escala</h2><p class="section-description" id="age-context"></p></div><p class="instruction">Selecciona una tarjeta<br>para ver ese grupo arriba.</p></div>
+  <div class="age-grid" id="age-panels"></div>
+ </section>
+ <section class="surface occupations-card" aria-labelledby="occ-title">
+  <div class="section-head"><div><p class="eyebrow">COMPARACIÓN POR OCUPACIÓN</p><h2 id="occ-title">¿Cómo cambia el ingreso entre trabajos?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Proporción sobre el monto elegido</option></select></label></div>
+  <div id="occupation-ranking" class="ranking"></div><p class="chart-note">Selecciona una ocupación para explorarla. * Señala estimaciones exploratorias. Las categorías describen el trabajo realizado. No equivalen al nivel educativo.</p>
+ </section>
+ <section class="method" id="method">
+  <details id="method-details"><summary>Fuente, definiciones y precisión de las cifras <span>+</span></summary>
+   <div class="method-content"><div><h3>Qué estamos midiendo</h3><p>Ingreso neto mensual de la ocupación principal. Para asalariados, después de cotizaciones e impuestos. Para independientes, después de los costos de su actividad. Incluye beneficios en especie valorizados.</p><p>Personas ocupadas de 20 años o más, con al menos un mes en su empleo actual. Cada porcentaje se calcula dentro de la ocupación, edad y sexo seleccionados. La categoría “Total” de sexo incluye hombres y mujeres según la variable de la encuesta.</p><p id="universe-counts"></p><p>Fuente: <a href="https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/encuesta-suplementaria-de-ingresos" target="_blank" rel="noopener noreferrer">INE, Encuesta Suplementaria de Ingresos 2025</a>. Ingresos expresados en pesos de octubre de 2025.</p></div><div><h3>Cómo interpretar las diferencias</h3><p>Las cifras usan los factores de expansión de la ESI. “Personas representadas” es una estimación de población, mientras que “encuestados” cuenta observaciones de la muestra. El total de ocupaciones incluye los códigos residuales no mostrados entre los nueve grupos.</p><p>La mediana es el primer monto que alcanza al menos el 50% del peso acumulado. Los empates pueden hacer que más del 50% quede en el monto mediano o por debajo. Las diferencias entre edades son una comparación transversal, no la trayectoria de una misma persona. Las diferencias por sexo u ocupación no identifican efectos causales.</p><p>Se conservan ingresos cero, valores extremos e imputaciones oficiales. El histograma usa intervalos de $100.000 y las curvas se consultan cada $50.000. ≈ indica cifras redondeadas.</p><p>En la escala logarítmica, cada marca vertical multiplica por diez el porcentaje. Solo se dibujan proporciones positivas, sin reemplazar ceros por valores artificiales. La escala cambia la representación, no los resultados.</p></div><div><h3>Qué significa “Exploratorio”</h3><p>La precisión se evalúa para cada consulta. Una cifra exploratoria tiene pocos casos o elevada incertidumbre. Cero casos observados no significa que no existan personas en la población con ese ingreso.</p><p>Para la consulta por monto se aplica un criterio conservador: la proporción y el total deben pasar las reglas de precisión. El total requiere al menos 60 casos, 9 grados de libertad y un coeficiente de variación de hasta 15%. Cumplir solo el tamaño muestral no garantiza precisión.</p><p>Los intervalos del 95% usan estratos y conglomerados del diseño de encuesta completo. No incorporan subdeclaración, subcobertura ni incertidumbre adicional de imputación. No se calculó un intervalo para la mediana. Los intervalos son puntuales, no simultáneos.</p></div></div>
+  </details>
+ </section>
+ <footer><div><strong>Ingresos en Chile · ESI 2025</strong><p>Elaboración: Dr. Cristian Candia · Microdatos públicos del INE<br><span id="privacy-note">Archivo autocontenido. Funciona sin conexión y no envía información.</span></p></div><div class="footer-actions"><button id="export-csv" class="outline">Descargar datos de esta vista</button><button id="print" class="quiet">Imprimir / PDF</button></div></footer>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><div class="notice">Activa JavaScript en tu navegador para explorar los datos. El dashboard funciona completamente sin conexión.</div></noscript>
+<script id="dashboard-data" type="application/json">__DASHBOARD_DATA__</script>
+<script id="initial-state" type="application/json">{"occupation":"all","sex":"all","age":"all","amount":1000000,"range":3,"rank":"median","survivalScale":"linear"}</script>
+<script>/*__SCRIPT__*/</script>
+</body>
+</html>

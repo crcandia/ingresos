@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+.netlify/
+qa/render_temporal/
+qa/snapshot_*.html
+qa/*.svg
+qa/*.png

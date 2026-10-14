@@ -1,0 +1,1176 @@
+
+PAGE 1
+MANUAL DE USUARIO DE BASE DE
+DATOS
+Encuesta Suplementaria de Ingresos (ESI) 2025
+Instituto Nacional de Estadísticas
+Julio, 2026
+
+PAGE 2
+INSTITUTO NACIONAL DE ESTADÍSTICAS
+Subdirección Técnica
+Departamento de Estadísticas del Trabajo
+Subdepartamento de Estadísticas de Ingresos del Trabajo
+Departamento de Metodologías e Innovación Estadística
+Departamento de Operaciones de Estadísticas Sociales
+MANUAL DE USUARIO ENCUESTA SUPLEMENTARIA DE INGRESOS
+(ESI)
+Julio / 2026
+Versión 1.0
+Dirección: Morandé N° 801, piso 22, Santiago, Chile
+Código postal: 8340148
+Teléfono: 562 3246 1010
+Sitio web: www.ine.gob.cl
+Correo electrónico: ine@ine.gob.cl
+Facebook: @ChileINE
+Twitter: @INE_Chile
+
+PAGE 3
+Índice
+1. Introducción 3
+2. Presentación de la encuesta 4
+2.1. Antecedentes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2. Objetivos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.1. Objetivo general . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.2. Objetivos específicos de la encuesta . . . . . . . . . . . . . . . . . . . 4
+2.3. Acceso y solicitud de datos . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3. Cuestionario 6
+3.1. Descripción de módulos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+4. Estructura de la base de datos 9
+4.1. Variables analíticas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+4.1.1. Variables de primer nivel . . . . . . . . . . . . . . . . . . . . . . . . . 9
+4.1.2. Variables de segundo nivel . . . . . . . . . . . . . . . . . . . . . . . . 11
+4.1.3. Variable de tercer nivel . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+4.1.4. Variables de cuarto nivel . . . . . . . . . . . . . . . . . . . . . . . . . 11
+5. Indicaciones para el uso de la base de datos 13
+5.1. Descripción del diseño muestral . . . . . . . . . . . . . . . . . . . . . . . . . 13
+5.2. Utilización de factores de expansión . . . . . . . . . . . . . . . . . . . . . . . 13
+6. Estimaciones e indicadores 15
+6.1. Programación previa a calcular indicadores ESI . . . . . . . . . . . . . . . . 15
+6.2. Ingreso medio mensual . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+6.3. Brecha de ingreso . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+6.4. Ingreso mediano mensual . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+6.5. Masa de ingreso . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+6.6. Ingreso por hora asalariados . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.7. Evaluación de la calidad de las estimaciones . . . . . . . . . . . . . . . . . . 21
+6.7.1. ¿Cómo evaluar la calidad de una estimación ESI? . . . . . . . . . . . 21
+7. Uso de datos y citación 24
+8. Guía de variables 25
+2
+
+PAGE 4
+1. Introducción
+El presente documento está dirigido a los usuarios de la base de datos de la Encuesta
+Suplementaria de Ingresos (ESI), cuyo trabajo de campo, en esta versión, se desarrolló entre
+octubre y diciembre de 2025.
+El objetivo de este manual es introducir al lector en la estructura y uso de la base de datos
+de la encuesta, de manera que investigadores, analistas y usuarios en general puedan replicar
+algunos de los tabulados oficiales y evaluar la precisión de sus estimaciones, conforme al
+Estándar para la evaluación de la calidad de las estimaciones de encuestas de hogares del
+Instituto Nacional de Estadísticas (2020). Asimismo, se busca proporcionar herramientas
+que permitan adaptar las programaciones aquí presentadas a distintos propósitos de análisis
+e investigación.
+La guía utiliza el software estadístico R, a través del entorno de RStudio, para ilustrar los
+procedimientos necesarios, abarcando desde la configuración inicial para trabajar con un
+diseño muestral complejo hasta la construcción de variables y el cálculo de los principales
+indicadores de la encuesta.
+El documento se organiza en ocho capítulos, incluida esta introducción. El capítulo 2 presenta
+la encuesta, sus objetivos y las instrucciones para acceder a las bases de datos. El capítulo
+3 describe el cuestionario utilizado en esta versión de la ESI. A continuación, el capítulo 4
+detalla la estructura de la base de datos, incluyendo tanto la información recolectada en te-
+rreno como las variables analíticas derivadas de ella. El capítulo 5 aborda las consideraciones
+metodológicas necesarias para el uso adecuado de la información, con especial énfasis en el
+diseño muestral y los factores de expansión de la encuesta.
+En el capítulo 6 se presentan ejemplos de programación para la elaboración de los indicadores
+principales de la encuesta, mientras que el capítulo 7 entrega las orientaciones necesarias
+para la correcta citación de los datos. Finalmente, el capítulo 8 contiene la guía de variables
+actualizada para 2025.
+Si bien este documento muestra el procedimiento para calcular algunos de los principales
+resultados de la ESI 2025, su propósito no es presentar la totalidad de los tabulados que
+pueden generarse ni agotar las posibilidades analíticas de la encuesta. Más bien, busca servir
+como una guía práctica para el uso de la base de datos, facilitando que los usuarios desarrollen
+sus propios análisis y aprovechen adecuadamente la información disponible.
+3
+
+PAGE 5
+2. Presentación de la encuesta
+En esta sección se realizará una presentación de las principales características de la ESI 2025,
+dentro de las cuales se encuentran los antecedentes y objetivos del estudio, la ficha técnica,
+el cuestionario y la descripción de sus módulos.
+2.1. Antecedentes
+La Encuesta Suplementaria de Ingresos (ESI), realizada por el Instituto Nacional de Estadís-
+ticas (INE), es un módulo complementario aplicado al interior de la Encuesta Nacional de
+Empleo (ENE). Se recolecta cada año en el trimestre móvil octubre, noviembre y diciembre
+(en adelante “trimestre OND” u “OND”), con el objetivo de caracterizar los ingresos labo-
+rales de las personas que son clasificadas como ocupadas en la ENE, así como los ingresos
+provenientes de otras ocupaciones, distintas de la principal.
+Las estadísticas sobre fuerza de trabajo tienen una larga tradición en el INE, siendo –junto al
+Censo de Población y Vivienda y el Índice de Precios al Consumidor (IPC)– las mediciones
+más antiguas que se realizan en la institución. La Encuesta Nacional de Empleo (ENE), en
+particular, tiene origen en 1966. Por su parte, la ESI como módulo suplementario de la ENE,
+se registra a partir de 1990.
+A contar de 2010, los resultados de la ESI provienen de un nuevo cuestionario, el que incluyó
+una serie de mejoras a las preguntas de ingresos que permitieron una mayor precisión en su
+captura. Adicionalmente, constituyó la primera medición de ingresos con base en la vigente
+ENE y, en consecuencia, incorporaron los cambios conceptuales de esta última 1. Dado lo
+anterior, a partir de 2010 los resultados no son comparables con versiones anteriores.
+Adicionalmente, a contar de la ESI 2021 se acotaron los objetivos de la encuesta, enfocándose
+en la medición de ingresos del trabajo de las personas ocupadas. Lo anterior, implica que ya
+no se pesquisan ingresos de otras fuentes de los hogares, y por ende, a partir de entonces no
+se difunden estimaciones de ingresos a nivel de hogar.
+2.2. Objetivos
+2.2.1. Objetivo general
+El objetivo general de la encuesta es estimar y caracterizar los ingresos laborales de la
+población en edad de trabajar, con residencia habitual en viviendas particulares ocupadas
+en Chile.
+2.2.2. Objetivos específicos de la encuesta
+1. Estimar los ingresos laborales de la población en edad de trabajar clasificada
+como ocupada
+1Para más detalles acerca de las actualizaciones metodológicas y cambios en el cuestionario de ingresos
+revisar el documento metodológico de la encuesta: https://www.ine.gob.cl/estadisticas-por-tema/mercado-
+laboral/encuesta-suplementaria-de-ingresos .
+4
+
+PAGE 6
+2. Estimar los ingresos laborales de la población en edad de trabajar clasificada
+como no ocupada
+3. Caracterizar los ingresos de las personas ocupadas independientes a nivel
+nacional y regional
+4. Caracterizar los ingresos de las personas ocupadas dependientes a nivel
+nacional y regional
+2.3. Acceso y solicitud de datos
+La base de datos de la ESI 2025 se encuentra publicada en el portal web del Instituto Nacional
+de Estadísticas (INE). Para acceder a ella, se debe ingresar a la página institucional . Aquí
+también se pueden consultar el documento metodológico y la ficha técnica asociada a la
+encuesta.
+Las bases de datos de la ESI se encuentran disponibles en formato “ .csv” (Comma-Separated
+Values), “ .dta” (stata) y “ .RData” (R). Además, hasta el año 2023 también se encuentran
+disponibles en formato “ .sav” (SPSS).
+5
+
+PAGE 7
+3. Cuestionario
+El cuestionario de la ESI se incorpora al cuestionario ENE en el trimestre OND de cada año,
+y es respondido por un informante idóneo que es aquella persona de quince años o más, con
+residencia habitual en la vivienda encuestada y que se encuentra en condiciones de responder
+el cuestionario por él, y por los miembros del hogar que corresponda. En específico, el módulo
+de la ESI consta de 17 preguntas distribuidas en 3 secciones.
+Sección K “Ingresos de los ocupados dependientes” (10 preguntas)
+Sección L “Ingresos de los ocupados independientes” (5 preguntas)
+Sección M “Ingresos de otros trabajos” (2 preguntas)
+3.1. Descripción de módulos
+Sección K Ingresos de los ocupados dependientes
+La primera sección permite identificar ingresos fijos, variables, regalías y beneficios relativos
+de la ocupación principal. En esta sección también se capturan los días y las horas efecti-
+vamente trabajadas en el empleo actual, durante el mes de referencia 2, correspondiente al
+sueldo (salario) neto reportado en la pregunta k1.
+Sección L Ingresos de los ocupados independientes
+Esta sección permite registrar el ingreso neto en el mes de referencia, que obtuvo o retiró de
+la empresa, negocio o actividad por cuenta propia; el número de meses trabajados por los
+cuales el ocupado percibió dicho ingreso. También se valoriza el autoconsumo de productos,
+bienes o servicios de la actividad principal de los ocupados independientes y el precio que
+el ocupado independiente pagaría por concepto de arriendo si realiza su actividad o negocio
+por cuenta propia en su vivienda.
+Sección M Ingresos de otros trabajos
+La sección M indaga en los ingresos recibidos durante el mes de referencia, correspondientes
+a un trabajo distinto al declarado en la ENE. Por actividades secundarias (m1), distintas a
+la actividad principal, en el caso de los ocupados; o por un empleo o actividad anterior (m2)
+realizado durante el mes de referencia, en el caso de los no ocupados.
+La Tabla 1, a continuación, presenta las preguntas del cuestionario con su respectiva sección.
+2En el contexto de la ESI, el mes de referencia corresponde al mes anterior al mes de recolección. En este
+sentido, la primera pregunta de las secciones K y L busca identificar si la actividad actual, declarada en el
+módulo B de la Encuesta Nacional de Empleo (ENE), es la misma que tenía en el mes de referencia.
+6
+
+PAGE 8
+Tabla 1: Cuestionario ESI 2025
+Sección Cuestionario Base de datos Pregunta
+Sección K k1a d1a El empleo actual de [Nombre de persona], ¿es el
+mismo que tenía en el mes de [Mes de referencia]?
+k1b d1b ¿Cuál fue el monto en pesos de su SUELDO NETO
+(SALARIO NETO)?
+k2a d2a En el mes de [mes de referencia], ¿recibió alguno de
+los siguientes ingresos variables?
+1. Bonos por productividad
+2. Bonos de otro tipo
+3. Comisiones por venta
+4. Pago de horas extraordinarias
+5. Otros ingresos variables
+k2b d2b ¿Cuánto fue el monto en pesos ($) o porcentaje ( %)
+que representa de su sueldo neto?
+k2c d2c ¿Incluyó este ingreso en el sueldo neto declarado
+anteriormente?
+k2d d2d ¿Con qué periodicidad recibe este ingreso variable?
+k3 d3 En el mes de [mes de referencia], ¿le proporcionaron
+beneficios o regalías de …
+1...vivienda?
+2...alimentación?
+3...becas de estudio?
+4...transporte y/o bencina?
+5...propinas?
+6...sala cuna o jardín infantil?
+7...otros? (especifique)
+k3_monto d3_monto Indique el monto
+k4a d4a Este sueldo neto, ¿a cuántos días trabajados corres-
+pondió?
+k4b d4b En promedio, ¿cuántas horas diarias trabajó durante
+esos días?
+Sección L l1a d5a La actual actividad principal de [Nombre de persona],
+¿es la misma que tenía en el mes de [Mes de
+referencia]?
+l1b d5b Durante dicho mes, ¿cuál fue el monto en pesos
+del ingreso neto (sueldos asignados, ganancias y/o
+retiros) que obtuvo en su actividad principal?
+l1c d5c ¿A cuánto tiempo de trabajo correspondió dicho
+ingreso?
+7
+
+PAGE 9
+Tabla 1: Cuestionario ESI 2025 (continuación)
+Sección Cuestionario Base de datos Pregunta
+l3 d7 En el mes de [Mes de referencia], ¿usó productos,
+bienes o servicios de su empresa negocio o actividad
+por cuenta propia, para su consumo personal o para
+el hogar?
+l4 d8 Su empresa, negocio o actividad por cuenta propia,
+¿es desarrollada en esta vivienda?
+Sección M m1 d9a Independiente de lo anterior, durante el mes de
+[Mes de referencia], [Nombre de persona] ¿percibió
+ingreso/s por otra/s ocupación/es, distinta/s a la
+actual?
+m2 d9b A pesar de no haber trabajado la semana pasada,
+durante el mes de [Mes de referencia], [Nombre
+de persona] ¿percibió ingresos por algún trabajo u
+ocupación?
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+Nota: En esta tabla se presentan las preguntas con sus nombres en el cuestionario ESI 2025 y su homologación
+en la base de datos asociada.
+8
+
+PAGE 10
+4. Estructura de la base de datos
+La información recolectada durante el trabajo de campo de la ESI 2025 se encuentra siste-
+matizada en una única base de datos de personas. Esta base contiene 288 variables, 93.458
+observaciones muestrales y una población expandida de 20.250.232 personas. Incluye toda
+la información recolectada en las entrevistas a los hogares, proveniente del cuestionario
+sociodemográfico, el cuestionario central de la ENE y el módulo de la ESI, además de un
+conjunto de variables analíticas derivadas.
+Dado que la ESI corresponde a la sección D (Ingresos) de la ENE, todas las variables de la
+ESI en la base de datos pública comienzan con la letra “d” en minúscula. Para más detalles
+sobre los nombres, códigos y características de las variables, se recomienda revisar la guía de
+variables de la encuesta (Sección 8 de este manual).
+4.1. Variables analíticas
+Las variables analíticas de la ESI corresponden a ingresos e indicadores derivados de las
+respuestas del cuestionario. Su construcción se realiza de forma jerárquica, a partir de
+variables básicas observadas y de sucesivas agregaciones que permiten obtener los principales
+indicadores de ingresos utilizados en el análisis y difusión de resultados.
+Para facilitar su comprensión, las variables se organizan en cuatro niveles:
+Variables de primer nivel : corresponden a las variables originales que capturan
+fuentes específicas de ingresos laborales.
+Variables de segundo nivel : corresponden a la suma o consolidación de las variables
+básicas según el tipo de ocupación.
+Variable de tercer nivel : integra los ingresos dependientes e independientes en una
+medida de ingreso laboral principal.
+Variables de cuarto nivel : corresponden a las variables que incorporan ingresos de
+trabajos secundarios y genera la medida final de ingreso laboral (con y sin ajuste de
+independientes).
+El detalle de la construcción matemática de cada variable se presenta a continuación.
+4.1.1. Variables de primer nivel
+Ingresos por sueldos y salarios netos (ss_t) : corresponde al sueldo o salario neto
+de la ocupación principal de las personas ocupadas dependientes.
+𝑠𝑠_𝑡 = 𝑑1 _𝑚𝑜𝑛𝑡𝑜
+Ingresos por sueldos y salarios variables no incluidos en d1 (svar_t) : corres-
+ponde a la suma de los ingresos variables no declarados en d1_monto. En este sentido,
+la i de la fórmula considera bonos por productividad o de otro tipo, comisiones por
+venta, pago de horas extraordinarias u otros ingresos variables.
+9
+
+PAGE 11
+𝑠𝑣𝑎𝑟_𝑡 =
+5
+∑
+𝑖=1
+𝑑2_𝑖_𝑚𝑜𝑛𝑡𝑜 +
+5
+∑
+𝑖=1
+𝑑2_𝑖_𝑝𝑜𝑟𝑐𝑒𝑛𝑡𝑎𝑗𝑒 ⋅ 𝑑1_𝑚𝑜𝑛𝑡𝑜
+100
+Total ingresos por regalías (reg_t) : corresponde a la suma de los ingresos esti-
+mados percibidos por concepto de regalía o beneficio, es decir, todo pago en especie o
+dinero que NO es necesario para el desarrollo de la ocupación. Algunas posibles regalías
+son: vivienda, alimentación, becas de estudio, transporte y/o bencina, propinas, sala
+cuna o jardín infantil, etc.
+𝑟𝑒𝑔_𝑡 =
+7
+∑
+𝑖=1
+𝑑3_𝑖_𝑚𝑜𝑛𝑡𝑜 +
+7
+∑
+𝑖=1
+𝑑3_𝑖_𝑝𝑜𝑟𝑐𝑒𝑛𝑡𝑎𝑗𝑒 ⋅ 𝑑1_𝑚𝑜𝑛𝑡𝑜
+100
+Ingresos por ganancias del negocio independiente (gan_t) : corresponde al
+ingreso neto informado por las personas ocupadas independientes. Esto es, ingresos
+menos gastos de la actividad independiente. El informante puede indicar un monto
+específico o estimar el promedio mensual de los últimos doce meses.
+𝑔𝑎𝑛_𝑡 =
+⎧{
+⎨{⎩
+𝑑5_𝑚𝑜𝑛𝑡𝑜
+o
+𝑑5_𝑝𝑟𝑜𝑚𝑒𝑑𝑖𝑜
+Ingresos por autoconsumo (autoconsumo_t) : corresponde a la estimación del
+valor de los bienes, productos o servicios generados por la actividad del ocupado inde-
+pendiente y destinados al consumo personal o del hogar. En otras palabras, representa
+el gasto en que habría debido incurrir si dichos bienes, productos o servicios hubiesen
+sido adquiridos en el mercado.
+𝑎𝑢𝑡𝑜𝑐𝑜𝑛𝑠𝑢𝑚𝑜_𝑡 =
+⎧{
+⎨{⎩
+𝑑7_𝑚𝑜𝑛𝑡𝑜
+o
+𝑑7_𝑝𝑟𝑜𝑚𝑒𝑑𝑖𝑜
+Gasto imputado por arriendo de local (ahorroimp_t) : corresponde a la estima-
+ción del valor mensual de arriendo del espacio utilizado para desarrollar la actividad
+independiente cuando esta se realiza en la propia vivienda. Este monto representa el
+costo que se habría debido asumir si dicho espacio hubiera sido arrendado.
+𝑎ℎ𝑜𝑟𝑟𝑜𝑖𝑚𝑝_𝑡 = 𝑑8 _𝑚𝑜𝑛𝑡𝑜
+Ingresos otros trabajos (ing_ot) : corresponde a los ingresos provenientes de otra(s)
+ocupaciones distintas de la principal.
+10
+
+PAGE 12
+𝑖𝑛𝑔_𝑜𝑡 =
+⎧{
+⎨{⎩
+𝑑9_𝑚𝑜𝑛𝑡𝑜 o 𝑑9_𝑝𝑟𝑜𝑚𝑒𝑑𝑖𝑜
+o
+𝑑9_𝑚𝑜𝑛𝑡𝑜𝑏 o 𝑑9_𝑝𝑟𝑜𝑚𝑒𝑑𝑖𝑜𝑏
+4.1.2. Variables de segundo nivel
+Total ingresos sueldos y salarios (ing_t_d) : corresponde a la suma del total de
+ingresos provenientes de sueldos y salarios de las personas ocupadas dependientes en
+su ocupación principal. Esto incluye sueldos y salarios fijos, variables y regalías.
+𝑖𝑛𝑔_𝑡_𝑑 = 𝑠𝑠 _𝑡 + 𝑠𝑣𝑎𝑟_𝑡 + 𝑟𝑒𝑔_𝑡
+Total ingresos trabajo independiente (ing_t_i) : corresponde a la suma del total
+de ingresos proveniente del trabajo independiente. Esto es, la suma de las ganancias
+que produce la actividad independiente más el autoconsumo de productos, bienes o
+servicios que produce la dicha actividad.
+𝑖𝑛𝑔_𝑡_𝑖 = 𝑔𝑎𝑛 _𝑡 + 𝑎𝑢𝑡𝑜𝑐𝑜𝑛𝑠𝑢𝑚𝑜 _𝑡
+Total ingresos del trabajo independiente ajustado (ing_t_i_ai) : corresponde
+a la suma del total de ingresos proveniente del trabajo independiente menos el ahorro
+realizado en arriendo cuando la actividad independiente se realiza en la propia vivienda.
+𝑖𝑛𝑔_𝑡_𝑖_𝑎𝑖 = 𝑔𝑎𝑛 _𝑡 + 𝑎𝑢𝑡𝑜𝑐𝑜𝑛𝑠𝑢𝑚𝑜 _𝑡 − 𝑎ℎ𝑜𝑟𝑟𝑜𝑖𝑚𝑝_𝑡
+4.1.3. Variable de tercer nivel
+Ingresos del trabajo principal (ing_t_p) : corresponde a la suma del total de
+ingresos provenientes de sueldos y salarios, en el caso de las personas ocupadas depen-
+dientes, o al total de ingresos del trabajo independiente. Es la variable principal de
+análisis de la ESI.
+𝑖𝑛𝑔_𝑡_𝑝 =
+⎧{
+⎨{⎩
+𝑖𝑛𝑔_𝑡_𝑑
+o
+𝑖𝑛𝑔_𝑡_𝑖
+4.1.4. Variables de cuarto nivel
+Total ingresos del trabajo (ing_t_t) : corresponde a la suma de los ingresos pro-
+venientes de la ocupación principal y de los ingresos provenientes de otras ocupaciones
+declaradas.
+11
+
+PAGE 13
+𝑖𝑛𝑔_𝑡_𝑡 =
+⎧{
+⎨{⎩
+𝑖𝑛𝑔_𝑡_𝑑 + 𝑖𝑛𝑔_𝑜𝑡
+o
+𝑖𝑛𝑔_𝑡_𝑖 + 𝑖𝑛𝑔_𝑜𝑡
+Total ingresos del trabajo con ingresos independientes ajustados
+(ing_t_t_ai): corresponde a la suma de los ingresos provenientes de la ocupación
+principal y de los ingresos provenientes de otras ocupaciones declaradas. En el caso de
+los ocupados independientes, la suma considera los ingresos ajustados (ing_t_i_ai).
+𝑖𝑛𝑔_𝑡_𝑡_𝑎𝑖 =
+⎧{
+⎨{⎩
+𝑖𝑛𝑔_𝑡_𝑑 + 𝑖𝑛𝑔_𝑜𝑡
+o
+𝑖𝑛𝑔_𝑡_𝑖_𝑎𝑖 + 𝑖𝑛𝑔_𝑜𝑡
+Adicionalmente, se generan dos variables analíticas categóricas: “Tramos de ingresos mínimos
+netos” (tim) y una variable dummy para la condición de ocupado (ocup_ref).
+La variable “ocup_ref” es de especial importancia para las estimaciones que se realizan
+empleando la ESI, ya que es el filtro que permite identificar a aquellas personas ocupadas con
+al menos 1 mes de antigüedad en el empleo actual. Para todas las estimaciones oficiales
+de la encuesta se exige que la subpoblación cumpla con la variable “ocup_ref”
+igual a 1 .
+Por último, el salario mínimo neto mensual (SMN) de 430.077 pesos utilizado para el período
+de referencia de la encuesta, se construye considerando el salario mínimo bruto vigente en
+2025 ($529.000) menos los descuentos legales, estimados en un 18,7 %.
+12
+
+PAGE 14
+5. Indicaciones para el uso de la base de datos
+En el presente capítulo se entrega al usuario elementos para hacer un adecuado uso de las
+base de datos de la ESI 2025. Es importante destacar que la base contiene las variables de
+estrato de varianza y conglomerado de varianza al que pertenece cada hogar, por lo
+que a partir de esta información se pueden realizar estimaciones considerando el muestreo
+complejo utilizado en la encuesta.
+A continuación, se presenta la especificación del diseño muestral complejo, junto con la
+definición y utilización del factor de expansión de la encuesta.
+5.1. Descripción del diseño muestral
+El diseño muestral de la ESI comparte todos los atributos del diseño muestral de la ENE.
+Este diseño posee un muestreo probabilístico, estratificado y bietápico, donde las unidades
+primarias de muestreo corresponden a los conglomerados de viviendas, mientras que, las
+unidades secundarias de muestreo son las viviendas particulares ocupadas 3.
+5.2. Utilización de factores de expansión
+El factor de expansión es la cantidad de unidades en la población a las que representa cada
+unidad presente en la muestra. La variable que contiene el factor de expansión elaborado
+para esta versión de la ESI está presente en la base de datos con el nombre fact_cal_esi.
+La omisión del factor de expansión implica que los resultados reflejen exclusivamente las
+características de la muestra observada. Para obtener estimaciones válidas para la población
+objetivo de la encuesta, es necesario incorporar el diseño muestral en los análisis. En RStudio,
+esto se realiza mediante las funciones del paquete survey.
+Al identificar el plan de muestreo es posible generar estimaciones adecuadas de los parámetros
+de interés y sus respectivas varianzas. Esto puede realizarse utilizando las variables que
+identifican el diseño muestral complejo y el factor de expansión, a través del siguiente
+comando:
+Programación 1: Identificación del diseño muestral complejo
+install.packages("survey")
+library(survey)
+diseno <- svydesign(id = ~conglomerado_correlativo,
+strata = ~estrato,
+check.strata = TRUE,
+weights = ~fact_cal_esi,
+3Una explicación más completa del diseño y selección muestral se encuentra en www.ine.gob.cl, apartado
+de Estadísticas, sección Mercado laboral, subsección Ocupación y desocupación, “Documento Metodológico
+Encuesta Nacional de Empleo (ENE) - 2020” .
+13
+
+PAGE 15
+data = base)
+options(survey.lonely.psu="remove")
+14
+
+PAGE 16
+6. Estimaciones e indicadores
+A continuación, se ofrecen alternativas para la estimación de algunos de los indicadores
+que se pueden obtener con las bases de datos de la ESI 2025. Es importante señalar que
+el siguiente es un ejercicio que busca entregar ejemplos de lo que es posible construir con
+algunas de las variables contenidas en esta versión de la encuesta, pero la utilidad y alcance
+de la información recogida no se acaba en estos. En este sentido, este manual busca orientar
+a los usuarios que usen las bases de datos en el manejo y tratamiento de la información, con
+el fin de reducir las complejidades que esto les pueda implicar.
+Cabe destacar que las programaciones que se ofrecen a lo largo del documento se realizan a
+través de la consola del software R, a través de la interfaz de RStudio. Por ende, se recomienda
+ejecutarlas a través de dicho ambiente de programación.
+6.1. Programación previa a calcular indicadores ESI
+Las programaciones siguientes presentan los procedimientos para calcular el ingreso medio
+mensual de la ocupación principal, el ingreso mediano mensual de la ocupación principal,
+la brecha de género en el ingreso medio mensual de la ocupación principal y la masa de
+ingresos de la ocupación principal. Además, se incluye el cálculo del ingreso por hora para
+las personas asalariadas.
+No obstante, antes de realizar estos cálculos, es necesario cargar las librerías requeridas,
+importar la base de datos correspondiente al año 2025 y definir el diseño muestral complejo.
+En particular, para estimar el ingreso mediano se debe ordenar la base de datos según la
+variable id_mediana, así como establecer una semilla y el número de réplicas para el método
+bootstrap que insuma el diseño complejo requerido para este indicador. Por su parte, para
+el cálculo del ingreso por hora es necesario construir previamente una variable de horas
+trabajadas al mes.
+Programación 2: Carga de base de datos y librerías, definición de diseños mues-
+trales, orden y creación de variables
+# Cargar base de datos: base
+load("base.RData")
+# Instalar librerías necesarias
+install.packages("survey")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("magrittr")
+# Cargar librerías necesarias
+library(survey)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+15
+
+PAGE 17
+# Crear variable horas trabajadas al mes para cálculo de ingreso por hora
+base <- base |>
+mutate(hrs_mes = ifelse(!is.na(d4_dias) & !is.na(d4_horas),
+d4_dias*d4_horas, NA))
+# Ordenar la base de datos por id_mediana para estimación de mediana
+base <- base |>
+arrange(id_mediana)
+# Definir diseño complejo
+design <- svydesign(
+id = ~conglomerado_correlativo,
+strata = ~estrato,
+weights = ~fact_cal_esi,
+check.strata = TRUE,
+data = base)
+options(survey.lonely.psu="remove")
+# Establecer semilla y número de replicas para el bootstrap necesario para
+#estimación de la mediana
+set.seed(1843)
+SB2K_2 <- as.svrepdesign(design,
+type = "subbootstrap",
+replicates = 1000)
+16
+
+PAGE 18
+6.2. Ingreso medio mensual
+Programación 3: Ingreso medio mensual de la ocupación principal (2025)
+ingreso_medio <- as.data.frame(
+svymean(~ing_t_p,
+data = base,
+drop.empty.groups = FALSE,
+subset(design, ocup_ref == 1),
+vartype = "se",
+covmat = TRUE)) |>
+select(ing_t_p = mean, se = ing_t_p)
+ingreso_medio
+Tabla 2: Ingreso medio mensual de la ocupación principal, 2025
+Ingreso medio se
+962.944,70 11502,91
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+6.3. Brecha de ingreso
+Programación 4: Brecha de género en el ingreso medio de la ocupación principal
+(2025)
+# Calcular ingreso medio por sexo
+ingreso_sexo <- svyby(
+~ing_t_p,
+by = ~sexo,
+na.rm.all = FALSE,
+subset(design, ocup_ref == 1),
+svymean,
+vartype = "se",
+covmat = TRUE)
+# Calcular brecha, ratio y error estándar
+brecha <- bind_cols(
+as.data.frame(svycontrast(ingreso_sexo, quote((`2`-`1`)/`1`))) |>
+rename(BRECHA = nlcon) |>
+select(BRECHA),
+as.data.frame(svycontrast(ingreso_sexo, quote(`2`/`1`))) |>
+mutate(cv = SE/nlcon*100) |>
+select(SE,cv)
+)
+17
+
+PAGE 19
+brecha
+Tabla 3: Brecha de género en el ingreso medio de la ocupación principal, 2025
+Brecha se cv
+-0,22 0,01 1,50
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+6.4. Ingreso mediano mensual
+Programación 5: Ingreso mediano mensual de la ocupación principal (2025)
+#Funcion de interpolacion ESI
+interpolacion <- function(x, w, p)
+{
+if (any(zero <- w == 0)) {
+w <- w[!zero]
+x <- x[!zero]
+}
+n <- length(x)
+ii <- order(x)
+x <- x[ii]
+w <- w[ii]
+cumw <- cumsum(w)
+pk <- (cumw - w/2)/(cumw[n])
+# Corrección: si x es sólo 1 valor, muéstralo; en caso contrario;
+# generar interpolación:
+if (length(x) == 0) {
+NA
+} else if (length(x) == 1) {
+x
+} else {
+approx(pk, x, p, method = "linear", rule = 2)$y
+}
+}
+# Cálculo del ingreso mediano
+mediana <- svyquantile(~ing_t_p,
+drop.empty.groups = FALSE,
+subset(SB2K_2, ocup_ref == 1),
+interval.type="quantile",
+quantiles=c(0.5),
+18
+
+PAGE 20
+ci = TRUE,
+qrule = interpolacion) |>
+unlist() |>
+as_tibble() |>
+slice(c(1, 4)) |> pivot_wider(names_from = value) |>
+select(ing_t_p = 1, se = 2)
+mediana
+Tabla 4: Ingreso mediano mensual de la ocupación principal, 2025
+Ingreso mediano se
+680.000,00 10063,90
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+6.5. Masa de ingreso
+Programación 6: Masa de ingresos de la ocupación principal (2025)
+# Calcular masa de ingresos
+masa <- as.data.frame(
+svytotal(
+~ing_t_p,
+drop.empty.groups = FALSE,
+subset(design, ocup_ref == 1),
+vartype = "se",
+covmat = TRUE
+)) |>
+select(total = total, se = ing_t_p)
+masa
+Tabla 5: Masa de ingresos de la ocupación principal, 2025
+Masa de ingresos se
+8.688.358.391.336,93 148929561556,66
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+19
+
+PAGE 21
+6.6. Ingreso por hora asalariados
+Programación 7: Ingreso por hora para personas asalariadas (2025)
+# Calcular ingreso por hora
+ing_h_total <- svyratio(
+~ing_t_p,
+denominator = ~hrs_mes,
+subset(design, ocup_ref == 1 & categoria_ocupacion %in % 3:4)
+)
+# Extraer estimación y error estándar
+ing_h_total <- tibble(
+ing_t_p.ingxhora = coef(ing_h_total),
+se.ingxhora = SE(ing_h_total)
+)
+ing_h_total
+Tabla 6: Ingreso por hora para personas asalariadas, 2025
+Ingreso por hora se
+6.230,00 79,70
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+20
+
+PAGE 22
+6.7. Evaluación de la calidad de las estimaciones
+De acuerdo con el estándar definido por la institución 4, las estimaciones pueden ser clasifi-
+cadas en tres grupos: estimación fiable, estimación poco fiable y estimación no fiable.
+Existen dos condiciones excluyentes para cualquier tipo de estimación, las cuales establecen
+el nivel de fiabilidad de la misma. Esta debe tener un tamaño muestral de al menos 60 casos
+y un número de grados de libertad mayor o igual a 9. En caso contrario, las estimaciones
+deben ser clasificadas como “estimación no fiable” .
+Si se cumplen las dos condiciones anteriores, y el estimador es una proporción o razón entre
+0 y 1 ( 𝑝), el error estándar debe cumplir la siguiente condición, dependiendo del nivel de la
+estimación asociada de 𝑝:
+𝑀 ́ 𝑎𝑥𝑖𝑚𝑜 𝑒𝑒 𝑡𝑜𝑙𝑒𝑟𝑎𝑏𝑙𝑒 = {
+3√𝑝2
+9 ; 𝑝 < 0, 5
+3√(1−𝑝2)
+9 ; 𝑝 ≥ 0, 5
+En caso de que el error estándar ( 𝑒𝑒) se encuentre en dicho intervalo, el estimador debe
+considerarse como estimación fiable. Pero si el estimador no cumple con dicho criterio, debe
+consignarse como estimación poco fiable dada su baja confiabilidad.
+Si el estimador no es de razón o proporción entre 0 y 1 ( 𝑝), se evalúa mediante el coeficiente de
+variación, el cual debe ser 15 % o menos para ser clasificado como estimación fiable. Cuando
+el coeficiente de variación sea mayor a 15 % y menor o igual a 30 %, la estimación debe
+ser catalogada como poco fiable; finalmente, si el coeficiente de variación supera 30 %, la
+estimación es clasificada como no fiable y no se recomienda su uso.
+6.7.1. ¿Cómo evaluar la calidad de una estimación ESI?
+A continuación, se presenta un ejemplo de aplicación de los criterios de calidad descritos
+anteriormente para las estimaciones del ingreso medio neto por región.
+En primer lugar, se estima el ingreso medio neto de los ocupados (ocup_ref == 1) para cada
+región, utilizando el diseño muestral de la encuesta. A partir de estas estimaciones se calcula
+el error estándar (se) y coeficiente de variación (cv).
+Posteriormente, para cada región se obtienen dos indicadores necesarios para evaluar la
+calidad de las estimaciones: el recuento no ponderado (RNP) y los grados de libertad (GDL).
+El RNP corresponde al número de observaciones muestrales de la subpoblación de estudio
+en cada región, mientras que los GDL se calculan como la diferencia entre el número de
+conglomerados únicos y el número de estratos únicos presentes en dicha subpoblación.
+Una vez calculados estos indicadores, la calidad de las estimaciones se evalúa siguiendo los
+criterios establecidos por la institución. En particular, dado que el ingreso medio corresponde
+a una medida que no está acotada entre 0 y 1 , su clasificación se realiza mediante el
+coeficiente de variación. Así, las estimaciones que no cumplen los requisitos mínimos de
+4Una explicación más completa se encuentra en el Estándar para la evaluación de la calidad de las
+estimaciones de encuestas a hogares , publicado en 2020.
+21
+
+PAGE 23
+tamaño muestral (RNP mayor o igual 60) o grados de libertad (GDL mayor o igual 9)
+se consideran no fiables. Para aquellas que sí satisfacen ambas condiciones, la clasificación
+depende de su CV: los valores menores o iguales a 15 % se consideran fiables, los mayores a
+15 % y menores o iguales a 30 % se consideran poco fiables, y aquellos superiores a 30 % se
+clasifican como no fiables.
+La siguiente programación ilustra el cálculo del ingreso medio neto, su error estándar, el
+coeficiente de variación y la correspondiente clasificación de fiabilidad para cada región.
+# Calcular ingreso medio según región
+ingreso_medio_region <- svyby(
+~ ing_t_p,
+by = ~ region,
+subset(design, ocup_ref == 1),
+svymean,
+drop.empty.groups = FALSE,
+vartype = "se",
+covmat = TRUE
+) |>
+mutate(cv = se/ing_t_p*100)
+#Calculo de los grados de libertad (gdl) y recuento no ponderado (rnp)
+gdl_rnp <- base |>
+filter(ocup_ref == 1) |>
+group_by(region) |>
+summarise(rnp = n(),
+gdl = n_distinct(conglomerado_correlativo) - n_distinct(estrato))
+#Calculo del vector de fiabilidad
+estimaciones_calidad <- left_join(
+ingreso_medio_region |> mutate(region = as.numeric(region)),
+gdl_rnp,
+by = "region") |>
+mutate(
+fiabilidad = case_when(
+!rnp >= 60 ~ "no fiable" ,
+rnp >= 60 & !gdl >= 9 ~ "no fiable" ,
+rnp >= 60 & gdl >= 9 & !cv <= 15 & !cv <= 30 ~ "no fiable" ,
+rnp >= 60 & gdl >= 9 & !cv <= 15 & cv <= 30 ~ "poco fiable" ,
+rnp >= 60 & gdl >= 9 & cv <= 15 ~ "fiable")
+)
+estimaciones_calidad
+22
+
+PAGE 24
+Tabla 7: Fiabilidad del ingreso medio neto por región, ESI 2025
+Región Ingreso
+medio
+se cv rnp gdl fiabilidad
+1 884.864 43863,27 4,96 983 96 fiable
+2 1.196.754 69810,96 5,83 1.596 157 fiable
+3 882.616 32217,11 3,65 1.390 222 fiable
+4 832.035 25537,08 3,07 2.147 309 fiable
+5 869.610 19619,01 2,26 5.013 578 fiable
+6 789.001 29398,64 3,73 2.123 296 fiable
+7 731.831 33679,14 4,60 2.653 353 fiable
+8 859.155 34660,28 4,03 4.103 562 fiable
+9 729.127 28719,55 3,94 1.899 283 fiable
+10 803.784 28069,30 3,49 2.491 380 fiable
+11 1.046.075 74063,51 7,08 1.075 152 fiable
+12 1.074.556 36951,86 3,44 1.092 146 fiable
+13 1.102.043 22369,04 2,03 7.824 1.003 fiable
+14 860.872 45520,95 5,29 1.559 246 fiable
+15 764.847 35242,38 4,61 1.165 140 fiable
+16 763.668 29267,45 3,83 1.616 238 fiable
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+23
+
+PAGE 25
+7. Uso de datos y citación
+Se recomienda que toda estimación elaborada a partir de los datos de la encuesta sea
+adecuadamente citada mediante una referencia explícita en el pie de gráficos o cuadros
+estadísticos, utilizando formatos estandarizados acordes al tipo de publicación.
+Cuando la información haya sido procesada por investigadores o instituciones, se debe
+acreditar en primer lugar a la persona o entidad responsable de la elaboración del análisis, y
+luego indicar como fuente la base de datos de la Encuesta Suplementaria de Ingresos (ESI),
+especificando el año de referencia.
+Ejemplo: “Fuente: Elaboración propia a partir de la base de datos de la Encuesta Suplemen-
+taria de Ingresos, 2025” .
+En el caso de utilizar resultados o información procesada y publicada por el Instituto Nacional
+de Estadísticas (INE), ya sea en documentos oficiales o en cuadros estadísticos disponibles
+para descarga —incluidos aquellos difundidos a través de la plataforma SIMEL—, se debe
+reconocer explícitamente al INE como fuente de origen de los datos e indicar el año de la
+versión de la encuesta.
+Ejemplo: “Fuente: Instituto Nacional de Estadísticas, Encuesta Suplementaria de Ingresos
+2025” .
+Finalmente, al citar documentos de resultados, metodológicos u otras publicaciones asociadas
+a la ESI, elaboradas por el INE u otras instituciones, se recomienda utilizar el formato de
+referencia de autor corporativo según normas APA:
+Nombre del autor corporativo (año de publicación)
+Título de la obra en cursiva . Lugar
+Publicación: nombre de la editorial.
+Ejemplo: Instituto Nacional de Estadísticas (2025). Encuesta Suplementaria de Ingresos
+(ESI). Santiago, Chile.
+24
+
+PAGE 26
+8. Guía de variables
+En el presente apartado se da cuenta de las variables que forman parte de la Encuesta
+Suplementaria de ingresos (ESI) 2025. Si bien en la base de datos se encuentran también las
+variables relacionadas a la Encuesta Nacional de Empleo (ENE), el detalle de su estructura
+y categorías de variables se encuentra en: libro de códigos base de datos Encuesta
+Nacional de Empleo .
+Tabla 8: Guía de variables ESI 2025
+V ariable Etiqueta Cod. Nombre Código Caract.
+estrato Estrato muestral Escala
+conglomerado Conglomerado Escala
+id_identificacion Identificador único de hogar Escala
+hogar Número de hogar dentro de vivienda Escala
+idrph Identificador único de persona Escala
+nro_linea Número de línea de persona Escala
+d1_opcion d1_opción. Su empleo actual, ¿es el mismo que
+tenía el mes anterior?
+1 Sí Nominal
+2 No
+d1_opcionb d1_opciónb. ¿Cuál fue el monto en pesos de
+su SUELDO NETO (SALARIO NETO)?
+1 Monto Nominal
+88 No sabe
+99 No responde
+d1_monto Sueldo o salario neto Escala
+d2_1_opcion d2_1_opción. Bonos por productividad 1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_1_opcionb d2_1_opciónb. ¿Cuánto fue el monto en pesos
+($) o porcentaje ( %) que representa de su
+sueldo neto?
+88 No sabe Nominal
+99 No responde
+d2_1_monto Monto de bonos por productividad Escala
+d2_1_porcentaje Porcentaje de su sueldo en bonos por produc-
+tividad
+Nominal
+d2_1_opcionc d2_1_opciónc. ¿Incluyó este ingreso en el
+sueldo neto declarado anteriormente?
+1 Sí Nominal
+25
+
+PAGE 27
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+2 No
+88 No sabe
+99 No responde
+d2_2_opcion d2_2_opción. Bonos de otro tipo 1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_2_opcionb d2_2_opciónb. ¿Cuánto fue el monto en pesos
+($) o porcentaje ( %) que representa de su
+sueldo neto?
+88 No sabe Nominal
+99 No responde
+d2_2_monto Monto por bonos de otro tipo Escala
+d2_2_porcentaje Porcentaje de su sueldo en bonos de otro tipo Nominal
+d2_2_opcionc d2_2_opciónc. ¿Incluyó este ingreso en el
+sueldo neto declarado anteriormente?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_3_opcion d2_3_opción. Comisiones por ventas 1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_3_opcionb d2_3_opciónb. ¿Cuánto fue el monto en pesos
+($) o porcentaje ( %) que representa de su
+sueldo neto?
+88 No sabe Nominal
+99 No responde
+d2_3_monto Monto por comisiones por ventas Escala
+d2_3_porcentaje Porcentaje de su sueldo en comisiones por
+ventas
+Nominal
+d2_3_opcionc d2_3_opciónc. ¿Incluyó este ingreso en el
+sueldo neto declarado anteriormente?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_4_opcion d2_4_opción. Pago por horas extraordinarias 1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_4_opcionb d2_4_opciónb. ¿Cuánto fue el monto en pesos
+($) o porcentaje ( %) que representa de su
+sueldo neto?
+88 No sabe Nominal
+26
+
+PAGE 28
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+99 No responde
+d2_4_monto Monto por pago por horas extraordinarias Escala
+d2_4_porcentaje Porcentaje de su sueldo en pago por horas
+extraordinarias
+Nominal
+d2_4_opcionc d2_4_opciónc. ¿Incluyó este ingreso en el
+sueldo neto declarado anteriormente?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_5_opcion d2_5_opción. Otros ingresos variables 1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d2_5_opcionb d2_5_opciónb. ¿Cuánto fue el monto en pesos
+($) o porcentaje ( %) que representa de su
+sueldo neto?
+88 No sabe Nominal
+99 No responde
+d2_5_monto Monto por otros ingresos variables Escala
+d2_5_porcentaje Porcentaje de su sueldo en otros ingresos va-
+riables
+Nominal
+d2_5_opcionc d2_5_opciónc. ¿Incluyó este ingreso en el
+sueldo neto declarado anteriormente?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_1_opcion d3_1_opción. En el mes anterior ¿le propor-
+cionaron beneficios de vivienda?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_1_opcion2 d3_1_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_1_monto Monto de beneficio por vivienda Escala
+d3_1_porcentaje Porcentaje de su sueldo en beneficio por vi-
+vienda
+Nominal
+d3_2_opcion d3_2_opción. En el mes anterior ¿le propor-
+cionaron beneficios de alimentación?
+1 Sí Nominal
+2 No
+88 No sabe
+27
+
+PAGE 29
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+99 No responde
+d3_2_opcion2 d3_2_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_2_monto Monto de beneficio por alimentación Escala
+d3_2_porcentaje Porcentaje de su sueldo en beneficio por ali-
+mentación
+Nominal
+d3_3_opcion d3_3_opción. En el mes anterior ¿le propor-
+cionaron beneficios de becas de estudio?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_3_opcion2 d3_3_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_3_monto Monto de beneficio por becas de estudio Escala
+d3_3_porcentaje Porcentaje de su sueldo en beneficio por becas
+de estudio
+Nominal
+d3_4_opcion d3_4_opción. En el mes anterior ¿le propor-
+cionaron beneficios de transporte y/o bencina?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_4_opcion2 d3_4_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_4_monto Monto de beneficio por transporte y/o bencina Escala
+d3_4_porcentaje Porcentaje de su sueldo en beneficio por trans-
+porte y/o bencina
+Nominal
+d3_5_opcion d3_5_opción. En el mes anterior ¿le propor-
+cionaron beneficios de propinas?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_5_opcion2 d3_5_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_5_monto Monto de beneficio por propinas Escala
+28
+
+PAGE 30
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+d3_5_porcentaje Porcentaje de su sueldo en beneficio por pro-
+pinas
+Nominal
+d3_6_opcion d3_6_opción. En el mes anterior ¿le pro-
+porcionaron beneficios de sala cuna o jardín
+infantil?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_6_opcion2 d3_6_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_6_monto Monto de beneficio por sala cuna o jardín
+infantil
+Escala
+d3_6_porcentaje Porcentaje de su sueldo en beneficio por sala
+cuna o jardín infantil
+Nominal
+d3_7_opcion d3_7_opción. En el mes anterior ¿le propor-
+cionaron beneficios de otros (especifique)?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d3_7_otro d3_7. Otra situación (especifique) Nominal
+d3_7_opcion2 d3_7_opción2. ¿Cuál fue el monto ($) o por-
+centaje ( %) de su sueldo?
+88 No sabe Nominal
+99 No responde
+d3_7_monto Monto de beneficio por otros (especifique) Escala
+d3_7_porcentaje Porcentaje de su sueldo en beneficio por otros
+(especifique)
+Nominal
+d4_dias d4_dias. Este sueldo neto, ¿a cuántos días
+trabajados correspondió?
+888 No sabe Escala
+999 No responde
+d4_horas d4_horas. En promedio, ¿cuántas horas dia-
+rias trabajó durante esos días?
+888 No sabe Escala
+999 No responde
+d5_opcion d5_opción. Su actividad actual, ¿es la misma
+que tenía en el mes anterior?
+1 Sí Nominal
+2 No
+d5_opcionb d5_opciónb. Durante dicho mes, ¿cuál fue
+el monto en pesos del ingreso neto (sueldos
+asignados, ganancias y/o retiros) que obtuvo
+de su empresa, negocio o actividad por cuenta
+propia?
+1 Monto Nominal
+29
+
+PAGE 31
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+2 Promedio
+88 No sabe
+99 No responde
+d5_monto Monto de ingresos, ganancias o retiros de la
+empresa, negocio o actividad por cuenta propia
+Escala
+d5_promedio Promedio de ingresos, ganancias o retiros de la
+empresa, negocio o actividad por cuenta propia
+Escala
+d7_opcion d7_opción.En el mes anterior ¿usó productos,
+bienes o servicios de su empresa, negocio o
+actividad por cuenta propia, para su consumo
+personal o del hogar?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d7_monto Monto. Estime el monto que hubiese tenido
+que pagar por los productos o servicios utili-
+zados
+Escala
+d7_promedio Promedio. Estime el monto que hubiese tenido
+que pagar por los productos o servicios utiliza-
+dos
+Escala
+d8_opcion d8_opción. Su empresa, negocio o actividad
+por cuenta propia, ¿es desarrollada en esta
+vivienda?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d8_monto Si tuviese que pagar un arriendo mensual por
+el espacio que utiliza en esta vivienda, ¿cuánto
+estima que le costaría?
+Escala
+d9_opcion d9_opción. Independiente de lo anterior, du-
+rante el mes anterior, ¿percibió ingreso(s) por
+otra(s) ocupación(es), distinta(s) a la actual?
+1 Sí Nominal
+2 No
+88 No sabe
+99 No responde
+d9_monto Monto de ingresos de otra ocupación, distinta
+a la actual
+Escala
+d9_promedio Promedio de ingresos de otra ocupación, dis-
+tinta a la actual
+Escala
+d9_opcionb d9_opciónb. A pesar de no haber trabajado la
+semana pasada, durante el mes anterior ¿per-
+cibió ingresos por algún trabajo u ocupación?
+1 Sí Nominal
+2 No
+88 No sabe
+30
+
+PAGE 32
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+99 No responde
+d9_montob Monto de ingresos por algún trabajo u ocupa-
+ción
+Escala
+d9_promediob Promedio de ingresos por algún trabajo u
+ocupación
+Escala
+fact_cal_esi Factor de expansión ESI con nueva calibración,
+proyecciones de población
+Escala
+imp_d1_monto Imputación en d1_monto 0 No imputado Nominal
+1 Imputado
+imp_d4 Imputación en d4 0 No imputado Nominal
+1 Imputado
+imp_d5_monto Imputación en d5_monto 0 No imputado Nominal
+1 Imputado
+ss_t Ingresos por sueldos y salarios netos Escala
+svar_t Ingresos por sueldos y salarios variables no
+incluidos en D1
+Escala
+reg_t Total ingresos por regalías (beneficios entrega-
+dos por el empleador)
+Escala
+gan_t Ingresos por ganancias del negocio indepen-
+diente
+Escala
+autoconsumo_t Ingresos por autoconsumo Escala
+ahorroimp_t Gasto imputado por arriendo de local Escala
+ing_ot Ingresos otros trabajos Escala
+ing_t_d Total ingresos sueldos y salarios Escala
+ing_t_i Total ingresos trabajo independiente Escala
+ing_t_i_ai Ingresos del trabajo independiente ajustado Escala
+ing_t_p Ingresos del trabajo principal Escala
+ing_t_t Total ingresos del trabajo Escala
+ing_t_t_ai Ingresos del trabajo con ingresos independien-
+tes ajustados
+Escala
+ocup_ref Binario ocupados de referencia tabulados de
+personas
+0 Ocupados con menos de 1 mes
+en la ocupación actual
+Nominal
+1 Ocupados con al menos 1 mes
+en la ocupación actual
+31
+
+PAGE 33
+Tabla 8: Guía de variables ESI 2025 (continuación)
+V ariable Etiqueta Cod. Nombre Código Caract.
+tim Tramos de ingresos mínimos netos según ingre-
+sos del trabajo principal
+1 0 - $430.077 (1SMN) Nominal
+2 $430.077 - $860.154 (2SMN)
+3 $860.154 - $1.720.308 (4SMN)
+4 $1.720.308 - $2.580.462
+(6SMN)
+5 $2.580.462 - $3.440.616
+(8SMN)
+6 $3.440.616 - $4.300.770
+(10SMN)
+7 $4.300.770 y más
+conglomerado_correlativo Correlativo ordenado del Identificador de con-
+glomerado marco nuevo/marco antiguo
+Escala
+id_mediana Orden oficial para estimaciones de mediana
+ESI
+Nominal
+Fuente: Instituto Nacional de Estadísticas de Chile (INE)
+32

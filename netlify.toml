@@ -1,0 +1,8 @@
+# The site is prebuilt and self-contained. Only this folder is published.
+[build]
+  base = "site"
+  publish = "."
+  command = ""
+
+[build.processing]
+  skip_processing = true

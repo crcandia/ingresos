@@ -1,0 +1,38 @@
+{
+  "fuente_original": {
+    "title": "ESI 2025 - Personas",
+    "url": "https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2025/esi_2025_personas.csv?sfvrsn=7f734fe_4&download=true",
+    "catalogue_bytes": 84878737,
+    "download_utc": "2026-10-13T19:33:11.012847+00:00",
+    "path": "datos_originales/esi_2025_personas.csv",
+    "headers": {
+      "Content-Length": "84878737",
+      "Content-Type": "application/octet-stream",
+      "Last-Modified": "Tue, 14 Jul 2026 13:00:11 GMT"
+    },
+    "bytes": 84878737,
+    "sha256": "4ff7b8682622c81e2c950544d387e4e8168c3706d2bd7f147b047143a201998f",
+    "status": "downloaded"
+  },
+  "sha256_original_verificado": true,
+  "columnas_conservadas": [
+    "edad",
+    "sexo",
+    "b1",
+    "ocup_ref",
+    "ing_t_p",
+    "fact_cal_esi",
+    "estrato",
+    "conglomerado_correlativo",
+    "imp_d1_monto",
+    "imp_d5_monto"
+  ],
+  "filas_conservadas": 93458,
+  "sha256_columnas_necesarias": "393279b0f1a95b3bba45875b44faa8fbf5f08c0786a3cfdbbe5ec314fcbb90d3",
+  "sha256_codigo_diseno_original": "6d67ef839f55b53dc780382a81465525c4f197e19b30a6d33847bcf8ced4f7b3",
+  "origen_modelo": "Clase Design conservada del análisis nacional. Cálculo vectorizado contrastado contra ella.",
+  "n_filas": 93458,
+  "sha256_design_conservado": "39b207e583f9126c889eeaa345ffe6b42fece3d4acfdb0969bb4b223643443a9",
+  "sha256_analizar_dashboard": "aa0d9576c09834ef21ccb64e0c8bdd3662ae1ac4ba75aed9fc2c57ba7d18a80a",
+  "sha256_referencia_edades": "6761aa8a4091b2feceaec826419ea9f4d0b5562fd4df75953287cc25c66044dc"
+}

@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "domainScaleCombinationsRendered": 360,
+  "domainsRendered": 180,
+  "scales": [
+    "linear",
+    "log"
+  ],
+  "controls": "occupation, sex, age, amount input, slider, quick amounts, range, ranking, survival scale, reset, help, keyboard tooltip",
+  "equalLogTickSpacing": true,
+  "constantLogAxisAcrossGroups": true,
+  "stepConfidenceBand": true,
+  "noNetworkDependencies": true,
+  "savedHTMLReopenedWithScale": true,
+  "csvExportRows": 15,
+  "scaleDoesNotChangeCSV": true,
+  "explicit20PlusUniverse": true,
+  "emptyTailNotReportedAsPopulationZero": true,
+  "finiteSVGGeometry": true,
+  "jsErrors": [],
+  "verificationLimit": "DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot."
+}

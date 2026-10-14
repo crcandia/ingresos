@@ -1,0 +1,67 @@
+all: Todas las ocupaciones | Ambos sexos | 6 dominios calculados
+all: Todas las ocupaciones | Hombres | 6 dominios calculados
+all: Todas las ocupaciones | Mujeres | 6 dominios calculados
+1: Directivos y gerentes | Ambos sexos | 6 dominios calculados
+1: Directivos y gerentes | Hombres | 6 dominios calculados
+1: Directivos y gerentes | Mujeres | 6 dominios calculados
+2: Profesionales, científicos e intelectuales | Ambos sexos | 6 dominios calculados
+2: Profesionales, científicos e intelectuales | Hombres | 6 dominios calculados
+2: Profesionales, científicos e intelectuales | Mujeres | 6 dominios calculados
+3: Técnicos y profesionales de nivel medio | Ambos sexos | 6 dominios calculados
+3: Técnicos y profesionales de nivel medio | Hombres | 6 dominios calculados
+3: Técnicos y profesionales de nivel medio | Mujeres | 6 dominios calculados
+4: Personal administrativo | Ambos sexos | 6 dominios calculados
+4: Personal administrativo | Hombres | 6 dominios calculados
+4: Personal administrativo | Mujeres | 6 dominios calculados
+5: Servicios y ventas | Ambos sexos | 6 dominios calculados
+5: Servicios y ventas | Hombres | 6 dominios calculados
+5: Servicios y ventas | Mujeres | 6 dominios calculados
+6: Agropecuarios, forestales y pesqueros calificados | Ambos sexos | 6 dominios calculados
+6: Agropecuarios, forestales y pesqueros calificados | Hombres | 6 dominios calculados
+6: Agropecuarios, forestales y pesqueros calificados | Mujeres | 6 dominios calculados
+7: Artesanos y operarios de oficios | Ambos sexos | 6 dominios calculados
+7: Artesanos y operarios de oficios | Hombres | 6 dominios calculados
+7: Artesanos y operarios de oficios | Mujeres | 6 dominios calculados
+8: Operadores de máquinas y ensambladores | Ambos sexos | 6 dominios calculados
+8: Operadores de máquinas y ensambladores | Hombres | 6 dominios calculados
+8: Operadores de máquinas y ensambladores | Mujeres | 6 dominios calculados
+9: Ocupaciones elementales | Ambos sexos | 6 dominios calculados
+9: Ocupaciones elementales | Hombres | 6 dominios calculados
+9: Ocupaciones elementales | Mujeres | 6 dominios calculados
+{
+  "pass": true,
+  "domains": 180,
+  "originalRows": 93458,
+  "occupied": 38729,
+  "occupied20Plus": 38380,
+  "mainOccupation20Plus": 38226,
+  "residualOccupation20Plus": [
+    {
+      "codigo": 10,
+      "n": 128,
+      "personas": 25760.42594820586
+    },
+    {
+      "codigo": 999,
+      "n": 26,
+      "personas": 7164.898460836343
+    }
+  ],
+  "psus": 5440,
+  "strata": 232,
+  "singletonStrata": 0,
+  "nationalMean": 962944.6993102246,
+  "nationalMeanSE": 11502.910826247813,
+  "referenceAgeValidation": true,
+  "partitionAgeValidation": true,
+  "partitionSexValidation": true,
+  "histogramsSum100": true,
+  "curvesMonotonic": true,
+  "strictJSONNoNaN": true,
+  "cells90SampleMin": 8,
+  "cells90SampleMax": 1219,
+  "cells90Under60": 8,
+  "dashboardBytes": 1991882,
+  "dashboardSHA256": "42fc1b9f391994c2ea980d43f05cb1eb1315cad844da047ee9fdce464ba96ca8",
+  "runtimeSeconds": 11.915165541999158
+}

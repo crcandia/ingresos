@@ -1,0 +1,664 @@
+PAGE 1
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Estándar para la evaluación de la 
+calidad de las estimaciones en 
+encuestas de hogares 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEPARTAMENTO DE METODOLOGÍA E INNOVACIÓN ESTADÍSTICA 
+INSTITUTO NACIONAL DE ESTADÍSTICAS 
+ 
+Febrero / 2020 
+ 
+ 
+ 
+
+PAGE 2
+ 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de calidad de las estimaciones en encuestas de hogares 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Departamento de Metodología e Innovación Estadística 
+Subdepartamento de Diseño de Marcos y Muestras 
+Subdepartamento de Calidad y Estándares 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas 
+de hogares 
+Instituto Nacional de Estadísticas 
+28 de febrero de 2020 
+ 
+ 
+
+PAGE 3
+ 
+1 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+1. ANTECEDENTES 
+El Instituto Nacional de Estadísticas (INE) en su misión de proveer al Sistema 
+Estadístico Nacional (SEN) de estándares metodológicos para la producción 
+estadística, ha elaborado el presente documento titulado “Estándar para la evaluación 
+de la calidad de las estimaciones en encuestas de hogares”, con el propósito de poner 
+a disposición del público usuario de orientaciones para el uso, análisis e interpretación 
+de estadísticas oficiales basadas en encuestas de hogares por muestreo1.  
+ 
+Bajo un marco de aseguramiento de la calidad estadística, el estándar tiene como 
+propósito establecer los criterios que permitan caracterizar qué tan precisa y confiable 
+es la información que se publica respecto a los atributos de la población que se 
+pretende caracterizar. En ese marco, contar con lineamientos estandarizados para la 
+evaluación de la calidad de las estimaciones optimiza la toma de decisiones de la 
+población usuaria respecto a si una estimación cumple o no los requisitos para ser 
+publicada.  
+ 
+Entre los contenidos que se desarrollan en el documento se encuentran: el objetivo del 
+estándar; las consideraciones a tomar en cuenta para la aplicación del estándar; los 
+conceptos y definiciones utilizadas en la elaboración del estándar y, por último, los 
+criterios para evaluar la calidad de las estimaciones.  
+ 
+La elaboración del estándar estuvo a cargo de unidades del INE pertenecientes al 
+Departamento de Metodología e Innovación Estadística y a la Subdirección Técnica, 
+quienes conformaron una mesa de trabajo durante el año 2019, que llevó a cabo un 
+proceso de investigación a nivel nacional e internacional respecto a los criterios de 
+calidad utilizados para la publicación de estadísticas oficiales. Hay que mencionar 
+además que, las propuestas metodológicas elaboradas por el equipo de trabajo fueron 
+expuestas a un comité externo al INE, compuesto por académicos y expertos, quienes 
+realizaron una serie de recomendaciones en torno a ellas.     
+ 
+ 
+1 El presente estándar corresponde a una primera versión respecto a la evaluación de las estimaciones sujetas a 
+publicación. En este sentido, puede ser actualizado en el mediano plazo con base en los resultados de su 
+implementación en las encuestas de hogares por muestreo. 
+
+PAGE 4
+ 
+2 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+Cabe señalar que el equipo de trabajo elaboró, junto al estándar, el documento 
+metodológico denominado “Lineamientos para la evaluación de estimaciones en 
+encuestas de hogares”, en el cual se presentan y abordan en profundidad los conceptos 
+y criterios que se utilizan a nivel nacional e internacional para determinar la calidad 
+de las estimaciones, con el fin de facilitar las consultas del público usuario respecto a 
+las temáticas y criterios propuestos en el estándar.  
+ 
+2. OBJETIVO DEL ESTÁNDAR 
+El presente estándar tiene como propósito establecer los criterios para la evaluación 
+de la calidad de las estimaciones provenientes de las encuestas de hogares por 
+muestreo del INE, permitiendo establecer cuáles tabulados pueden ser publicados.  
+ 
+3. CONSIDERACIONES PARA LA APLICACIÓN DEL ESTÁNDAR 
+En el mapa de procesos del INE, el estándar está dirigido para el proceso de análisis 
+de resultados, específicamente, al subproceso de preparación de resultados y 
+finalizar resultados y aplicar protocolos de calidad. Este subproceso tiene como 
+propósito la generación del contenido de los documentos a publicar para cada una de 
+las encuestas, garantizando que las estadísticas y la información incorporada en dichos 
+documentos alcancen el nivel de calidad requerido y se encuentren disponibles para 
+uso, análisis e interpretación de la sociedad.  
+ 
+Cabe señalar que el estándar no busca definir el subproceso en términos 
+organizacionales, sino más bien entregar las orientaciones metodológicas para apoyar 
+una tarea específica que se suscita en él.  
+ 
+De manera análoga, se debe tener en cuenta que los requerimientos precisados por el 
+estándar pueden ser utilizados como insumo en el proceso de Diseño y Planificación, 
+tanto en el subproceso de diseñar los resultados, puesto que en este se definen los 
+resultados a publicar, como en el subproceso de diseñar marco y muestra, donde se 
+especifican los niveles de precisión y desagregación de las estimaciones a considerar 
+en el cálculo del tamaño muestral.   
+ 
+
+PAGE 5
+ 
+3 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+Dentro de la estructura organizacional del INE, las áreas responsables de implementar 
+el estándar son las unidades de la Subdirección Técnica encargadas de las encuestas 
+de hogares, tanto en INE Central como en las Direcciones Regionales. De este modo, 
+los lineamientos que se presentan en este documento están dirigidos a orientar la toma 
+de decisiones de jefaturas y analistas de las áreas ya señaladas de la estructura 
+organizacional. 
+ 
+En cuanto al alcance del estándar, se ciñe a proveer directriz circunscrita al campo de 
+las encuestas de hogares por muestreo2, específicamente en medir la calidad de las 
+estimaciones desde un punto de vista transversal3, por lo que quedan exentas 
+estimaciones correspondiente a series de tiempo, o transformaciones que impliquen 
+estimaciones de estudios levantados en diferentes períodos de corte transversal4. 
+Asimismo, se distingue la necesidad de elaborar un estándar para evaluar la calidad 
+de las estimaciones de las encuestas a empresas, con el fin de cubrir más ámbitos de 
+la producción estadística del INE. Por tanto, este documento expone una primera 
+versión del estándar, cuya implementación permitirá, en un futuro, poder establecer 
+versiones actualizadas de los lineamientos que contiene5.  
+ 
+ 
+ 
+2  Cabe mencionar que hasta ahora la publicación de las estimaciones estaban supeditadas mayormente al criterio del 
+𝑐𝑣, por lo que el estándar, al considerar más criterios, eleva el nivel de exigencia en la búsqueda de estimaciones 
+robustas. 
+3  Las categorías residuales (por ejemplo: no saben, no responde, otros, etcétera) quedan libres de la aplicación del 
+estándar, ya que, mayormente son condiciones marginales no sustanciales a efectos de los análisis. 
+4  Durante el desarrollo de las actividades inherentes al estándar se identificaron estimaciones cuya calidad también 
+ameritaba ser evaluada, como variaciones y brechas. No obstante, se sitúa esta evaluación a ser abordada a través de 
+contrastes de hipótesis, tema que se escapa del alcance de este estándar. 
+5  La implementación del estándar no será retroactiva, por lo que no ocasionará la evaluación de cuadros estadísticos 
+ya publicados. 
+
+PAGE 6
+ 
+4 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+4. CONCEPTOS UTILIZADOS PARA LA EVALUACIÓN DE LA CALIDAD 
+DE LAS ESTIMACIONES 
+A continuación, se presentan una serie de conceptos que son utilizados en el estándar 
+y cuya definición facilita el entendimiento y uso de los lineamientos establecidos.  
+ 
+a) Cuadro estadístico y tabulado 
+Los cuadros estadísticos constituyen arreglos ordenados de los datos procesados para 
+facilitar la lectura e interpretación de estos. Por otro lado, se entenderá por tabulado a 
+la expresión gráfica que sintetiza un valor o estimación producto del cruce entre dos o 
+más variables. Para la implementación del estándar se define como capacidad máxima 
+de un tabulado, al cruce entre tres variables, una de carácter geográfico y a dos 
+variables temáticas.  
+ 
+Una variable geográfica es aquella que entrega información desagregada con base en 
+la división política administrativa del país, de acuerdo con los niveles de 
+representatividad de las áreas de estimación de cada estudio en particular. Una 
+variable temática, es aquella que busca describir o caracterizar el fenómeno o evento 
+de interés de una encuesta en particular. 
+ 
+Por consiguiente, un cuadro estadístico puede contener uno o más tabulados (cruces 
+de variables), los cuales a efectos del estándar deben ser evaluados de forma 
+independiente. 
+ 
+En Tabla 1 se presenta un cuadro estadístico compuesto por cuatro tabulados 
+(determinados por los cruces de: región-quintil-sexo, región-quintil, región-sexo y 
+región), donde se identifica una variable geográfica (región A) y dos variables 
+temáticas (quintil y sexo). 
+ 
+ 
+
+PAGE 7
+ 
+5 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+Tabla 1. Tasa de participación (%) en trabajo no remunerado por sexo, 
+según quintil (Región A). 
+Quintil 
+Sexo 
+Ambos Sexos 
+Hombre 
+Mujer 
+Total 
+92,63 
+88,00 
+97,00 
+I 
+93,00 
+87,56 
+97,52 
+II 
+94,02 
+91,30 
+96,32 
+III 
+90,96 
+85,02 
+97,41 
+IV 
+90,35 
+85,10 
+96,46 
+V 
+95,67 
+94,15 
+97,34 
+Fuente: elaboración propia, INE 2020. 
+ 
+b) Celda 
+Una celda dentro de un tabulado corresponde a la intersección generada por la 
+combinación o cruce de las categorías de las variables presentadas como filas y 
+columnas. En un tabulado cada celda contiene una estimación generada por la relación 
+entre variables.  
+ 
+c) Tamaño muestral 
+Sin pérdida de generalidad, al señalar el término “tamaño muestral” se hará referencia 
+al total de unidades de análisis consideradas para obtener las estimaciones. Con esto 
+se busca comprender las diferentes unidades de análisis que se pueden encontrar en 
+las encuestas de hogares por muestreo, a saber: viviendas, hogares y/o personas6. 
+ 
+d) Grados de libertad 
+Los grados de libertad (𝑔𝑙) se definen como el número de observaciones 
+independientes que son libres de variar (número de individuos en los datos) menos el 
+número de parámetros estimados (número de relaciones impuestas a los datos).  Los 
+𝑔𝑙 constituyen uno de los elementos a considerar para poder emplear las 
+distribuciones de frecuencia en las labores de inferencia. Más aún, dan cuenta de la 
+precisión con la que se están estimando los parámetros a través de la muestra, 
+ocurriendo que, mayores 𝑔𝑙 conducen a estimaciones más precisas. 
+ 
+6  El recuento del tamaño muestral se realiza dependiendo del tipo de estimador. Para proporciones y razones entre 0 
+y 1, se realiza el conteo sobre las unidades de análisis del denominador; mientras que para el resto de las estimaciones 
+se hace sobre el total de unidades de análisis que nutren la estimación. 
+
+PAGE 8
+ 
+6 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+ 
+El cálculo de los 𝑔𝑙, en el contexto de muestra compleja, se obtiene al descontar el total 
+de estratos con observaciones en la subpoblación evaluada del total de 𝑈𝑃𝑀 con 
+observaciones en la subpoblación evaluada7. 
+ 
+e) Tipo de estimador 
+Se define como estimador a los estadígrafos (es decir, una función de los valores que 
+toma una variable a través de la muestra) usados para estimar un parámetro 
+desconocido de la población. Los estimadores comúnmente empleados para estimar 
+características de la población son:  
+ 
+• 
+Total, por ejemplo, total de personas en la fuerza de trabajo. 
+• 
+Media, por ejemplo, ingreso promedio por hogar.  
+• 
+Proporción, fracción de unidades que estén clasificados dentro de alguna clase 
+definida, por ejemplo, proporción de personas en situación de pobreza.  
+• 
+Razón, definido como el cociente de dos totales o medias, por ejemplo, total de 
+desocupados entre la fuerza de trabajo (tasa de desocupación). 
+• 
+Percentiles, indica la posición de un valor respecto a los demás, por ejemplo, el 
+ingreso mediano de las personas ocupadas. 
+ 
+Las expresiones de los estimadores dependen del tipo de muestreo8. Como primer 
+acercamiento a población usuaria se muestran en la Tabla 2, estas expresiones bajo 
+muestreo aleatorio simple (MAS) sin reemplazo. 
+ 
+ 
+ 
+7 Al igual que en el caso del tamaño muestral, dichos conteos se realizan dependiendo del tipo de estimador. Para 
+proporciones y razones entre 0 y 1, se realiza el conteo sobre las unidades de análisis del denominador; mientras que 
+para el resto de las estimaciones se forman sobre el total de unidades de análisis que nutren la estimación. 
+8 El tipo de muestreo se refiere al procedimiento mediante el cual se obtiene una muestra de la población; los cuales 
+pueden ser probabilísticos y no probabilísticos. En los muestreos probabilísticos todas las unidades tienen 
+probabilidad conocida y distinta de cero de ser seleccionadas y la elección se hace aleatoriamente. Los tipos de 
+muestreo probabilísticos más utilizados son: aleatorio simple, sistemático, estratificado y por conglomerados. Por otro 
+lado, los tipos de muestro no probabilísticos más utilizados son: convencional o accidental, por cuotas, cadena o bola 
+de nieve o intencional. Las formas para seleccionar unidades más frecuentemente empleadas son: muestreo aleatorio 
+simple sin reemplazamiento, muestreo aleatorio simple con reemplazamiento, selección con probabilidad 
+proporcional al tamaño con reemplazamiento y muestreo simple sistemático.  
+
+PAGE 9
+ 
+7 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+Tabla 2. Parámetros y estimadores bajo MAS 
+Parámetro 
+Estimador bajo MAS 
+Total 
+poblacional 
+(𝑻𝒚) 
+𝑡= 𝑇̂𝑦= 𝑁∙𝑌̅̂ 
+Media de la 
+población 
+(𝒀̅) 
+ 
+𝑦̅ = 𝑌̅̂ =
+∑
+𝑦𝑖
+𝑛
+𝑖=1
+𝑛
+= 𝑇̂𝑦
+𝑛 
+Proporción 
+de la 
+población  
+(𝑷) 
+𝑝= 𝑃̂ = 𝑛𝑑
+𝑛 
+Razón de la 
+población  
+(𝑹) 
+𝑟= 𝑅̂ = 𝑌̅̂
+𝑋̅̂ = 𝑌̂
+𝑋̂ 
+                         Fuente: Elaboración propia. INE, 2020. 
+ 
+f) Error estándar 
+El error estándar (𝑒𝑒) corresponde a la raíz cuadrada de la varianza de muestreo. Esta 
+medida de dispersión resulta ser más fácil de interpretar, ya que utiliza la misma escala 
+de medición de la estimación. Las expresiones para obtener el 𝑒𝑒 se presentan en la 
+Tabla 3. 
+ 
+Tabla 3. Error estándar poblacional y muestral. 
+Error estándar 
+Poblacional 
+Estimación del  
+error estándar 
+𝑬𝑬(𝜽̂) = √𝑽(𝜽̂) 
+ 
+𝑒𝑒(𝜃̂𝑠) = √𝑣(𝜃̂𝑠) 
+ 
+          Fuente: Elaboración propia. INE, 2020. 
+ 
+g) Coeficiente de variación 
+El coeficiente de variación (𝑐𝑣), como puede verse en la Tabla 4, se obtiene mediante 
+el cociente entre el 𝑒𝑒 y la propia estimación. Suele expresarse en porcentaje y resulta 
+ser útil para comparar la precisión de estimaciones entre encuestas con tamaño 
+muestral diferente o en los casos donde la escala de medición de las estimaciones a 
+comparar es diferente, ya que no tiene unidad de medida. 
+
+PAGE 10
+ 
+8 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+ 
+Tabla 4. Coeficiente de variación poblacional y muestral 
+Coeficiente de variación  
+poblacional 
+Estimación del coeficiente  
+de variación  
+𝑪𝑽(𝜽̂)(%) = 𝑬𝑬(𝜽̂)
+𝜽
+∙𝟏𝟎𝟎% 
+ 
+𝑐𝑣(𝜃̂)(%) = 𝑒𝑒(𝜃̂𝑠)
+𝜃̂𝑠
+∙100% 
+          Fuente: Elaboración propia. INE, 2020. 
+ 
+5. EVALUACIÓN DE LA CALIDAD DE LAS ESTIMACIONES 
+ 
+La evaluación de la calidad de las estimaciones se realiza sobre los tabulados sujetos a 
+ser publicados durante el proceso de análisis de resultados, en este aspecto, el 
+estándar está formulado para ser aplicado en dos etapas: en la primera etapa se evalúa 
+de forma particular si cada una de las estimaciones presentes en un tabulado cumple 
+los criterios de calidad que le permite ser categorizada dentro del mismo tabulado; 
+luego de esto, en la segunda etapa, se evalúa si dicho tabulado cuenta con una cantidad 
+mínima requerida de estimaciones que satisface los criterios de calidad, con el fin de 
+determinar si el tabulado, en su conjunto, es publicable. 
+5.1. Primera etapa: flujograma para la evaluación de estimaciones 
+El flujograma está compuesto por un conjunto de criterios9 y decisiones que permiten 
+evaluar las estimaciones presentes en los tabulados sujetos a publicación. Cada criterio 
+presenta el rango de tolerancia de valores en los que puede situarse, por lo que las 
+decisiones propuestas deben tomarse dependiendo de si la estimación se ajusta o no a 
+dicho rango. 
+ 
+Dentro del flujograma intervienen tres criterios, los dos primeros se refieren al tamaño 
+muestral y los 𝑔𝑙 a partir de las cuales son elaboradas las estimaciones; por su parte, 
+el tercer criterio, dependiendo del tipo de estimador, evalúa la estimación de acuerdo 
+con el 𝑒𝑒 o 𝑐𝑣.  
+ 
+ 
+9 Los criterios evaluados en el flujograma se aplican de manera secuencial, de modo que, si alguna estimación no 
+aprueba alguna de los criterios del flujograma, no amerita que sea evaluada en la etapa subsiguiente. 
+
+PAGE 11
+ 
+9 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+Para describir el proceso de evaluación de las estimaciones, se presenta de forma 
+detallada cada uno de los criterios que compone el flujograma, así también el rango 
+que admiten y las decisiones que se deben tomar para cada uno de ellos10. 
+ 
+• 
+Antes de aplicar el flujograma se debe tener en consideración la definición del 
+tipo de estimador a analizar, pues de ahí se desprenden distintos 
+procedimientos. Para estimadores del tipo proporción y razón entre 0 y 1, el 
+cálculo del tamaño muestral y de los 𝑔𝑙 se realiza sobre las unidades de análisis 
+en la subpoblación que participan en el “denominador”. Para el resto de los 
+indicadores, el cálculo del tamaño muestral y de los 𝑔𝑙 y se realiza tomando en 
+cuenta las unidades de análisis que participan en la estimación de cada celda.  
+ 
+• 
+El primer criterio del flujograma establece una cantidad mínima de tamaño 
+muestral sobre las cuales se elabora la estimación. Se considera que aquellas 
+estimaciones calculadas con base en sesenta (60) o más observaciones deben 
+ser evaluadas bajo el segundo criterio. En caso contrario, aquellas con menos 
+de sesenta (60) unidades deben ser clasificadas como estimaciones no fiables, 
+por lo que no se recomienda su uso.  
+ 
+• 
+El segundo criterio refiere a los 𝑔𝑙 que debe tener una estimación. Se ha 
+definido que una estimación debe tener nueve (9) o más 𝑔𝑙 para cumplir el 
+requisito de calidad necesaria. En caso de tener menos de nueve (9) 𝑔𝑙, se 
+clasifica como estimación no fiable, por lo que no se recomienda su uso. 
+ 
+• 
+Siguiendo el flujograma, el tercer criterio establece que para los estimadores 
+del tipo proporción o razón entre 0 y 1, denotados como 𝑝 , el 𝑒𝑒 debe ser menor 
+o igual que el máximo 𝑒𝑒 tolerable, el cual depende del nivel de la estimación 
+asociada de 𝑝: 
+ 
+ 
+10 Para más detalles respecto a cómo se precisan estos criterios y sus umbrales, refiérase al documento metodológico 
+denominado “Lineamientos para el uso de medidas de precisión en encuestas de hogares”, a publicar el 6 de marzo de 
+2020. 
+
+PAGE 12
+ 
+10 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+𝑀á𝑥𝑖𝑚𝑜 𝒆𝒆 𝑡𝑜𝑙𝑒𝑟𝑎𝑏𝑙𝑒= {
+     √𝑝2
+3
+9
+⁄                  ;     𝑝< 0,5
+  √(1 −𝑝)2
+3
+9
+⁄       ;    𝑝≥0,5
+ 
+ 
+En caso de que el 𝑒𝑒 se encuentre en el umbral de aceptación, se categoriza 
+como estimación fiable. Pero si la estimación no cumple con dicho criterio, 
+debe consignarse como estimación poco fiable dada su baja confiabilidad.  
+ 
+• 
+El resto de las estimaciones, se evalúan mediante el 𝑐𝑣, el cual debe ser 15% o 
+menos para ser clasificado como estimación fiable. Cuando el 𝑐𝑣 sea mayor a 
+15% y menor o igual a 30%, debe ser catalogada como estimación poco 
+confiable, por lo que debe ocuparse con precaución; finalmente, si el 𝑐𝑣 supera 
+30%, será identificada como estimación no fiable, por lo que no se recomienda 
+su uso.
+
+PAGE 13
+ 
+11 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+Imagen 1. Flujograma para la evaluación de la calidad de las estimaciones 
+ 
+   Fuente: Elaboración propia. INE, 2020.
+
+PAGE 14
+ 
+12 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+De acuerdo con el flujograma de decisiones definido en el estándar, las estimaciones 
+pueden ser clasificadas en tres tipos: estimaciones fiables, estimaciones poco fiables 
+y estimaciones no fiables. 
+a) Las estimaciones fiables corresponden a aquellas que cumplen con todos los 
+criterios de calidad propuestos, por tanto, pueden ser reconocidas como 
+estimaciones confiables y precisas de un parámetro poblacional.  
+ 
+b) Las estimaciones poco fiables, son aquellas que cumplen los criterios del 
+tamaño muestral y 𝑔𝑙 , pero que no se ajustan a los requerimientos establecidos 
+para el 𝑒𝑒 o 𝑐𝑣, por lo cual, se recomienda utilizar esta estimación con 
+precaución para interpretar características poblacionales, ya que podrían 
+llevar a conclusiones poco acertadas. Más en detalle, pertenecen a esta 
+categoría aquellas estimaciones evaluadas con el 𝑒𝑒 que no cumplan con el 
+umbral de aceptación y también aquellas cuyo 𝑐𝑣 sea mayor a 15% y menor o 
+igual a 30%. 
+ 
+c) Las estimaciones no fiables corresponden a aquellas que no cumplen con 
+alguno de los dos primeros criterios establecidos para el tamaño muestral o los 
+𝑔𝑙. También se incluyen dentro de esta categoría a aquellas estimaciones que 
+no son proporciones ni razones entre 0 y 1 cuyo 𝑐𝑣 supere 30%. Para estos casos 
+se debe consignar que no se recomienda el uso de estas estimaciones. 
+ 
+ 
+
+PAGE 15
+ 
+13 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+5.2. 
+Segunda etapa: criterios de calidad para la evaluación del tabulado 
+Una vez que se han evaluado todas las estimaciones que componen un tabulado, 
+corresponde evaluar la calidad del tabulado en su conjunto con el fin de determinar si 
+es publicable o no publicable. Se considera que un tabulado es publicable si más de 
+50% de las estimaciones presentes en él fueron clasificadas como estimaciones fiables. 
+En cualquier otro caso, el tabulado no debe publicarse.  
+ 
+En la Tabla 5 se presenta un cuadro estadístico que está conformado por cuatro 
+tabulados que deben ser evaluados de forma independiente (integrados por los cruces: 
+región-sexo, región, sexo y total). El tabulado principal (cruce región-sexo) está 
+compuesto por seis celdas, de las cuales cinco corresponden a estimaciones fiables, es 
+decir, un 83% de las celdas cumple el criterio establecido, y, por ende, el tabulado 
+puede ser publicado11. Por otra parte, los demás tabulados (región, sexo y total) solo 
+presentan estimaciones fiables, por lo que no existe inconveniente para que sean 
+publicados. 
+ 
+Tabla 5. Ejemplo de tabulado publicable 
+ 
+Hombre 
+Mujer 
+Total 
+Total 
+Estimación 
+fiable 
+Estimación   
+fiable 
+Estimación  
+fiable 
+Región A 
+Estimación 
+fiable 
+Estimación  
+fiable 
+Estimación  
+fiable 
+Región B 
+Estimación     
+no fiable 
+Estimación  
+fiable  
+Estimación  
+fiable 
+Región C 
+Estimación 
+fiable 
+Estimación  
+fiable 
+Estimación  
+fiable 
+Fuente: Elaboración propia. INE, 2020. 
+ 
+En la Tabla 6 se presenta un segundo cuadro estadístico que, al igual que en el ejemplo 
+anterior, contiene cuatro tabulados independientes (conformados por los cruces: 
+región-sexo, región, sexo y total). El tabulado principal (región-sexo) se compone de 
+ 
+11 Como se comentó en el apartado previo, las estimaciones poco fiables deben llevar una nota en el cuadro estadístico 
+advirtiendo que la estimación es poco fiable y que debe ser usada con precaución, ya que podría llevar a conclusiones 
+poco acertadas. Por su parte, las estimaciones identificadas como no fiables deben, al igual que el caso anterior, llevar 
+una nota alertando que se trata de una estimación no fiable por lo que no se recomienda su uso. 
+
+PAGE 16
+ 
+14 
+Departamento de Metodología e Innovación Estadística 
+Estándar para la evaluación de la calidad de las estimaciones en encuestas de hogares 
+seis celdas, de las cuales dos contienen estimaciones fiables, es decir, solo un 33,3% de 
+las estimaciones cumple con el criterio establecido, por cuanto dicho tabulado no debe 
+ser publicado.   
+ 
+Tabla 6. Ejemplo de tabulado no publicable 
+Hombre 
+Mujer 
+Total 
+Región A 
+Estimación  
+fiable 
+Estimación      
+no fiable 
+Estimación   
+fiable 
+Región B 
+Estimación      
+poco fiable 
+Estimación   
+fiable 
+Estimación   
+fiable 
+Región C 
+Estimación      
+no fiable 
+Estimación      
+no fiable 
+Estimación   
+fiable 
+Total 
+Estimación  
+fiable 
+Estimación   
+fiable 
+Estimación   
+fiable 
+Fuente: Elaboración propia. INE, 2020. 
+ 
+Por su parte el resto de tabulados (región, sexo y total) pueden ser publicados dado 
+que en cada celda contiene estimaciones fiables. 
+ 
+En la Imagen 2 se presenta el flujograma que resume la secuencia para evaluación de 
+los tabulados. 
+ 
+Imagen 2. Flujograma para la evaluación de la calidad de los tabulados 
+ 
+Fuente: Elaboración propia. INE, 2020. 

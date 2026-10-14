@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS_WITH_RISKS",
+  "claim": "Dashboard autocontenido con escala lineal/logarítmica, cobertura de 20 años o más explícita y bandas escalonadas corregidas. Versión web con Analytics y configuración de publicación preparada.",
+  "functional_validation": "360 combinaciones de dominio/escala, selector real, eje log común, consultas sin casos, geometría SVG finita, CSV inclusivo y reapertura de copia con escala guardada.",
+  "independent_validation": "CSV original, seis dominios reales,762puntos dentro de bandas en ambas escalas, caso sintético de IC faltante y límite0.",
+  "visual_validation": "Inspección estática de escritorio1400px y teléfono390px con WeasyPrint, incluyendo escala logarítmica.",
+  "native_figure_export": "PDF de tres páginas, distribución y supervivencia lineal/logarítmica.",
+  "self_contained": "HTML descargable sin dependencias externas. La versión web añade Google Analytics autorizado por el usuario.",
+  "html_sha256": "4156d9005e0c56d808e7e0813c979faf125d616d7a8f533cdace414a7aeb842d",
+  "siteMatchesDownload": false,
+  "netlifyConfigParsed": true,
+  "no_pending_data_or_functionality_fixes": true,
+  "externalPublicationClaimed": false,
+  "residual_risks": [
+    "No se ejecutó una inspección interactiva del dashboard en un navegador real.",
+    "Los grupos pequeños y colas escasas conservan incertidumbre muestral y se señalan como exploratorios."
+  ],
+  "web_sha256": "094fd96267eea79e9f2775a3d841a3b977fad7371f0a64df1a21d1db291b9177",
+  "siteAndDownloadShareData": true,
+  "analytics": {
+    "measurementId": "G-XSFF2F0XKK",
+    "scope": "web only",
+    "sourceValidationPassed": true,
+    "productionReceiptVerified": false
+  },
+  "analytics_validation": {
+    "pass": true,
+    "measurementId": "G-XSFF2F0XKK",
+    "tagOnWebOnly": true,
+    "configQueued": true,
+    "cspAllowsBasicAnalytics": true,
+    "webDisclosure": true,
+    "savedCopyOmitsAnalytics": true,
+    "savedStatePreserved": true,
+    "offlineConnectionsBlocked": true,
+    "statisticalDataUnchanged": true,
+    "scope": "DOM and source validation only. No requests sent to Google. Production event receipt not yet verified."
+  },
+  "analytics_independent_review": "qa/revision_analytics.md: PASS_WITH_RISKS para integración local. Publicación y recepción en producción pendientes."
+}

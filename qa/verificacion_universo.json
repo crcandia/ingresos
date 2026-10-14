@@ -1,0 +1,11 @@
+{
+  "rawCSV_SHA256": "4ff7b8682622c81e2c950544d387e4e8168c3706d2bd7f147b047143a201998f",
+  "sourceRecords": 93458,
+  "occupiedReference": 38729,
+  "occupied20Plus": 38380,
+  "excludedOccupiedUnder20": 349,
+  "occupiedWithMissingAge": 0,
+  "weighted20Plus": 8952261.090339521,
+  "all180DomainsUnchanged": true,
+  "domainsCanonicalSHA256": "11373d7a453e5574e0985b40aee53c8f9e85256f8a3cb7515bbf7be6898c9a5c"
+}

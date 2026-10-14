@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "n": 93458,
+  "columns": [
+    "edad",
+    "sexo",
+    "b1",
+    "ocup_ref",
+    "ing_t_p",
+    "fact_cal_esi",
+    "estrato",
+    "conglomerado_correlativo",
+    "imp_d1_monto",
+    "imp_d5_monto"
+  ],
+  "max_abs_diff_numeric": {
+    "edad": 0.0,
+    "sexo": 0.0,
+    "b1": 0.0,
+    "ocup_ref": 0.0,
+    "ing_t_p": 0.0,
+    "fact_cal_esi": 0.0,
+    "estrato": 0.0,
+    "conglomerado_correlativo": 0.0,
+    "imp_d1_monto": 0.0,
+    "imp_d5_monto": 0.0
+  },
+  "all_421_threshold_memberships_identical": true
+}

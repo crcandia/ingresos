@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "measurementId": "G-XSFF2F0XKK",
+  "tagOnWebOnly": true,
+  "configQueued": true,
+  "cspAllowsBasicAnalytics": true,
+  "webDisclosure": true,
+  "savedCopyOmitsAnalytics": true,
+  "savedStatePreserved": true,
+  "offlineConnectionsBlocked": true,
+  "statisticalDataUnchanged": true,
+  "scope": "DOM and source validation only. No requests sent to Google. Production event receipt not yet verified."
+}
