@@ -19,8 +19,8 @@ const makeDOM=(source,width=1440)=>{
 const dom=makeDOM(html),w=dom.window,d=w.document,api=w.ESI_DASHBOARD;
 assert(api,'App initialized');
 assert.equal(d.querySelectorAll('#occupation option').length,10);
-assert.equal(d.querySelectorAll('#age-buttons button').length,6);
-assert.equal(d.querySelectorAll('.age-panel').length,5);
+assert.equal(d.querySelectorAll('#age-buttons button').length,13);
+assert.equal(d.querySelectorAll('.age-panel').length,12);
 assert.equal(d.querySelectorAll('.rank-row').length,9);
 assert.equal(api.getDomain().n,38380);
 assert(d.getElementById('population-note').textContent.includes('38.380'));
@@ -36,7 +36,8 @@ assert.equal(api.getState().survivalScale,'log');
 assert.equal(d.querySelector('[data-survival-scale="log"]').getAttribute('aria-pressed'),'true');
 assert.equal(api.csvText(),beforeScale,'Scale is display only');
 const ticks=[...d.querySelectorAll('#survival [data-log-tick]')];
-assert.deepEqual(ticks.map(t=>+t.dataset.logTick),[.0001,.001,.01,.1,1,10,100]);
+assert.equal(+ticks.at(-1).dataset.logTick,100);
+assert(ticks.slice(1).every((t,i)=>Math.abs(+t.dataset.logTick/+ticks[i].dataset.logTick-10)<1e-9));
 const gaps=ticks.slice(1).map((t,i)=>+ticks[i].getAttribute('y')-+t.getAttribute('y'));
 assert(gaps.every(g=>Math.abs(g-gaps[0])<1e-8),'Equal log spacing for factors of10');
 assert(d.getElementById('survival-scale-note').textContent.includes('×10'));
@@ -48,8 +49,8 @@ assert.equal(d.querySelectorAll('script[src],link[rel=stylesheet],img[src],ifram
 assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|https?:\/\/[^'"\s]*\.(?:js|css|woff)/.test(html),'No external runtime dependencies');
 // Exercise actual controls and representative edge cases.
 d.getElementById('occupation').value='6';d.getElementById('occupation').dispatchEvent(new w.Event('change'));
-d.querySelector('[data-sex="2"]').click();d.querySelector('[data-age="20_29"]').click();
-assert.equal(api.getDomain().n,8);assert.equal(d.getElementById('sample-warning').hidden,false);
+d.querySelector('[data-sex="2"]').click();d.querySelector('[data-age="20_24"]').click();
+assert.equal(api.getDomain().n,2);assert.equal(d.getElementById('sample-warning').hidden,false);
 assert.equal(d.getElementById('threshold-percent').textContent,'Sin casos observados');
 assert(!d.getElementById('threshold-people').textContent.includes('0 personas'));
 assert(d.getElementById('distribution-note').textContent.includes('No se observaron casos'));
@@ -66,12 +67,12 @@ api.setState({amount:99999999});assert.equal(api.getState().amount,20000000);
 d.querySelector('[data-amount="2000000"]').click();assert.equal(api.getState().amount,2000000);
 d.getElementById('amount-slider').value=5000000;d.getElementById('amount-slider').dispatchEvent(new w.Event('input'));assert.equal(api.getState().amount,5000000);
 d.querySelector('[data-range="21"]').click();assert.equal(api.getState().range,21);assert.equal(d.querySelectorAll('#distribution rect').length,210);
-d.querySelector('[data-age-panel="40_49"]').click();assert.equal(api.getState().age,'40_49');
+d.querySelector('[data-age-panel="40_44"]').click();assert.equal(api.getState().age,'40_44');
 d.querySelector('[data-rank-occupation="1"]').click();assert.equal(api.getState().occupation,'1');
 d.getElementById('rank-metric').value='threshold';d.getElementById('rank-metric').dispatchEvent(new w.Event('change'));assert.equal(api.getState().rank,'threshold');
 d.getElementById('about').click();assert.equal(d.getElementById('method-details').open,true);
 d.getElementById('print').click();assert.equal(w.printCalls,1);
-// All 180 selection domains must render their own denominators and valid SVG geometry.
+// All 390 selection domains must render their own denominators and valid SVG geometry.
 let checked=0;
 for(const scale of ['linear','log'])for(const o of api.meta.occupation)for(const s of api.meta.sex)for(const a of api.meta.age){
  api.setState({occupation:o.id,sex:s.id,age:a.id,survivalScale:scale,amount:[0,1000000,5000000,20000000][checked%4]});
@@ -80,9 +81,12 @@ for(const scale of ['linear','log'])for(const o of api.meta.occupation)for(const
  assert.equal(d.getElementById('sample-warning').hidden,!(dd.n<60||dd.df<9));
  if(e.n===0)assert.equal(d.getElementById('threshold-percent').textContent,'Sin casos observados');
  else assert(!d.getElementById('threshold-percent').textContent.includes('Sin casos'));
- assert.equal(d.querySelectorAll('.age-panel').length,5);
+ assert.equal(d.querySelectorAll('.age-panel').length,12);
  assert.equal(d.querySelectorAll('.rank-row').length,9);
- if(scale==='log')assert.equal(d.querySelectorAll('#survival [data-log-tick]').length,7);
+ assert.equal(d.querySelectorAll('#age-profile .age-median-point').length,12);
+ for(const point of d.querySelectorAll('#age-profile .age-median-point'))assert.equal(+point.dataset.value,api.getDomain(o.id,s.id,point.dataset.ageId).median);
+ for(const point of d.querySelectorAll('#age-profile .age-mean-point'))assert.equal(+point.dataset.value,api.getDomain(o.id,s.id,point.dataset.ageId).mean);
+ if(scale==='log')assert.equal(d.querySelectorAll('#survival [data-log-tick]').length,ticks.length);
  if(e.n===0)assert.equal(d.querySelectorAll('#survival .survival-selected').length,0);
  for(const svg of d.querySelectorAll('.plot svg,.spark svg')){
   assert(!/NaN|Infinity|undefined/.test(svg.outerHTML));
@@ -90,12 +94,12 @@ for(const scale of ['linear','log'])for(const o of api.meta.occupation)for(const
  }
  checked++;
 }
-api.setState({occupation:'2',sex:'2',age:'30_39',amount:2000000,rank:'mean',range:3,survivalScale:'log'});
+api.setState({occupation:'2',sex:'2',age:'30_34',amount:2000000,rank:'mean',range:3,survivalScale:'log'});
 d.getElementById('save').click();const saved=downloads.at(-1).parts.join('');assert(saved.startsWith('<!doctype html>'));
 const reopened=makeDOM(saved),ra=reopened.window.ESI_DASHBOARD;
 assert.deepEqual(JSON.parse(JSON.stringify(ra.getState())),JSON.parse(JSON.stringify(api.getState())));
 assert.equal(ra.getDomain().n,api.getDomain().n);reopened.window.close();
-d.getElementById('export-csv').click();const csv=downloads.at(-1).parts.join('');assert.equal(csv.split('\r\n').length,16);assert(csv.includes('comparacion_edades')&&csv.includes('comparacion_ocupaciones'));assert(csv.includes('2000000'));
+d.getElementById('export-csv').click();const csv=downloads.at(-1).parts.join('');assert.equal(csv.split('\r\n').length,23);assert(csv.includes('comparacion_edades')&&csv.includes('comparacion_ocupaciones'));assert(csv.includes('2000000'));assert(csv.includes('percentil25_clp')&&csv.includes('percentil75_clp'));
 d.getElementById('reset').click();assert.equal(api.getState().occupation,'all');assert.equal(api.getState().sex,'all');assert.equal(api.getState().age,'all');assert.equal(api.getState().amount,1000000);assert.equal(api.getState().survivalScale,'linear');
 const graph=d.querySelector('#distribution svg');graph.dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));assert(d.querySelector('#distribution .tooltip').classList.contains('visible'));
 const width=+graph.getAttribute('viewBox').split(' ')[2];
@@ -107,12 +111,12 @@ assert.equal(errors.length,0,errors.join('\n'));
 // Save hydrated snapshots for non-browser PDF/SVG layout inspection.
 const snap=w.document.documentElement.cloneNode(true);snap.querySelectorAll('script,.tooltip,noscript').forEach(n=>n.remove());snap.querySelector('#toast').remove();snap.querySelector('#method-details').removeAttribute('open');
 fs.writeFileSync(path.join(__dirname,'snapshot_desktop.html'),'<!doctype html>\n'+snap.outerHTML);
-for(const id of ['distribution','survival'])fs.writeFileSync(path.join(__dirname,`${id}.svg`),d.querySelector(`#${id} svg`).outerHTML);
+for(const id of ['distribution','survival','age-profile'])fs.writeFileSync(path.join(__dirname,`${id}.svg`),d.querySelector(`#${id} svg`).outerHTML);
 api.setState({survivalScale:'log'});fs.writeFileSync(path.join(__dirname,'survival_log.svg'),d.querySelector('#survival svg').outerHTML);
 const logSnap=d.documentElement.cloneNode(true);logSnap.querySelectorAll('script,.tooltip,noscript').forEach(n=>n.remove());logSnap.querySelector('#toast').remove();fs.writeFileSync(path.join(__dirname,'snapshot_desktop_log.html'),'<!doctype html>\n'+logSnap.outerHTML);
 const mobile=makeDOM(html,390);assert(mobile.window.ESI_DASHBOARD);const ms=mobile.window.document.documentElement.cloneNode(true);ms.querySelectorAll('script,.tooltip,noscript').forEach(n=>n.remove());ms.querySelector('#toast').remove();fs.writeFileSync(path.join(__dirname,'snapshot_mobile.html'),'<!doctype html>\n'+ms.outerHTML);
 mobile.window.ESI_DASHBOARD.setState({survivalScale:'log'});const mlog=mobile.window.document.documentElement.cloneNode(true);mlog.querySelectorAll('script,.tooltip,noscript').forEach(n=>n.remove());mlog.querySelector('#toast').remove();fs.writeFileSync(path.join(__dirname,'snapshot_mobile_log.html'),'<!doctype html>\n'+mlog.outerHTML);
 mobile.window.close();
-const report={pass:true,domainScaleCombinationsRendered:checked,domainsRendered:checked/2,scales:['linear','log'],controls:'occupation, sex, age, amount input, slider, quick amounts, range, ranking, survival scale, reset, help, keyboard tooltip',equalLogTickSpacing:true,constantLogAxisAcrossGroups:true,stepConfidenceBand:true,noNetworkDependencies:true,savedHTMLReopenedWithScale:true,csvExportRows:15,scaleDoesNotChangeCSV:true,explicit20PlusUniverse:true,emptyTailNotReportedAsPopulationZero:true,finiteSVGGeometry:true,jsErrors:errors,verificationLimit:'DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot.'};
+const report={pass:true,fiveYearAgeBands:true,ageProfileValuesMatchAllDomains:true,ageProfilePercentiles:'P25–P75, dispersion not confidence',domainScaleCombinationsRendered:checked,domainsRendered:checked/2,scales:['linear','log'],controls:'occupation, sex, age, amount input, slider, quick amounts, range, ranking, survival scale, reset, help, keyboard tooltip',equalLogTickSpacing:true,constantLogAxisAcrossGroups:true,stepConfidenceBand:true,noNetworkDependencies:true,savedHTMLReopenedWithScale:true,csvExportRows:22,scaleDoesNotChangeCSV:true,explicit20PlusUniverse:true,emptyTailNotReportedAsPopulationZero:true,finiteSVGGeometry:true,jsErrors:errors,verificationLimit:'DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot.'};
 fs.writeFileSync(path.join(__dirname,'validacion_interfaz.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));w.close();

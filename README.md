@@ -10,13 +10,17 @@ Elegir ocupación, sexo y edad. La vista principal muestra mediana, promedio, po
 
 El gráfico de altos ingresos permite elegir escala lineal o logarítmica para el porcentaje. En logarítmica, las marcas verticales avanzan por factores de diez y el eje es el mismo para todos los grupos. La curva y su banda de confianza tienen la misma geometría escalonada. La curva se interrumpe cuando no hay casos observados, sin sustituir ceros por valores positivos. El mensaje debajo del gráfico indica el primer umbral sin casos. La escala solo cambia la representación.
 
-Las cinco tarjetas comparan edades dentro de la ocupación y sexo elegidos. Seleccionar una tarjeta cambia el grupo principal. La comparación inferior conserva edad y sexo y muestra las nueve ocupaciones. Puede ordenarse por mediana, promedio o porcentaje sobre el monto consultado.
+El gráfico por edad compara mediana, promedio y percentiles 25–75 dentro de la ocupación y sexo seleccionados. La banda muestra dispersión, no incertidumbre, y los máximos son estimaciones puntuales. El tramo seleccionado se destaca sin ocultar los demás. La tabla desplegable y el CSV incluyen los percentiles.
+
+Las doce tarjetas comparan edades dentro de la ocupación y sexo elegidos. Seleccionar una tarjeta cambia el grupo principal. La comparación inferior conserva edad y sexo y muestra las nueve ocupaciones. Puede ordenarse por mediana, promedio o porcentaje sobre el monto consultado.
 
 “Guardar copia” descarga un HTML que conserva los filtros y la escala elegidos. “Descargar datos de esta vista” exporta un CSV con las cifras sin el redondeo visual. El CSV tiene delimitador punto y coma, punto decimal y codificación UTF-8 con BOM. Las columnas `mayor_o_igual_umbral` incluyen ingresos exactamente iguales al monto. “Imprimir / PDF” utiliza el diálogo de impresión del navegador.
 
+Los tramos son de cinco años desde 20–24 hasta 70–74, seguidos de 75+. Se agrupa la cola mayor por su menor tamaño muestral.
+
 ## Universo y precisión
 
-Personas ocupadas de referencia ESI de 20 años o más. “Total (20+)” agrupa los cinco tramos para la ocupación y sexo elegidos. No significa toda la muestra de la ESI. El archivo original contiene 93.458 registros. De ellos, 38.729 son ocupados de referencia. El dashboard incluye los 38.380 de 20 años o más y excluye 349 menores de 20 años. Esta restricción explica las diferencias con las cifras nacionales de todas las edades. La vista inicial representa aproximadamente 8,95 millones de personas. Todas las ocupaciones incluye 154 casos en códigos residuales, además de los nueve grupos disponibles.
+Personas ocupadas de referencia ESI de 20 años o más. “Total (20+)” agrupa los doce tramos para la ocupación y sexo elegidos. No significa toda la muestra de la ESI. El archivo original contiene 93.458 registros. De ellos, 38.729 son ocupados de referencia. El dashboard incluye los 38.380 de 20 años o más y excluye 349 menores de 20 años. Esta restricción explica las diferencias con las cifras nacionales de todas las edades. La vista inicial representa aproximadamente 8,95 millones de personas. Todas las ocupaciones incluye 154 casos en códigos residuales, además de los nueve grupos disponibles.
 
 Cada porcentaje es condicional a su grupo. La curva cuenta ingresos iguales o superiores al monto. Una consulta sin casos observados no se presenta como ausencia de personas en la población. Las referencias con poco respaldo se señalan como exploratorias. Los intervalos corresponden a la proporción o a la media, según la etiqueta. No hay intervalos de la mediana ni de las cantidades de personas en la interfaz.
 
@@ -46,7 +50,7 @@ node qa/check_analytics.cjs
 node qa/check_seo.cjs
 ```
 
-Se prueban los 180 dominios en ambas escalas y los controles, las consultas sin casos, la geometría de los SVG, las descargas y la reapertura de una copia con estado guardado. También se comprueba la distancia logarítmica de las marcas y la alineación escalonada de la banda. Estas son pruebas de DOM con jsdom, no una sesión real de Chrome, Safari o Firefox.
+Se prueban los 390 dominios en ambas escalas y los controles, las consultas sin casos, la geometría de los SVG, las descargas y la reapertura de una copia con estado guardado. También se comprueba la distancia logarítmica de las marcas y la alineación escalonada de la banda. Estas son pruebas de DOM con jsdom, no una sesión real de Chrome, Safari o Firefox.
 
 Para la inspección estática y la exportación vectorial de los gráficos iniciales:
 
@@ -55,7 +59,7 @@ python -m pip install -r qa/requirements.txt
 python -B qa/render_estatico.py
 ```
 
-La inspección usa WeasyPrint. Los controles se sustituyen por elementos estáticos solo en las copias de inspección. El archivo final conserva controles HTML nativos. `figuras/curvas_vista_general.pdf` contiene tres páginas con la distribución y la curva acumulada en escala lineal y logarítmica, exportadas directamente desde los SVG generados por la interfaz.
+La inspección usa WeasyPrint. Los controles se sustituyen por elementos estáticos solo en las copias de inspección. El archivo final conserva controles HTML nativos. `figuras/curvas_vista_general.pdf` contiene tres páginas con la distribución y la curva acumulada en escala lineal y logarítmica, exportadas directamente desde los SVG generados por la interfaz. `figuras/perfil_ingresos_por_edad.pdf` exporta el nuevo gráfico por edad desde el mismo SVG.
 
 En la primera página del PDF, la línea verde discontinua marca la mediana y la ocre punteada marca el promedio. Las barras oscuras empiezan en el umbral consultado, $1 millón en la vista inicial. En la segunda y tercera páginas, la banda es el IC puntual del 95% y el trazo discontinuo identifica precisión limitada. Las tres páginas corresponden a todas las ocupaciones, ambos sexos y edades de 20 años o más.
 
@@ -65,7 +69,7 @@ El proyecto también incluye la configuración de Netlify y la copia web en `sit
 
 La versión web incluye miniatura social, Open Graph, Twitter Card, URL canónica, sitemap, robots.txt, iconos y metadatos estructurados de autor, página y datos. La vista inicial se puede leer sin JavaScript. Ver `SEO.md` para la configuración, construcción y comprobaciones pendientes sobre el dominio publicado.
 
-`datos/validacion.json` contiene las comprobaciones del cálculo. `qa/validacion_interfaz.json` registra las pruebas funcionales. `qa/revision_independiente.md` documenta la primera revisión, que contrastó los 180 dominios con el CSV original. `qa/revision_critica_log.md` documenta la revisión de esta actualización. `qa/verificacion_universo.json` conserva la comprobación de cobertura y la identidad de los agregados. `MANIFEST_SHA256.json` permite verificar la integridad del paquete.
+`datos/validacion.json` contiene las comprobaciones del cálculo. `qa/validacion_interfaz.json` registra las pruebas funcionales. `qa/revision_independiente.md` documenta la primera revisión, que contrastó los 180 dominios con el CSV original. `qa/revision_critica_log.md` y `qa/revision_seo.md` conservan revisiones anteriores. `qa/revision_edad5.md` documenta la actualización a tramos de cinco años. `qa/verificacion_universo.json` conserva la comprobación de cobertura y la identidad de los agregados. `MANIFEST_SHA256.json` permite verificar la integridad del paquete.
 
 Limitación de verificación: no se ejecutó una inspección interactiva en un navegador real desde este entorno. La lógica se probó con jsdom y el diseño se inspeccionó mediante una representación estática en tamaños de escritorio y teléfono.
 

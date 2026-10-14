@@ -53,7 +53,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     page_id, dataset_id = canonical + '#pagina', canonical + '#datos'
     dataset_description = (
         'Estadísticas agregadas de ingreso neto mensual de la ocupación principal en Chile, '
-        'calculadas a partir de los microdatos públicos ESI 2025 del INE. Incluye 180 combinaciones '
+        f'calculadas a partir de los microdatos públicos ESI 2025 del INE. Incluye {len(data["domains"])} combinaciones '
         'de ocupación, sexo y edad, para personas ocupadas de referencia de 20 años o más. '
         'El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral '
         'y población expandida. Son estimaciones ponderadas, expresadas en pesos de octubre de 2025. '
@@ -94,7 +94,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     html = html.replace('</head>', '\n'.join(tags) + '\n</head>', 1)
     resources = f'''<section class="public-data surface" id="datos" aria-labelledby="datos-title">
  <p class="eyebrow">FUENTES Y DESCARGAS</p><h2 id="datos-title">Datos para explorar y reproducir</h2>
- <p>Descarga el resumen de las 180 combinaciones de ocupación, sexo y edad. Incluye personas ocupadas de 20 años o más, con ingresos expresados en pesos de octubre de 2025. El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral y población expandida.</p>
+ <p>Descarga el resumen de las {len(data["domains"])} combinaciones de ocupación, sexo y edad. Incluye personas ocupadas de 20 años o más, con ingresos expresados en pesos de octubre de 2025. El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral y población expandida.</p>
  <p>Elaboración independiente de <strong>Cristian Candia</strong>, <a href="https://criss-lab.com/">CRISS-LAB</a>, a partir de microdatos públicos del INE. Las categorías y reglas de cálculo están documentadas en el repositorio.</p>
  <div class="public-data-links"><a href="{canonical + config['dataset']}" download>Descargar resumen completo · CSV</a><a href="{config['repository']}" target="_blank" rel="noopener noreferrer">Código y metodología · GitHub</a></div>
 </section>'''

@@ -29,9 +29,10 @@ for(const id of ['median','mean','population','threshold-percent','threshold-peo
  initial[id]=d.getElementById(id).textContent;
  assert(initial[id].trim().length>0,'Empty initial content '+id);
 }
-assert.equal(d.querySelectorAll('#age-panels [data-age-panel]').length,5);
+assert.equal(d.querySelectorAll('#age-panels [data-age-panel]').length,12);
 assert.equal(d.querySelectorAll('#occupation-ranking [data-rank-occupation]').length,9);
-assert(d.querySelector('#distribution svg')&&d.querySelector('#survival svg'));
+assert(d.querySelector('#distribution svg')&&d.querySelector('#survival svg')&&d.querySelector('#age-profile svg'));
+assert.equal(d.querySelectorAll('#age-profile .age-median-point').length,12);
 assert.equal(d.querySelectorAll('script[type="application/ld+json"]').length,1);
 const structured=JSON.parse(d.getElementById('structured-data').textContent);
 assert.equal(structured['@context'],'https://schema.org');
@@ -62,7 +63,7 @@ const make=(source,url)=>new JSDOM(source,{url,runScripts:'dangerously',virtualC
 }});
 const active=make(html,config.canonical),a=active.window.document;
 for(const [id,text] of Object.entries(initial))assert.equal(a.getElementById(id).textContent,text,'Hydration mismatch '+id);
-active.window.ESI_DASHBOARD.setState({occupation:'3',age:'50_59',sex:'1',amount:3000000,survivalScale:'log',rank:'threshold'});
+active.window.ESI_DASHBOARD.setState({occupation:'3',age:'50_54',sex:'1',amount:3000000,survivalScale:'log',rank:'threshold'});
 a.getElementById('save').click();
 const savedHTML=downloads.at(-1).parts.join('');
 const savedStatic=new JSDOM(savedHTML),s=savedStatic.window.document;
@@ -72,7 +73,7 @@ const copy=make(savedHTML,'file:///ingresos.html'),c=copy.window.document;
 assert.equal(c.querySelectorAll('[data-web-meta],[data-web-analytics],script[src],link[rel="icon"],link[rel="apple-touch-icon"]').length,0);
 assert.equal(c.querySelectorAll('link[rel="canonical"]').length,0);
 assert.equal(c.getElementById('structured-data'),null);
-assert.equal(copy.window.ESI_DASHBOARD.getState().age,'50_59');
+assert.equal(copy.window.ESI_DASHBOARD.getState().age,'50_54');
 assert.equal(copy.window.ESI_DASHBOARD.getState().survivalScale,'log');
 const plain=new JSDOM(offline);
 assert.equal(plain.window.document.querySelectorAll('[data-web-meta],[data-web-analytics],script[src]').length,0);

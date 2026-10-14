@@ -25,7 +25,7 @@
   <fieldset class="sex-control"><legend>Sexo</legend><div class="segmented" id="sex-buttons"><button data-sex="all" aria-pressed="true">Total</button><button data-sex="1" aria-pressed="false">Hombres</button><button data-sex="2" aria-pressed="false">Mujeres</button></div></fieldset>
   <fieldset class="age-control" aria-describedby="universe-note"><legend>Edad del grupo principal</legend><div class="age-chips" id="age-buttons"></div></fieldset>
  </section>
- <p id="universe-note" class="universe-note"><strong>Universo: personas ocupadas de 20 años o más.</strong> “Total (20+)” reúne los cinco tramos de edad para la ocupación y sexo elegidos. Excluye a los menores de 20 años.</p>
+ <p id="universe-note" class="universe-note"><strong>Universo: personas ocupadas de 20 años o más.</strong> Tramos de 5 años, desde 20–24 hasta 70–74, y un último grupo de 75 años o más. “Total (20+)” reúne todos los tramos para la ocupación y sexo elegidos. Excluye a los menores de 20 años.</p>
  <div class="selection-line"><p id="selection-label"></p><button class="text-button" id="reset">Restablecer</button></div>
  <div id="sample-warning" class="notice" role="status" hidden></div>
  <section class="metrics" aria-label="Resumen del grupo seleccionado">
@@ -53,8 +53,18 @@
   <div class="section-head"><div><p class="eyebrow">INGRESOS ALTOS · DESDE $1 MILLÓN</p><h2 id="survival-title">Cuántos alcanzan cada monto</h2></div><fieldset class="scale-control"><legend>Escala del porcentaje</legend><div class="small-segmented" id="survival-scale-buttons" aria-describedby="survival-scale-note"><button data-survival-scale="linear" aria-pressed="true">Lineal</button><button data-survival-scale="log" aria-pressed="false">Logarítmica</button></div></fieldset></div>
   <div class="plot" id="survival"></div><p class="chart-note" id="survival-scale-note" aria-live="polite"></p><p class="chart-note" id="survival-note">La curva muestra quiénes ganan el monto del eje o más. Banda: intervalo de confianza puntual del 95%. Trazo discontinuo: precisión limitada. Consulta los puntos con el cursor o las flechas del teclado.</p>
  </section>
+ <section class="surface age-profile-card" aria-labelledby="age-profile-title">
+  <div class="section-head"><div><p class="eyebrow">INGRESOS A LO LARGO DE LAS EDADES</p><h2 id="age-profile-title">¿A qué edades son mayores los ingresos?</h2><p class="section-description" id="age-profile-context"></p></div></div>
+  <div class="profile-legend"><span><i class="profile-median"></i>Mediana · P50</span><span><i class="profile-mean"></i>Promedio</span><span><i class="profile-band"></i>Mitad central · P25–P75</span><span>○ ◇ Muestra o precisión limitada</span></div>
+  <div class="age-peaks" id="age-peaks"></div>
+  <p class="profile-scroll-hint">Desliza el gráfico para recorrer las edades.</p>
+  <div class="profile-scroll"><div class="plot" id="age-profile"></div></div>
+  <p class="chart-note">La banda va del percentil 25 al 75 y representa la mitad central de los ingresos. No es un intervalo de confianza. Los máximos son estimaciones puntuales, no pruebas de diferencias significativas. Los símbolos vacíos señalan muestra o precisión limitada.</p>
+  <p class="chart-note">Comparamos personas de distintas edades en 2025, no la evolución salarial de una misma persona. El último tramo, 75+, es abierto por su menor tamaño muestral.</p>
+  <details class="profile-table-details"><summary>Ver cifras por tramo de edad</summary><div class="profile-table-wrap" id="age-profile-table"></div></details>
+ </section>
  <section class="age-section" aria-labelledby="age-title">
-  <div class="section-head"><div><p class="eyebrow">COMPARACIÓN POR EDAD</p><h2 id="age-title">Cinco etapas, una misma escala</h2><p class="section-description" id="age-context"></p></div><p class="instruction">Selecciona una tarjeta<br>para ver ese grupo arriba.</p></div>
+  <div class="section-head"><div><p class="eyebrow">DISTRIBUCIONES POR EDAD</p><h2 id="age-title">Tramos de cinco años, una misma escala</h2><p class="section-description" id="age-context"></p></div><p class="instruction">Selecciona una tarjeta<br>para ver ese grupo arriba.</p></div>
   <div class="age-grid" id="age-panels"></div>
  </section>
  <section class="surface occupations-card" aria-labelledby="occ-title">

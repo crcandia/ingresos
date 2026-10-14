@@ -6,9 +6,9 @@ Este proyecto reproduce distribuciones de ingresos por grandes grupos ocupaciona
 
 Fuente: INE, ESI 2025, archivo de personas. Su URL, fecha de descarga, tamaño y SHA-256 están en `fuentes/procedencia.json`. El SHA-256 del original fue comprobado antes de extraer columnas.
 
-Se usa `ocup_ref == 1`, que identifica a los ocupados de referencia con al menos un mes de antigüedad en el empleo actual, y edad de 20 años o más. El archivo original contiene 93.458 registros, de los cuales 38.729 son ocupados de referencia. El dashboard incluye 38.380 de 20 años o más. Los 349 ocupados menores de 20 años no forman parte del dashboard. Los resultados anteriores nacionales incluyen esos menores y, por ello, no tienen exactamente el mismo denominador. No faltan edades entre los ocupados de referencia. El botón “Total (20+)” combina los cinco tramos de edad dentro de la ocupación y sexo seleccionados, no la totalidad de registros de la ESI.
+Se usa `ocup_ref == 1`, que identifica a los ocupados de referencia con al menos un mes de antigüedad en el empleo actual, y edad de 20 años o más. El archivo original contiene 93.458 registros, de los cuales 38.729 son ocupados de referencia. El dashboard incluye 38.380 de 20 años o más. Los 349 ocupados menores de 20 años no forman parte del dashboard. Los resultados anteriores nacionales incluyen esos menores y, por ello, no tienen exactamente el mismo denominador. No faltan edades entre los ocupados de referencia. El botón “Total (20+)” combina los doce tramos de edad dentro de la ocupación y sexo seleccionados, no la totalidad de registros de la ESI.
 
-Los cinco tramos no se superponen: 20–29, 30–39, 40–49, 50–59 y 60 años o más. El agregado de edad `all` corresponde a 20 años o más. Los nombres de ocupación son versiones abreviadas de los grandes grupos, códigos `b1` del 1 al 9. El agregado `all` también conserva 154 casos de los códigos 10 y 999, que no tienen un panel individual. Los nueve grupos identificados suman 38.226 encuestados. `sexo` usa las categorías registradas por la encuesta, 1 hombres y 2 mujeres.
+Los doce tramos no se superponen: intervalos de cinco años desde 20–24 hasta 70–74, más 75 años o más. Este último grupo contiene 564 encuestados y se mantiene abierto porque 80+ tendría solo 170 y cruces de ocupación y sexo vacíos. El agregado de edad `all` corresponde a 20 años o más. Los nombres de ocupación son versiones abreviadas de los grandes grupos, códigos `b1` del 1 al 9. El agregado `all` también conserva 154 casos de los códigos 10 y 999, que no tienen un panel individual. Los nueve grupos identificados suman 38.226 encuestados. `sexo` usa las categorías registradas por la encuesta, 1 hombres y 2 mujeres.
 
 El ingreso analizado es `ing_t_p`, ingreso neto mensual de la ocupación principal en pesos chilenos. Para asalariados se consideran los descuentos legales e impuestos. Para independientes se resta el costo de la actividad. El ingreso puede incluir componentes en especie de acuerdo con la ESI. No es ingreso del hogar ni suma de todas las ocupaciones. Se conservan los ingresos cero y los montos imputados de la fuente. Los documentos oficiales utilizados están en `fuentes/`.
 
@@ -21,7 +21,7 @@ python3 -m pip install -r requirements.txt
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B codigo/analizar_dashboard.py > datos/ejecucion.log 2>&1
 ```
 
-El script verifica el hash del extracto, calcula los 180 dominios y escribe `datos/dashboard.json`, `datos/validacion.json` y tablas CSV y LaTeX. No necesita conexión a internet ni el archivo original completo. El JSON final puede variar en su marca de tiempo aunque los cálculos sean iguales.
+El script verifica el hash del extracto, calcula los 390 dominios y escribe `datos/dashboard.json`, `datos/validacion.json` y tablas CSV y LaTeX. No necesita conexión a internet ni el archivo original completo. El JSON final puede variar en su marca de tiempo aunque los cálculos sean iguales.
 
 ## Diseño e incertidumbre
 
@@ -43,7 +43,7 @@ Tener 60 casos en el grupo no garantiza precisión suficiente de sus ingresos ex
 
 ## Contrato del JSON
 
-`domains` tiene 180 entradas. La clave es `ocupación|sexo|edad`. Las opciones son 10 ocupaciones incluyendo `all`, tres sexos incluyendo `all`, y seis edades incluyendo `all`.
+`domains` tiene 390 entradas. La clave es `ocupación|sexo|edad`. Las opciones son 10 ocupaciones incluyendo `all`, tres sexos incluyendo `all`, y trece edades incluyendo `all`.
 
 | Campo | Contenido |
 |---|---|
@@ -66,4 +66,4 @@ Las matrices se ordenan por umbral ascendente. Los números continuos se guardan
 
 `datos/validacion.json` registra la comprobación de 130 pares dominio–umbral contra la implementación original, las particiones por sexo y edad, los cinco resultados anteriores por edad, las sumas de histogramas, la monotonicidad de las curvas y el contrato de exportación. Las referencias nacionales verificadas incluyen población ponderada, media y error estándar.
 
-Entre los 90 cruces específicos de ocupación, sexo y tramo de edad, los tamaños van de 8 a 1.219 encuestados y ocho grupos tienen menos de 60 casos. Las tablas de resumen permiten identificar cada grupo sin interpretar ese umbral como garantía de precisión.
+Entre los 216 cruces específicos de ocupación, sexo y tramo de edad, los tamaños van de 1 a 620 encuestados y 63 grupos tienen menos de 60 casos. El gráfico de edad marca con símbolos vacíos los grupos de muestra o precisión limitada. La banda P25–P75 representa la mitad central de la distribución y no un intervalo de confianza. Las cifras máximas entre edades no constituyen pruebas de diferencias estadísticamente significativas. Las tablas de resumen permiten identificar cada grupo sin interpretar ese umbral como garantía de precisión.

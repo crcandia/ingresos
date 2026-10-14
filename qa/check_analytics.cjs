@@ -20,7 +20,7 @@ assert.deepEqual(Array.from(w.dataLayer[1]),['config','G-XSFF2F0XKK']);
 const policy=d.querySelector('meta[http-equiv="Content-Security-Policy"]').content;
 for(const allowed of ['https://www.googletagmanager.com','https://*.google-analytics.com','https://*.google.com'])assert(policy.includes(allowed));
 assert(d.querySelector('footer').textContent.includes('usa Google Analytics'));
-w.ESI_DASHBOARD.setState({occupation:'2',age:'40_49',sex:'2',amount:2000000,survivalScale:'log'});
+w.ESI_DASHBOARD.setState({occupation:'2',age:'40_44',sex:'2',amount:2000000,survivalScale:'log'});
 d.getElementById('save').click();
 const saved=downloads.at(-1).parts.join(''),copy=make(saved,'file:///Ingresos_Chile_ESI2025.html');
 assert.equal(copy.window.document.querySelectorAll('[data-web-analytics],script[src]').length,0);

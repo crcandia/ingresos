@@ -1,7 +1,10 @@
 {
   "pass": true,
-  "domainScaleCombinationsRendered": 360,
-  "domainsRendered": 180,
+  "fiveYearAgeBands": true,
+  "ageProfileValuesMatchAllDomains": true,
+  "ageProfilePercentiles": "P25–P75, dispersion not confidence",
+  "domainScaleCombinationsRendered": 780,
+  "domainsRendered": 390,
   "scales": [
     "linear",
     "log"
@@ -12,7 +15,7 @@
   "stepConfidenceBand": true,
   "noNetworkDependencies": true,
   "savedHTMLReopenedWithScale": true,
-  "csvExportRows": 15,
+  "csvExportRows": 22,
   "scaleDoesNotChangeCSV": true,
   "explicit20PlusUniverse": true,
   "emptyTailNotReportedAsPopulationZero": true,

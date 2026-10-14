@@ -4,28 +4,28 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 2121973,
-    "sha256": "84813faf601ecaed25511ff4dac1536305d89a82a5d64f394bbe46ed99c89224"
+    "bytes": 4289676,
+    "sha256": "ef21e9540ae79cbbcdaa7417922a2e35ee9c9785f7b9d36d5b31c97f42a79c5b"
   },
   "PUBLICACION.md": {
     "bytes": 2176,
     "sha256": "251e049e30d472e1a62364585792d7285d82bc65571a7cc927408953d03514cd"
   },
   "README.md": {
-    "bytes": 7166,
-    "sha256": "d63ef1c277a4a2270f7979d563b016c20173a9dee0d3e2e0af288d16ef9f2248"
+    "bytes": 7795,
+    "sha256": "9aac6bbb664bd22c90619fbc84e5c43c9fd23b058123cf739aed6ca34e7856c6"
   },
   "README_DATOS.md": {
-    "bytes": 7556,
-    "sha256": "f3de1ef51847bf481efae4ab4a5617a3bd62cf1e9b877751f31c68129e55c5b1"
+    "bytes": 8006,
+    "sha256": "2193332441b0f110eb4370510cdfae9d81effaa36cf3d1ac8be6aea42b300510"
   },
   "SEO.md": {
     "bytes": 3810,
     "sha256": "f2f19de64c0c82c6e0723470dfa180f8dd51db754c5cdfb1dcd4f8881169e9b4"
   },
   "codigo/analizar_dashboard.py": {
-    "bytes": 21257,
-    "sha256": "1b0324baec6f4310c57d9e9b230bfd781b2ae18b4570ba13117d723a3839fbcd"
+    "bytes": 21616,
+    "sha256": "b9a8f74e76c23231cd8a7a71a03ef7408a859f111b8085b570a9134258249742"
   },
   "codigo/diseno_encuesta.py": {
     "bytes": 3184,
@@ -40,36 +40,40 @@
     "sha256": "d3f272a73ded32672fdabacefe6f99a1ee3a982fc0950263c6b12dd6a8063674"
   },
   "codigo/seo_web.py": {
-    "bytes": 8736,
-    "sha256": "51495a03ffff451417fe9a39830b04b6fcbb77854e7027861fbc4ec910922da1"
+    "bytes": 8775,
+    "sha256": "d12e49a7fd6ca34d320d028c007f6bbfa0c71cc8561c43686ae68cffb67c0670"
   },
   "construir_dashboard.py": {
-    "bytes": 2815,
-    "sha256": "5cf7f2fb7190ce1cb131ee7a6c3692af87a18c50fd945287a03d08a5d0bcb000"
+    "bytes": 2916,
+    "sha256": "3f117f3b82bf0106d515b5d9c8a819a762b104339ed3022bede4fd06d9f6f1e8"
   },
   "crear_paquete.py": {
     "bytes": 1497,
     "sha256": "d8a6e0c745fa09bb9d4641481d701cdd6c2f1e1ff04fc2d33557904c5617a92d"
   },
   "datos/dashboard.json": {
-    "bytes": 1991905,
-    "sha256": "4d65eb30103c3c8457740c5608b3ed14d0d433463cbce4816caf7586cea272e2"
+    "bytes": 4103448,
+    "sha256": "b9d8b5a4cfe9bae10ff72e8fb05e732bfd031c90cff847b046a405d00ca37ea2"
   },
   "datos/ejecucion.log": {
-    "bytes": 3014,
-    "sha256": "d49e1a2ff4e27471e602e47be319ff35d456461b51f132db5be58554e6e240e3"
+    "bytes": 3084,
+    "sha256": "8d6c44736e5ce7279c444d0a3a164003caf7e002586ca06b71f6b959becf7a55"
   },
   "datos/esi2025_columnas_necesarias.csv.gz": {
     "bytes": 1700656,
     "sha256": "393279b0f1a95b3bba45875b44faa8fbf5f08c0786a3cfdbbe5ec314fcbb90d3"
   },
   "datos/validacion.json": {
-    "bytes": 12230,
-    "sha256": "daeed2efc8ecde17fc4f391da7dbf603f176a077f275ab2e0f93e522c1a4f3ea"
+    "bytes": 12270,
+    "sha256": "8822a8b9041247c2ac18e87bfdfd5ff83c0d25e452c4e603de9a54c56f3a4778"
   },
   "figuras/curvas_vista_general.pdf": {
-    "bytes": 45003,
-    "sha256": "24eba3cd298cb594b19d13763403f8e2ae63b87cfdb024498a5cdce0dd8d90b4"
+    "bytes": 45012,
+    "sha256": "ca28fd12a5d0e80bdc5bbe72d7cfdb8bcbe4884540ef40fa235f7c289d8df03a"
+  },
+  "figuras/perfil_ingresos_por_edad.pdf": {
+    "bytes": 13533,
+    "sha256": "e192f119bc9bac9bc7290bdcbba46d9412f356119558c07b6af4711a9ce4fbfb"
   },
   "fuentes/comprobacion_extracto.json": {
     "bytes": 528,
@@ -100,16 +104,16 @@
     "sha256": "6a7f6f6692039812dfa0013ca84bb98ff5f1e2a528b4e72c85faed147c554d82"
   },
   "interfaz/dashboard.css": {
-    "bytes": 18323,
-    "sha256": "cecca993e86da21608f28b1c6373985b85518d9b069c064377d73e6a2dcab4d5"
+    "bytes": 20879,
+    "sha256": "6922fd32327538425faf7de774013d52cfa57797ad107bb46451c61713f24231"
   },
   "interfaz/dashboard.html": {
-    "bytes": 12924,
-    "sha256": "e562c2864834bbbcca454d15e64dbd4d88aabb2a1e4df9bc1ad58f54a6c113b6"
+    "bytes": 14447,
+    "sha256": "4f1b324ee81c44b416c69eb749563ef44056ab113e07248c36e3a451b6d8ad27"
   },
   "interfaz/dashboard.js": {
-    "bytes": 25116,
-    "sha256": "330caa7fb9d523477c8cf08505facb90f5a77158b9aa4c3a7122200ce1a6262d"
+    "bytes": 29366,
+    "sha256": "b5703c0dad08b117de7092af00cc3088648ff2579c03f0007fd58f5f446662e8"
   },
   "interfaz/favicon.svg": {
     "bytes": 295,
@@ -129,23 +133,23 @@
   },
   "qa/check_analytics.cjs": {
     "bytes": 3229,
-    "sha256": "b9b68561fdf99840f6985f71befd0d071c7222699ddb4adbaed30843bc7e9d58"
+    "sha256": "08be78437523550ad1c3068c89d6f7f0d613d89673d02b093f0b0acbaafd7a12"
   },
   "qa/check_seo.cjs": {
-    "bytes": 7229,
-    "sha256": "40cf2e32a7929cb00e02667edac2b66ca4b6ea9bf7200e9a9f9bf0c840f59c7d"
+    "bytes": 7345,
+    "sha256": "695534aa63481bd849fbe081088ac66c271cc7fb40f201407bcff244de17adf5"
   },
   "qa/cierre.json": {
-    "bytes": 3242,
-    "sha256": "c7cf737f2e2e0a7b2b57d8f742645f823a949242657e15553cffba382860dd48"
+    "bytes": 4516,
+    "sha256": "9f446553a6e365820622e97c2793e5327649d37ad86df07940ee5a90885d7c85"
   },
   "qa/package.json": {
     "bytes": 135,
     "sha256": "0d74bf980a9909a1e4bfb558b61a36db354f5042211198762edec575504d9a7e"
   },
   "qa/render_estatico.py": {
-    "bytes": 3849,
-    "sha256": "6f777d7ce47cc639787566082634a147eb91bce1a5c0c1583431fbf41fadd9a5"
+    "bytes": 4053,
+    "sha256": "3e173f06416c2e5153bc5e99d2487b4d3d18f7ed33971079cf816b6a005ccd8d"
   },
   "qa/requirements.txt": {
     "bytes": 75,
@@ -159,6 +163,10 @@
     "bytes": 6698,
     "sha256": "e3ef1424e79198734791bd4cc3fad2b9f83ce4f95c8fece9d84d4f5ae81598e7"
   },
+  "qa/revision_edad5.md": {
+    "bytes": 5696,
+    "sha256": "8ab4cc71b1f958389610d693c643aa6338f289ecdb9b27a86a8cd0980b78ca19"
+  },
   "qa/revision_independiente.md": {
     "bytes": 4362,
     "sha256": "7bbe556b33d9619948554b8431c89c567d54219b0ce8074743a373c3ecee7231"
@@ -168,16 +176,16 @@
     "sha256": "511c8fe4c5b41db5ce2a1b95d0a83fdd0097c509557ef7812b2d1e811d7875ea"
   },
   "qa/run_dom_checks.cjs": {
-    "bytes": 11296,
-    "sha256": "4627a163257229d5e13a27d8ce02c1133004b168e27044b567327a25456adc9f"
+    "bytes": 11983,
+    "sha256": "fd2bc9fe15be94998593ea05408de3cbbad522553fdeb37efcfe45db47fe6fa0"
   },
   "qa/validacion_analytics.json": {
     "bytes": 418,
     "sha256": "2e11896eae24965fee55a8714ec64f498ed34f536a88d84a1b91772c5ea82197"
   },
   "qa/validacion_interfaz.json": {
-    "bytes": 802,
-    "sha256": "0f0dae4afeff08cd5623a31e8ed750fedd354fd8a0e80e8806f80f7ea75c7daf"
+    "bytes": 940,
+    "sha256": "06148e502fa8d18fb1f059ca3043aeb35d63aa54c5c0dce492c3d895703bd9db"
   },
   "qa/validacion_seo.json": {
     "bytes": 548,
@@ -212,8 +220,8 @@
     "sha256": "bde18f855533e1a2c7c22587d66024b340004fe9b5ec4170d25801f305f2f7a3"
   },
   "site/datos/resumen-ingresos-esi2025.csv": {
-    "bytes": 46934,
-    "sha256": "fb860eeb72df8dede5b01acd1778f2d8ad7ce76ccd568e5f4371fbe2cd8c6f9a"
+    "bytes": 99418,
+    "sha256": "efae2708de781009ed0660a20b4c6fb85d4bdac2afb957000561dd060e8a9704"
   },
   "site/favicon-32.png": {
     "bytes": 569,
@@ -224,8 +232,8 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "site/index.html": {
-    "bytes": 2129502,
-    "sha256": "39981e0b96459f339b67cf2375a73de6514cffcc31150f3b0eefc1188e20a91d"
+    "bytes": 4297205,
+    "sha256": "3305f4acc0410d95b85e2b3f5d68be51cb27c7d3e1d46f200894571f38144c5b"
   },
   "site/robots.txt": {
     "bytes": 76,
@@ -244,19 +252,19 @@
     "sha256": "febe16f14571234e05c017d44a86fce4db062b41f5c3f727f3305796aad5f5d8"
   },
   "tablas/referencias_1_a_5_millones.csv": {
-    "bytes": 105043,
-    "sha256": "e164fb074fbfd291e85d7292d12b4246a990084aada0dd0dc449d0cec8643ecc"
+    "bytes": 202889,
+    "sha256": "ea26679c8721985d5e241bea2fd3e35e2191331c7d7dae8c5f0cbc30e4c1f0fb"
   },
   "tablas/referencias_1_a_5_millones.tex": {
-    "bytes": 85768,
-    "sha256": "08df390e7b8ab8cb61de294b01edf7ee3163bed9937a003f235b22e685402498"
+    "bytes": 175304,
+    "sha256": "73374b8c529185315152dfbbe10ee9eeaeb520eace09a73f745b7a616b4d4c05"
   },
   "tablas/resumen_dominios.csv": {
-    "bytes": 46934,
-    "sha256": "fb860eeb72df8dede5b01acd1778f2d8ad7ce76ccd568e5f4371fbe2cd8c6f9a"
+    "bytes": 99418,
+    "sha256": "efae2708de781009ed0660a20b4c6fb85d4bdac2afb957000561dd060e8a9704"
   },
   "tablas/resumen_dominios.tex": {
-    "bytes": 39516,
-    "sha256": "c6e67cd80f750f4f0810ad5be61bff70e840f908298de49f607fb40a3c9d2251"
+    "bytes": 84206,
+    "sha256": "89a5fbef5e050d55a6f7b6600053fc70d99e9560e914707736e80e37a9beaafb"
   }
 }

@@ -32,7 +32,7 @@ def flatten_screen_css(css,width):
         else:out.append(tinycss2.serialize([rule]))
     return ''.join(out)
 
-for name,width,height in [('desktop',1400,2800),('mobile',390,5200),('desktop_log',1400,2800),('mobile_log',390,5200)]:
+for name,width,height in [('desktop',1400,4400),('mobile',390,9200)]:
     doc=lxml.html.fromstring((ROOT/f'qa/snapshot_{name}.html').read_text())
     styles=doc.xpath('//style')[0]
     css=flatten_screen_css(styles.text,width)
@@ -76,3 +76,8 @@ for name in ['distribution','survival','survival_log']:
     writer.add_page(PdfReader(path).pages[0])
 writer.write(destination)
 print(destination)
+
+# Export the same native SVG as the dashboard's initial age profile.
+profile=ROOT/'figuras/perfil_ingresos_por_edad.pdf'
+cairosvg.svg2pdf(bytestring=(ROOT/'qa/age-profile.svg').read_bytes(),write_to=str(profile),background_color='white')
+print(profile)

@@ -11,7 +11,7 @@
  const pct=x=>num(x,x>0&&x<.01?4:x<1?2:1)+'%';
  const people=x=>num(Math.round(x/(x<1000?10:100))*(x<1000?10:100)|| (x>0?1:0));
  const label=(kind,id)=>DATA.meta[kind].find(x=>x.id===String(id))?.label||'';
- const ageShort=id=>id==='all'?'Total (20+)':id==='60_mas'?'60+':label('age',id).replace(' años','');
+ const ageShort=id=>id==='all'?'Total (20+)':id==='75_mas'?'75+':label('age',id).replace(' años','');
  const valid=(key,value)=>key==='occupation'?DATA.meta.occupation.some(x=>x.id===value):key==='sex'?DATA.meta.sex.some(x=>x.id===value):DATA.meta.age.some(x=>x.id===value);
  const state={...DEFAULT};
  for(const k of ['occupation','sex','age'])if(valid(k,INITIAL[k]))state[k]=INITIAL[k];
@@ -109,7 +109,7 @@
    let b=line(L,h-B,w-R,h-B,color.line)+line(L,yy(ymax),w-R,yy(ymax),color.line)+txt(L-4,yy(ymax)+3,num(ymax)+'%','end',8)+txt(L-4,h-B+3,'0','end',8);
    for(let i=0;i<30;i++)b+=`<rect x="${xx(i)+.2}" y="${yy(d.hist[i])}" width="${Math.max(.4,(w-L-R)/30-.8)}" height="${Math.max(0,h-B-yy(d.hist[i]))}" fill="${i*100000>=state.amount?color.teal:'#8fae9f'}"/>`;
    for(let i=0;i<=3;i++)b+=txt(xx(i*10),h-5,'$'+i+'M','middle',10);
-   return svgShell(w,h,'Distribución de ingresos hasta tres millones',b,'La escala vertical es la misma en las cinco tarjetas.');
+   return svgShell(w,h,'Distribución de ingresos hasta tres millones',b,'La escala vertical es la misma en todas las tarjetas.');
  }
  function renderAges(){
    const ages=DATA.meta.age.filter(a=>a.id!=='all'),ds=ages.map(a=>domain(state.occupation,state.sex,a.id));
@@ -120,6 +120,35 @@
    $('age-panels').querySelectorAll('.spark').forEach((el,i)=>{el.innerHTML=miniHist(ds[i],ymax,Math.max(115,Math.round(el.getBoundingClientRect().width||180)));});
    // The card is the keyboard action. Nested sparkline SVGs need no extra tab stop.
    $('age-panels').querySelectorAll('svg').forEach(s=>s.removeAttribute('tabindex'));
+ }
+ function renderAgeProfile(){
+   const ages=DATA.meta.age.filter(a=>a.id!=='all'),ds=ages.map(a=>domain(state.occupation,state.sex,a.id));
+   const el=$('age-profile'),w=Math.max(760,chartWidth(el,1180)),h=330,L=70,R=32,T=24,B=55;
+   const x=i=>L+i/(ages.length-1)*(w-L-R),ymax=roundUp(Math.max(...ds.flatMap(d=>[d.mean,d.p75]))*1.12),y=v=>h-B-v/ymax*(h-T-B);
+   $('age-profile-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+' · Ingreso neto mensual. Se muestran todos los tramos.';
+   let body=txt(L,12,'Ingreso neto mensual · millones de pesos','start',10);
+   const selected=ages.findIndex(a=>a.id===state.age);
+   if(selected>=0)body+=`<rect x="${x(selected)-17}" y="${T}" width="34" height="${h-T-B}" fill="${color.pale}" opacity=".7"/>`;
+   for(let i=0;i<=4;i++){const v=ymax*i/4;body+=line(L,y(v),w-R,y(v))+txt(L-10,y(v)+4,'$'+num(v/1e6,2)+'M','end',10);}
+   const path=(field)=>ds.map((d,i)=>`${i?'L':'M'}${x(i)},${y(d[field])}`).join('');
+   const band=path('p75')+ds.map((d,i)=>({d,i})).reverse().map(({d,i})=>`L${x(i)},${y(d.p25)}`).join('')+'Z';
+   body+=`<path class="age-iqr" d="${band}" fill="${color.teal}" opacity=".12"/>`;
+   body+=`<path class="age-p25" d="${path('p25')}" fill="none" stroke="${color.teal}" stroke-opacity=".4" stroke-width="1"/><path class="age-p75" d="${path('p75')}" fill="none" stroke="${color.teal}" stroke-opacity=".4" stroke-width="1"/>`;
+   body+=`<path class="age-median-line" d="${path('median')}" fill="none" stroke="${color.teal}" stroke-width="2.6"/><path class="age-mean-line" d="${path('mean')}" fill="none" stroke="${color.gold}" stroke-width="2" stroke-dasharray="6 4"/>`;
+   ds.forEach((d,i)=>{
+     body+=`<circle class="age-median-point" data-age-id="${ages[i].id}" data-value="${d.median}" cx="${x(i)}" cy="${y(d.median)}" r="4" fill="${poorDomain(d)?'white':color.teal}" stroke="${color.teal}" stroke-width="2"/>`;
+     body+=`<path class="age-mean-point" data-age-id="${ages[i].id}" data-value="${d.mean}" d="M${x(i)},${y(d.mean)-5}l5,5 -5,5 -5,-5Z" fill="${d.meanQ<2?'white':color.gold}" stroke="${color.gold}" stroke-width="1.5"/>`;
+     body+=txt(x(i),h-B+23,ageShort(ages[i].id),'middle',11,ages[i].id===state.age?color.ink:color.muted);
+   });
+   body+=txt((L+w-R)/2,h-5,'Edad · tramos de 5 años y 75+','middle',10);
+   el.innerHTML=svgShell(w,h,'Ingreso promedio, mediana y percentiles 25 y 75 por edad',body,'Cada punto es un grupo de edad. La banda es dispersión de ingresos, no incertidumbre. Usa las flechas para consultar las cifras.');
+   makeTooltip(el,el.querySelector('svg'),i=>{const d=ds[i];return `<strong>${esc(ages[i].label)}</strong><br>Mediana ≈ ${money(d.median)}<br>Promedio ≈ ${money(d.mean)}<br>P25 ≈ ${money(d.p25)} · P75 ≈ ${money(d.p75)}<br>${num(d.n)} encuestados · ≈ ${people(d.N)} personas${poorDomain(d)||d.meanQ<2?'<br>Exploratorio: muestra o precisión limitada.':''}`;},{left:L,right:R,w,maxIndex:ages.length-1});
+   $('age-peaks').innerHTML=[['median','Mediana más alta'],['mean','Promedio más alto']].map(([field,title])=>{
+     const max=Math.max(...ds.map(d=>d[field])),indexes=ds.map((d,i)=>Math.abs(d[field]-max)<.000001?i:-1).filter(i=>i>=0);
+     const limited=indexes.some(i=>field==='mean'?ds[i].meanQ<2:poorDomain(ds[i]));
+     return `<div><span>${title}</span><strong>${indexes.map(i=>ageShort(ages[i].id)).join(' / ')} años · ≈ ${money(max)}</strong>${limited?'<small>Estimación exploratoria</small>':''}</div>`;
+   }).join('');
+   $('age-profile-table').innerHTML='<table><caption>Estimaciones ponderadas. Montos aproximados en pesos mensuales.</caption><thead><tr><th scope="col">Edad</th><th scope="col">P25</th><th scope="col">Mediana</th><th scope="col">Promedio</th><th scope="col">P75</th><th scope="col">Encuestados</th><th scope="col">Nota</th></tr></thead><tbody>'+ages.map((a,i)=>{const d=ds[i];return `<tr><th scope="row">${esc(a.label)}</th><td>≈ ${money(d.p25)}</td><td>≈ ${money(d.median)}</td><td>≈ ${money(d.mean)}</td><td>≈ ${money(d.p75)}</td><td>${num(d.n)}</td><td>${poorDomain(d)||d.meanQ<2?'Exploratorio':'—'}</td></tr>`;}).join('')+'</tbody></table>';
  }
  function renderRanking(){
    $('occupation-context').textContent=label('age',state.age)+' · '+label('sex',state.sex)+'. '+(state.rank==='threshold'?'Personas que ganan ≥ '+exactMoney(state.amount)+', dentro de cada ocupación.':'Misma edad y sexo en las nueve ocupaciones.');
@@ -142,7 +171,7 @@
    $('population-note').textContent=num(d.n)+' encuestados en este grupo.';
    $('sample-warning').hidden=!poorDomain(d);
    $('sample-warning').textContent=`Muestra limitada: este grupo tiene ${num(d.n)} encuestados y ${num(d.df)} grados de libertad. Sus cifras son exploratorias. Las colas de ingresos pueden apoyarse en muy pocas observaciones.`;
-   renderThreshold(d);renderDistribution(d);renderSurvival(d);renderAges();renderRanking();
+   renderThreshold(d);renderDistribution(d);renderSurvival(d);renderAges();renderAgeProfile();renderRanking();
  }
  function setState(change){
    for(const k of ['occupation','sex','age'])if(change[k]!==undefined&&valid(k,String(change[k])))state[k]=String(change[k]);
@@ -155,8 +184,8 @@
  function toast(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').classList.remove('visible'),3600);}
  function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  function csvText(){
-   const rows=[['vista','ocupacion','sexo','edad','encuestados_grupo','personas_expandidas_grupo','ingreso_mediano_clp','ingreso_promedio_clp','ee_media_clp','umbral_clp','porcentaje_mayor_o_igual_umbral','personas_mayor_o_igual_umbral','encuestados_mayor_o_igual_umbral','ic95_inferior_porcentaje','ic95_superior_porcentaje','precision_umbral']];
-   function add(view,o,s,a){const d=domain(o,s,a),e=eventAt(d);rows.push([view,label('occupation',o),label('sex',s),label('age',a),d.n,d.N,d.median,d.mean,d.meanSE,state.amount,e.p,e.persons,e.n,e.lo,e.hi,qualityText(e)]);}
+   const rows=[['vista','ocupacion','sexo','edad','encuestados_grupo','personas_expandidas_grupo','ingreso_mediano_clp','ingreso_promedio_clp','percentil25_clp','percentil75_clp','ee_media_clp','umbral_clp','porcentaje_mayor_o_igual_umbral','personas_mayor_o_igual_umbral','encuestados_mayor_o_igual_umbral','ic95_inferior_porcentaje','ic95_superior_porcentaje','precision_umbral']];
+   function add(view,o,s,a){const d=domain(o,s,a),e=eventAt(d);rows.push([view,label('occupation',o),label('sex',s),label('age',a),d.n,d.N,d.median,d.mean,d.p25,d.p75,d.meanSE,state.amount,e.p,e.persons,e.n,e.lo,e.hi,qualityText(e)]);}
    add('seleccion',state.occupation,state.sex,state.age);
    for(const a of DATA.meta.age.filter(x=>x.id!=='all'))add('comparacion_edades',state.occupation,state.sex,a.id);
    for(const o of DATA.meta.occupation.filter(x=>x.id!=='all'))add('comparacion_ocupaciones',o.id,state.sex,state.age);
@@ -164,7 +193,7 @@
  }
  $('occupation').innerHTML=DATA.meta.occupation.map(o=>`<option value="${o.id}">${esc(o.label)}</option>`).join('');
  $('age-buttons').innerHTML=DATA.meta.age.map(a=>`<button data-age="${a.id}" aria-pressed="false" aria-label="${esc(a.label)}">${ageShort(a.id)}</button>`).join('');
- $('universe-counts').textContent=`“Total (20+)” agrupa los cinco tramos, no toda la muestra ESI. El archivo original contiene ${num(DATA.meta.nSourceRecords)} registros. De ellos, ${num(DATA.meta.nAllOccupied)} son ocupados de referencia de todas las edades. Este dashboard incluye ${num(DATA.meta.n20Plus)} de 20 años o más y excluye ${num(DATA.meta.excludedUnder20)} menores de 20. Los filtros de ocupación y sexo reducen ese universo.`;
+ $('universe-counts').textContent=`“Total (20+)” agrupa todos los tramos, no toda la muestra ESI. El archivo original contiene ${num(DATA.meta.nSourceRecords)} registros. De ellos, ${num(DATA.meta.nAllOccupied)} son ocupados de referencia de todas las edades. Este dashboard incluye ${num(DATA.meta.n20Plus)} de 20 años o más y excluye ${num(DATA.meta.excludedUnder20)} menores de 20. Los filtros de ocupación y sexo reducen ese universo.`;
  $('occupation').addEventListener('change',e=>setState({occupation:e.target.value}));
  $('sex-buttons').addEventListener('click',e=>{const b=e.target.closest('[data-sex]');if(b)setState({sex:b.dataset.sex});});
  $('age-buttons').addEventListener('click',e=>{const b=e.target.closest('[data-age]');if(b)setState({age:b.dataset.age});});
@@ -196,7 +225,7 @@
    toast('Copia guardada con tus filtros. Comparte ese archivo para abrirlo sin conexión.');
  });
  $('print').addEventListener('click',()=>{const old=$('method-details').open;$('method-details').open=true;window.print();$('method-details').open=old;});
- let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderDistribution(domain());renderSurvival(domain());renderAges();},150);});
+ let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderDistribution(domain());renderSurvival(domain());renderAges();renderAgeProfile();},150);});
  render();
  window.ESI_DASHBOARD=Object.freeze({getState:()=>({...state}),setState,eventAt,getDomain:domain,csvText,render,meta:DATA.meta});
 })();

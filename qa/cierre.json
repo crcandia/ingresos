@@ -1,22 +1,23 @@
 {
   "verdict": "PASS_WITH_RISKS",
-  "claim": "Dashboard autocontenido con escala lineal/logarítmica y universo 20+ explícito. Versión web con Analytics, miniatura social, SEO y vista inicial prerenderizada.",
-  "functional_validation": "360 combinaciones de dominio/escala verificadas. Comprobaciones específicas de SEO, hidratación, exportación sin Analytics y controles guardados coherentes sin JavaScript.",
-  "independent_validation": "CSV original, seis dominios reales,762puntos dentro de bandas en ambas escalas, caso sintético de IC faltante y límite0.",
-  "visual_validation": "Inspección estática de escritorio de 1400 px y teléfono de 390 px con WeasyPrint. Revisadas miniatura, portada, preguntas frecuentes y recursos públicos.",
-  "native_figure_export": "PDF de tres páginas, distribución y supervivencia lineal/logarítmica.",
+  "claim": "Dashboard con doce tramos de edad: 20–24 a 70–74 y 75+. Nuevo perfil por edad de media, mediana y bandaP 25–P 75, filtros y exportaciones actualizados.",
+  "functional_validation": "390 dominios en ambas escalas,780 combinaciones, perfil por edad contrastado contra cada dominio, CSV con percentiles y copia guardada con filtros.",
+  "independent_validation": "qa/revision_edad 5.md: contraste independiente de 390 dominios con extracto original y comprobación de agregados all.",
+  "visual_validation": "Inspección estática de escritorio1400px y teléfono390px. Verificados el nuevo perfil y las doce tarjetas. Posiciones de filtros explícitas para evitar columnas implícitas en la representación estática.",
+  "native_figure_export": "PDF de distribución y curvas lineal/logarítmica, y PDF independiente del perfil de ingresos por edad, desde los SVG de la interfaz.",
   "self_contained": "HTML descargable sin dependencias externas. La versión web añade Google Analytics autorizado por el usuario.",
-  "html_sha256": "84813faf601ecaed25511ff4dac1536305d89a82a5d64f394bbe46ed99c89224",
+  "html_sha256": "ef21e9540ae79cbbcdaa7417922a2e35ee9c9785f7b9d36d5b31c97f42a79c5b",
   "siteMatchesDownload": false,
   "netlifyConfigParsed": true,
   "no_pending_data_or_functionality_fixes": true,
   "externalPublicationClaimed": false,
   "residual_risks": [
-    "No se ejecutó una inspección interactiva del dashboard en un navegador real.",
-    "Los grupos pequeños y colas escasas conservan incertidumbre muestral y se señalan como exploratorios.",
-    "Despliegue HTTPS, DNS, indexación, vista previa en redes y recepción de Analytics en producción pendientes de verificación."
+    "Verificación DOM y visual estática, sin sesión interactiva en un navegador real.",
+    "63 de 216 celdas específicas tienen menos de 60 casos. Se señalan límites muestrales. La bandaP 25–P 75 no estima incertidumbre.",
+    "Máximos puntuales descriptivos, sin prueba de diferencias por edad ni inferencia de trayectorias individuales.",
+    "Despliegue HTTPS, DNS, indexación y recepción de Analytics en producción sin confirmar desde este entorno."
   ],
-  "web_sha256": "39981e0b96459f339b67cf2375a73de6514cffcc31150f3b0eefc1188e20a91d",
+  "web_sha256": "3305f4acc0410d95b85e2b3f5d68be51cb27c7d3e1d46f200894571f38144c5b",
   "siteAndDownloadShareData": true,
   "analytics": {
     "measurementId": "G-XSFF2F0XKK",
@@ -57,5 +58,31 @@
     "scope": "Source and DOM checks. No production HTTP, crawler indexing or social platform cache verification."
   },
   "seo_independent_review": "qa/revision_seo.md",
-  "statistical_data_sha256": "4d65eb30103c3c8457740c5608b3ed14d0d433463cbce4816caf7586cea272e2"
+  "statistical_data_sha256": "b9d8b5a4cfe9bae10ff72e8fb05e732bfd031c90cff847b046a405d00ca37ea2",
+  "age5_validation": {
+    "pass": true,
+    "fiveYearAgeBands": true,
+    "ageProfileValuesMatchAllDomains": true,
+    "ageProfilePercentiles": "P25–P75, dispersion not confidence",
+    "domainScaleCombinationsRendered": 780,
+    "domainsRendered": 390,
+    "scales": [
+      "linear",
+      "log"
+    ],
+    "controls": "occupation, sex, age, amount input, slider, quick amounts, range, ranking, survival scale, reset, help, keyboard tooltip",
+    "equalLogTickSpacing": true,
+    "constantLogAxisAcrossGroups": true,
+    "stepConfidenceBand": true,
+    "noNetworkDependencies": true,
+    "savedHTMLReopenedWithScale": true,
+    "csvExportRows": 22,
+    "scaleDoesNotChangeCSV": true,
+    "explicit20PlusUniverse": true,
+    "emptyTailNotReportedAsPopulationZero": true,
+    "finiteSVGGeometry": true,
+    "jsErrors": [],
+    "verificationLimit": "DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot."
+  },
+  "age5_independent_review": "qa/revision_edad5.md"
 }

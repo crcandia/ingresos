@@ -1,4 +1,4 @@
-"""Reproduce the 180 survey domains and export anonymous aggregate dashboard data.
+"""Reproduce the survey domains and export anonymous aggregate dashboard data.
 
 Run: python3 -B codigo/analizar_dashboard.py
 The full design frame is retained. Every selection is a domain indicator.
@@ -18,14 +18,11 @@ from scipy.stats import t
 from diseno_encuesta import Design
 
 ROOT = Path(__file__).resolve().parents[1]
-AGE = [
-    ('all', '20 años o más', 20, 121),
-    ('20_29', '20–29 años', 20, 30),
-    ('30_39', '30–39 años', 30, 40),
-    ('40_49', '40–49 años', 40, 50),
-    ('50_59', '50–59 años', 50, 60),
-    ('60_mas', '60 años o más', 60, 121),
-]
+AGE = [('all', '20 años o más', 20, 121)] + [
+    (f'{low}_{low+4}', f'{low}–{low+4} años', low, low+5)
+    for low in range(20, 75, 5)
+] + [('75_mas', '75 años o más', 75, 121)]
+
 OCCUPATIONS = [
     ('all', 'Todas las ocupaciones'),
     ('1', 'Directivos y gerentes'),
@@ -178,9 +175,9 @@ def main():
     reference_rows = []
     checks = []
     # Includes large and small domains, sparse tails, both sexes and all ages.
-    crosscheck_keys = {'all|all|all', 'all|all|20_29', 'all|all|60_mas',
-                      '1|1|all', '1|2|20_29', '2|2|30_39', '5|all|50_59',
-                      '6|2|20_29', '8|2|60_mas', '9|1|40_49'}
+    crosscheck_keys = {'all|all|all', 'all|all|20_24', 'all|all|75_mas',
+                      '1|1|all', '1|2|20_24', '2|2|30_34', '5|all|50_54',
+                      '6|2|20_24', '8|2|75_mas', '9|1|40_44'}
     thresholds = [0, 1, 10, 20, 40, 60, 80, 100, 140, 200, 300, 400, 420]
     for occupation, occ_label in OCCUPATIONS:
         occ_domain = domain20 & (True if occupation == 'all' else occ == int(occupation))
@@ -255,10 +252,10 @@ def main():
                         expected_q = 0 if check['n_muestra'] == 0 else (2 if check['resolucion_defendible'] == 'fiable' else 1)
                         assert result['q'][i] == expected_q, (key, GRID[i], result['q'][i], expected_q)
                         checks.append({'key': key, 'threshold': int(GRID[i]), 'pass': True})
-            print(f'{occupation}: {occ_label} | {sex_label} | 6 dominios calculados', flush=True)
+            print(f'{occupation}: {occ_label} | {sex_label} | {len(AGE)} dominios calculados', flush=True)
 
-    assert len(domains) == 180
-    # The five ages and the two sexes partition each matching aggregate domain.
+    assert len(domains) == len(OCCUPATIONS) * len(SEXES) * len(AGE)
+    # The age bands and the two sexes partition each matching aggregate domain.
     for occupation, _ in OCCUPATIONS:
         for sex_code, _ in SEXES:
             parent = raw_domains[f'{occupation}|{sex_code}|all']
@@ -274,9 +271,14 @@ def main():
             np.testing.assert_allclose(sum(d['total'] for d in children), parent['total'], rtol=1e-11, atol=1e-7)
     age_reference = pd.read_csv(ROOT / 'fuentes/referencia_edades.csv')
     for row in age_reference.itertuples():
-        d = domains[f'all|all|{row.grupo}']
-        assert d['n'] == row.n_muestra
-        np.testing.assert_allclose([d['N'], d['mean'], d['meanSE'], d['median']],
+        low, high = (60, 121) if row.grupo == '60_mas' else tuple(map(int, row.grupo.split('_')))
+        if high != 121: high += 1
+        mask = domain20 & (ages >= low) & (ages < high)
+        old = Design(frame, mask)
+        old_mean, old_se = old.mean(design.y)
+        old_median = quantile(design.y[mask], design.w[mask], .5)
+        assert int(mask.sum()) == row.n_muestra
+        np.testing.assert_allclose([old.N, old_mean, old_se, old_median],
                                   [row.personas, row.media, row.ee_media, row.mediana],
                                   rtol=1e-10, atol=1e-6)
 
@@ -321,7 +323,7 @@ def main():
                        'sha256Original': provenance['fuente_original']['sha256'],
                        'downloadUTC': provenance['fuente_original']['download_utc'],
                        'derivedFrom': 'Columnas seleccionadas del archivo original, sin filtrar filas del diseño.',
-                       'aggregation': '180 dominios precomputados. El JSON solo contiene datos agregados.'},
+                       'aggregation': f'{len(domains)} dominios precomputados. El JSON solo contiene datos agregados.'},
         'generatedUTC': datetime.now(timezone.utc).isoformat(),
     }
     data = {'meta': meta, 'domains': domains}
@@ -339,9 +341,9 @@ def main():
     export_table(summary, 'resumen_dominios')
     export_table(refs, 'referencias_1_a_5_millones')
     export_table(pd.DataFrame(residual_rows), 'ocupaciones_residuales')
-    cells90 = summary.loc[summary.ocupacion.ne('all') & summary.sexo.ne('all') & summary.edad.ne('all')]
+    specific_cells = summary.loc[summary.ocupacion.ne('all') & summary.sexo.ne('all') & summary.edad.ne('all')]
     validation = {
-        'pass': True, 'domains': len(domains), 'originalRows': len(frame),
+        'pass': True, 'specificCells': len(specific_cells), 'domains': len(domains), 'originalRows': len(frame),
         'occupied': int(occupied.sum()), 'occupied20Plus': int(domain20.sum()),
         'mainOccupation20Plus': int((domain20 & np.isin(occ, range(1, 10))).sum()),
         'residualOccupation20Plus': residual_rows, 'psus': design.J, 'strata': len(design.nh),
@@ -351,8 +353,8 @@ def main():
         'partitionSexValidation': True, 'histogramsSum100': True,
         'curvesMonotonic': True, 'strictJSONNoNaN': True,
         'crosschecksAgainstOriginalDesign': checks,
-        'cells90SampleMin': int(cells90.n.min()), 'cells90SampleMax': int(cells90.n.max()),
-        'cells90Under60': int(cells90.n.lt(60).sum()),
+        'specificCellSampleMin': int(specific_cells.n.min()), 'specificCellSampleMax': int(specific_cells.n.max()),
+        'specificCellsUnder60': int(specific_cells.n.lt(60).sum()),
         'dashboardBytes': output.stat().st_size,
         'dashboardSHA256': hashlib.sha256(output.read_bytes()).hexdigest(),
         'runtimeSeconds': time.perf_counter() - started,
