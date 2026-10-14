@@ -1,0 +1,18 @@
+{
+  "pass": true,
+  "canonical": "https://ingresos.criss-lab.com/",
+  "socialImage": {
+    "width": 1737,
+    "height": 905,
+    "bytes": 1675823
+  },
+  "preRenderedInitialView": true,
+  "hydrationMatchesSource": true,
+  "metadataAndSchemaPassed": true,
+  "publicResourcesPresent": true,
+  "csvMatchesSource": true,
+  "savedCopyRemainsOffline": true,
+  "savedControlsMatchWithoutJavaScript": true,
+  "statisticalDataUnchanged": true,
+  "scope": "Source and DOM checks. No production HTTP, crawler indexing or social platform cache verification."
+}

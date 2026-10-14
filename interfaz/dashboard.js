@@ -179,7 +179,22 @@
  $('reset').addEventListener('click',()=>setState(DEFAULT));
  $('about').addEventListener('click',()=>{$('method-details').open=true;$('method').scrollIntoView?.({behavior:'smooth',block:'start'});$('method-details').querySelector('summary').focus({preventScroll:true});});
  $('export-csv').addEventListener('click',()=>{download('ingresos_ESI2025_vista.csv',csvText(),'text/csv;charset=utf-8');toast('Datos de esta vista descargados. Las cifras del CSV conservan la precisión del cálculo.');});
- $('save').addEventListener('click',()=>{const clone=document.documentElement.cloneNode(true);clone.querySelector('#initial-state').textContent=JSON.stringify(state);clone.querySelectorAll('.tooltip,[data-web-analytics],script[src*="googletagmanager.com"],script[src*="google-analytics.com"]').forEach(t=>t.remove());clone.querySelector('meta[http-equiv="Content-Security-Policy"]').setAttribute('content',"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'");clone.querySelector('#privacy-note').textContent='Archivo autocontenido. Funciona sin conexión y no envía información.';clone.querySelector('#toast').classList.remove('visible');download('Ingresos_Chile_ESI2025.html','<!doctype html>\n'+clone.outerHTML,'text/html;charset=utf-8');toast('Copia guardada con tus filtros. Comparte ese archivo para abrirlo sin conexión.');});
+ $('save').addEventListener('click',()=>{
+   const clone=document.documentElement.cloneNode(true);
+   clone.querySelector('#initial-state').textContent=JSON.stringify(state);
+   // Live form properties do not survive HTML serialization automatically.
+   for(const original of document.querySelectorAll('input[id],select[id]')){
+     const saved=clone.querySelector('#'+original.id);
+     if(original.tagName==='SELECT')Array.from(saved.options).forEach((option,i)=>option.toggleAttribute('selected',original.options[i].selected));
+     else saved.setAttribute('value',original.value);
+   }
+   clone.querySelectorAll('.tooltip,[data-web-meta],[data-web-analytics],script[src*="googletagmanager.com"],script[src*="google-analytics.com"]').forEach(t=>t.remove());
+   clone.querySelector('meta[http-equiv="Content-Security-Policy"]').setAttribute('content',"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'");
+   clone.querySelector('#privacy-note').textContent='Archivo autocontenido. Funciona sin conexión y no envía información.';
+   clone.querySelector('#toast').classList.remove('visible');
+   download('Ingresos_Chile_ESI2025.html','<!doctype html>\n'+clone.outerHTML,'text/html;charset=utf-8');
+   toast('Copia guardada con tus filtros. Comparte ese archivo para abrirlo sin conexión.');
+ });
  $('print').addEventListener('click',()=>{const old=$('method-details').open;$('method-details').open=true;window.print();$('method-details').open=old;});
  let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderDistribution(domain());renderSurvival(domain());renderAges();},150);});
  render();

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
-<meta name="description" content="Explora la distribución de ingresos laborales en Chile por ocupación, edad y sexo con los microdatos de la ESI 2025.">
-<title>Ingresos en Chile · ESI 2025</title>
+<meta name="description" content="__PAGE_DESCRIPTION__">
+<title>__PAGE_TITLE__</title>
 <style>/*__STYLES__*/</style>
 </head>
 <body>
@@ -16,9 +16,10 @@
 </header>
 <main>
  <section class="hero" aria-labelledby="title">
-  <div><p class="eyebrow">UNA MIRADA AL TRABAJO EN CHILE</p><h1 id="title">Los ingresos, <em>en perspectiva.</em></h1><p class="intro">Explora cuánto se gana según ocupación, edad y sexo. Cada cifra describe al grupo que eliges.</p></div>
+  <div><p class="eyebrow">UNA MIRADA AL TRABAJO EN CHILE</p><h1 id="title">Ingresos en Chile, <em>en perspectiva.</em></h1><p class="intro">Compara el ingreso neto mensual por edad, sexo y ocupación con los microdatos de la ESI 2025 del INE. Cada cifra describe al grupo que eliges.</p></div>
   <div class="source-stamp"><span class="status-dot"></span><span>Microdatos INE<br><strong>Pesos de octubre de 2025</strong></span></div>
  </section>
+ <noscript><p class="notice">Sin JavaScript puedes leer la vista inicial y la metodología. Actívalo para cambiar filtros, consultar otros montos y descargar una copia.</p></noscript>
  <section class="filters" id="explorar" aria-label="Filtros de población">
   <div class="occupation-control"><label for="occupation">Ocupación</label><select id="occupation"></select></div>
   <fieldset class="sex-control"><legend>Sexo</legend><div class="segmented" id="sex-buttons"><button data-sex="all" aria-pressed="true">Total</button><button data-sex="1" aria-pressed="false">Hombres</button><button data-sex="2" aria-pressed="false">Mujeres</button></div></fieldset>
@@ -65,10 +66,16 @@
    <div class="method-content"><div><h3>Qué estamos midiendo</h3><p>Ingreso neto mensual de la ocupación principal. Para asalariados, después de cotizaciones e impuestos. Para independientes, después de los costos de su actividad. Incluye beneficios en especie valorizados.</p><p>Personas ocupadas de 20 años o más, con al menos un mes en su empleo actual. Cada porcentaje se calcula dentro de la ocupación, edad y sexo seleccionados. La categoría “Total” de sexo incluye hombres y mujeres según la variable de la encuesta.</p><p id="universe-counts"></p><p>Fuente: <a href="https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/encuesta-suplementaria-de-ingresos" target="_blank" rel="noopener noreferrer">INE, Encuesta Suplementaria de Ingresos 2025</a>. Ingresos expresados en pesos de octubre de 2025.</p></div><div><h3>Cómo interpretar las diferencias</h3><p>Las cifras usan los factores de expansión de la ESI. “Personas representadas” es una estimación de población, mientras que “encuestados” cuenta observaciones de la muestra. El total de ocupaciones incluye los códigos residuales no mostrados entre los nueve grupos.</p><p>La mediana es el primer monto que alcanza al menos el 50% del peso acumulado. Los empates pueden hacer que más del 50% quede en el monto mediano o por debajo. Las diferencias entre edades son una comparación transversal, no la trayectoria de una misma persona. Las diferencias por sexo u ocupación no identifican efectos causales.</p><p>Se conservan ingresos cero, valores extremos e imputaciones oficiales. El histograma usa intervalos de $100.000 y las curvas se consultan cada $50.000. ≈ indica cifras redondeadas.</p><p>En la escala logarítmica, cada marca vertical multiplica por diez el porcentaje. Solo se dibujan proporciones positivas, sin reemplazar ceros por valores artificiales. La escala cambia la representación, no los resultados.</p></div><div><h3>Qué significa “Exploratorio”</h3><p>La precisión se evalúa para cada consulta. Una cifra exploratoria tiene pocos casos o elevada incertidumbre. Cero casos observados no significa que no existan personas en la población con ese ingreso.</p><p>Para la consulta por monto se aplica un criterio conservador: la proporción y el total deben pasar las reglas de precisión. El total requiere al menos 60 casos, 9 grados de libertad y un coeficiente de variación de hasta 15%. Cumplir solo el tamaño muestral no garantiza precisión.</p><p>Los intervalos del 95% usan estratos y conglomerados del diseño de encuesta completo. No incorporan subdeclaración, subcobertura ni incertidumbre adicional de imputación. No se calculó un intervalo para la mediana. Los intervalos son puntuales, no simultáneos.</p></div></div>
   </details>
  </section>
+ <section class="faq" aria-labelledby="faq-title"><p class="eyebrow">PARA INTERPRETAR LOS RESULTADOS</p><h2 id="faq-title">Preguntas frecuentes sobre ingresos en Chile</h2>
+  <details><summary>¿Cuál es la diferencia entre ingreso mediano y promedio?</summary><p>La mediana es el punto medio de la distribución ponderada. El promedio suma los ingresos y los divide por la población representada. Los ingresos muy altos pueden elevar el promedio. Por eso el dashboard muestra ambos.</p></details>
+  <details><summary>¿El ingreso neto es lo mismo que el sueldo líquido?</summary><p>Para asalariados, corresponde al ingreso de la ocupación principal después de descuentos legales e impuestos. También se incluyen independientes, cuyo ingreso descuenta los costos de su actividad, y componentes en especie definidos por la ESI. No es el ingreso total del hogar.</p></details>
+  <details><summary>¿Qué significa ganar $1 millón o más?</summary><p>La consulta incluye a quienes ganan exactamente el monto indicado. Puedes elegir $1, $2, $3, $4 o $5 millones y ver la proporción y la cantidad aproximada de personas del grupo que alcanzan ese ingreso neto mensual.</p></details>
+  <details><summary>¿Estas cifras representan a toda la población de Chile?</summary><p>No. El universo del dashboard son las personas ocupadas de referencia ESI de 20 años o más. Los filtros de edad, sexo y ocupación restringen ese grupo. Las cifras corresponden a la ESI 2025, en pesos de octubre de 2025, y no se han actualizado por inflación.</p></details>
+ </section>
+<!--__WEB_RESOURCES__-->
  <footer><div><strong>Ingresos en Chile · ESI 2025</strong><p>Elaboración: Dr. Cristian Candia · Microdatos públicos del INE<br><span id="privacy-note">Archivo autocontenido. Funciona sin conexión y no envía información.</span></p></div><div class="footer-actions"><button id="export-csv" class="outline">Descargar datos de esta vista</button><button id="print" class="quiet">Imprimir / PDF</button></div></footer>
 </main>
 <div id="toast" role="status" aria-live="polite"></div>
-<noscript><div class="notice">Activa JavaScript en tu navegador para explorar los datos. El dashboard funciona completamente sin conexión.</div></noscript>
 <script id="dashboard-data" type="application/json">__DASHBOARD_DATA__</script>
 <script id="initial-state" type="application/json">{"occupation":"all","sex":"all","age":"all","amount":1000000,"range":3,"rank":"median","survivalScale":"linear"}</script>
 <script>/*__SCRIPT__*/</script>

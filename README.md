@@ -30,11 +30,12 @@ Para recalcular los agregados desde el extracto público incluido:
 
 ```bash
 python -m pip install -r requirements.txt
+npm install --prefix qa
 python -B codigo/analizar_dashboard.py
 python -B construir_dashboard.py
 ```
 
-El segundo comando valida el hash del extracto, los universos y las sumas. El HTML se construye desde `interfaz/` y `datos/dashboard.json`, sin dependencias de red. Los microdatos individuales no se incrustan en el dashboard.
+El análisis valida el hash del extracto, los universos y las sumas. La construcción usa Python y Node.js con jsdom para incluir la vista inicial en el HTML. Se genera desde `interfaz/` y `datos/dashboard.json`, sin descargar recursos durante la construcción. Los microdatos individuales no se incrustan en el dashboard.
 
 Para verificar la lógica de la interfaz:
 
@@ -42,6 +43,7 @@ Para verificar la lógica de la interfaz:
 npm install --prefix qa
 node qa/run_dom_checks.cjs
 node qa/check_analytics.cjs
+node qa/check_seo.cjs
 ```
 
 Se prueban los 180 dominios en ambas escalas y los controles, las consultas sin casos, la geometría de los SVG, las descargas y la reapertura de una copia con estado guardado. También se comprueba la distancia logarítmica de las marcas y la alineación escalonada de la banda. Estas son pruebas de DOM con jsdom, no una sesión real de Chrome, Safari o Firefox.
@@ -60,6 +62,8 @@ En la primera página del PDF, la línea verde discontinua marca la mediana y la
 El proyecto también incluye la configuración de Netlify y la copia web en `site/index.html`. `construir_dashboard.py` actualiza ambas versiones del HTML. La versión web incorpora Google Analytics con el identificador `G-XSFF2F0XKK` suministrado por el autor. Su política de contenido permite los dominios de Google necesarios para cargar la etiqueta y enviar mediciones. El pie de página informa de Analytics. El archivo descargable y las copias generadas con “Guardar copia” omiten Analytics y bloquean conexiones externas. Ver `PUBLICACION.md` para el destino solicitado y la configuración de dominio.
 
 ## Comprobaciones incluidas
+
+La versión web incluye miniatura social, Open Graph, Twitter Card, URL canónica, sitemap, robots.txt, iconos y metadatos estructurados de autor, página y datos. La vista inicial se puede leer sin JavaScript. Ver `SEO.md` para la configuración, construcción y comprobaciones pendientes sobre el dominio publicado.
 
 `datos/validacion.json` contiene las comprobaciones del cálculo. `qa/validacion_interfaz.json` registra las pruebas funcionales. `qa/revision_independiente.md` documenta la primera revisión, que contrastó los 180 dominios con el CSV original. `qa/revision_critica_log.md` documenta la revisión de esta actualización. `qa/verificacion_universo.json` conserva la comprobación de cobertura y la identidad de los agregados. `MANIFEST_SHA256.json` permite verificar la integridad del paquete.
 

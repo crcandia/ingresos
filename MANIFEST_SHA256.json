@@ -4,20 +4,24 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 2046201,
-    "sha256": "4156d9005e0c56d808e7e0813c979faf125d616d7a8f533cdace414a7aeb842d"
+    "bytes": 2121973,
+    "sha256": "84813faf601ecaed25511ff4dac1536305d89a82a5d64f394bbe46ed99c89224"
   },
   "PUBLICACION.md": {
-    "bytes": 1894,
-    "sha256": "1657eecb4d02c0d9f7024c7b0bed2aeb6b93492afec985b9cbd1534f43f031e4"
+    "bytes": 2176,
+    "sha256": "251e049e30d472e1a62364585792d7285d82bc65571a7cc927408953d03514cd"
   },
   "README.md": {
-    "bytes": 6704,
-    "sha256": "5558639b05ae018c6d97f1fb5cfc0524c8ba1d17bdb3c0b6600296344acec104"
+    "bytes": 7166,
+    "sha256": "d63ef1c277a4a2270f7979d563b016c20173a9dee0d3e2e0af288d16ef9f2248"
   },
   "README_DATOS.md": {
     "bytes": 7556,
     "sha256": "f3de1ef51847bf481efae4ab4a5617a3bd62cf1e9b877751f31c68129e55c5b1"
+  },
+  "SEO.md": {
+    "bytes": 3810,
+    "sha256": "f2f19de64c0c82c6e0723470dfa180f8dd51db754c5cdfb1dcd4f8881169e9b4"
   },
   "codigo/analizar_dashboard.py": {
     "bytes": 21257,
@@ -27,13 +31,25 @@
     "bytes": 3184,
     "sha256": "39b207e583f9126c889eeaa345ffe6b42fece3d4acfdb0969bb4b223643443a9"
   },
+  "codigo/generar_iconos.py": {
+    "bytes": 500,
+    "sha256": "55dcd7dea148a6c0bcad79924564d03addbaa3798d1d7386a1659a8587c03f77"
+  },
+  "codigo/prerenderizar_dashboard.cjs": {
+    "bytes": 1001,
+    "sha256": "d3f272a73ded32672fdabacefe6f99a1ee3a982fc0950263c6b12dd6a8063674"
+  },
+  "codigo/seo_web.py": {
+    "bytes": 8736,
+    "sha256": "51495a03ffff451417fe9a39830b04b6fcbb77854e7027861fbc4ec910922da1"
+  },
   "construir_dashboard.py": {
-    "bytes": 1965,
-    "sha256": "6d90f430e4bd193e3c2359f0c4972b84828666a3b6c22737397adfb919a4934e"
+    "bytes": 2815,
+    "sha256": "5cf7f2fb7190ce1cb131ee7a6c3692af87a18c50fd945287a03d08a5d0bcb000"
   },
   "crear_paquete.py": {
-    "bytes": 1504,
-    "sha256": "aa883fb0bcee429269bafa83be0aa4ca43d439ed4ac1fe6b1895e836b33ae0b5"
+    "bytes": 1497,
+    "sha256": "d8a6e0c745fa09bb9d4641481d701cdd6c2f1e1ff04fc2d33557904c5617a92d"
   },
   "datos/dashboard.json": {
     "bytes": 1991905,
@@ -88,12 +104,24 @@
     "sha256": "cecca993e86da21608f28b1c6373985b85518d9b069c064377d73e6a2dcab4d5"
   },
   "interfaz/dashboard.html": {
-    "bytes": 11368,
-    "sha256": "c732f86e3d30524eddc94fca46faa280e7d6d70e420ca24a587631210cbaa03c"
+    "bytes": 12924,
+    "sha256": "e562c2864834bbbcca454d15e64dbd4d88aabb2a1e4df9bc1ad58f54a6c113b6"
   },
   "interfaz/dashboard.js": {
-    "bytes": 24651,
-    "sha256": "fa28bfaade86c19035ef4b86423a4a7d4833dd74b8ab3fe51ac3fdb84e22be5a"
+    "bytes": 25116,
+    "sha256": "330caa7fb9d523477c8cf08505facb90f5a77158b9aa4c3a7122200ce1a6262d"
+  },
+  "interfaz/favicon.svg": {
+    "bytes": 295,
+    "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
+  },
+  "interfaz/seo.css": {
+    "bytes": 759,
+    "sha256": "dcff1849f345a17d480ff822861d14f3b00577dcfcea0584c57bbde4283ef68c"
+  },
+  "interfaz/seo.json": {
+    "bytes": 895,
+    "sha256": "1ea7b95b7c9bd8333b616463dfadb8ed9b21482baf8689a0b8fde354b2339952"
   },
   "netlify.toml": {
     "bytes": 174,
@@ -103,13 +131,17 @@
     "bytes": 3229,
     "sha256": "b9b68561fdf99840f6985f71befd0d071c7222699ddb4adbaed30843bc7e9d58"
   },
+  "qa/check_seo.cjs": {
+    "bytes": 7229,
+    "sha256": "40cf2e32a7929cb00e02667edac2b66ca4b6ea9bf7200e9a9f9bf0c840f59c7d"
+  },
   "qa/cierre.json": {
-    "bytes": 2336,
-    "sha256": "431f62c02a088960717a112e6763373872a5863da299f7b722aa099f7f42ae58"
+    "bytes": 3242,
+    "sha256": "c7cf737f2e2e0a7b2b57d8f742645f823a949242657e15553cffba382860dd48"
   },
   "qa/package.json": {
-    "bytes": 126,
-    "sha256": "a1f3f6476f259f494e3f655b986e32bdcfaf5ad168ab90e4057c450849f540a3"
+    "bytes": 135,
+    "sha256": "0d74bf980a9909a1e4bfb558b61a36db354f5042211198762edec575504d9a7e"
   },
   "qa/render_estatico.py": {
     "bytes": 3849,
@@ -131,6 +163,10 @@
     "bytes": 4362,
     "sha256": "7bbe556b33d9619948554b8431c89c567d54219b0ce8074743a373c3ecee7231"
   },
+  "qa/revision_seo.md": {
+    "bytes": 6611,
+    "sha256": "511c8fe4c5b41db5ce2a1b95d0a83fdd0097c509557ef7812b2d1e811d7875ea"
+  },
   "qa/run_dom_checks.cjs": {
     "bytes": 11296,
     "sha256": "4627a163257229d5e13a27d8ce02c1133004b168e27044b567327a25456adc9f"
@@ -143,6 +179,10 @@
     "bytes": 802,
     "sha256": "0f0dae4afeff08cd5623a31e8ed750fedd354fd8a0e80e8806f80f7ea75c7daf"
   },
+  "qa/validacion_seo.json": {
+    "bytes": 548,
+    "sha256": "5e57c77d4349d8e811dfca186c6215199a225e9292290f2616d1747ae5b48599"
+  },
   "qa/verificacion_universo.json": {
     "bytes": 407,
     "sha256": "ef51b5442fa4bc967c73f1f0b1b27958e35915d174e5badf9fb635e0598f2a90"
@@ -151,9 +191,49 @@
     "bytes": 55,
     "sha256": "45e5e9e12da84a24672d003b92cb7769554e03c11745f302789a1dae212e019c"
   },
+  "site/404.html": {
+    "bytes": 696,
+    "sha256": "836aba68bd95c469e02afcf10ee8c6008fd217f3d5f1391ebe603e9eec0e233e"
+  },
+  "site/_headers": {
+    "bytes": 365,
+    "sha256": "bf655724fa5948ce534514c6222a6b65b6cea2bff59fb39aba117e53801b3a80"
+  },
+  "site/_redirects": {
+    "bytes": 19,
+    "sha256": "1e9fbf53112088cad6b693c32761e8afb50c45096fe09091511ccaad697d0293"
+  },
+  "site/apple-touch-icon.png": {
+    "bytes": 3309,
+    "sha256": "a5419b02a8bec71e76af4666fcd273ac39216d2ec64e91c17b809d55d55d8a08"
+  },
+  "site/assets/ingresos-chile-esi2025-social.png": {
+    "bytes": 1675823,
+    "sha256": "bde18f855533e1a2c7c22587d66024b340004fe9b5ec4170d25801f305f2f7a3"
+  },
+  "site/datos/resumen-ingresos-esi2025.csv": {
+    "bytes": 46934,
+    "sha256": "fb860eeb72df8dede5b01acd1778f2d8ad7ce76ccd568e5f4371fbe2cd8c6f9a"
+  },
+  "site/favicon-32.png": {
+    "bytes": 569,
+    "sha256": "ed21b1f8ffa203b1223b79bd4e643399a4e022ab855320dc43b5d0c8edd0768a"
+  },
+  "site/favicon.svg": {
+    "bytes": 295,
+    "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
+  },
   "site/index.html": {
-    "bytes": 2046771,
-    "sha256": "094fd96267eea79e9f2775a3d841a3b977fad7371f0a64df1a21d1db291b9177"
+    "bytes": 2129502,
+    "sha256": "39981e0b96459f339b67cf2375a73de6514cffcc31150f3b0eefc1188e20a91d"
+  },
+  "site/robots.txt": {
+    "bytes": 76,
+    "sha256": "e09dc33d793f6cc1ba31749d9e9f7cfb8b20ed39397d49382f6b77fbc4377b08"
+  },
+  "site/sitemap.xml": {
+    "bytes": 195,
+    "sha256": "4d85fae8476acb704ac8001b96b3a209846fa5362f1aeac2f3a857ad3ff1b412"
   },
   "tablas/ocupaciones_residuales.csv": {
     "bytes": 68,

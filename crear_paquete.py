@@ -12,7 +12,7 @@ for path in ROOT.rglob('*'):
     rel=path.relative_to(ROOT)
     if any(x in rel.parts for x in ['.git','__pycache__','node_modules','render_temporal']):
         continue
-    if path.name in ['MANIFEST_SHA256.json'] or path.suffix in ['.pyc','.png']:
+    if path.name in ['MANIFEST_SHA256.json'] or path.suffix in ['.pyc']:
         continue
     if rel.parts[0]=='qa' and path.suffix not in ['.py','.cjs','.json','.md','.txt']:
         continue

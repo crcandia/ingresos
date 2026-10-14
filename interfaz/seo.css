@@ -1,0 +1,12 @@
+.faq{margin-top:36px;max-width:900px}
+.faq h2{margin-bottom:18px}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-size:14px;font-weight:550;line-height:1.5}
+.faq p,.public-data p{font-size:13px;color:var(--muted);line-height:1.75;max-width:850px}
+.faq p{margin:12px 0 4px}
+.public-data{margin-top:32px}
+.public-data-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:20px}
+.public-data a{color:var(--teal);text-underline-offset:4px}
+.public-data-links a{font-size:13px;font-weight:600}
+@media(max-width:520px){.faq h2{font-size:24px}.faq summary{font-size:13px}.faq p,.public-data p{font-size:12px}.public-data-links{flex-direction:column}}
+@media print{.faq details,.public-data{break-inside:avoid}}

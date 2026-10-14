@@ -1,1 +1,1 @@
-{"private":true,"description":"Optional DOM validation of the self-contained dashboard","devDependencies":{"jsdom":"30.1.2"}}
+{"private":true,"description":"Pre-rendering and DOM validation of the self-contained dashboard","devDependencies":{"jsdom":"30.1.2"}}
