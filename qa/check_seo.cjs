@@ -7,6 +7,13 @@ const offline=fs.readFileSync(path.join(root,'Ingresos_Chile_ESI2025.html'),'utf
 const config=JSON.parse(fs.readFileSync(path.join(root,'interfaz/seo.json'),'utf8'));
 const raw=new JSDOM(html),d=raw.window.document;
 assert.equal(d.querySelectorAll('h1').length,1);
+assert(!html.includes('<!--__INCOME_ANSWERS__-->'));
+for(const link of d.querySelectorAll('.topic-links a,.faq a[href^="#"]'))assert(d.getElementById(link.getAttribute('href').slice(1)),'Broken topic link');
+assert(d.querySelector('.faq-scope').textContent.includes('no cambian con los filtros'));
+assert(d.getElementById('sueldo-promedio-chile').textContent.includes('$967.862'));
+assert(d.getElementById('sueldo-mediano-chile').textContent.includes('$688.209'));
+assert(d.getElementById('personas-un-millon').textContent.includes('29,6%'));
+assert(d.getElementById('personas-un-millon').textContent.includes('2.651.000'));
 assert(d.querySelector('h1').textContent.includes('Ingresos en Chile'));
 assert.equal(d.title,config.title);
 assert.equal(d.querySelector('meta[name="description"]').content,config.description);

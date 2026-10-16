@@ -16,9 +16,10 @@
 </header>
 <main>
  <section class="hero" aria-labelledby="title">
-  <div><p class="eyebrow">UNA MIRADA AL TRABAJO EN CHILE</p><h1 id="title">Ingresos en Chile, <em>en perspectiva.</em></h1><p class="intro">Compara el ingreso neto mensual por edad, sexo y ocupación con los microdatos de la ESI 2025 del INE. Cada cifra describe al grupo que eliges.</p></div>
+  <div><p class="eyebrow">UNA MIRADA AL TRABAJO EN CHILE</p><h1 id="title">Ingresos en Chile, <em>en perspectiva.</em></h1><p class="intro">Explora cuánto se gana en Chile: ingreso promedio, mediano y percentiles por edad, sexo y ocupación. Cifras de la ESI 2025 del INE para personas ocupadas de 20 años o más.</p></div>
   <div class="source-stamp"><span class="status-dot"></span><span>Microdatos INE<br><strong>Pesos de octubre de 2025</strong></span></div>
  </section>
+ <nav class="topic-links" aria-label="Secciones del análisis"><a href="#explorar">Explorar ingresos</a><a href="#sueldo-promedio-chile">Sueldo promedio y mediano</a><a href="#age-profile-title">Ingresos por edad</a><a href="#occ-title">Ingresos por ocupación</a><a href="#method">Fuente y metodología</a></nav>
  <noscript><p class="notice">Sin JavaScript puedes leer la vista inicial y la metodología. Actívalo para cambiar filtros, consultar otros montos y descargar una copia.</p></noscript>
  <section class="filters" id="explorar" aria-label="Filtros de población">
   <div class="occupation-control"><label for="occupation">Ocupación</label><select id="occupation"></select></div>
@@ -54,7 +55,7 @@
   <div class="plot" id="survival"></div><p class="chart-note" id="survival-scale-note" aria-live="polite"></p><p class="chart-note" id="survival-note">La curva muestra quiénes ganan el monto del eje o más. Banda: intervalo de confianza puntual del 95%. Trazo discontinuo: precisión limitada. Consulta los puntos con el cursor o las flechas del teclado.</p>
  </section>
  <section class="surface age-profile-card" aria-labelledby="age-profile-title">
-  <div class="section-head"><div><p class="eyebrow">INGRESOS A LO LARGO DE LAS EDADES</p><h2 id="age-profile-title">¿A qué edades son mayores los ingresos?</h2><p class="section-description" id="age-profile-context"></p></div></div>
+  <div class="section-head"><div><p class="eyebrow">INGRESOS A LO LARGO DE LAS EDADES</p><h2 id="age-profile-title">Ingresos por edad: ¿dónde se alcanza el máximo?</h2><p class="section-description" id="age-profile-context"></p></div></div>
   <div class="profile-legend"><span><i class="profile-median"></i>Mediana · P50</span><span><i class="profile-mean"></i>Promedio</span><span><i class="profile-band"></i>Mitad central · P25–P75</span><span>○ ◇ Muestra o precisión limitada</span></div>
   <div class="age-peaks" id="age-peaks"></div>
   <p class="profile-scroll-hint">Desliza el gráfico para recorrer las edades.</p>
@@ -68,7 +69,7 @@
   <div class="age-grid" id="age-panels"></div>
  </section>
  <section class="surface occupations-card" aria-labelledby="occ-title">
-  <div class="section-head"><div><p class="eyebrow">COMPARACIÓN POR OCUPACIÓN</p><h2 id="occ-title">¿Cómo cambia el ingreso entre trabajos?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Proporción sobre el monto elegido</option></select></label></div>
+  <div class="section-head"><div><p class="eyebrow">COMPARACIÓN POR OCUPACIÓN</p><h2 id="occ-title">Ingresos por ocupación: ¿cuánto cambia entre trabajos?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Proporción sobre el monto elegido</option></select></label></div>
   <div id="occupation-ranking" class="ranking"></div><p class="chart-note">Selecciona una ocupación para explorarla. * Señala estimaciones exploratorias. Las categorías describen el trabajo realizado. No equivalen al nivel educativo.</p>
  </section>
  <section class="method" id="method">
@@ -77,6 +78,7 @@
   </details>
  </section>
  <section class="faq" aria-labelledby="faq-title"><p class="eyebrow">PARA INTERPRETAR LOS RESULTADOS</p><h2 id="faq-title">Preguntas frecuentes sobre ingresos en Chile</h2>
+  <!--__INCOME_ANSWERS__-->
   <details><summary>¿Cuál es la diferencia entre ingreso mediano y promedio?</summary><p>La mediana es el punto medio de la distribución ponderada. El promedio suma los ingresos y los divide por la población representada. Los ingresos muy altos pueden elevar el promedio. Por eso el dashboard muestra ambos.</p></details>
   <details><summary>¿El ingreso neto es lo mismo que el sueldo líquido?</summary><p>Para asalariados, corresponde al ingreso de la ocupación principal después de descuentos legales e impuestos. También se incluyen independientes, cuyo ingreso descuenta los costos de su actividad, y componentes en especie definidos por la ESI. No es el ingreso total del hogar.</p></details>
   <details><summary>¿Qué significa ganar $1 millón o más?</summary><p>La consulta incluye a quienes ganan exactamente el monto indicado. Puedes elegir $1, $2, $3, $4 o $5 millones y ver la proporción y la cantidad aproximada de personas del grupo que alcanzan ese ingreso neto mensual.</p></details>

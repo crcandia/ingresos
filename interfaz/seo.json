@@ -1,12 +1,12 @@
 {
   "canonical": "https://ingresos.criss-lab.com/",
-  "title": "Ingresos en Chile por edad, sexo y ocupación | ESI 2025",
-  "description": "Explora el ingreso neto mensual en Chile: mediana, promedio y cuántas personas ganan $1 millón o más. Compara edad, sexo y ocupación con la ESI 2025.",
+  "title": "Ingresos en Chile: sueldo promedio y mediano | ESI 2025",
+  "description": "Consulta ingresos en Chile con la ESI 2025: promedio, mediana y percentiles por edad, sexo y ocupación. Personas ocupadas de 20 años o más.",
   "socialTitle": "¿Cuánto se gana en Chile? · ESI 2025",
   "socialDescription": "Explora ingresos por edad, sexo y ocupación. Compara mediana, promedio y proporción sobre cada monto con microdatos públicos del INE.",
   "image": "assets/ingresos-chile-esi2025-social.png",
   "imageAlt": "Portada Ingresos en Chile, con el texto Explora por edad, sexo y ocupación, ESI 2025 y figuras geométricas verdes sobre fondo marfil.",
-  "modified": "2026-10-14",
+  "modified": "2026-10-16",
   "author": "Cristian Candia",
   "repository": "https://github.com/crcandia/ingresos",
   "dataset": "datos/resumen-ingresos-esi2025.csv"

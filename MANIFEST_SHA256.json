@@ -4,24 +4,24 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 4289676,
-    "sha256": "ef21e9540ae79cbbcdaa7417922a2e35ee9c9785f7b9d36d5b31c97f42a79c5b"
+    "bytes": 4292573,
+    "sha256": "eb508dc809615f44287c0b04c371d0c21f1851d1149f4cb66fbfc97586278627"
   },
   "PUBLICACION.md": {
     "bytes": 2176,
     "sha256": "251e049e30d472e1a62364585792d7285d82bc65571a7cc927408953d03514cd"
   },
   "README.md": {
-    "bytes": 7795,
-    "sha256": "9aac6bbb664bd22c90619fbc84e5c43c9fd23b058123cf739aed6ca34e7856c6"
+    "bytes": 8141,
+    "sha256": "258694528b0dba8229672de92af41ab6529b79dff501989d4a8901df71406ad6"
   },
   "README_DATOS.md": {
     "bytes": 8006,
     "sha256": "2193332441b0f110eb4370510cdfae9d81effaa36cf3d1ac8be6aea42b300510"
   },
   "SEO.md": {
-    "bytes": 3810,
-    "sha256": "f2f19de64c0c82c6e0723470dfa180f8dd51db754c5cdfb1dcd4f8881169e9b4"
+    "bytes": 5150,
+    "sha256": "f1d1ebe93c3105e211df4926e1a7410556a5aee48799cc7f4ef12e988cef0ad2"
   },
   "codigo/analizar_dashboard.py": {
     "bytes": 21616,
@@ -40,12 +40,12 @@
     "sha256": "d3f272a73ded32672fdabacefe6f99a1ee3a982fc0950263c6b12dd6a8063674"
   },
   "codigo/seo_web.py": {
-    "bytes": 8775,
-    "sha256": "d12e49a7fd6ca34d320d028c007f6bbfa0c71cc8561c43686ae68cffb67c0670"
+    "bytes": 11573,
+    "sha256": "bb1b28659486ad8778a89fc3a130e66ab12bc95d0fd5ef55adf5c617570566df"
   },
   "construir_dashboard.py": {
-    "bytes": 2916,
-    "sha256": "3f117f3b82bf0106d515b5d9c8a819a762b104339ed3022bede4fd06d9f6f1e8"
+    "bytes": 3021,
+    "sha256": "9ac2088297bb7a648f0b912cdbadfa4c5f4a910a0710796c8ab4574b1c6e7f31"
   },
   "crear_paquete.py": {
     "bytes": 1497,
@@ -108,8 +108,8 @@
     "sha256": "6922fd32327538425faf7de774013d52cfa57797ad107bb46451c61713f24231"
   },
   "interfaz/dashboard.html": {
-    "bytes": 14447,
-    "sha256": "4f1b324ee81c44b416c69eb749563ef44056ab113e07248c36e3a451b6d8ad27"
+    "bytes": 14846,
+    "sha256": "2d481f512b93c7a0bcc70189d69ab6fc33a5f5b35b368f2e28ad8cbb79346417"
   },
   "interfaz/dashboard.js": {
     "bytes": 29366,
@@ -120,12 +120,12 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "interfaz/seo.css": {
-    "bytes": 759,
-    "sha256": "dcff1849f345a17d480ff822861d14f3b00577dcfcea0584c57bbde4283ef68c"
+    "bytes": 1052,
+    "sha256": "b715b4d40cf0ec5269fb4f945c6af1f3b37af04aaaa75c5f730dd06a38d9a074"
   },
   "interfaz/seo.json": {
-    "bytes": 895,
-    "sha256": "1ea7b95b7c9bd8333b616463dfadb8ed9b21482baf8689a0b8fde354b2339952"
+    "bytes": 883,
+    "sha256": "848424d10435767eefdd1a1a8e840f7c6edf59d7ef466fb806c33f0a2a5fb5c2"
   },
   "netlify.toml": {
     "bytes": 174,
@@ -136,12 +136,12 @@
     "sha256": "08be78437523550ad1c3068c89d6f7f0d613d89673d02b093f0b0acbaafd7a12"
   },
   "qa/check_seo.cjs": {
-    "bytes": 7345,
-    "sha256": "695534aa63481bd849fbe081088ac66c271cc7fb40f201407bcff244de17adf5"
+    "bytes": 7970,
+    "sha256": "52ce4d8732cf81da2ec12feea63421c1f7f132b977bf6f85aa759cc454c4145c"
   },
   "qa/cierre.json": {
-    "bytes": 4516,
-    "sha256": "9f446553a6e365820622e97c2793e5327649d37ad86df07940ee5a90885d7c85"
+    "bytes": 4897,
+    "sha256": "788632f09e0141ca744c83cbd011bab8a810cc2a60273af75bb3e74fa180931e"
   },
   "qa/package.json": {
     "bytes": 135,
@@ -174,6 +174,10 @@
   "qa/revision_seo.md": {
     "bytes": 6611,
     "sha256": "511c8fe4c5b41db5ce2a1b95d0a83fdd0097c509557ef7812b2d1e811d7875ea"
+  },
+  "qa/revision_seo_busquedas.md": {
+    "bytes": 969,
+    "sha256": "0cddfbe7374040edd8db79dc5c84bef88ce581c346bed8b4c141bd2b55ed109f"
   },
   "qa/run_dom_checks.cjs": {
     "bytes": 11983,
@@ -232,8 +236,8 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "site/index.html": {
-    "bytes": 4297205,
-    "sha256": "3305f4acc0410d95b85e2b3f5d68be51cb27c7d3e1d46f200894571f38144c5b"
+    "bytes": 4300090,
+    "sha256": "208fa34c795e3ecec105507c3cdfe9848d8d986d32f9d6f485340ad3978a819f"
   },
   "site/robots.txt": {
     "bytes": 76,
@@ -241,7 +245,7 @@
   },
   "site/sitemap.xml": {
     "bytes": 195,
-    "sha256": "4d85fae8476acb704ac8001b96b3a209846fa5362f1aeac2f3a857ad3ff1b412"
+    "sha256": "e347efacc333dc04544785fef5232c29fe9a2440feae0fcb366c2dfc3d825be1"
   },
   "tablas/ocupaciones_residuales.csv": {
     "bytes": 68,

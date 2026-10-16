@@ -41,3 +41,15 @@ Configurar el SEO no prueba que Google haya indexado el sitio ni garantiza posic
 - https://developers.google.com/search/docs/appearance/structured-data/dataset
 - https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
 - https://ogp.me/
+
+## Actualización para búsquedas · 16 de octubre de 2026
+
+Título y descripción orientados a ingresos en Chile, sueldo promedio y mediano. Enlaces HTML a los temas principales y preguntas con respuestas numéricas visibles sin JavaScript. Las cifras se generan desde el agregado `all|all|all` en `datos/dashboard.json`, nunca se mantienen a mano. El universo 20+ se explica junto a las respuestas y se distingue de un promedio exclusivo de asalariados. Estas respuestas generales permanecen fijas cuando se aplican filtros.
+
+La edición de los datos continúa siendo ESI 2025. La fecha de modificación describe el cambio editorial, no una actualización de ingresos a 2026. No se crearon páginas repetidas por palabras clave.
+
+Para confirmar la presencia en Google, abrir https://search.google.com/search-console y seleccionar la propiedad del dominio. Enviar `https://ingresos.criss-lab.com/sitemap.xml`. Inspeccionar `https://ingresos.criss-lab.com/`, probar la URL publicada y solicitar indexación. La etiqueta de Analytics no prueba que la propiedad esté verificada en Search Console. No hay confirmación de estas operaciones desde este proyecto.
+
+Referencias adicionales:
+- https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+- https://developers.google.com/search/docs/monitor-debug/search-console-start

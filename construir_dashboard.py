@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 import subprocess
 from html import escape
-from codigo.seo_web import preparar_web
+from codigo.seo_web import preparar_web, respuestas_ingresos
 
 ROOT = Path(__file__).resolve().parent
 template = (ROOT / 'interfaz/dashboard.html').read_text()
@@ -11,6 +11,7 @@ data = json.loads((ROOT / 'datos/dashboard.json').read_text())
 seo = json.loads((ROOT / 'interfaz/seo.json').read_text())
 template = template.replace('__PAGE_TITLE__', escape(seo['title']))
 template = template.replace('__PAGE_DESCRIPTION__', escape(seo['description'], quote=True))
+template = template.replace('<!--__INCOME_ANSWERS__-->', respuestas_ingresos(data))
 assert len(data['domains']) == len(data['meta']['age']) * len(data['meta']['sex']) * len(data['meta']['occupation'])
 embedded = json.dumps(data, ensure_ascii=False, separators=(',', ':'), allow_nan=False).replace('</', '<\\/')
 styles = (ROOT / 'interfaz/dashboard.css').read_text() + '\n' + (ROOT / 'interfaz/seo.css').read_text()

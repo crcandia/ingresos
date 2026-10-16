@@ -74,3 +74,7 @@ La versión web incluye miniatura social, Open Graph, Twitter Card, URL canónic
 Limitación de verificación: no se ejecutó una inspección interactiva en un navegador real desde este entorno. La lógica se probó con jsdom y el diseño se inspeccionó mediante una representación estática en tamaños de escritorio y teléfono.
 
 Fuente: Instituto Nacional de Estadísticas de Chile, Encuesta Suplementaria de Ingresos 2025. Elaboración: Dr. Cristian Candia.
+
+### SEO para búsquedas (16 de octubre de 2026)
+
+Respuestas generales sobre sueldo promedio, ingreso mediano y proporción sobre un millón, generadas desde los datos del dashboard y legibles sin JavaScript. Incluye enlaces directos a edad, ocupación y metodología. Ver `SEO.md` para el alcance y la comprobación pendiente en Search Console.

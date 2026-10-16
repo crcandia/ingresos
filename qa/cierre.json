@@ -6,7 +6,7 @@
   "visual_validation": "Inspección estática de escritorio1400px y teléfono390px. Verificados el nuevo perfil y las doce tarjetas. Posiciones de filtros explícitas para evitar columnas implícitas en la representación estática.",
   "native_figure_export": "PDF de distribución y curvas lineal/logarítmica, y PDF independiente del perfil de ingresos por edad, desde los SVG de la interfaz.",
   "self_contained": "HTML descargable sin dependencias externas. La versión web añade Google Analytics autorizado por el usuario.",
-  "html_sha256": "ef21e9540ae79cbbcdaa7417922a2e35ee9c9785f7b9d36d5b31c97f42a79c5b",
+  "html_sha256": "eb508dc809615f44287c0b04c371d0c21f1851d1149f4cb66fbfc97586278627",
   "siteMatchesDownload": false,
   "netlifyConfigParsed": true,
   "no_pending_data_or_functionality_fixes": true,
@@ -15,9 +15,9 @@
     "Verificación DOM y visual estática, sin sesión interactiva en un navegador real.",
     "63 de 216 celdas específicas tienen menos de 60 casos. Se señalan límites muestrales. La bandaP 25–P 75 no estima incertidumbre.",
     "Máximos puntuales descriptivos, sin prueba de diferencias por edad ni inferencia de trayectorias individuales.",
-    "Despliegue HTTPS, DNS, indexación y recepción de Analytics en producción sin confirmar desde este entorno."
+    "Dominio HTTPS y recursos SEO confirmados el 16 de octubre de 2026. Indexación en Google y recepción de Analytics sin confirmar."
   ],
-  "web_sha256": "3305f4acc0410d95b85e2b3f5d68be51cb27c7d3e1d46f200894571f38144c5b",
+  "web_sha256": "208fa34c795e3ecec105507c3cdfe9848d8d986d32f9d6f485340ad3978a819f",
   "siteAndDownloadShareData": true,
   "analytics": {
     "measurementId": "G-XSFF2F0XKK",
@@ -84,5 +84,20 @@
     "jsErrors": [],
     "verificationLimit": "DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot."
   },
-  "age5_independent_review": "qa/revision_edad5.md"
+  "age5_independent_review": "qa/revision_edad5.md",
+  "seo_search_update": {
+    "date": "2026-10-16",
+    "visibleAnswersFromAggregate": true,
+    "twentyPlusScopeExplicit": true,
+    "crawlableTopicLinks": true,
+    "searchConsoleVerified": false
+  },
+  "production_http": {
+    "date": "2026-10-16",
+    "home": 200,
+    "robots": 200,
+    "sitemap": 200,
+    "indexRedirect": 301,
+    "unknownPath": 404
+  }
 }
