@@ -210,6 +210,7 @@
  $('export-csv').addEventListener('click',()=>{download('ingresos_ESI2025_vista.csv',csvText(),'text/csv;charset=utf-8');toast('Datos de esta vista descargados. Las cifras del CSV conservan la precisión del cálculo.');});
  $('save').addEventListener('click',()=>{
    const clone=document.documentElement.cloneNode(true);
+   clone.querySelector('#relato').classList.remove('story-ready');
    clone.querySelector('#initial-state').textContent=JSON.stringify(state);
    // Live form properties do not survive HTML serialization automatically.
    for(const original of document.querySelectorAll('input[id],select[id]')){
@@ -226,6 +227,28 @@
  });
  $('print').addEventListener('click',()=>{const old=$('method-details').open;$('method-details').open=true;window.print();$('method-details').open=old;});
  let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{renderDistribution(domain());renderSurvival(domain());renderAges();renderAgeProfile();},150);});
+ // Only the illustration follows the scroll. Survey controls retain their state.
+ const story=$('relato'), steps=[...story.querySelectorAll('.story-step')];
+ if('IntersectionObserver' in window && typeof window.requestAnimationFrame==='function'){
+   story.classList.add('story-ready');
+   const dots=[...story.querySelectorAll('.dots i')];let previous=-1,scheduled=false;
+   function syncStory(){
+     scheduled=false;
+     const line=window.innerHeight*(window.innerWidth<=740?.47:.48);
+     let index=0;steps.forEach((step,i)=>{if(step.getBoundingClientRect().top<=line)index=i;});
+     if(index===previous)return;previous=index;
+     const step=steps[index],units=Number(step.dataset.units);
+     $('dot-label').textContent=step.dataset.monto+' o más';
+     $('dot-count').textContent='≈ '+step.dataset.percent+' del total';
+     dots.forEach((dot,i)=>dot.classList.toggle('on',i<units));
+     steps.forEach((s,i)=>s.classList.toggle('current',i===index));
+   }
+   function queueStory(){if(!scheduled){scheduled=true;window.requestAnimationFrame(syncStory);}}
+   new IntersectionObserver(([entry])=>{
+     if(entry.isIntersecting){window.addEventListener('scroll',queueStory,{passive:true});window.addEventListener('resize',queueStory);queueStory();}
+     else{window.removeEventListener('scroll',queueStory);window.removeEventListener('resize',queueStory);}
+   }).observe(story);
+ }
  render();
  window.ESI_DASHBOARD=Object.freeze({getState:()=>({...state}),setState,eventAt,getDomain:domain,csvText,render,meta:DATA.meta});
 })();

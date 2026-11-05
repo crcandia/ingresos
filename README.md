@@ -78,3 +78,7 @@ Fuente: Instituto Nacional de Estadísticas de Chile, Encuesta Suplementaria de 
 ### SEO para búsquedas (16 de octubre de 2026)
 
 Respuestas generales sobre sueldo promedio, ingreso mediano y proporción sobre un millón, generadas desde los datos del dashboard y legibles sin JavaScript. Incluye enlaces directos a edad, ocupación y metodología. Ver `SEO.md` para el alcance y la comprobación pendiente en Search Console.
+
+### Lectura para público general (5 de noviembre de 2026)
+
+La portada define los ingresos netos de la ocupación principal y compara la mediana y el promedio del total de 20 años o más. El relato de 100 puntos explica cuántas personas alcanzan uno, dos y cuatro millones de pesos al mes. Las cifras nacionales se generan con el agregado general y no cambian con los filtros del explorador. Prueba del recorrido: `node qa/check_relato.cjs`.

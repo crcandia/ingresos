@@ -4,16 +4,16 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 4292573,
-    "sha256": "eb508dc809615f44287c0b04c371d0c21f1851d1149f4cb66fbfc97586278627"
+    "bytes": 4304104,
+    "sha256": "1bf84805fda0a36f3398d65a49ebd0dbf47ed0f55f9d095db6d579069cc0b442"
   },
   "PUBLICACION.md": {
     "bytes": 2176,
     "sha256": "251e049e30d472e1a62364585792d7285d82bc65571a7cc927408953d03514cd"
   },
   "README.md": {
-    "bytes": 8141,
-    "sha256": "258694528b0dba8229672de92af41ab6529b79dff501989d4a8901df71406ad6"
+    "bytes": 8586,
+    "sha256": "2c8c7ea5c23c15951834dfd81426256f919927fea1f04c9d85947a63e16d57a3"
   },
   "README_DATOS.md": {
     "bytes": 8006,
@@ -39,13 +39,17 @@
     "bytes": 1001,
     "sha256": "d3f272a73ded32672fdabacefe6f99a1ee3a982fc0950263c6b12dd6a8063674"
   },
+  "codigo/relato.py": {
+    "bytes": 4116,
+    "sha256": "4a6fc2d11b3a94866f8a2c56bd382b9d628c6e857278054572a16ce0e6c5303e"
+  },
   "codigo/seo_web.py": {
     "bytes": 11573,
     "sha256": "bb1b28659486ad8778a89fc3a130e66ab12bc95d0fd5ef55adf5c617570566df"
   },
   "construir_dashboard.py": {
-    "bytes": 3021,
-    "sha256": "9ac2088297bb7a648f0b912cdbadfa4c5f4a910a0710796c8ab4574b1c6e7f31"
+    "bytes": 3182,
+    "sha256": "6f907f79a84b0d7ce6e8b5c00e1c05eaafd01d03e7f4556909c00d65c1325094"
   },
   "crear_paquete.py": {
     "bytes": 1497,
@@ -108,24 +112,24 @@
     "sha256": "6922fd32327538425faf7de774013d52cfa57797ad107bb46451c61713f24231"
   },
   "interfaz/dashboard.html": {
-    "bytes": 14846,
-    "sha256": "2d481f512b93c7a0bcc70189d69ab6fc33a5f5b35b368f2e28ad8cbb79346417"
+    "bytes": 14649,
+    "sha256": "522fe3735027e0e5136a2dfa204942fffbf264a0c0e537b17abcdb91fe5aa112"
   },
   "interfaz/dashboard.js": {
-    "bytes": 29366,
-    "sha256": "b5703c0dad08b117de7092af00cc3088648ff2579c03f0007fd58f5f446662e8"
+    "bytes": 30825,
+    "sha256": "10a33e81811e8fca4c28547a78f27be2bddedac903a74d1a34040ed782ef444c"
   },
   "interfaz/favicon.svg": {
     "bytes": 295,
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "interfaz/seo.css": {
-    "bytes": 1052,
-    "sha256": "b715b4d40cf0ec5269fb4f945c6af1f3b37af04aaaa75c5f730dd06a38d9a074"
+    "bytes": 6505,
+    "sha256": "f0d3167a23c91896cedaa3429c00522e2d92f57290229c746f0ec05f87580fe1"
   },
   "interfaz/seo.json": {
-    "bytes": 883,
-    "sha256": "848424d10435767eefdd1a1a8e840f7c6edf59d7ef466fb806c33f0a2a5fb5c2"
+    "bytes": 921,
+    "sha256": "ab03cd0135ddbdcc0bd117daea491aecfeb3928682d18de3b079d2eec137e36e"
   },
   "netlify.toml": {
     "bytes": 174,
@@ -135,13 +139,17 @@
     "bytes": 3229,
     "sha256": "08be78437523550ad1c3068c89d6f7f0d613d89673d02b093f0b0acbaafd7a12"
   },
+  "qa/check_relato.cjs": {
+    "bytes": 1777,
+    "sha256": "0e6220e6084936f054b04c5b1bd5d9931abc41a17b04d53afc20f0e2bf4a99a3"
+  },
   "qa/check_seo.cjs": {
-    "bytes": 7970,
-    "sha256": "52ce4d8732cf81da2ec12feea63421c1f7f132b977bf6f85aa759cc454c4145c"
+    "bytes": 7967,
+    "sha256": "c41f5663b6a252b6595eddb33e6cde23fe50b812e17a195d9e8af219f7484558"
   },
   "qa/cierre.json": {
-    "bytes": 4897,
-    "sha256": "788632f09e0141ca744c83cbd011bab8a810cc2a60273af75bb3e74fa180931e"
+    "bytes": 5120,
+    "sha256": "9b8314577de5253ad17e0a2153f5a658ed0153ad143e392bd786b9489c0d3695"
   },
   "qa/package.json": {
     "bytes": 135,
@@ -236,8 +244,8 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "site/index.html": {
-    "bytes": 4300090,
-    "sha256": "208fa34c795e3ecec105507c3cdfe9848d8d986d32f9d6f485340ad3978a819f"
+    "bytes": 4311669,
+    "sha256": "b222aa65ef7db56b3106fcb1754dbf6ba52b3a3f7943f2dd42c43cec0e061e0f"
   },
   "site/robots.txt": {
     "bytes": 76,
@@ -245,7 +253,7 @@
   },
   "site/sitemap.xml": {
     "bytes": 195,
-    "sha256": "e347efacc333dc04544785fef5232c29fe9a2440feae0fcb366c2dfc3d825be1"
+    "sha256": "e006fae34159f5da09aa94242a88263f1ddd3f7a2da2af9aa61b5a56a61f98d8"
   },
   "tablas/ocupaciones_residuales.csv": {
     "bytes": 68,

@@ -11,15 +11,14 @@
 <body>
 <a class="skip" href="#explorar">Ir a los datos</a>
 <header class="topbar">
- <div class="brand"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M2 25V15h5v10M11 25V4h5v21M20 25V10h5v15"/></svg><span>Ingresos en Chile</span><span class="edition">ESI 2025</span></div>
+ <div class="brand"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M2 25V15h5v10M11 25V4h5v21M20 25V10h5v15"/></svg><span>Ingresos netos en Chile</span><span class="edition">ESI 2025</span></div>
  <nav aria-label="Acciones"><button id="about" class="quiet">Cómo leer los datos</button><button id="save" class="outline"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>Guardar copia</button></nav>
 </header>
 <main>
- <section class="hero" aria-labelledby="title">
-  <div><p class="eyebrow">UNA MIRADA AL TRABAJO EN CHILE</p><h1 id="title">Ingresos en Chile, <em>en perspectiva.</em></h1><p class="intro">Explora cuánto se gana en Chile: ingreso promedio, mediano y percentiles por edad, sexo y ocupación. Cifras de la ESI 2025 del INE para personas ocupadas de 20 años o más.</p></div>
-  <div class="source-stamp"><span class="status-dot"></span><span>Microdatos INE<br><strong>Pesos de octubre de 2025</strong></span></div>
- </section>
- <nav class="topic-links" aria-label="Secciones del análisis"><a href="#explorar">Explorar ingresos</a><a href="#sueldo-promedio-chile">Sueldo promedio y mediano</a><a href="#age-profile-title">Ingresos por edad</a><a href="#occ-title">Ingresos por ocupación</a><a href="#method">Fuente y metodología</a></nav>
+ <!--__COVER__-->
+ <!--__STORY__-->
+ <div class="explore-intro"><p class="kicker">02 &nbsp; / &nbsp; EXPLORA TU GRUPO</p><h2>¿Con quién quieres comparar tu ingreso?</h2><p>Elige una ocupación, un sexo o una edad. Luego ingresa un monto mensual neto para ver cuántas personas del grupo ganan esa cantidad o más.</p></div>
+ <nav class="topic-links" aria-label="Secciones del análisis"><a href="#explorar">Elegir grupo</a><a href="#threshold-title">Consultar un monto</a><a href="#age-profile-title">Comparar edades</a><a href="#occ-title">Comparar trabajos</a><a href="#method">Cómo se calculó</a></nav>
  <noscript><p class="notice">Sin JavaScript puedes leer la vista inicial y la metodología. Actívalo para cambiar filtros, consultar otros montos y descargar una copia.</p></noscript>
  <section class="filters" id="explorar" aria-label="Filtros de población">
   <div class="occupation-control"><label for="occupation">Ocupación</label><select id="occupation"></select></div>
@@ -30,8 +29,8 @@
  <div class="selection-line"><p id="selection-label"></p><button class="text-button" id="reset">Restablecer</button></div>
  <div id="sample-warning" class="notice" role="status" hidden></div>
  <section class="metrics" aria-label="Resumen del grupo seleccionado">
-  <article class="metric"><div class="metric-name">Ingreso mediano <span class="mini-tag">Percentil 50</span></div><div class="metric-value" id="median"></div><p>El punto medio de la distribución de ingresos.</p></article>
-  <article class="metric"><div class="metric-name">Ingreso promedio</div><div class="metric-value" id="mean"></div><p id="mean-note"></p></article>
+  <article class="metric"><div class="metric-name">Ingreso neto mediano <span class="mini-tag">Percentil 50</span></div><div class="metric-value" id="median"></div><p>Al menos la mitad de este grupo gana este monto o menos al mes.</p></article>
+  <article class="metric"><div class="metric-name">Ingreso neto promedio</div><div class="metric-value" id="mean"></div><p id="mean-note"></p></article>
   <article class="metric"><div class="metric-name">Personas representadas</div><div class="metric-value" id="population"></div><p id="population-note"></p></article>
  </section>
  <section class="analysis-grid" aria-label="Distribución y consulta por ingreso">
@@ -55,7 +54,7 @@
   <div class="plot" id="survival"></div><p class="chart-note" id="survival-scale-note" aria-live="polite"></p><p class="chart-note" id="survival-note">La curva muestra quiénes ganan el monto del eje o más. Banda: intervalo de confianza puntual del 95%. Trazo discontinuo: precisión limitada. Consulta los puntos con el cursor o las flechas del teclado.</p>
  </section>
  <section class="surface age-profile-card" aria-labelledby="age-profile-title">
-  <div class="section-head"><div><p class="eyebrow">INGRESOS A LO LARGO DE LAS EDADES</p><h2 id="age-profile-title">Ingresos por edad: ¿dónde se alcanza el máximo?</h2><p class="section-description" id="age-profile-context"></p></div></div>
+  <div class="section-head"><div><p class="eyebrow">03 &nbsp; / &nbsp; COMPARA EDADES</p><h2 id="age-profile-title">¿A qué edades son más altos los ingresos netos?</h2><p class="section-description" id="age-profile-context"></p></div></div>
   <div class="profile-legend"><span><i class="profile-median"></i>Mediana · P50</span><span><i class="profile-mean"></i>Promedio</span><span><i class="profile-band"></i>Mitad central · P25–P75</span><span>○ ◇ Muestra o precisión limitada</span></div>
   <div class="age-peaks" id="age-peaks"></div>
   <p class="profile-scroll-hint">Desliza el gráfico para recorrer las edades.</p>
@@ -69,7 +68,7 @@
   <div class="age-grid" id="age-panels"></div>
  </section>
  <section class="surface occupations-card" aria-labelledby="occ-title">
-  <div class="section-head"><div><p class="eyebrow">COMPARACIÓN POR OCUPACIÓN</p><h2 id="occ-title">Ingresos por ocupación: ¿cuánto cambia entre trabajos?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Proporción sobre el monto elegido</option></select></label></div>
+  <div class="section-head"><div><p class="eyebrow">04 &nbsp; / &nbsp; COMPARA TRABAJOS</p><h2 id="occ-title">¿Cómo cambia el ingreso neto según el trabajo?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Proporción sobre el monto elegido</option></select></label></div>
   <div id="occupation-ranking" class="ranking"></div><p class="chart-note">Selecciona una ocupación para explorarla. * Señala estimaciones exploratorias. Las categorías describen el trabajo realizado. No equivalen al nivel educativo.</p>
  </section>
  <section class="method" id="method">

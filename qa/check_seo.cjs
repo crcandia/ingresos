@@ -14,7 +14,7 @@ assert(d.getElementById('sueldo-promedio-chile').textContent.includes('$967.862'
 assert(d.getElementById('sueldo-mediano-chile').textContent.includes('$688.209'));
 assert(d.getElementById('personas-un-millon').textContent.includes('29,6%'));
 assert(d.getElementById('personas-un-millon').textContent.includes('2.651.000'));
-assert(d.querySelector('h1').textContent.includes('Ingresos en Chile'));
+assert(d.querySelector('h1').textContent.includes('Ingresos netos'));
 assert.equal(d.title,config.title);
 assert.equal(d.querySelector('meta[name="description"]').content,config.description);
 assert.equal(d.querySelectorAll('link[rel="canonical"]').length,1);
