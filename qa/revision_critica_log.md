@@ -1,5 +1,7 @@
 # Revisión crítica independiente: escala logarítmica y universo de edad
 
+> **Archivo histórico.** Este informe documenta la incorporación de la escala logarítmica con los tramos de edad de esa versión. Sus cifras, límites de cobertura, pruebas y dictamen corresponden exclusivamente a la versión examinada. La edición actual reúne a todas las personas ocupadas de referencia de la ESI 2025. [Resultados y comprobaciones de la edición actual](revision_universo.md).
+
 Adversarial verdict: PASS_WITH_RISKS
 
 Completion claim challenged: El HTML permite alternar la curva de altos ingresos entre escala lineal y logarítmica del porcentaje, conserva esa elección al guardar, y explica qué población reúne «Total (20+)».

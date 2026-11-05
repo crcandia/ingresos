@@ -17,12 +17,12 @@ def respuestas_ingresos(data: dict) -> str:
     percent = total['curve']['p'][index]
     percent_text = f'{percent:.1f}'.replace('.', ',')
     people = f'{round(total["N"] * percent / 100 / 1000) * 1000:,}'.replace(',', '.')
-    return f'''<p class="faq-scope">Las respuestas numéricas siguientes describen el total de personas ocupadas de 20 años o más en la ESI 2025. Son una referencia general y no cambian con los filtros. Montos en pesos de octubre de 2025.</p>
-  <details open id="sueldo-promedio-chile"><summary>¿Cuál es el sueldo promedio en Chile según este análisis?</summary><p>El ingreso neto mensual promedio de la ocupación principal es de aproximadamente <strong>{money(total['mean'])}</strong> entre las personas ocupadas de 20 años o más. Esta estimación ponderada se calcula con los microdatos de la ESI 2025 del INE. Incluye asalariados e independientes, por lo que no es exclusivamente un promedio de sueldos de asalariados ni el total oficial de todas las edades.</p></details>
-  <details open id="sueldo-mediano-chile"><summary>¿Cuál es el ingreso mediano en Chile para personas ocupadas de 20 años o más?</summary><p>La mediana es de aproximadamente <strong>{money(total['median'])}</strong> mensuales en este universo de la ESI 2025. Al menos la mitad de las personas representadas gana ese monto o menos. La mediana ayuda a describir el centro de la distribución sin que los ingresos más altos la eleven como ocurre con el promedio.</p></details>
-  <details id="personas-un-millon"><summary>¿Cuántas personas ganan un millón de pesos o más en Chile?</summary><p>Entre las personas ocupadas de 20 años o más, aproximadamente el <strong>{percent_text}%</strong>, unas <strong>{people} personas</strong>, recibe $1.000.000 o más al mes en su ocupación principal, según este cálculo con la ESI 2025. Se incluyen quienes ganan exactamente ese monto. Son ingresos netos y estimaciones redondeadas. <a href="#threshold-title">Consulta otros montos y su precisión</a>.</p></details>
-  <details><summary>¿Cómo comparar los sueldos por edad, sexo y ocupación en Chile?</summary><p>El <a href="#age-profile-title">gráfico de ingresos por edad</a> compara promedio, mediana y percentiles 25 y 75 en tramos de cinco años, desde 20–24 hasta 70–74, y un grupo final de 75 años o más. También puedes comparar <a href="#sex-title">mujeres y hombres</a> para la misma selección de edad y ocupación, o ver <a href="#occ-title">los nueve grupos de ocupación</a> para la edad y el sexo elegidos. Es una comparación de personas distintas en 2025, no una predicción de cómo cambiará tu sueldo al envejecer.</p></details>
-  <details><summary>¿De dónde salen los sueldos por carrera y con quién se comparan?</summary><p>En la <a href="#sueldos-por-carrera">comparación de sueldos por carrera</a> tomamos el ingreso bruto promedio que Mi Futuro informa para el tercer año y estimamos cuánto recibiría en líquido una persona asalariada con ese promedio. La ESI 2025 permite ver cuántas personas ocupadas de 20 años o más en Chile ganaban ese monto o más en su trabajo principal, con cualquier nivel de estudios.</p></details>'''
+    return f'''<p class="faq-scope">Estas cifras nacionales corresponden a todas las edades que cubre la ESI 2025. Se expresan en pesos de octubre de 2025 y no cambian con los filtros.</p>
+  <details open id="sueldo-promedio-chile"><summary>¿Cuál fue el sueldo promedio en Chile en 2025?</summary><p>El ingreso neto del trabajo principal promedió <strong>{money(total['mean'])}</strong> al mes entre las personas ocupadas en Chile. El cálculo incluye a quienes reciben un sueldo y a quienes trabajan por cuenta propia. <a href="https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/07/14/la-mitad-de-las-personas-ocupadas-en-chile-percibieron-ingresos-menores-o-iguales-a-%24680.000-en-2025">Resultados nacionales del INE</a>.</p></details>
+  <details open id="sueldo-mediano-chile"><summary>¿Cuál fue el ingreso mediano en Chile en 2025?</summary><p>La mediana fue de <strong>{money(total['median'])}</strong> netos mensuales. La mitad de las personas ocupadas recibió ese monto o menos en su trabajo principal.</p></details>
+  <details id="personas-un-millon"><summary>¿Cuántas personas ganan un millón de pesos o más en Chile?</summary><p>En 2025, unas <strong>{people} personas</strong> recibieron al menos $1.000.000 netos al mes en su trabajo principal. Representaban el <strong>{percent_text}%</strong> de las personas ocupadas en Chile. <a href="#threshold-title">Consulta otros montos y su precisión</a>.</p></details>
+  <details><summary>¿Cómo comparar los sueldos por edad, sexo y ocupación en Chile?</summary><p>El <a href="#age-profile-title">gráfico de ingresos por edad</a> compara el promedio, la mediana y los percentiles 25 y 75. Los tramos van de cinco en cinco desde los 15 años y el último reúne a las personas de 75 o más. También puedes comparar <a href="#sex-title">mujeres y hombres</a> para la misma edad y ocupación, o ver <a href="#occ-title">los nueve grupos ocupacionales</a> para la edad y el sexo elegidos. Cada tramo describe a las personas que tenían esa edad en 2025.</p></details>
+  <details><summary>¿De dónde salen los sueldos por carrera y con quién se comparan?</summary><p>En la <a href="#sueldos-por-carrera">comparación de sueldos por carrera</a> usamos el ingreso bruto promedio que Mi Futuro informa para el tercer año de titulación. Estimamos el líquido de una persona asalariada con ese ingreso y calculamos, con la ESI 2025, cuántas personas ocupadas en Chile alcanzaban ese monto en su trabajo principal, cualquiera fuera su formación.</p></details>'''
 
 
 def preparar_web(root: Path, html: str, data: dict) -> str:
@@ -72,10 +72,10 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     dataset_description = (
         'Estadísticas agregadas de ingreso neto mensual de la ocupación principal en Chile, '
         f'calculadas a partir de los microdatos públicos ESI 2025 del INE. Incluye {len(data["domains"])} combinaciones '
-        'de ocupación, sexo y edad, para personas ocupadas de referencia de 20 años o más. '
+        'de ocupación, sexo y edad, para toda la población ocupada de referencia de la ESI (desde los 15 años). '
         'El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral '
         'y población expandida. Son estimaciones ponderadas, expresadas en pesos de octubre de 2025. '
-        'Elaboración independiente de Cristian Candia. No representa toda la muestra de la ESI.'
+        'Elaboración independiente de Cristian Candia.'
     )
     graph = [
         {'@type': 'Person', '@id': person_id, 'name': config['author'],
@@ -94,7 +94,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
          'primaryImageOfPage': {'@type': 'ImageObject', 'url': canonical + config['image'],
                                 'width': width, 'height': height, 'caption': config['imageAlt']}},
         {'@type': 'Dataset', '@id': dataset_id,
-         'name': 'Ingresos netos en Chile por ocupación, sexo y edad, personas de 20 años o más, ESI 2025',
+         'name': 'Ingresos netos en Chile por ocupación, sexo y edad, ESI 2025',
          'description': dataset_description, 'url': canonical + '#datos',
          'creator': {'@id': person_id}, 'inLanguage': 'es-CL', 'isAccessibleForFree': True,
          'dateModified': data['meta']['generatedUTC'][:10], 'temporalCoverage': '2025',
@@ -116,7 +116,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     html = html.replace('</head>', '\n'.join(tags) + '\n</head>', 1)
     resources = f'''<section class="public-data surface" id="datos" aria-labelledby="datos-title">
  <p class="eyebrow">FUENTES Y DESCARGAS</p><h2 id="datos-title">Datos para explorar y reproducir</h2>
- <p>Descarga el resumen de las {len(data["domains"])} combinaciones de ocupación, sexo y edad. Incluye personas ocupadas de 20 años o más, con ingresos expresados en pesos de octubre de 2025. El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral y población expandida.</p>
+ <p>Descarga el resumen de las {len(data["domains"])} combinaciones de ocupación, sexo y edad. El CSV incluye mediana, promedio, intervalos del promedio, cuantiles, tamaño de la muestra y población representada. Los ingresos están en pesos de octubre de 2025. Las estimaciones quedan vacías cuando el grupo carece de observaciones.</p>
  <p>Elaboración independiente de <strong>Cristian Candia</strong>, <a href="https://criss-lab.com/es/" target="_blank" rel="noopener noreferrer">CRiSS-LAB</a>, a partir de microdatos públicos del INE. Las categorías y reglas de cálculo están documentadas en el repositorio.</p>
  <div class="public-data-links"><a href="{canonical + config['dataset']}" download target="_blank" rel="noopener noreferrer">Descargar resumen completo · CSV</a><a href="{config['repository']}" target="_blank" rel="noopener noreferrer">Código y metodología · GitHub</a></div>
 </section>'''

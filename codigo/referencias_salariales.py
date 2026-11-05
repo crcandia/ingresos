@@ -47,7 +47,7 @@ def grafico_sueldos(titulo, grupos, mediana_nacional, nota):
           <span class="cargo-track" aria-hidden="true"><i style="width:{100 * monto / maximo:.5f}%"></i></span>
           <small><strong>≈ {pesos(monto)}</strong> · {escape(contexto)}</small></li>'''
 
-    base = barra('Ingreso mediano en Chile', mediana_nacional, 'ESI 2025, personas ocupadas de 20 años o más', True)
+    base = barra('Ingreso mediano en Chile', mediana_nacional, 'ESI 2025, personas ocupadas de 15 años o más', True)
     listas = [f'<ul class="cargo-bars base-nacional">{base}</ul>']
     for grupo, filas in grupos:
         if grupo:
@@ -88,6 +88,11 @@ def ejemplos_carreras(referencias, registros, total, mediana_nacional):
     puntos = ''.join(f'<circle class="career-dot-{grupo}" cx="{i % 10 * 8 + 4}" cy="{i // 10 * 8 + 4}" r="3"/>'
                      for i, grupo in enumerate(grupos))
     diferencia = pesos(abs(comercial['monto'] - derecho['monto']))
+    # Compare the common rounded landmark with all earners. Individual rates stay in the table.
+    umbral_comun = round((comercial['monto'] + derecho['monto']) / 2 / 100_000) * 100_000
+    millones = f'{umbral_comun / 1_000_000:.1f}'.replace('.', ',')
+    _, personas = sobre_umbral(registros, umbral_comun)
+    alcanzan_umbral = round(100 * personas / total)
 
     filas = []
     barras = []
@@ -100,7 +105,7 @@ def ejemplos_carreras(referencias, registros, total, mediana_nacional):
           <td><strong>{porcentaje(carrera["tasa"])}</strong><small>≈ {cantidad} personas</small></td></tr>''')
 
     grafico = grafico_sueldos('Cuántos ingresos medianos representa cada carrera', [(None, barras)], mediana_nacional,
-        'Las barras muestran el líquido estimado al tercer año de titulación. El porcentaje cuenta a las personas ocupadas de 20 años o más en Chile que ganan ese monto o más, cualquiera sea su formación.')
+        'Las barras muestran el líquido estimado al tercer año de titulación. El porcentaje cuenta a las personas ocupadas de 15 años o más en Chile que ganan ese monto o más, cualquiera sea su formación.')
     return f'''<section class="salary-story career-story" id="sueldos-por-carrera" aria-labelledby="career-title">
       <h4 id="career-title">{TITULO_CARRERAS}</h4>
       <figure class="career-hundred">
@@ -113,9 +118,9 @@ def ejemplos_carreras(referencias, registros, total, mediana_nacional):
             <div><strong class="career-count">{alcanzan_enfermeria} <small>de 100</small></strong>
             <span>llegaban también a <b>{enfermeria["neto"]}</b>, el líquido estimado en {enfermeria["link"]}.</span></div></div>
         </div>
-        <figcaption>Cada punto representa a una de cada 100 personas ocupadas de 20 años o más en Chile (ESI 2025). Para cada carrera estimamos el líquido a partir del ingreso bruto promedio al tercer año de titulación (Mi Futuro).</figcaption>
+        <figcaption>Cada punto representa a una de cada 100 personas ocupadas de 15 años o más en Chile (ESI 2025). Para cada carrera estimamos el líquido a partir del ingreso bruto promedio al tercer año de titulación (Mi Futuro).</figcaption>
       </figure>
-      <p class="career-next">Más arriba, {comercial["link"]} y {derecho["link"]} rondan los $1,6 millones líquidos, con unos <strong>{diferencia}</strong> de diferencia. Cerca de {round(comercial["tasa"])} de cada 100 personas ocupadas alcanzaban esos montos.</p>
+      <p class="career-next">Unos <strong>{diferencia}</strong> separan a {comercial["link"]} de {derecho["link"]}. Ambas rondan los ${millones} millones líquidos. En Chile, <strong>{alcanzan_umbral} de cada 100</strong> personas ocupadas ganaban esa suma o más.</p>
       <details class="salary-detail salary-comparator"><summary>Comparar las {len(por_nombre)} carreras</summary>
         <div id="comparador-carreras"><p>Desde educación de párvulos hasta medicina, las barras ordenan el líquido estimado al tercer año de titulación. El nombre de cada carrera lleva a sus opciones de estudio en Lixandria.</p>
         {grafico}</div>
@@ -128,7 +133,7 @@ def ejemplos_carreras(referencias, registros, total, mediana_nacional):
       <details class="salary-detail"><summary>De dónde salen los sueldos y cómo estimamos el líquido</summary>
         <p>Mi Futuro publica ingresos brutos. Para estimar qué recibiría una persona asalariada con ese ingreso medio, descontamos un 18,7% por cotizaciones y aplicamos el impuesto de septiembre de 2025. El monto efectivo depende de los descuentos personales. <a href="{fuente}">Estadísticas por carrera de Mi Futuro</a> · <a href="{sii}">Tabla de impuesto del SII</a>.</p>
         <p>Mi Futuro usa los ingresos anuales declarados al SII en 2022, 2023 y 2024, divididos por doce. Incluye a quienes alcanzaron el equivalente anual del sueldo mínimo. En Derecho ajusta un año por el tiempo entre la licenciatura y el título. <a href="https://www.mifuturo.cl/wp-content/uploads/2025/12/Metodologia-Estadisticas-por-Carrera_2025-2026.pdf#page=5">Metodología de Mi Futuro</a>.</p>
-        <p>Las carreras están en pesos de septiembre de 2025. Para cada líquido estimado, redondeado a mil pesos, contamos cuántas personas ocupadas de 20 años o más alcanzaron ese monto en su trabajo principal en la ESI, expresada en pesos de octubre. Ese porcentaje se refiere a personas de todas las carreras y niveles educativos.</p>
+        <p>Las carreras están en pesos de septiembre de 2025. Para cada líquido estimado, redondeado a mil pesos, contamos cuántas personas ocupadas de 15 años o más alcanzaron ese monto en su trabajo principal en la ESI, expresada en pesos de octubre. Ese porcentaje se refiere a personas de todas las carreras y niveles educativos.</p>
       </details></section>'''
 
 

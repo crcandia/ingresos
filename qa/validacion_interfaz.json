@@ -3,8 +3,8 @@
   "fiveYearAgeBands": true,
   "ageProfileValuesMatchAllDomains": true,
   "ageProfilePercentiles": "P25–P75, dispersion not confidence",
-  "domainScaleCombinationsRendered": 780,
-  "domainsRendered": 390,
+  "domainScaleCombinationsRendered": 840,
+  "domainsRendered": 420,
   "scales": [
     "linear",
     "log"
@@ -15,11 +15,14 @@
   "stepConfidenceBand": true,
   "noNetworkDependencies": true,
   "savedHTMLReopenedWithScale": true,
-  "csvExportRows": 22,
+  "csvExportRows": 25,
   "scaleDoesNotChangeCSV": true,
-  "explicit20PlusUniverse": true,
+  "allReferenceWorkers": true,
+  "ageFilterIncludes15To19": true,
+  "emptyGroupCount": 4,
+  "emptyGroupsDifferFromObservedZeroAndNoHits": true,
   "emptyTailNotReportedAsPopulationZero": true,
   "finiteSVGGeometry": true,
   "jsErrors": [],
-  "verificationLimit": "DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot."
+  "verificationLimit": "DOM and SVG checks via jsdom; this test does not assess pixel layout or measure a real device."
 }

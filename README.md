@@ -1,88 +1,73 @@
 # Ingresos en Chile · ESI 2025
 
-Repositorio: [crcandia/ingresos](https://github.com/crcandia/ingresos).
+¿Qué gana la persona que queda al medio si se ordenan los ingresos del trabajo de menor a mayor? En Chile, la mediana fue de **$680.000 mensuales** y el promedio fue de **$962.945**. El **68,7%** de las personas ocupadas de referencia ganó menos que ese promedio. Son estimaciones de la Encuesta Suplementaria de Ingresos (ESI) 2025 del INE, en pesos de octubre de 2025. [Abrir el sitio](https://ingresos.criss-lab.com/) · [Repositorio](https://github.com/crcandia/ingresos)
 
-Abrir `Ingresos_Chile_ESI2025.html` en un navegador moderno. El archivo contiene los datos agregados, gráficos, estilos y controles. Funciona sin conexión y puede compartirse como un único archivo. No requiere instalación, cuenta ni servidor.
+Para explorar sin conexión, abre `Ingresos_Chile_ESI2025.html` en un navegador. El archivo incluye los datos agregados, las imágenes, los gráficos y los controles.
 
-## Uso
+## A quiénes representan las cifras
 
-Elegir ocupación, sexo y edad. La vista principal muestra mediana, promedio, población representada, distribución y proporción que gana un monto o más. El monto puede cambiarse escribiendo una cantidad, moviendo el control o usando las referencias de $1–5 millones.
+El INE identifica con `ocup_ref == 1` a las personas que llevan al menos un mes en su ocupación actual. La ESI 2025 contiene **38.729** personas en ese grupo. Sus factores de expansión representan a **9.022.697 personas**. La muestra incluye desde los 15 hasta los 95 años. El análisis conserva a todos los ocupados de referencia, incluso a quienes declaran un ingreso de $0.
 
-El gráfico de altos ingresos permite elegir escala lineal o logarítmica para el porcentaje. En logarítmica, las marcas verticales avanzan por factores de diez y el eje es el mismo para todos los grupos. La curva y su banda de confianza tienen la misma geometría escalonada. La curva se interrumpe cuando no hay casos observados, sin sustituir ceros por valores positivos. El mensaje debajo del gráfico indica el primer umbral sin casos. La escala solo cambia la representación.
+El ingreso corresponde al trabajo principal. Para las personas asalariadas se descuentan cotizaciones e impuestos. Para quienes trabajan de manera independiente se consideran los ingresos después de los costos de la actividad. La portada y el recorrido usan la población nacional completa. Los filtros del explorador calculan los resultados dentro del grupo elegido.
 
-El gráfico por edad compara mediana, promedio y percentiles 25–75 dentro de la ocupación y sexo seleccionados. La banda muestra dispersión, no incertidumbre, y los máximos son estimaciones puntuales. El tramo seleccionado se destaca sin ocultar los demás. La tabla desplegable y el CSV incluyen los percentiles.
+## Cómo leer el sitio
 
-Las doce tarjetas comparan edades dentro de la ocupación y sexo elegidos. Seleccionar una tarjeta cambia el grupo principal. La comparación inferior conserva edad y sexo y muestra las nueve ocupaciones. Puede ordenarse por mediana, promedio o porcentaje sobre el monto consultado.
+- **De menor a mayor.** El recorrido reparte a toda la población en cinco tramos. Comienza en $0 y el último tramo reúne a quienes ganan $2 millones o más. Luego amplía distintos puntos de la distribución, incluidos los ingresos superiores a $10 millones. Los pictogramas indican cuántas personas alcanzan un monto y explicitan su denominador.
+- **Carreras y cargos.** La comparación parte de las cuatro carreras universitarias con más matrícula de primer año según SIES 2026. Para las 20 carreras, Mi Futuro entrega un promedio bruto al tercer año. El sitio estima cuánto recibiría una persona asalariada con ese bruto y lo sitúa en la distribución de la ESI. Cada carrera tiene su propia ficha en Lixandria. Los 14 cargos públicos incluyen la fecha, la fuente y el tipo de pago utilizado.
+- **Edad, sexo y ocupación.** El explorador compara trece tramos de edad, desde 15–19 hasta 70–74 y un último grupo de 75 años o más. El total de edades corresponde a la ocupación y al sexo elegidos. Las trece tarjetas muestran cada tramo por separado. En el perfil de edad, la banda entre los percentiles 25 y 75 contiene la mitad central de los ingresos. Las comparaciones por sexo y por ocupación mantienen los demás filtros.
+- **Consulta de un monto.** La proporción incluye a quienes ganan exactamente el monto consultado. La escala logarítmica de la curva ayuda a distinguir porcentajes pequeños. Los intervalos y avisos indican cuánto respaldo ofrece la muestra. Un cruce vacío muestra que la encuesta carece de observaciones para ese grupo. Las diferencias entre edades describen grupos de personas observadas en 2025.
 
-“Guardar copia” descarga un HTML que conserva los filtros y la escala elegidos. “Descargar datos de esta vista” exporta un CSV con las cifras sin el redondeo visual. El CSV tiene delimitador punto y coma, punto decimal y codificación UTF-8 con BOM. Las columnas `mayor_o_igual_umbral` incluyen ingresos exactamente iguales al monto. “Imprimir / PDF” utiliza el diálogo de impresión del navegador.
+Las nueve ocupaciones con nombre en el explorador reúnen 38.573 encuestados. El total de ocupaciones también incluye los 156 casos de los códigos residuales del INE. Los denominadores, las fórmulas y los cruces vacíos están documentados en [Datos y método](README_DATOS.md).
 
-Los tramos son de cinco años desde 20–24 hasta 70–74, seguidos de 75+. Se agrupa la cola mayor por su menor tamaño muestral.
+## Guardar y exportar
 
-## Universo y precisión
+**Guardar copia** descarga un HTML con la selección y la escala actuales. **Descargar datos de esta vista** exporta las cifras con su precisión de cálculo en un CSV con separador de punto y coma, punto decimal y codificación UTF-8 con BOM. **Imprimir / PDF** abre el diálogo del navegador. Los enlaces del sitio abren una pestaña nueva. La medición de Google Analytics corresponde a la versión web. Las copias descargables funcionan sin conexión.
 
-Personas ocupadas de referencia ESI de 20 años o más. “Total (20+)” agrupa los doce tramos para la ocupación y sexo elegidos. No significa toda la muestra de la ESI. El archivo original contiene 93.458 registros. De ellos, 38.729 son ocupados de referencia. El dashboard incluye los 38.380 de 20 años o más y excluye 349 menores de 20 años. Esta restricción explica las diferencias con las cifras nacionales de todas las edades. La vista inicial representa aproximadamente 8,95 millones de personas. Todas las ocupaciones incluye 154 casos en códigos residuales, además de los nueve grupos disponibles.
+## Reproducir el análisis
 
-Cada porcentaje es condicional a su grupo. La curva cuenta ingresos iguales o superiores al monto. Una consulta sin casos observados no se presenta como ausencia de personas en la población. Las referencias con poco respaldo se señalan como exploratorias. Los intervalos corresponden a la proporción o a la media, según la etiqueta. No hay intervalos de la mediana ni de las cantidades de personas en la interfaz.
-
-Los ingresos se redondean a miles y las cantidades de personas a centenas, o decenas para cifras inferiores a mil. Los porcentajes muestran más decimales cuando son pequeños. El símbolo ≈ identifica ese redondeo. Los cálculos conservan mayor precisión.
-
-Ver `README_DATOS.md` para las variables, el diseño muestral, el criterio conservador de precisión y las validaciones estadísticas.
-
-## Reproducir
-
-Para recalcular los agregados desde el extracto público incluido:
+Desde la raíz del repositorio, con Python y una versión de Node.js compatible con jsdom 30, ejecuta estos comandos.
 
 ```bash
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 npm install --prefix qa
-python -B codigo/analizar_dashboard.py
-python -B construir_dashboard.py
+python3 -B codigo/analizar_dashboard.py
+python3 -B construir_dashboard.py
 ```
 
-El análisis valida el hash del extracto, los universos y las sumas. La construcción usa Python y Node.js con jsdom para incluir la vista inicial en el HTML. Se genera desde `interfaz/` y `datos/dashboard.json`, sin descargar recursos durante la construcción. Los microdatos individuales no se incrustan en el dashboard.
+El primer script valida el hash del extracto incluido, calcula los 420 cruces y exporta las tablas. El constructor combina los agregados y las fuentes de la interfaz para generar `Ingresos_Chile_ESI2025.html` y `site/index.html`. Ambos incluyen una vista inicial legible sin JavaScript. En el HTML se distribuyen agregados de la encuesta.
 
-Para verificar la lógica de la interfaz:
+El conteo de asalariados públicos y privados requiere la variable `categoria_ocupacion` del CSV completo del INE. El resultado ya está en `fuentes/universo_asalariados.json`. Para regenerarlo, ejecuta este paso entre el análisis y la construcción del HTML. La URL y la huella del original están en `fuentes/procedencia.json`.
 
 ```bash
-npm install --prefix qa
+python3 -B codigo/contar_asalariados.py /ruta/esi_2025_personas.csv
+```
+
+## Comprobar la reproducción
+
+```bash
 node qa/run_dom_checks.cjs
+node qa/check_relato.cjs
 node qa/check_analytics.cjs
 node qa/check_seo.cjs
 ```
 
-Se prueban los 390 dominios en ambas escalas y los controles, las consultas sin casos, la geometría de los SVG, las descargas y la reapertura de una copia con estado guardado. También se comprueba la distancia logarítmica de las marcas y la alineación escalonada de la banda. Estas son pruebas de DOM con jsdom, no una sesión real de Chrome, Safari o Firefox.
+Las pruebas de DOM recorren las combinaciones de filtros y ambas escalas de la curva, el guardado y reapertura, el CSV, la geometría de los gráficos, el relato nacional y los metadatos. Los resultados que registra cada ejecución están en `datos/validacion.json` y `qa/validacion_*.json`. El contraste independiente con el CSV del INE se documenta en [Verificación del universo](qa/revision_universo.md).
 
-Para la inspección estática y la exportación vectorial de los gráficos iniciales:
+Después de ejecutar las pruebas de DOM se pueden generar los PDF vectoriales desde los mismos SVG que usa la interfaz.
 
 ```bash
-python -m pip install -r qa/requirements.txt
-python -B qa/render_estatico.py
+python3 -m pip install -r qa/requirements.txt
+python3 -B qa/render_estatico.py
 ```
 
-La inspección usa WeasyPrint. Los controles se sustituyen por elementos estáticos solo en las copias de inspección. El archivo final conserva controles HTML nativos. `figuras/curvas_vista_general.pdf` contiene tres páginas con la distribución y la curva acumulada en escala lineal y logarítmica, exportadas directamente desde los SVG generados por la interfaz. `figuras/perfil_ingresos_por_edad.pdf` exporta el nuevo gráfico por edad desde el mismo SVG.
+`figuras/curvas_vista_general.pdf` incluye la distribución y la curva acumulada en escalas lineal y logarítmica. `figuras/perfil_ingresos_por_edad.pdf` reúne las medianas, los promedios y la banda de percentiles de los trece tramos. Las figuras corresponden a la vista nacional inicial. `python3 -B crear_paquete.py` prepara el ZIP y comprueba los archivos contra `MANIFEST_SHA256.json`.
 
-En la primera página del PDF, la línea verde discontinua marca la mediana y la ocre punteada marca el promedio. Las barras oscuras empiezan en el umbral consultado, $1 millón en la vista inicial. En la segunda y tercera páginas, la banda es el IC puntual del 95% y el trazo discontinuo identifica precisión limitada. Las tres páginas corresponden a todas las ocupaciones, ambos sexos y edades de 20 años o más.
+## Fuentes de las comparaciones y publicación
 
-El proyecto también incluye la configuración de Netlify y la copia web en `site/index.html`. `construir_dashboard.py` actualiza ambas versiones del HTML. La versión web incorpora Google Analytics con el identificador `G-XSFF2F0XKK` suministrado por el autor. Su política de contenido permite los dominios de Google necesarios para cargar la etiqueta y enviar mediciones. El pie identifica al laboratorio y al autor. El archivo descargable y las copias generadas con “Guardar copia” omiten Analytics y bloquean conexiones externas. Ver `PUBLICACION.md` para el destino solicitado y la configuración de dominio.
+Las carreras proceden de Mi Futuro. Los brutos universitarios están expresados en pesos de septiembre de 2025. Para reproducir una consulta, envía por POST el `action` y el `id` de la carrera al servicio de Mi Futuro y lee `tercer_ano`. La metodología del sitio explica el tratamiento particular de Derecho, la conversión ilustrativa a líquido y el redondeo del monto a mil pesos para situarlo en la ESI. El identificador `lixandria_id` corresponde al catálogo de Lixandria. [Servicio de Mi Futuro](https://www.mifuturo.cl/wp-admin/admin-ajax.php) · [Referencias y cifras originales](fuentes/referencias_salariales.json)
 
-## Comprobaciones incluidas
+Los cargos distinguen pagos de un mes, medianas de una nómina y promedios de pagos durante un año. Para el Senado se toma la mediana del saldo pagado a 50 integrantes. En la Cámara, la dieta bruta del registro y el líquido declarado por José Carlos Meza se identifican por separado. Para las alcaldías se indican el mes del pago, sus incentivos y la población en el Censo 2024. La fila de la nómina utilizada para Valparaíso se conserva en el paquete. [Extracto de la nómina](fuentes/autoridades_planta_2025.csv) · [Archivo original del CPLT](https://consejotransparencia.cl/transparencia_activa/datoabierto/archivos/TA_PersonalPlanta.csv)
 
-La versión web incluye miniatura social, Open Graph, Twitter Card, URL canónica, sitemap, robots.txt, iconos y metadatos estructurados de autor, página y datos. La vista inicial se puede leer sin JavaScript. Ver `SEO.md` para la configuración, construcción y comprobaciones pendientes sobre el dominio publicado.
+La carpeta `site/` contiene la versión para publicación. [Configuración de publicación](PUBLICACION.md) · [Metadatos y vistas previas](SEO.md)
 
-`datos/validacion.json` contiene las comprobaciones del cálculo. `qa/validacion_interfaz.json` registra las pruebas funcionales. `qa/revision_independiente.md` documenta la primera revisión, que contrastó los 180 dominios con el CSV original. `qa/revision_critica_log.md` y `qa/revision_seo.md` conservan revisiones anteriores. `qa/revision_edad5.md` documenta la actualización a tramos de cinco años. `qa/verificacion_universo.json` conserva la comprobación de cobertura y la identidad de los agregados. `MANIFEST_SHA256.json` permite verificar la integridad del paquete.
-
-Limitación de verificación: no se ejecutó una inspección interactiva en un navegador real desde este entorno. La lógica se probó con jsdom y el diseño se inspeccionó mediante una representación estática en tamaños de escritorio y teléfono.
-
-Fuente: Instituto Nacional de Estadísticas de Chile, Encuesta Suplementaria de Ingresos 2025. Elaboración: Dr. Cristian Candia.
-
-### SEO para búsquedas (16 de octubre de 2026)
-
-Respuestas generales sobre sueldo promedio, ingreso mediano y proporción sobre un millón, generadas desde los datos del dashboard y legibles sin JavaScript. Incluye enlaces directos a edad, ocupación y metodología. Ver `SEO.md` para el alcance y la comprobación pendiente en Search Console.
-
-### Lectura para público general (5 de noviembre de 2026)
-
-La portada compara la mediana y el promedio y calcula la proporción ponderada de personas ocupadas de 20 años o más cuyo ingreso neto del trabajo principal es estrictamente menor que la media nacional. La portada ilustra una feria chilena. El recorrido cubre todo el ingreso neto del trabajo principal en cinco tramos mutuamente excluyentes, desde $0 hasta un intervalo superior abierto. Luego amplía el mínimo de referencia, la mediana, el millón y los ingresos más altos. Los cortes del mínimo y de la mediana se calculan directamente con los microdatos ponderados. La comparación parte de cuatro carreras con la mayor matrícula universitaria de primer año según el SIES 2026. Las 20 referencias de Mi Futuro usan el ingreso bruto medio universitario al tercer año (pesos de septiembre de 2025). Se simula el líquido de una persona asalariada con ese ingreso y se consulta el umbral redondeado a mil pesos en la ESI. La metodología enlazada explica el ajuste de cohorte para Derecho y el mínimo de ingresos que Mi Futuro considera. Para reproducir los brutos, enviar los valores de `action` e `id` de `fuentes/referencias_salariales.json` por POST a https://www.mifuturo.cl/wp-admin/admin-ajax.php y leer `tercer_ano`. El campo `lixandria_id` corresponde al catálogo independiente de carreras genéricas de Lixandria. Las cifras nacionales se generan con el agregado general y no cambian con los filtros del explorador. Prueba del recorrido: `node qa/check_relato.cjs`.
-
-Los 14 cargos de referencia distinguen pagos de un mes, medianas de una nómina y promedios anuales. En el Senado se calcula la mediana del saldo pagado a sus 50 integrantes. Para la Cámara se distinguen el bruto publicado por la Comisión y el líquido individual declarado por José Carlos Meza. Las comparaciones de alcaldías indican la población del Censo 2024 y los incentivos de los meses seleccionados. El archivo compacto `fuentes/autoridades_planta_2025.csv` conserva los campos de las filas utilizadas del [archivo de personal de planta del CPLT](https://consejotransparencia.cl/transparencia_activa/datoabierto/archivos/TA_PersonalPlanta.csv). Las fuentes, los períodos y los valores originales se conservan en `fuentes/referencias_salariales.json`. Los gráficos de carreras, cargos y ocupaciones expresan los ingresos como múltiplos de la misma mediana nacional. Cada gráfico monetario comparte una escala lineal entre todas sus barras, y la comparación por umbral muestra sólo casos muestrales cuando hay menos de 60. Los enlaces de navegación abren otra pestaña. La ilustración está incrustada en el HTML para preservar la copia sin conexión.
-
-El recorrido muestra pictogramas y población expandida por umbral. El mínimo, la mediana y las comparaciones ocupacionales usan como base toda la población ocupada de referencia de 20 años o más, incluidos los independientes. Para reproducir el desglose adicional de asalariados, ejecutar `python3 codigo/contar_asalariados.py /ruta/esi_2025_personas.csv` con el original oficial indicado en procedencia.json. El panel por sexo mantiene los filtros de edad y ocupación y compara ambos sexos; los porcentajes de las ocupaciones indican su denominador.
+El análisis de la distribución y de los cruces por edad, sexo y ocupación fue elaborado por Cristian Candia, CRiSS-LAB, con datos de la ESI 2025 del Instituto Nacional de Estadísticas de Chile.

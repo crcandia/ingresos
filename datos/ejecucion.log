@@ -1,68 +1,80 @@
-all: Todas las ocupaciones | Ambos sexos | 13 dominios calculados
-all: Todas las ocupaciones | Hombres | 13 dominios calculados
-all: Todas las ocupaciones | Mujeres | 13 dominios calculados
-1: Directivos y gerentes | Ambos sexos | 13 dominios calculados
-1: Directivos y gerentes | Hombres | 13 dominios calculados
-1: Directivos y gerentes | Mujeres | 13 dominios calculados
-2: Profesionales, científicos e intelectuales | Ambos sexos | 13 dominios calculados
-2: Profesionales, científicos e intelectuales | Hombres | 13 dominios calculados
-2: Profesionales, científicos e intelectuales | Mujeres | 13 dominios calculados
-3: Técnicos y profesionales de nivel medio | Ambos sexos | 13 dominios calculados
-3: Técnicos y profesionales de nivel medio | Hombres | 13 dominios calculados
-3: Técnicos y profesionales de nivel medio | Mujeres | 13 dominios calculados
-4: Personal administrativo | Ambos sexos | 13 dominios calculados
-4: Personal administrativo | Hombres | 13 dominios calculados
-4: Personal administrativo | Mujeres | 13 dominios calculados
-5: Servicios y ventas | Ambos sexos | 13 dominios calculados
-5: Servicios y ventas | Hombres | 13 dominios calculados
-5: Servicios y ventas | Mujeres | 13 dominios calculados
-6: Agropecuarios, forestales y pesqueros calificados | Ambos sexos | 13 dominios calculados
-6: Agropecuarios, forestales y pesqueros calificados | Hombres | 13 dominios calculados
-6: Agropecuarios, forestales y pesqueros calificados | Mujeres | 13 dominios calculados
-7: Artesanos y operarios de oficios | Ambos sexos | 13 dominios calculados
-7: Artesanos y operarios de oficios | Hombres | 13 dominios calculados
-7: Artesanos y operarios de oficios | Mujeres | 13 dominios calculados
-8: Operadores de máquinas y ensambladores | Ambos sexos | 13 dominios calculados
-8: Operadores de máquinas y ensambladores | Hombres | 13 dominios calculados
-8: Operadores de máquinas y ensambladores | Mujeres | 13 dominios calculados
-9: Ocupaciones elementales | Ambos sexos | 13 dominios calculados
-9: Ocupaciones elementales | Hombres | 13 dominios calculados
-9: Ocupaciones elementales | Mujeres | 13 dominios calculados
+all: Todas las ocupaciones | Ambos sexos | 14 dominios calculados
+all: Todas las ocupaciones | Hombres | 14 dominios calculados
+all: Todas las ocupaciones | Mujeres | 14 dominios calculados
+1: Directivos y gerentes | Ambos sexos | 14 dominios calculados
+1: Directivos y gerentes | Hombres | 14 dominios calculados
+1: Directivos y gerentes | Mujeres | 14 dominios calculados
+2: Profesionales, científicos e intelectuales | Ambos sexos | 14 dominios calculados
+2: Profesionales, científicos e intelectuales | Hombres | 14 dominios calculados
+2: Profesionales, científicos e intelectuales | Mujeres | 14 dominios calculados
+3: Técnicos y profesionales de nivel medio | Ambos sexos | 14 dominios calculados
+3: Técnicos y profesionales de nivel medio | Hombres | 14 dominios calculados
+3: Técnicos y profesionales de nivel medio | Mujeres | 14 dominios calculados
+4: Personal administrativo | Ambos sexos | 14 dominios calculados
+4: Personal administrativo | Hombres | 14 dominios calculados
+4: Personal administrativo | Mujeres | 14 dominios calculados
+5: Servicios y ventas | Ambos sexos | 14 dominios calculados
+5: Servicios y ventas | Hombres | 14 dominios calculados
+5: Servicios y ventas | Mujeres | 14 dominios calculados
+6: Agropecuarios, forestales y pesqueros calificados | Ambos sexos | 14 dominios calculados
+6: Agropecuarios, forestales y pesqueros calificados | Hombres | 14 dominios calculados
+6: Agropecuarios, forestales y pesqueros calificados | Mujeres | 14 dominios calculados
+7: Artesanos y operarios de oficios | Ambos sexos | 14 dominios calculados
+7: Artesanos y operarios de oficios | Hombres | 14 dominios calculados
+7: Artesanos y operarios de oficios | Mujeres | 14 dominios calculados
+8: Operadores de máquinas y ensambladores | Ambos sexos | 14 dominios calculados
+8: Operadores de máquinas y ensambladores | Hombres | 14 dominios calculados
+8: Operadores de máquinas y ensambladores | Mujeres | 14 dominios calculados
+9: Ocupaciones elementales | Ambos sexos | 14 dominios calculados
+9: Ocupaciones elementales | Hombres | 14 dominios calculados
+9: Ocupaciones elementales | Mujeres | 14 dominios calculados
 {
   "pass": true,
-  "specificCells": 216,
-  "domains": 390,
+  "specificCells": 234,
+  "domains": 420,
   "originalRows": 93458,
   "occupied": 38729,
-  "occupied20Plus": 38380,
-  "mainOccupation20Plus": 38226,
-  "residualOccupation20Plus": [
+  "occupied15To19": 349,
+  "mainOccupation": 38573,
+  "residualOccupation": [
     {
       "codigo": 10,
-      "n": 128,
-      "personas": 25760.42594820586
+      "n": 129,
+      "personas": 25823.897183264904
     },
     {
       "codigo": 999,
-      "n": 26,
-      "personas": 7164.898460836343
+      "n": 27,
+      "personas": 7422.287944573405
     }
   ],
   "psus": 5440,
   "strata": 232,
+  "observedAgeRange": [
+    15,
+    95
+  ],
+  "emptyDomains": [
+    "1|all|15_19",
+    "1|1|15_19",
+    "1|2|15_19",
+    "8|2|15_19"
+  ],
   "singletonStrata": 0,
+  "nationalPopulation": 9022697.147157632,
   "nationalMean": 962944.6993102246,
   "nationalMeanSE": 11502.910826247813,
+  "nationalMedian": 680000.0,
   "referenceAgeValidation": true,
   "partitionAgeValidation": true,
   "partitionSexValidation": true,
   "histogramsSum100": true,
   "curvesMonotonic": true,
   "strictJSONNoNaN": true,
-  "specificCellSampleMin": 1,
+  "specificCellSampleMin": 0,
   "specificCellSampleMax": 620,
-  "specificCellsUnder60": 63,
-  "dashboardBytes": 4103448,
-  "dashboardSHA256": "b9d8b5a4cfe9bae10ff72e8fb05e732bfd031c90cff847b046a405d00ca37ea2",
-  "runtimeSeconds": 22.603559557999688
+  "specificCellsUnder60": 78,
+  "dashboardBytes": 4374774,
+  "dashboardSHA256": "91bced3dd4f4bfd7ff478f80040a617e33cb9d31f5e55209c4557b84060905d0",
+  "runtimeSeconds": 22.124299539000276
 }

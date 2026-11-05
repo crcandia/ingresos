@@ -24,7 +24,7 @@ for(const footer of [d.querySelector('footer'),new JSDOM(offline).window.documen
  assert(footer.querySelector('a[href="https://www.crcandia.com/"][rel~="author"]'));
  assert(footer.querySelector('a[href="https://criss-lab.com/es/"]'));
 }
-w.ESI_DASHBOARD.setState({occupation:'2',age:'40_44',sex:'2',amount:2000000,survivalScale:'log'});
+w.ESI_DASHBOARD.setState({occupation:'2',age:'15_19',sex:'2',amount:2000000,survivalScale:'log'});
 d.getElementById('save').click();
 const saved=downloads.at(-1).parts.join(''),copy=make(saved,'file:///Ingresos_Chile_ESI2025.html');
 assert.equal(copy.window.document.querySelectorAll('[data-web-analytics],script[src]').length,0);
@@ -36,7 +36,7 @@ assert.deepEqual(JSON.parse(JSON.stringify(copy.window.ESI_DASHBOARD.getState())
 const local=make(offline,'file:///Ingresos_Chile_ESI2025.html');
 assert.equal(local.window.document.querySelectorAll('script[src],[data-web-analytics]').length,0);
 assert.equal(local.window.dataLayer,undefined);
-assert.equal(local.window.ESI_DASHBOARD.getDomain().n,38380);
+assert.equal(local.window.ESI_DASHBOARD.getDomain().n,38729);
 assert.equal(d.getElementById('dashboard-data').textContent,local.window.document.getElementById('dashboard-data').textContent);
 assert.equal(errors.length,0,errors.join('\n'));
 const report={pass:true,measurementId:'G-XSFF2F0XKK',tagOnWebOnly:true,configQueued:true,cspAllowsBasicAnalytics:true,footerCreditsVerified:true,savedCopyOmitsAnalytics:true,savedStatePreserved:true,offlineConnectionsBlocked:true,statisticalDataUnchanged:true,scope:'DOM and source validation only. No requests sent to Google. Production event receipt not yet verified.'};

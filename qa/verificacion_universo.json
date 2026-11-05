@@ -1,11 +1,125 @@
 {
-  "rawCSV_SHA256": "4ff7b8682622c81e2c950544d387e4e8168c3706d2bd7f147b047143a201998f",
-  "sourceRecords": 93458,
-  "occupiedReference": 38729,
-  "occupied20Plus": 38380,
-  "excludedOccupiedUnder20": 349,
-  "occupiedWithMissingAge": 0,
-  "weighted20Plus": 8952261.090339521,
-  "all180DomainsUnchanged": true,
-  "domainsCanonicalSHA256": "11373d7a453e5574e0985b40aee53c8f9e85256f8a3cb7515bbf7be6898c9a5c"
+  "fecha": "2026-11-05",
+  "universo": "Personas ocupadas de referencia: ocup_ref == 1. El filtro nacional conserva todas sus edades y ocupaciones, incluidos los códigos ocupacionales residuales; edad observada mínima: 15 años. Cada cruce es un dominio de este universo.",
+  "fuente": {
+    "titulo": "ESI 2025 - Personas",
+    "url": "https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2025/esi_2025_personas.csv?sfvrsn=7f734fe_4&download=true",
+    "bytes": 84878737,
+    "sha256": "4ff7b8682622c81e2c950544d387e4e8168c3706d2bd7f147b047143a201998f"
+  },
+  "extracto": {
+    "ruta": "datos/esi2025_columnas_necesarias.csv.gz",
+    "sha256": "393279b0f1a95b3bba45875b44faa8fbf5f08c0786a3cfdbbe5ec314fcbb90d3",
+    "filas": 93458,
+    "columnas_contrastadas": [
+      "edad",
+      "sexo",
+      "b1",
+      "ocup_ref",
+      "ing_t_p",
+      "fact_cal_esi",
+      "estrato",
+      "conglomerado_correlativo",
+      "imp_d1_monto",
+      "imp_d5_monto"
+    ],
+    "igualdad_numerica_fila_por_fila": true,
+    "valores_faltantes_identicos": true,
+    "maxima_diferencia_absoluta_por_columna": {
+      "edad": 0.0,
+      "sexo": 0.0,
+      "b1": 0.0,
+      "ocup_ref": 0.0,
+      "ing_t_p": 0.0,
+      "fact_cal_esi": 0.0,
+      "estrato": 0.0,
+      "conglomerado_correlativo": 0.0,
+      "imp_d1_monto": 0.0,
+      "imp_d5_monto": 0.0
+    }
+  },
+  "filas_original": 93458,
+  "ocupados_de_referencia": 38729,
+  "ocupados_sin_edad": 0,
+  "ocupados_menores_de_15": 0,
+  "edad_minima_observada": 15,
+  "edad_maxima_observada": 95,
+  "ocupados_de_20_y_mas_solo_para_contraste": 38380,
+  "nacional": {
+    "n": 38729,
+    "N": 9022697.147158,
+    "mean": 962944.69931,
+    "median": 680000.0,
+    "p25": 498702.445116,
+    "p75": 1097145.379255,
+    "zero_n": 569,
+    "zeroN": 106664.126603
+  },
+  "edad_15_19": {
+    "n": 349,
+    "N": 70436.056818,
+    "mean": 337981.932885,
+    "median": 300000.0,
+    "p25": 120000.0,
+    "p75": 528624.591823,
+    "zero_n": 10,
+    "zeroN": 1714.46064
+  },
+  "nacional_codigos_fuera_de_1_a_9": 156,
+  "dominios": {
+    "claves": 420,
+    "ocupaciones_incluido_total": 10,
+    "sexos_incluido_total": 3,
+    "opciones_edad_incluido_total": 14,
+    "tramos_edad": [
+      "15_19",
+      "20_24",
+      "25_29",
+      "30_34",
+      "35_39",
+      "40_44",
+      "45_49",
+      "50_54",
+      "55_59",
+      "60_64",
+      "65_69",
+      "70_74",
+      "75_mas"
+    ],
+    "cruces_especificos_sin_totales": 234,
+    "cruces_especificos_menos_de_60_observaciones_incluye_vacios": 78,
+    "sin_observaciones": 4,
+    "claves_sin_observaciones": [
+      "1|all|15_19",
+      "1|1|15_19",
+      "1|2|15_19",
+      "8|2|15_19"
+    ],
+    "convencion": "En un dominio sin observaciones, n y el peso observado son cero; el ingreso medio, la mediana, los percentiles y los porcentajes de la curva no se estiman. En un dominio con muestra, cero casos por encima de un umbral no demuestra que el porcentaje poblacional sea cero."
+  },
+  "contraste_independiente": {
+    "origen": "Tabla completa de personas y su extracto, calculados por separado. Suma directa de factores fact_cal_esi; promedio y cuantiles empíricos ponderados sobre ing_t_p. Para P(ingreso ≥ umbral), posición de inserción en los sueldos ordenados y suma de los pesos de la cola.",
+    "estimadores_contrastados": [
+      "n",
+      "N",
+      "mean",
+      "p25",
+      "median",
+      "p75",
+      "zero_n",
+      "zeroN",
+      "curve_n",
+      "curve_p"
+    ],
+    "numero_umbrales_por_dominio": 421,
+    "umbrales_pesos": {
+      "inicio": 0,
+      "fin_inclusivo": 21000000,
+      "paso": 50000
+    },
+    "combinaciones_dominio_umbral": 176820,
+    "coincidencia_original_extracto": true,
+    "sha256_proyeccion_independiente_original_y_extracto": "f5cba49e92b35552fb600b912770be30caf4ab25ddca36d391b313109bdbe6f3",
+    "convencion_huella": "JSON UTF-8, claves ordenadas, sin espacios; números continuos redondeados a seis decimales. Claves: ocupación|sexo|edad. curve_n y curve_p son vectores en orden creciente de umbral."
+  }
 }

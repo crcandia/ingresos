@@ -1,5 +1,7 @@
 # Revisión de SEO para búsquedas
 
+> **Archivo histórico.** Este informe documenta la revisión de búsquedas del 16 de octubre de 2026. Sus cifras, límites de cobertura, pruebas y dictamen corresponden exclusivamente a la versión examinada. La edición actual reúne a todas las personas ocupadas de referencia de la ESI 2025. [Resultados y comprobaciones de la edición actual](revision_universo.md).
+
 16 de octubre de 2026. PASS_WITH_RISKS. Revisión secuencial, sin atribución a revisor independiente.
 
 - Promedio, mediana y proporción sobre un millón contrastados con el agregado original. Las 390 combinaciones y los microdatos no cambiaron.

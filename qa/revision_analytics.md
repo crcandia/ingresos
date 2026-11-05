@@ -1,5 +1,7 @@
 # Revisión independiente de Google Analytics
 
+> **Archivo histórico.** Este informe documenta la integración inicial de Analytics. Sus cifras, límites de cobertura, pruebas y dictamen corresponden exclusivamente a la versión examinada. La edición actual reúne a todas las personas ocupadas de referencia de la ESI 2025. [Resultados y comprobaciones de la edición actual](revision_universo.md).
+
 Adversarial verdict: PASS_WITH_RISKS
 
 Completion claim challenged: La integración local añade la etiqueta `G-XSFF2F0XKK` a la versión web, mantiene los datos e interfaz del dashboard y permite descargar copias sin Analytics con sus filtros conservados.

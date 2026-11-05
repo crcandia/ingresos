@@ -1,5 +1,7 @@
 # Revisión adversarial independiente
 
+> **Archivo histórico.** Este informe documenta la primera versión del explorador, que agrupaba las edades en cinco tramos. Sus cifras, límites de cobertura, pruebas y dictamen corresponden exclusivamente a la versión examinada. La edición actual reúne a todas las personas ocupadas de referencia de la ESI 2025. [Resultados y comprobaciones de la edición actual](revision_universo.md).
+
 Adversarial verdict: PASS_WITH_RISKS
 
 Completion claim challenged: El archivo HTML permite explorar ingresos de la ESI 2025 por grandes grupos ocupacionales, cinco edades y sexo, funciona con datos incrustados y conserva denominadores y advertencias de precisión coherentes.

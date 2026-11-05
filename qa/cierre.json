@@ -1,126 +1,136 @@
 {
-  "verdict": "PASS_WITH_RISKS",
-  "claim": "Dashboard con doce tramos de edad: 20–24 a 70–74 y 75+. Nuevo perfil por edad de media, mediana y bandaP 25–P 75, filtros y exportaciones actualizados.",
-  "functional_validation": "390 dominios en ambas escalas,780 combinaciones, perfil por edad contrastado contra cada dominio, CSV con percentiles y copia guardada con filtros.",
-  "independent_validation": "qa/revision_edad 5.md: contraste independiente de 390 dominios con extracto original y comprobación de agregados all.",
-  "visual_validation": "Inspección estática de escritorio1400px y teléfono390px. Verificados el nuevo perfil y las doce tarjetas. Posiciones de filtros explícitas para evitar columnas implícitas en la representación estática.",
-  "native_figure_export": "PDF de distribución y curvas lineal/logarítmica, y PDF independiente del perfil de ingresos por edad, desde los SVG de la interfaz.",
-  "self_contained": "HTML descargable sin dependencias externas. La versión web añade Google Analytics autorizado por el usuario.",
-  "html_sha256": "48ccdfb8fb9c767d6db27c554d6f548c39679e76423d67f45cea7dc681e46586",
-  "siteMatchesDownload": false,
-  "netlifyConfigParsed": true,
-  "no_pending_data_or_functionality_fixes": true,
-  "externalPublicationClaimed": false,
-  "residual_risks": [
-    "Verificación DOM y visual estática, sin sesión interactiva en un navegador real.",
-    "63 de 216 celdas específicas tienen menos de 60 casos. Se señalan límites muestrales. La bandaP 25–P 75 no estima incertidumbre.",
-    "Máximos puntuales descriptivos, sin prueba de diferencias por edad ni inferencia de trayectorias individuales.",
-    "Dominio HTTPS y recursos SEO confirmados el 16 de octubre de 2026. Indexación en Google y recepción de Analytics sin confirmar."
-  ],
-  "web_sha256": "2c8c5ca6ec535cd55de2844a8133a60ce42e8785cd7a8d8bf8cb072d0ec45efd",
-  "siteAndDownloadShareData": true,
-  "analytics": {
-    "measurementId": "G-XSFF2F0XKK",
-    "scope": "web only",
-    "sourceValidationPassed": true,
-    "productionReceiptVerified": false
+  "fecha": "2026-11-05",
+  "resultado": "COMPROBADO EN LOS ARCHIVOS DE ESTA VERSIÓN",
+  "alcance": "Verificación local del sitio web, HTML autónomo, tablas y figuras. No mide el tráfico, la indexación ni la recepción de eventos en producción.",
+  "universo_y_precision": {
+    "criterio": "ocup_ref == 1",
+    "registros_fuente": 93458,
+    "ocupados_encuestados": 38729,
+    "personas_expandidas": 9022697.147158,
+    "media_clp": 962944.69931,
+    "mediana_clp": 680000.0,
+    "personas_encuestadas_de_15_a_19": 349,
+    "mediana_15_a_19_clp": 300000.0,
+    "dominios": 420,
+    "dominios_con_muestra": 416,
+    "dominios_sin_observaciones": [
+      "1|all|15_19",
+      "1|1|15_19",
+      "1|2|15_19",
+      "8|2|15_19"
+    ],
+    "regla_n0": "Se mantienen como opciones de filtro. Se presenta «Sin observaciones». La ausencia de muestra no produce ingresos, cuantiles, porcentajes ni intervalos iguales a cero.",
+    "muestras_pequenas": "78 de 234 cruces de ocupación, sexo y edad sin categorías «Todas» tienen menos de 60 observaciones, incluidos los vacíos. Los valores de los extremos tienen precisión limitada.",
+    "diseno": {
+      "estratos": 232,
+      "upm": 5440,
+      "comprobaciones_umbral_diseno_original": 156
+    }
   },
-  "analytics_validation": {
-    "pass": true,
-    "measurementId": "G-XSFF2F0XKK",
-    "tagOnWebOnly": true,
-    "configQueued": true,
-    "cspAllowsBasicAnalytics": true,
-    "footerCreditsVerified": true,
-    "savedCopyOmitsAnalytics": true,
-    "savedStatePreserved": true,
-    "offlineConnectionsBlocked": true,
-    "statisticalDataUnchanged": true,
-    "scope": "DOM and source validation only. No requests sent to Google. Production event receipt not yet verified."
+  "contraste_independiente": {
+    "fuente_ine": "https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2025/esi_2025_personas.csv?sfvrsn=7f734fe_4&download=true",
+    "sha256_csv_original": "4ff7b8682622c81e2c950544d387e4e8168c3706d2bd7f147b047143a201998f",
+    "informe": "qa/verificacion_universo.json",
+    "metodo": "Se recalcularon desde el CSV original los recuentos, los pesos, los promedios, los tres cuantiles, los casos de ingreso cero y los 421 recuentos y porcentajes de umbral de cada dominio; luego se compararon con datos/dashboard.json.",
+    "pares_dominio_umbral_comprobados": 176820,
+    "recuentos_y_ausencias_exactos": true,
+    "tolerancia_absoluta_para_valores_publicados_a_seis_decimales": 1.1e-06,
+    "maxima_diferencia_absoluta_observada": {
+      "N": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "zeroN": 0.0,
+      "curve_p": 0.0
+    }
   },
-  "analytics_independent_review": "qa/revision_analytics.md: PASS_WITH_RISKS para integración local. Publicación y recepción en producción pendientes.",
-  "seo_validation": {
-    "pass": true,
-    "canonical": "https://ingresos.criss-lab.com/",
-    "socialImage": {
-      "width": 1737,
-      "height": 905,
-      "bytes": 1675823
+  "web_y_sin_conexion": {
+    "json_embebido_identico_al_archivo_analitico_en_ambas_versiones": true,
+    "sha256_bloque_json_embebido_utf8": "91bced3dd4f4bfd7ff478f80040a617e33cb9d31f5e55209c4557b84060905d0",
+    "html_completos_identicos": false,
+    "vista_nacional_antes_de_javascript": {
+      "median": "≈$680.000",
+      "mean": "≈$963.000",
+      "population": "≈9.022.700",
+      "threshold-percent": "≈29,4%",
+      "threshold-people": "≈ 2.652.100 personas del grupo",
+      "universe-counts": "De los 93.458 registros de la ESI, 38.729 son personas ocupadas de referencia. Se incluyen todas, entre ellas 349 de 15 a 19 años."
     },
-    "preRenderedInitialView": true,
-    "hydrationMatchesSource": true,
-    "metadataAndSchemaPassed": true,
-    "publicResourcesPresent": true,
-    "csvMatchesSource": true,
-    "savedCopyRemainsOffline": true,
-    "savedControlsMatchWithoutJavaScript": true,
-    "statisticalDataUnchanged": true,
-    "scope": "Source and DOM checks. No production HTTP, crawler indexing or social platform cache verification."
+    "criterio_prerender": "Se cotejaron las cifras visibles con el agregado analítico y los dos HTML entre sí. Se verificaron también las 13 medias y medianas de edad, disponibles como valores de los puntos SVG. check_seo.cjs comparó seis campos visibles antes y después de activar JavaScript.",
+    "csv_publico_identico_a_tabla_fuente": true,
+    "filas_del_csv": 420,
+    "enlaces_comprobados_con_pestana_nueva": {
+      "site/index.html": 99,
+      "Ingresos_Chile_ESI2025.html": 96
+    },
+    "canonico_web": "https://ingresos.criss-lab.com/",
+    "copia_guardada_conserva_filtros_y_omite_analytics": true,
+    "dependencias_externas_para_abrir_el_html_autonomo": false
   },
-  "seo_independent_review": "qa/revision_seo.md",
-  "statistical_data_sha256": "b9d8b5a4cfe9bae10ff72e8fb05e732bfd031c90cff847b046a405d00ca37ea2",
-  "age5_validation": {
-    "pass": true,
-    "fiveYearAgeBands": true,
-    "ageProfileValuesMatchAllDomains": true,
-    "ageProfilePercentiles": "P25–P75, dispersion not confidence",
-    "domainScaleCombinationsRendered": 780,
-    "domainsRendered": 390,
-    "scales": [
+  "interfaz_y_referencias": {
+    "pruebas": [
+      "qa/run_dom_checks.cjs",
+      "qa/check_relato.cjs",
+      "qa/check_seo.cjs",
+      "qa/check_analytics.cjs"
+    ],
+    "motor_de_pruebas": "jsdom",
+    "combinaciones_dominio_y_escala": 840,
+    "escalas": [
       "linear",
       "log"
     ],
-    "controls": "occupation, sex, age, amount input, slider, quick amounts, range, ranking, survival scale, reset, help, keyboard tooltip",
-    "equalLogTickSpacing": true,
-    "constantLogAxisAcrossGroups": true,
-    "stepConfidenceBand": true,
-    "noNetworkDependencies": true,
-    "savedHTMLReopenedWithScale": true,
-    "csvExportRows": 22,
-    "scaleDoesNotChangeCSV": true,
-    "explicit20PlusUniverse": true,
-    "emptyTailNotReportedAsPopulationZero": true,
-    "finiteSVGGeometry": true,
-    "jsErrors": [],
-    "verificationLimit": "DOM tests via jsdom. No real browser test of the local dashboard. Static layout inspected using native HTML-to-PDF rendering, not a browser screenshot."
+    "errores_javascript": [],
+    "referencias": "fuentes/referencias_salariales.json",
+    "carreras": 20,
+    "carreras_criterio": "Cada fila se cotejó con su ingreso bruto al tercer año de Mi Futuro y con su enlace de carrera en Lixandria. La cifra líquida es una estimación.",
+    "cargos": 14,
+    "cargos_criterio": "Cada fila conserva el importe, el período y el enlace a la fuente de su registro. Hay meses únicos y promedios mensuales de períodos distintos. No son percentiles muestrales."
   },
-  "age5_independent_review": "qa/revision_edad5.md",
-  "seo_search_update": {
-    "date": "2026-10-16",
-    "visibleAnswersFromAggregate": true,
-    "twentyPlusScopeExplicit": true,
-    "crawlableTopicLinks": true,
-    "searchConsoleVerified": false
+  "figuras": {
+    "exportacion": "Vectores de la vista nacional generados desde los SVG de la sesión del DOM. El exportador rechaza insumos que no concuerden con el agregado analítico. Los PDF se abrieron y se comprobó la posición de marcas vectoriales contra sus SVG.",
+    "figuras/curvas_vista_general.pdf": {
+      "paginas": 3,
+      "orden": [
+        "Histograma con media y mediana nacionales",
+        "Curva en escala lineal",
+        "Curva en escala logarítmica"
+      ],
+      "umbral_marcado_clp": 1000000,
+      "porcentaje_ponderado_en_el_umbral": 29.394181
+    },
+    "figuras/perfil_ingresos_por_edad.pdf": {
+      "paginas": 1,
+      "tramos": 13,
+      "mediana_15_a_19_clp": 300000.0,
+      "banda": "P25–P75: dispersión de los ingresos, no incertidumbre de la estimación."
+    },
+    "sha256_svg_de_la_sesion": {
+      "distribution": "1b59a54b51e04a297f76c59af06de908b640704726ca6a2077ae998e32f50145",
+      "survival": "45fb7669f00a9c4716904e7a25c0604277bcd9b48549ae7a79ae89be5c044348",
+      "survival_log": "0dbf8afb20a9074646c838e06bbadca2af655309aff3b9ea3437db4ba24197bc",
+      "age-profile": "ea0db71570151d08a89359613cf7d646616008516cf041bd70e6ad2a4221cfb3"
+    }
   },
-  "production_http": {
-    "date": "2026-10-16",
-    "home": 200,
-    "robots": 200,
-    "sitemap": 200,
-    "indexRedirect": 301,
-    "unknownPath": 404
-  },
-  "relato_publico": {
-    "fecha": "2026-11-05",
-    "validacion": "qa/check_relato.cjs: compara cada paso con el agregado general, simula avance y retroceso y comprueba que los filtros no alteren el relato nacional.",
-    "umbrales_en_millones": [
-      1,
-      2,
-      3,
-      4,
-      6,
-      8,
-      10
-    ],
-    "referencias": "Seis carreras, cuatro cargos y mínimo ESI; las referencias de carreras son equivalentes líquidos simulados.",
-    "etapas": [
-      "minimo",
-      "mediana",
-      "1–4 millones",
-      "6–10 millones"
-    ],
-    "puntos": true,
-    "comparacion_sexos": true,
-    "participacion_nacional_ocupaciones": true
+  "sha256_archivos": {
+    "datos/dashboard.json": "91bced3dd4f4bfd7ff478f80040a617e33cb9d31f5e55209c4557b84060905d0",
+    "datos/validacion.json": "705690e5aa9553ad846407cf6bdfa76915fddfe0f265895f1a5c18e1371dbade",
+    "datos/esi2025_columnas_necesarias.csv.gz": "393279b0f1a95b3bba45875b44faa8fbf5f08c0786a3cfdbbe5ec314fcbb90d3",
+    "fuentes/procedencia.json": "bd9cf909e45301d56c96d46142fe599003aecf43f2180a2806dba723e803e06e",
+    "fuentes/referencia_edades.csv": "e99f15213e2a3d5f1ef82d7739463c479d7bafe587719936e2a48032bfec7537",
+    "fuentes/universo_asalariados.json": "0d3f23e74b1b0af724a810ff2b8d8d87c68c039ec1de0f894529dc899842e418",
+    "fuentes/referencias_salariales.json": "b7bd0f75851f7e2ea153f9003c17d47555efa1591b9651f8bf9ac3bd2a0226e8",
+    "fuentes/autoridades_planta_2025.csv": "f85f0d9739c5b8702d7daf4121b75fc5382a1da4df97a320c38959a2e7e0324e",
+    "qa/verificacion_universo.json": "bcf069c8e9f83df5c39dd1cfbc118e086add3213abb19deb00ec9fede7cd256d",
+    "site/index.html": "03b740e5ff318dd629de09e9fde69cdb9bebb0e7fdf3b525ab5f203c6b51a369",
+    "Ingresos_Chile_ESI2025.html": "4ee2cb9f7c564768d63a2e69428655458bc0f788dfdad8a98465e4f106a086b9",
+    "site/datos/resumen-ingresos-esi2025.csv": "e5151ba893a9da823a8ccd9349e8d9b5698ba55924103898ac2a9152f7c87f42",
+    "tablas/resumen_dominios.csv": "e5151ba893a9da823a8ccd9349e8d9b5698ba55924103898ac2a9152f7c87f42",
+    "figuras/curvas_vista_general.pdf": "886212060898df8e7cb8af5f735eb0792c66db9a8cc423d5b72eb4d83ce8ace1",
+    "figuras/perfil_ingresos_por_edad.pdf": "2573a93fcedd911005e23558f3be3e48a3d5e7bb48035c7e090c339438fa57f7",
+    "qa/validacion_interfaz.json": "beda3e4dcf64687750cbfaf09b42d160a90efaa38e4da2383d23ccf64bee686f",
+    "qa/validacion_seo.json": "5e57c77d4349d8e811dfca186c6215199a225e9292290f2616d1747ae5b48599",
+    "qa/validacion_analytics.json": "b6f30e9379590b7163b4aefde1005e5c0fe52a2d002f51dd0fe24c0bde00a8e8"
   }
 }

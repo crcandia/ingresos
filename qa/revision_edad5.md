@@ -1,5 +1,7 @@
 # Revisión independiente: tramos de cinco años y perfil de ingresos
 
+> **Archivo histórico.** Este informe documenta la primera versión con tramos de cinco años. Sus cifras, límites de cobertura, pruebas y dictamen corresponden exclusivamente a la versión examinada. La edición actual reúne a todas las personas ocupadas de referencia de la ESI 2025. [Resultados y comprobaciones de la edición actual](revision_universo.md).
+
 **Dictamen: PASS_WITH_RISKS.** No se encontraron defectos materiales pendientes que impidan completar y publicar este cambio. La granularidad, los cálculos y el nuevo gráfico satisfacen el pedido. Los riesgos residuales son la precisión limitada de varios cruces y la ausencia de una prueba independiente en navegador real.
 
 Revisión realizada el 14 de octubre de 2026 sobre el checkout de `ingresos-chile-esi`, sus datos recalculados y `site/index.html`. No se modificó código, datos ni archivos publicados. El único archivo escrito por el revisor es este informe.

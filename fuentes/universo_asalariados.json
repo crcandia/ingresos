@@ -1,7 +1,7 @@
 {
   "fuente_sha256": "4ff7b8682622c81e2c950544d387e4e8168c3706d2bd7f147b047143a201998f",
-  "criterio": "Manual ESI 2025 §6.6: categoria_ocupacion 3 y 4. Universo de referencia ocupado, de 20 años o más.",
-  "ocupados": 8952261.090339523,
-  "asalariados": 6598956.558303712,
-  "asalariados_con_ingreso": 6593359.538528318
+  "criterio": "Manual ESI 2025 §6.6: categorías de ocupación 3 y 4. Universo de referencia completo (ocup_ref=1).",
+  "ocupados": 9022697.14715765,
+  "asalariados": 6655923.151354707,
+  "asalariados_con_ingreso": 6650326.1315793125
 }

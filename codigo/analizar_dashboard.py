@@ -18,10 +18,10 @@ from scipy.stats import t
 from diseno_encuesta import Design
 
 ROOT = Path(__file__).resolve().parents[1]
-AGE = [('all', '20 años o más', 20, 121)] + [
+AGE = [('all', 'Todas las edades', None, None)] + [
     (f'{low}_{low+4}', f'{low}–{low+4} años', low, low+5)
-    for low in range(20, 75, 5)
-] + [('75_mas', '75 años o más', 75, 121)]
+    for low in range(15, 75, 5)
+] + [('75_mas', '75 años o más', 75, None)]
 
 OCCUPATIONS = [
     ('all', 'Todas las ocupaciones'),
@@ -41,10 +41,20 @@ EDGES = np.arange(0., 21_000_001., 100_000.)
 
 
 def quantile(y, w, p):
+    if not len(y):
+        return np.nan
     order = np.argsort(y, kind='stable')
     ys, ws = y[order], w[order]
     j = np.searchsorted(np.cumsum(ws), p * ws.sum(), side='left')
     return float(ys[min(j, len(ys) - 1)])
+
+
+def restrict_age(domain, ages, low, high):
+    if low is not None:
+        domain = domain & (ages >= low)
+    if high is not None:
+        domain = domain & (ages < high)
+    return domain
 
 
 def rounded(v, digits=6):
@@ -59,7 +69,7 @@ def rounded(v, digits=6):
 
 def export_table(frame, name):
     frame.to_csv(ROOT / 'tablas' / f'{name}.csv', index=False)
-    frame.to_latex(ROOT / 'tablas' / f'{name}.tex', index=False,
+    frame.to_latex(ROOT / 'tablas' / f'{name}.tex', index=False, escape=True, na_rep='--',
                    float_format=lambda value: f'{value:.7g}')
 
 
@@ -87,6 +97,15 @@ class VectorDesign:
     def all_events(self, domain):
         yg, wg, psu = self.y[domain], self.w[domain], self.psu[domain]
         n_domain = int(domain.sum())
+        if not n_domain:
+            # An empty denominator has no distribution. Keep observed counts and
+            # weight sums additive for the age and sex partition checks below.
+            counts = np.zeros(len(GRID), dtype=int)
+            missing = np.full(len(GRID), np.nan)
+            return dict(n=0, N=0., df=0, mean=np.nan, meanSE=np.nan, p=missing,
+                        n_curve=counts, lo=missing, hi=missing, q=counts, ee=missing,
+                        total=np.zeros(len(GRID)), ee_total=missing, df_event=counts,
+                        cv_total=missing)
         B = np.bincount(psu, weights=wg, minlength=self.J)
         hB = self.H @ B
         N = B.sum()
@@ -150,24 +169,26 @@ def main():
     ages = frame.edad.to_numpy()
     occ = frame.b1.to_numpy()
     sex = frame.sexo.to_numpy()
-    domain20 = occupied & (ages >= 20)
     imputed = (frame.imp_d1_monto.eq(1) | frame.imp_d5_monto.eq(1)).to_numpy()
-    assert len(frame) == 93458 and occupied.sum() == 38729 and domain20.sum() == 38380
-    assert (domain20 & np.isin(occ, range(1, 10))).sum() == 38226
+    assert len(frame) == 93458 and occupied.sum() == 38729
+    assert (occupied & (ages < 20)).sum() == 349
+    assert (occupied & np.isin(occ, range(1, 10))).sum() == 38573
     assert not frame.loc[occupied, ['edad', 'sexo', 'b1', 'ing_t_p', 'fact_cal_esi',
                                     'estrato', 'conglomerado_correlativo']].isna().any().any()
     assert (frame.fact_cal_esi > 0).all()
     assert (frame.loc[occupied, 'ing_t_p'] >= 0).all()
     assert frame.loc[occupied, 'ing_t_p'].max() < EDGES[-1]
     assert np.isin(sex[occupied], [1, 2]).all()
-    assert (ages[occupied] >= 15).all() and (ages[occupied] < 121).all()
+    assert (ages[occupied] >= 15).all()
     design = VectorDesign(frame)
     assert design.J == 5440 and len(design.nh) == 232 and (design.nh > 1).all()
     national = Design(frame, occupied)
     national_mean, national_se = national.mean(design.y)
+    national_median = quantile(design.y[occupied], design.w[occupied], .5)
     assert abs(national.N - 9022697.147157632) < 1e-5
     assert abs(national_mean - 962944.6993102246) < 1e-5
     assert abs(national_se - 11502.910826247813) < 1e-6
+    assert national_median == 680000
 
     domains = {}
     raw_domains = {}
@@ -175,30 +196,33 @@ def main():
     reference_rows = []
     checks = []
     # Includes large and small domains, sparse tails, both sexes and all ages.
-    crosscheck_keys = {'all|all|all', 'all|all|20_24', 'all|all|75_mas',
+    crosscheck_keys = {'all|all|all', 'all|all|15_19', 'all|all|20_24', 'all|all|75_mas',
                       '1|1|all', '1|2|20_24', '2|2|30_34', '5|all|50_54',
-                      '6|2|20_24', '8|2|75_mas', '9|1|40_44'}
+                      '6|2|20_24', '8|2|75_mas', '9|1|40_44', '5|2|15_19'}
     thresholds = [0, 1, 10, 20, 40, 60, 80, 100, 140, 200, 300, 400, 420]
     for occupation, occ_label in OCCUPATIONS:
-        occ_domain = domain20 & (True if occupation == 'all' else occ == int(occupation))
+        occ_domain = occupied if occupation == 'all' else occupied & (occ == int(occupation))
         for sex_code, sex_label in SEXES:
             sex_domain = occ_domain & (True if sex_code == 'all' else sex == int(sex_code))
             for age_key, age_label, low, high in AGE:
                 key = f'{occupation}|{sex_code}|{age_key}'
-                domain = sex_domain & (ages >= low) & (ages < high)
-                assert domain.any()
+                domain = restrict_age(sex_domain, ages, low, high)
                 result = design.all_events(domain)
                 yg, wg = design.y[domain], design.w[domain]
-                hist = np.histogram(yg, bins=EDGES, weights=wg)[0] / result['N'] * 100
+                hist = (np.histogram(yg, bins=EDGES, weights=wg)[0] / result['N'] * 100
+                        if result['n'] else np.full(len(EDGES) - 1, np.nan))
                 p25, median, p75 = [quantile(yg, wg, probability) for probability in [.25, .5, .75]]
-                mean_cv = result['meanSE'] / result['mean'] * 100 if result['mean'] else np.nan
-                mean_q = 2 if result['n'] >= 60 and result['df'] >= 9 and mean_cv <= 15 else 1
+                mean_cv = result['meanSE'] / result['mean'] * 100 if result['mean'] > 0 else np.nan
+                mean_q = 1 if result['n'] else 0
+                if result['n'] >= 60 and result['df'] >= 9 and mean_cv <= 15:
+                    mean_q = 2
                 mean_critical = t.ppf(.975, result['df']) if result['df'] > 0 else np.nan
                 mean_lo = result['mean'] - mean_critical * result['meanSE']
                 mean_hi = result['mean'] + mean_critical * result['meanSE']
                 zero_n = int((yg == 0).sum())
                 zero_N = float(wg[yg == 0].sum())
-                imputed_pct = float(design.w[domain & imputed].sum() / result['N'] * 100)
+                imputed_pct = (design.w[domain & imputed].sum() / result['N'] * 100
+                               if result['n'] else np.nan)
                 domains[key] = {
                     'n': result['n'], 'N': rounded(result['N']),
                     'mean': rounded(result['mean']), 'meanSE': rounded(result['meanSE']),
@@ -221,11 +245,17 @@ def main():
                     personas_cero=zero_N, imputados_pct=imputed_pct, calidad_media=mean_q))
                 for i in [20, 40, 60, 80, 100]:
                     reference_rows.append(dict(clave=key, umbral=GRID[i],
-                        n=int(result['n_curve'][i]), personas=result['total'][i],
+                        n=int(result['n_curve'][i]), personas=result['total'][i] if result['n'] else np.nan,
                         porcentaje=result['p'][i], ee_pp=result['ee'][i],
                         ic95_inf_pct=result['lo'][i], ic95_sup_pct=result['hi'][i],
                         gdl_evento=result['df_event'][i], cv_total_pct=result['cv_total'][i],
                         calidad=int(result['q'][i])))
+                if not result['n']:
+                    empty = Design(frame, domain)
+                    assert empty.N == result['N'] == empty.gdl == result['df'] == 0
+                    assert not result['n_curve'].any() and not result['q'].any()
+                    assert np.isnan(result['p']).all() and np.isnan(hist).all()
+                    continue
                 assert abs(hist.sum() - 100) < 1e-8
                 assert (np.diff(result['p']) <= 1e-9).all()
                 assert (np.diff(result['n_curve']) <= 0).all()
@@ -255,6 +285,10 @@ def main():
             print(f'{occupation}: {occ_label} | {sex_label} | {len(AGE)} dominios calculados', flush=True)
 
     assert len(domains) == len(OCCUPATIONS) * len(SEXES) * len(AGE)
+    national_export = domains['all|all|all']
+    assert national_export['n'] == int(occupied.sum()) and national_export['median'] == national_median
+    np.testing.assert_allclose([national_export['N'], national_export['mean'], national_export['meanSE']],
+                               [national.N, national_mean, national_se], atol=1e-6, rtol=0)
     # The age bands and the two sexes partition each matching aggregate domain.
     for occupation, _ in OCCUPATIONS:
         for sex_code, _ in SEXES:
@@ -271,9 +305,8 @@ def main():
             np.testing.assert_allclose(sum(d['total'] for d in children), parent['total'], rtol=1e-11, atol=1e-7)
     age_reference = pd.read_csv(ROOT / 'fuentes/referencia_edades.csv')
     for row in age_reference.itertuples():
-        low, high = (60, 121) if row.grupo == '60_mas' else tuple(map(int, row.grupo.split('_')))
-        if high != 121: high += 1
-        mask = domain20 & (ages >= low) & (ages < high)
+        high = None if pd.isna(row.edad_max_exclusiva) else int(row.edad_max_exclusiva)
+        mask = restrict_age(occupied, ages, int(row.edad_min), high)
         old = Design(frame, mask)
         old_mean, old_se = old.mean(design.y)
         old_median = quantile(design.y[mask], design.w[mask], .5)
@@ -284,12 +317,16 @@ def main():
 
     residual_rows = []
     for code in [10, 999]:
-        mask = domain20 & (occ == code)
+        mask = occupied & (occ == code)
         residual_rows.append({'codigo': code, 'n': int(mask.sum()), 'personas': float(design.w[mask].sum())})
+    main_occupations = [raw_domains[f'{code}|all|all'] for code, _ in OCCUPATIONS[1:]]
+    assert sum(d['n'] for d in main_occupations + residual_rows) == national_export['n']
+    np.testing.assert_allclose(sum(d['N'] for d in main_occupations) + sum(d['personas'] for d in residual_rows),
+                               national.N, atol=1e-6, rtol=0)
     meta = {
         'title': 'Ingresos laborales en Chile', 'edition': 'ESI 2025',
-        'age': [{'id': key, 'label': label, 'min': low,
-                 'maxExclusive': high if high < 121 else None} for key, label, low, high in AGE],
+        'age': [{'id': key, 'label': label, 'min': low, 'maxExclusive': high}
+                for key, label, low, high in AGE],
         'occupation': [{'id': key, 'label': label} for key, label in OCCUPATIONS],
         'sex': [{'id': key, 'label': label} for key, label in SEXES],
         'grid': {'start': 0, 'stop': 21000000, 'step': 50000, 'length': 421,
@@ -298,9 +335,9 @@ def main():
                    'definition': 'Ingreso neto mensual de la ocupación principal. Incluye personas asalariadas e independientes.',
                    'net': 'Para asalariados, después de descuentos legales e impuestos. Para independientes, ingresos menos costos de la actividad. Incluye los componentes en especie definidos por la ESI.',
                    'zerosIncluded': True, 'imputationsIncluded': True},
-        'universe': 'Personas ocupadas de referencia ESI de 20 años o más. Cada porcentaje usa como denominador el grupo seleccionado.',
-        'nSourceRecords': len(frame), 'n20Plus': int(domain20.sum()), 'nAllOccupied': int(occupied.sum()),
-        'excludedUnder20': int((occupied & (ages < 20)).sum()),
+        'universe': 'Todas las personas ocupadas de referencia de la ESI 2025 (ocup_ref=1), desde los 15 años. Cada porcentaje usa como denominador el grupo seleccionado.',
+        'universeFilter': 'ocup_ref == 1', 'nSourceRecords': len(frame), 'nAllOccupied': int(occupied.sum()),
+        'n15To19': int((occupied & (ages < 20)).sum()),
         'occupationResiduals': residual_rows,
         'occupationResidualsNote': 'Todas las ocupaciones incluye los códigos 10 y 999, que no tienen panel propio.',
         'surveyDesign': {'psus': design.J, 'strata': len(design.nh),
@@ -312,7 +349,8 @@ def main():
             'q1': 'Estimación exploratoria o con precisión limitada.',
             'q2': 'Cumple el criterio conservador conjunto de proporción y total.',
             'q2Rule': 'Dominio n≥60 y gdl≥9. EE de la proporción ≤ min(p,1−p)^(2/3)/9. Evento n≥60, gdl≥9 y CV del total ≤15%.',
-            'meanQ': '2 si n≥60, gdl≥9 y CV de la media ≤15%. En otro caso 1.',
+            'meanQ': '0 si el grupo carece de observaciones. Para grupos observados, 2 si n≥60, gdl≥9 y CV de la media ≤15%; en otro caso 1.',
+            'emptyDomain': 'Con n=0, los recuentos observados y la suma de ponderadores son cero. La media, los cuantiles, el histograma y las proporciones e intervalos de la curva son nulos.',
             'interval': 'IC 95% logit de la proporción con t de los grados de libertad del dominio. Null si p=0 o p=1.',
             'quantiles': 'Cuantiles de la distribución empírica ponderada. No se estimó su incertidumbre.',
             'sampleSize': 'Tener 60 casos en el grupo no garantiza precisión de sus ingresos extremos.',
@@ -332,8 +370,15 @@ def main():
     # Validate the exported precision, rather than just the in-memory arrays.
     reloaded = json.loads(output.read_text())
     for key, d in reloaded['domains'].items():
-        assert len(d['hist']) == 210 and abs(sum(d['hist']) - 100) <= 0.000105
+        assert len(d['hist']) == 210
         assert all(len(d['curve'][field]) == 421 for field in ['p', 'n', 'lo', 'hi', 'q'])
+        if d['n'] == 0:
+            assert d['N'] == d['df'] == d['meanQ'] == d['zero_n'] == d['zeroN'] == 0
+            assert all(d[f] is None for f in ('mean', 'meanLo', 'meanHi', 'meanSE', 'meanCV', 'p25', 'median', 'p75', 'imputedPct'))
+            assert all(v is None for field in ('p', 'lo', 'hi') for v in d['curve'][field])
+            assert all(v is None for v in d['hist']) and not any(d['curve']['n']) and not any(d['curve']['q'])
+            continue
+        assert abs(sum(d['hist']) - 100) <= 0.000105
         assert max(np.diff(d['curve']['p'])) <= 1e-12
         assert all(x is None or 0 <= x <= 100 for field in ['lo', 'hi'] for x in d['curve'][field])
     summary = pd.DataFrame(summary_rows)
@@ -344,11 +389,14 @@ def main():
     specific_cells = summary.loc[summary.ocupacion.ne('all') & summary.sexo.ne('all') & summary.edad.ne('all')]
     validation = {
         'pass': True, 'specificCells': len(specific_cells), 'domains': len(domains), 'originalRows': len(frame),
-        'occupied': int(occupied.sum()), 'occupied20Plus': int(domain20.sum()),
-        'mainOccupation20Plus': int((domain20 & np.isin(occ, range(1, 10))).sum()),
-        'residualOccupation20Plus': residual_rows, 'psus': design.J, 'strata': len(design.nh),
+        'occupied': int(occupied.sum()), 'occupied15To19': meta['n15To19'],
+        'mainOccupation': int((occupied & np.isin(occ, range(1, 10))).sum()),
+        'residualOccupation': residual_rows, 'psus': design.J, 'strata': len(design.nh),
+        'observedAgeRange': [int(ages[occupied].min()), int(ages[occupied].max())],
+        'emptyDomains': [key for key, d in domains.items() if not d['n']],
         'singletonStrata': int((design.nh == 1).sum()),
-        'nationalMean': national_mean, 'nationalMeanSE': national_se,
+        'nationalPopulation': float(national.N), 'nationalMean': national_mean,
+        'nationalMeanSE': national_se, 'nationalMedian': national_median,
         'referenceAgeValidation': True, 'partitionAgeValidation': True,
         'partitionSexValidation': True, 'histogramsSum100': True,
         'curvesMonotonic': True, 'strictJSONNoNaN': True,

@@ -25,11 +25,11 @@
   <fieldset class="sex-control"><legend>Sexo</legend><div class="segmented" id="sex-buttons"><button data-sex="all" aria-pressed="true">Total</button><button data-sex="1" aria-pressed="false">Hombres</button><button data-sex="2" aria-pressed="false">Mujeres</button></div></fieldset>
   <fieldset class="age-control" aria-describedby="universe-note"><legend>Edad del grupo principal</legend><div class="age-chips" id="age-buttons"></div></fieldset>
  </section>
- <p id="universe-note" class="universe-note"><strong>Universo: personas ocupadas de 20 años o más.</strong> Tramos de 5 años, desde 20–24 hasta 70–74, y un último grupo de 75 años o más. “Total (20+)” reúne todos los tramos para la ocupación y sexo elegidos. Excluye a los menores de 20 años.</p>
+ <p id="universe-note" class="universe-note"><strong>Todas las edades</strong> incluye a las personas ocupadas de referencia de la ESI, desde los 15 años. Elige un tramo para comparar solo a personas de esa edad.</p>
  <div class="selection-line"><p id="selection-label"></p><button class="text-button" id="reset">Restablecer</button></div>
  <div id="sample-warning" class="notice" role="status" hidden></div>
  <section class="metrics" aria-label="Resumen del grupo seleccionado">
-  <article class="metric"><div class="metric-name">Ingreso neto mediano <span class="mini-tag">Percentil 50</span></div><div class="metric-value" id="median"></div><p>Al menos la mitad de este grupo gana este monto o menos al mes.</p></article>
+  <article class="metric"><div class="metric-name">Ingreso neto mediano <span class="mini-tag">Percentil 50</span></div><div class="metric-value" id="median"></div><p id="median-note">Al menos la mitad de este grupo gana este monto o menos al mes.</p></article>
   <article class="metric"><div class="metric-name">Ingreso neto promedio</div><div class="metric-value" id="mean"></div><p id="mean-note"></p></article>
   <article class="metric"><div class="metric-name">Personas representadas</div><div class="metric-value" id="population"></div><p id="population-note"></p></article>
  </section>
@@ -61,7 +61,7 @@
   <div class="age-peaks" id="age-peaks"></div>
   <p class="profile-scroll-hint">Desliza el gráfico para recorrer las edades.</p>
   <div class="profile-scroll"><div class="plot" id="age-profile"></div></div>
-  <p class="chart-note">La franja muestra dónde se encuentra la mitad central de los ingresos de cada edad. Los símbolos vacíos indican menor precisión. Una diferencia pequeña entre dos tramos puede deberse al azar de la muestra.</p>
+  <p class="chart-note">La franja muestra dónde se encuentra la mitad central de los ingresos de cada edad. Los símbolos vacíos indican menor precisión. Si un tramo no tiene observaciones, el gráfico deja un espacio. Una diferencia pequeña entre dos tramos puede deberse al azar de la muestra.</p>
   <p class="chart-note">Comparamos personas de distintas edades en 2025, no la evolución salarial de una misma persona. El último tramo, 75+, es abierto por su menor tamaño muestral.</p>
   <details class="profile-table-details"><summary>Ver cifras por tramo de edad</summary><div class="profile-table-wrap" id="age-profile-table"></div></details>
  </section>
@@ -82,7 +82,21 @@
  </section>
  <section class="method" id="method">
   <details id="method-details"><summary>Fuente, definiciones y precisión de las cifras <span>+</span></summary>
-   <div class="method-content"><div><h3 id="como-medimos" tabindex="-1">Qué estamos midiendo</h3><p>Ingreso neto mensual de la ocupación principal. Para asalariados, después de cotizaciones e impuestos. Para independientes, después de los costos de su actividad. Incluye beneficios en especie valorizados.</p><p>Personas ocupadas de 20 años o más, con al menos un mes en su empleo actual. En la consulta por monto, el porcentaje se calcula dentro del grupo seleccionado. En el recorrido inicial se usa el total nacional de ocupados de 20 años o más que cumplen el criterio de antigüedad. La comparación por ocupación indica la base junto a cada porcentaje. La categoría “Total” de sexo incluye hombres y mujeres según la variable de la encuesta.</p><p id="universe-counts"></p><p>Fuente: <a href="https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/encuesta-suplementaria-de-ingresos" target="_blank" rel="noopener noreferrer">INE, Encuesta Suplementaria de Ingresos 2025</a>. Ingresos expresados en pesos de octubre de 2025.</p></div><div><h3>Cómo interpretar las diferencias</h3><p>Las cifras usan los factores de expansión de la ESI. “Personas representadas” es una estimación de población, mientras que “encuestados” cuenta observaciones de la muestra. El total de ocupaciones incluye los códigos residuales no mostrados entre los nueve grupos.</p><p>La mediana es el primer monto que alcanza al menos el 50% del peso acumulado. Los empates pueden hacer que más del 50% quede en el monto mediano o por debajo. Las diferencias entre edades son una comparación transversal, no la trayectoria de una misma persona. Las diferencias por sexo u ocupación no identifican efectos causales.</p><p>Se conservan ingresos cero, valores extremos e imputaciones oficiales. El histograma usa intervalos de $100.000 y las curvas se consultan cada $50.000. ≈ indica cifras redondeadas.</p><p>En la escala logarítmica, cada marca vertical multiplica por diez el porcentaje. Solo se dibujan proporciones positivas, sin reemplazar ceros por valores artificiales. La escala cambia la representación, no los resultados.</p></div><div><h3>Qué significa “Exploratorio”</h3><p>La precisión se evalúa para cada consulta. Una cifra exploratoria tiene pocos casos o elevada incertidumbre. Cero casos observados no significa que no existan personas en la población con ese ingreso.</p><p>Para la consulta por monto se aplica un criterio conservador: la proporción y el total deben pasar las reglas de precisión. El total requiere al menos 60 casos, 9 grados de libertad y un coeficiente de variación de hasta 15%. Cumplir solo el tamaño muestral no garantiza precisión.</p><p>Los intervalos del 95% usan estratos y conglomerados del diseño de encuesta completo. No incorporan subdeclaración, subcobertura ni incertidumbre adicional de imputación. No se calculó un intervalo para la mediana. Los intervalos son puntuales, no simultáneos.</p></div></div>
+   <div class="method-content">
+    <div><h3 id="como-medimos" tabindex="-1">Qué estamos midiendo</h3>
+     <p>Ingreso neto mensual del trabajo principal. Para asalariados descuenta cotizaciones e impuestos; para independientes, los costos de su actividad. Incluye beneficios en especie valorizados, ingresos de $0 e imputaciones oficiales.</p>
+     <p>La ESI considera a personas ocupadas desde los 15 años que llevan al menos un mes en su empleo actual. El recorrido inicial usa el total nacional. En la consulta por monto, el porcentaje corresponde al grupo que elegiste.</p>
+     <p id="universe-counts"></p>
+     <p>Fuente: <a href="https://www.ine.gob.cl/estadisticas-por-tema/mercado-laboral/encuesta-suplementaria-de-ingresos" target="_blank" rel="noopener noreferrer">INE, Encuesta Suplementaria de Ingresos 2025</a>. Pesos de octubre de 2025.</p></div>
+    <div><h3>Cómo interpretar las diferencias</h3>
+     <p>«Encuestados» cuenta las observaciones. «Personas representadas» usa los factores de expansión para estimar la población. El total nacional incluye también las ocupaciones sin clasificar.</p>
+     <p>La mediana divide al grupo ordenado por ingreso en dos mitades. Si varias personas ganan el mismo monto, más del 50% puede quedar en la mediana o por debajo. Comparar edades, sexos u ocupaciones describe diferencias; no explica sus causas.</p>
+     <p>El histograma agrupa ingresos cada $100.000. La curva consulta montos cada $50.000. En escala logarítmica, cada marca multiplica por diez el porcentaje y solo se dibujan valores positivos. ≈ indica redondeo.</p></div>
+    <div><h3>Qué significa «Exploratorio»</h3>
+     <p>Una estimación es exploratoria si hay pocos casos o demasiada incertidumbre. «Sin observaciones» indica que nadie de ese grupo fue encuestado. «Sin casos observados» indica que sí hubo encuestados, pero ninguno alcanzó el monto consultado.</p>
+     <p>En la consulta por monto deben pasar la prueba de precisión tanto la proporción como el total. El total requiere al menos 60 casos, 9 grados de libertad y un coeficiente de variación de hasta 15%.</p>
+     <p>Los intervalos del 95% usan los estratos y conglomerados de la encuesta. Son puntuales, no simultáneos, y no incluyen la incertidumbre por subdeclaración, subcobertura ni imputación. La mediana no tiene intervalo calculado.</p></div>
+   </div>
   </details>
  </section>
  <section class="faq" aria-labelledby="faq-title"><p class="eyebrow">PARA INTERPRETAR LOS RESULTADOS</p><h2 id="faq-title">Preguntas frecuentes sobre ingresos en Chile</h2>
@@ -90,7 +104,7 @@
   <details><summary>¿Cuál es la diferencia entre ingreso mediano y promedio?</summary><p>Imagina que ordenas a las personas de menor a mayor ingreso: la mediana es el monto que encuentras en el centro. El promedio reparte la suma de todos los ingresos en partes iguales. Unos pocos ingresos muy altos pueden elevar ese promedio.</p></details>
   <details><summary>¿El ingreso neto es lo mismo que el sueldo líquido?</summary><p>Para asalariados, corresponde al ingreso de la ocupación principal después de descuentos legales e impuestos. También se incluyen independientes, cuyo ingreso descuenta los costos de su actividad, y componentes en especie definidos por la ESI. No es el ingreso total del hogar.</p></details>
   <details><summary>¿Qué significa ganar $1 millón o más?</summary><p>La consulta incluye a quienes ganan exactamente el monto indicado. Puedes consultar desde $0 hasta $20 millones, en pasos de $50.000, y ver la proporción y la cantidad aproximada de personas del grupo que alcanzan ese ingreso neto mensual.</p></details>
-  <details><summary>¿Estas cifras representan a toda la población de Chile?</summary><p>No. El panel representa a personas ocupadas de 20 años o más con al menos un mes en su empleo actual. Los filtros de edad, sexo y ocupación restringen ese grupo. Las cifras corresponden a la ESI 2025, en pesos de octubre de 2025, y no se han actualizado por inflación.</p></details>
+  <details><summary>¿Estas cifras representan a toda la población de Chile?</summary><p>No. El panel representa a las personas ocupadas de referencia de la ESI: tienen 15 años o más y llevan al menos un mes en su empleo actual. Los filtros de edad, sexo y ocupación restringen ese grupo. Las cifras corresponden a la ESI 2025, en pesos de octubre de 2025, y no se han actualizado por inflación.</p></details>
  </section>
 <!--__WEB_RESOURCES__-->
  <footer class="site-footer">

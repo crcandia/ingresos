@@ -37,10 +37,10 @@ def portada(nacional, bajo_promedio):
         <img class="cover-illustration" src="__PORTADA_IMAGEN__" alt="" width="1152" height="480">
         <div class="cover-figure-detail"><h2 id="cover-finding"><strong>{round(bajo_promedio / 10)} de cada 10</strong> ganan menos que el promedio.</h2>
           {barra('Mediana', 'median')}{barra('Promedio', 'mean')}
-          <p>Los ingresos más altos elevan el promedio. En 2025, el {porcentaje(bajo_promedio)} de las personas ocupadas de 20 años o más ganó menos que esa cifra.</p></div>
+          <p>Los ingresos más altos elevan el promedio. En 2025, el {porcentaje(bajo_promedio)} de las personas ocupadas en Chile ganó menos que esa cifra.</p></div>
       </aside>
       <nav class="cover-actions" aria-label="Explorar los ingresos"><a class="cover-primary" href="#relato">Recorrer las cifras ↓</a><a href="#explorar">Comparar mi ingreso</a><a href="#sueldos-por-carrera">Ver sueldos por carrera</a></nav>
-      <p class="cover-source">Fuente: INE, ESI 2025. Ingreso mensual del trabajo principal de personas ocupadas de 20 años o más, en pesos de octubre de 2025.</p>
+      <p class="cover-source">Fuente: INE, ESI 2025. Ingreso mensual del trabajo principal de las personas ocupadas de 15 años o más, en pesos de octubre de 2025.</p>
     </section>'''
 
 
@@ -108,10 +108,12 @@ def relato(data):
     registros = []
     with gzip.open(ROOT / 'datos/esi2025_columnas_necesarias.csv.gz', 'rt') as archivo:
         for fila in csv.DictReader(archivo):
-            if fila['ocup_ref'] in ('1', '1.0') and int(fila['edad']) >= 20:
+            if fila['ocup_ref'] in ('1', '1.0'):
                 registros.append((float(fila['ing_t_p']), float(fila['fact_cal_esi'])))
     total = sum(factor for ingreso, factor in registros)
-    assert math.isclose(total, nacional['N'], abs_tol=.01)
+    assert len(registros) == nacional['n']
+    assert math.isclose(total, nacional['N'], rel_tol=0, abs_tol=.01)
+    assert math.isclose(total, asalariados['ocupados'], rel_tol=0, abs_tol=.01)
     bajo_minimo = 100 * sum(factor for ingreso, factor in registros if ingreso < monto_minimo) / total
     bajo_promedio = 100 * sum(factor for ingreso, factor in registros if ingreso < nacional['mean']) / total
     # dashboard.json stores monetary values to six decimal places. Compare both
@@ -133,11 +135,11 @@ def relato(data):
         superior = porcentaje(curva['hi'][indice], 2)
         return f'Para ${millones} millones o más hubo {curva["n"][indice]} casos. El intervalo del 95% va de {inferior} a {superior}.'
 
-    nota_minimo = f'''<p class="story-foot">El INE calcula el mínimo neto con un descuento de 18,7% sobre el mínimo legal de octubre de 2025. La encuesta incluye a independientes y a quienes trabajan a jornada parcial. <a href="{minimo["manual"]}">Manual del INE, p. 12</a> · <a href="{minimo["url"]}">Mínimo legal</a>.</p>'''
+    nota_minimo = f'''<p class="story-foot">El INE descuenta un 18,7% del mínimo general de jornada completa de octubre de 2025 (${numero(minimo["pesos"])} brutos, de 18 a 65 años). Para menores de 18 y mayores de 65 rige otro monto. La encuesta también incluye jornadas parciales e independientes. Un ingreso inferior a esta referencia, por sí solo, no demuestra una infracción laboral. <a href="{minimo["manual"]}">Manual del INE, p. 12</a> · <a href="{minimo["url"]}">Mínimo legal</a>.</p>'''
     nota_altos = f'''<details class="story-precision"><summary>¿Qué precisión tienen las cifras más altas?</summary>
       <p>{precision(8)} {precision(10)} Son estimaciones exploratorias porque hay pocos casos observados.</p></details>'''
     partes = [
-        ('minimo', 'El mínimo', '<em>1 de cada 5</em> gana menos que el mínimo.',
+        ('minimo', 'El mínimo', f'<em>1 de cada {round(100 / bajo_minimo)}</em> gana menos que el mínimo de referencia.',
          pictograma(f'Menos de ${numero(monto_minimo)}', bajo_minimo, total, 'lt'),
          'Cada punto representa a una de 100 personas ocupadas. En verde aparecen quienes quedaron bajo el mínimo de referencia.',
          nota_minimo),
@@ -145,7 +147,7 @@ def relato(data):
          pictograma('Hasta la mediana', hasta_mediana, total, 'le'),
          f'Si ordenas a las personas por ingreso, la del centro recibe unos {pesos(mediana)} al mes. Los puntos verdes llegan hasta ese lugar de la fila.',
          ''),
-        ('millones', 'Desde un millón', '<em>3 de cada 10</em> llegan al millón.',
+        ('millones', 'Desde un millón', f'<em>{round(curva["p"][20] / 10)} de cada 10</em> llegan al millón.',
          cuadros_millones([1, 2, 3, 4]),
          'Cada cuadro vuelve a mirar a las mismas 100 personas. Quien gana $4 millones o más aparece en verde en los cuatro.',
          ejemplos_carreras(referencias, registros, total, mediana)),
@@ -169,7 +171,7 @@ def relato(data):
       <p class="kicker">PANORAMA NACIONAL</p><h2 id="story-title">Los ingresos de Chile, de menor a mayor</h2>
       {distribucion_completa(registros, total, monto_minimo)}
       <details class="survey-universe"><summary>¿A quiénes representa la encuesta?</summary>
-        <p>Las {numero(nacional["n"])} personas encuestadas representan a unas {miles(total)} personas ocupadas de 20 años o más, con al menos un mes en su empleo. Unas {miles(total - nacional["zeroN"])} recibieron ingresos por su trabajo principal y unas {miles(nacional["zeroN"])} declararon cero. La distribución incluye a ambos grupos.</p>
+        <p>Las {numero(nacional["n"])} personas encuestadas representan a unas {miles(total)} personas ocupadas de 15 años o más, con al menos un mes en su empleo. Es el universo que usa el INE para las cifras nacionales de la ESI. Unas {miles(total - nacional["zeroN"])} recibieron ingresos por su trabajo principal y unas {miles(nacional["zeroN"])} declararon cero. La distribución incluye a ambos grupos.</p>
         <p>De ese total, unas {miles(asalariados["asalariados"])} personas trabajaban como asalariadas del sector público o privado y unas {miles(asalariados["asalariados_con_ingreso"])} de ellas recibieron ingresos. También se cuentan beneficios en especie, como alimentos que se reciben como parte del pago.</p>
       </details>
       <div class="story-layout"><nav class="story-index" aria-label="Etapas del recorrido">{''.join(nav)}</nav>

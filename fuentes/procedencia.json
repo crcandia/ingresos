@@ -33,6 +33,8 @@
   "origen_modelo": "Clase Design conservada del análisis nacional. Cálculo vectorizado contrastado contra ella.",
   "n_filas": 93458,
   "sha256_design_conservado": "39b207e583f9126c889eeaa345ffe6b42fece3d4acfdb0969bb4b223643443a9",
-  "sha256_analizar_dashboard": "aa0d9576c09834ef21ccb64e0c8bdd3662ae1ac4ba75aed9fc2c57ba7d18a80a",
-  "sha256_referencia_edades": "6761aa8a4091b2feceaec826419ea9f4d0b5562fd4df75953287cc25c66044dc"
+  "sha256_analizar_dashboard": "bdf7d71114efa22bca8bb2cea48fdee3f26c99cf34f28cad63952595dbcaa888",
+  "sha256_referencia_edades": "e99f15213e2a3d5f1ef82d7739463c479d7bafe587719936e2a48032bfec7537",
+  "universo_dashboard": "La selección nacional usa únicamente ocup_ref == 1. El tramo 15–19 se añade a los filtros quinquenales y el tramo 75+ permanece abierto.",
+  "origen_referencia_15_19": "Se calculó el tramo 15–19 sobre el CSV original, con fact_cal_esi y varianza linealizada al nivel de conglomerado y estrato sobre el marco completo. Los tramos históricos conservan sus referencias de comparación."
 }

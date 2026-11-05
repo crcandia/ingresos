@@ -6,7 +6,7 @@ Repositorio: [crcandia/ingresos](https://github.com/crcandia/ingresos), rama `ma
 
 El proyecto incluye `netlify.toml` y `site/index.html`. Netlify debe usar la carpeta base `site`, publicar `.` y no ejecutar compilación. El sitio es HTML estático con datos agregados incrustados. El extracto de microdatos y las herramientas de análisis quedan fuera de la carpeta publicada.
 
-Para actualizar el sitio desde el código fuente:
+Para reconstruir el sitio a partir de los agregados del paquete, ejecuta estos comandos desde la raíz. Si cambió la población analizada o el extracto de la encuesta, primero recalcula los datos y el conteo de asalariados según el [README](README.md#reproducir-el-análisis).
 
 ```bash
 npm install --prefix qa
@@ -15,7 +15,7 @@ python3 -B construir_dashboard.py
 
 La carpeta `site` incluye también la miniatura social, iconos, resumen CSV, sitemap, robots.txt y reglas de Netlify. Publicar toda esa carpeta, no solo `index.html`. Ver `SEO.md` para las verificaciones de indexación y vista previa sobre el dominio real.
 
-Este comando genera el HTML descargable y `site/index.html` con los mismos datos e interfaz. La versión web añade la etiqueta Google Analytics `G-XSFF2F0XKK`, ajusta la política de contenido para permitir sus conexiones y conserva los créditos del laboratorio y del autor. “Guardar copia” elimina la etiqueta y restablece el bloqueo de red para uso sin conexión. Después se confirma el cambio en GitHub y Netlify puede desplegarlo desde la rama configurada.
+El constructor genera el HTML descargable y `site/index.html` con los mismos datos e interfaz. La versión web añade la etiqueta Google Analytics `G-XSFF2F0XKK`, ajusta la política de contenido para permitir sus conexiones y conserva los créditos del laboratorio y del autor. “Guardar copia” elimina la etiqueta y restablece el bloqueo de red para uso sin conexión. Después se confirma el cambio en GitHub y Netlify puede desplegarlo desde la rama configurada.
 
 ## Dominio
 

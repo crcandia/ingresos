@@ -1,5 +1,7 @@
 # Revisión independiente de miniatura y SEO técnico
 
+> **Archivo histórico.** Este informe documenta la primera entrega de la miniatura, el resumen CSV y el prerender para buscadores. Sus cifras, límites de cobertura, pruebas y dictamen corresponden exclusivamente a la versión examinada. La edición actual reúne a todas las personas ocupadas de referencia de la ESI 2025. [Resultados y comprobaciones de la edición actual](revision_universo.md).
+
 Adversarial verdict: PASS_WITH_RISKS
 
 Completion claim challenged: Los archivos del dashboard incorporan una miniatura social, metadatos y recursos SEO coherentes, una vista inicial legible sin ejecutar JavaScript y copias offline funcionales; están preparados para empaquetar y subir al repositorio autorizado.
