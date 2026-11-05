@@ -21,3 +21,56 @@
 
 .filters>.occupation-control{grid-column:1;grid-row:1}.filters>.sex-control{grid-column:2;grid-row:1}.filters>.age-control{grid-column:1 / span 2;grid-row:2}
 @media(max-width:520px){.filters>.occupation-control{grid-column:1;grid-row:1}.filters>.sex-control{grid-column:1;grid-row:2}.filters>.age-control{grid-column:1;grid-row:3}}
+
+/* Use one monetary scale for every row and the gold national reference. */
+.occupations-card .section-description { margin-bottom: 0; }
+.occupations-card .occupation-figure { margin: 1.15rem 0 .7rem; }
+.occupation-figure .rank-reference { margin-top: 1rem; padding: .25rem .45rem .85rem; border-bottom: 1px solid #c7d4c8; }
+.occupation-figure .rank-reference small { color: #455d4d; font-size: .81rem; }
+.occupation-figure .ranking { gap: .1rem; margin: .3rem 0 .7rem; }
+.occupation-figure .rank-row {
+  display: block;
+  padding: .62rem .45rem;
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+}
+.occupation-figure .rank-row:hover, .occupation-figure .rank-row:focus-visible { background: #f9fbf5; }
+.occupation-figure .rank-row.active { border-color: #8caa95; background: #f2f6ec; }
+.occupation-figure .rank-row:disabled { cursor: default; }
+.occupation-figure .cargo-row-head { align-items: baseline; }
+.occupation-figure .cargo-row-head .rank-label { min-width: 0; overflow-wrap: anywhere; font-size: clamp(.9rem, 1.5vw, 1rem); }
+.occupation-figure .cargo-row-head .rank-value { flex: none; max-width: 12ch; white-space: normal; text-align: right; }
+.occupation-figure .cargo-row-head b { font-size: clamp(1.02rem, 1.7vw, 1.24rem); }
+.occupation-figure .cargo-track { height: .54rem; margin-block: .28rem .22rem; }
+.occupation-figure .cargo-track .rank-fill { display: block; background: #297354; }
+.occupation-figure .rank-reference .rank-fill { background: #93612d; }
+.occupation-figure .rank-support, .occupation-figure .rank-n {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .12rem .65rem;
+  color: #455d4d;
+  font-size: .79rem;
+  line-height: 1.4;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.occupation-figure .rank-support { gap: .12rem 1rem; }
+.occupation-figure .rank-amount { font-size: .85rem; font-weight: 650; color: #264c39; }
+.occupation-figure .rank-n > * { display: inline; font-weight: 400; font-size: inherit; }
+.occupation-figure .rank-n > * + *::before { content: "·"; display: inline-block; margin-right: .65rem; }
+.occupation-figure .rank-n .limited-text { color: #784f19; font-weight: 650; font-size: .75rem; }
+.occupation-figure .rank-reading { border-top: 1px solid #c7d4c8; padding-top: .8rem; margin: 0; color: #435c4e; font-size: .85rem; }
+@media (max-width: 590px) {
+  .occupation-figure .rank-row { padding: .65rem .12rem; }
+  .occupation-figure .rank-reference { padding-inline: .12rem; }
+  .occupation-figure .rank-support { display: block; }
+  .occupation-figure .rank-amount { display: block; margin-bottom: .12rem; }
+  .occupation-figure .rank-n { column-gap: .4rem; font-size: .75rem; }
+  .occupation-figure .rank-n > * + *::before { margin-right: .4rem; }
+}
+@media print {
+  .occupation-figure .cargo-track, .occupation-figure .rank-fill { print-color-adjust: exact; }
+  .occupation-figure .rank-row { break-inside: avoid; }
+}

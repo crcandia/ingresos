@@ -19,14 +19,13 @@ def miles(personas):
     return numero(round(personas / 1000) * 1000)
 
 
-def portada(nacional):
+def portada(nacional, bajo_promedio):
     def barra(etiqueta, clave):
         monto = nacional[clave]
         ancho = 100 * monto / max(nacional['mean'], nacional['median'])
         return f'''<div class="income-row {clave}"><div><span>{etiqueta}</span><strong>≈ {pesos(monto)}</strong></div>
           <i aria-hidden="true" style="width:{ancho:.2f}%"></i></div>'''
 
-    diferencia = pesos(nacional['mean'] - nacional['median'])
     return f'''<section class="cover" aria-labelledby="title">
       <div class="cover-copy">
         <p class="kicker">ENCUESTA SUPLEMENTARIA DE INGRESOS 2025</p>
@@ -36,9 +35,9 @@ def portada(nacional):
       </div>
       <aside class="cover-figure" aria-labelledby="cover-finding">
         <img class="cover-illustration" src="__PORTADA_IMAGEN__" alt="" width="1152" height="480">
-        <div class="cover-figure-detail"><h2 id="cover-finding"><strong>≈ {diferencia}</strong> separan el promedio de la mediana.</h2>
+        <div class="cover-figure-detail"><h2 id="cover-finding"><strong>{round(bajo_promedio / 10)} de cada 10</strong> ganan menos que el promedio.</h2>
           {barra('Mediana', 'median')}{barra('Promedio', 'mean')}
-          <p>Los ingresos más altos empujan el promedio hacia arriba. La mediana marca el centro de la distribución.</p></div>
+          <p>Los ingresos más altos elevan el promedio. En 2025, el {porcentaje(bajo_promedio)} de las personas ocupadas de 20 años o más ganó menos que esa cifra.</p></div>
       </aside>
       <nav class="cover-actions" aria-label="Explorar los ingresos"><a class="cover-primary" href="#relato">Recorrer las cifras ↓</a><a href="#explorar">Comparar mi ingreso</a><a href="#sueldos-por-carrera">Ver sueldos por carrera</a></nav>
       <p class="cover-source">Fuente: INE, ESI 2025. Ingreso mensual del trabajo principal de personas ocupadas de 20 años o más, en pesos de octubre de 2025.</p>
@@ -114,6 +113,7 @@ def relato(data):
     total = sum(factor for ingreso, factor in registros)
     assert math.isclose(total, nacional['N'], abs_tol=.01)
     bajo_minimo = 100 * sum(factor for ingreso, factor in registros if ingreso < monto_minimo) / total
+    bajo_promedio = 100 * sum(factor for ingreso, factor in registros if ingreso < nacional['mean']) / total
     # dashboard.json stores monetary values to six decimal places. Compare both
     # sides at that precision so observations exactly at the median remain included.
     mediana = nacional['median']
@@ -148,7 +148,7 @@ def relato(data):
         ('millones', 'Desde un millón', '<em>3 de cada 10</em> llegan al millón.',
          cuadros_millones([1, 2, 3, 4]),
          'Cada cuadro vuelve a mirar a las mismas 100 personas. Quien gana $4 millones o más aparece en verde en los cuatro.',
-         ejemplos_carreras(referencias, registros=registros, total=total)),
+         ejemplos_carreras(referencias, registros, total, mediana)),
         ('altos', 'Los ingresos más altos', 'A <em>$6 millones</em> llega menos del 1%.',
          cuadros_millones([6, 8, 10], ampliado=True),
          'Aquí ampliamos el 1% superior. Los cien puntos muestran a las cien personas con más ingresos de un grupo de 10.000. En verde están quienes alcanzan cada monto, incluidos los que ganan más de $10 millones.',
@@ -174,4 +174,4 @@ def relato(data):
       </details>
       <div class="story-layout"><nav class="story-index" aria-label="Etapas del recorrido">{''.join(nav)}</nav>
         <div class="story-steps">{''.join(historias)}</div></div></section>'''
-    return portada(nacional), historia
+    return portada(nacional, bajo_promedio), historia

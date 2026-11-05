@@ -66,3 +66,48 @@
   .career-hundred { break-inside: avoid; }
   .career-people, .career-key { print-color-adjust: exact; }
 }
+
+.salary-comparator > summary {
+  padding: .85rem 1rem;
+  border: 1px solid #bbcdbc;
+  border-radius: .45rem;
+  background: #e9efe4;
+}
+.salary-comparator > summary:hover { background: #e1ebdb; }
+.salary-comparator[open] > summary { margin-block-end: .8rem; }
+.salary-comparator .salary-values { border-color: #c7d5c7; }
+.comparison-figure > figcaption {
+  font: 500 clamp(1.25rem, 2.4vw, 1.75rem)/1.16 var(--serif);
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+.comparison-figure .cargo-bars { gap: .92rem; }
+.comparison-figure .base-nacional {
+  padding: .2rem 0 .85rem;
+  margin-block-end: .85rem;
+  border-bottom: 1px solid #c9d5c6;
+}
+.comparison-figure .salary-group {
+  margin: 1.55rem 0 .75rem;
+  color: #495f50;
+  font: 650 .84rem/1.25 var(--sans);
+  letter-spacing: .025em;
+}
+.comparison-figure .cargo-row-head span { min-width: 0; }
+.comparison-figure .cargo-row-head a { text-decoration-color: #94ab95; }
+.comparison-figure .cargo-row-head b { font-size: clamp(1.12rem, 2.2vw, 1.43rem); }
+.comparison-figure .cargo-track { position: relative; height: .6rem; }
+.comparison-figure .cargo-track::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--median-position);
+  border-inline-start: 1px solid #f2f4dd;
+}
+.comparison-figure small strong { color: #294d3b; font-weight: 650; }
+.cargo-table small a { display: inline; }
+@media (max-width: 520px) {
+  .comparison-figure .cargo-row-head { gap: .4rem; }
+  .comparison-figure .cargo-row-head span { line-height: 1.2; }
+  .comparison-figure .cargo-bars small { display: block; margin-block-start: .18rem; }
+}

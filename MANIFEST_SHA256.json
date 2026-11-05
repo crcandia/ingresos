@@ -4,16 +4,16 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 4592964,
-    "sha256": "885c43008e3038d8ace39b260a068c7bd40464033f7bbe6ef2cc7b423893ad5c"
+    "bytes": 4622281,
+    "sha256": "d225308d8ef908cd9c9ffd7f1f41d91160575083811c9dd940a4e2815b9fc3c8"
   },
   "PUBLICACION.md": {
     "bytes": 2200,
     "sha256": "ebcf080eb6e62b1cf1a98d116ccb9568fabb38e6b3cfc3c5c14a575d44e75790"
   },
   "README.md": {
-    "bytes": 10658,
-    "sha256": "ab617c504aba1c45998bf01afd5d378194a87196e923db81c36d7f4f3c9c39a2"
+    "bytes": 11426,
+    "sha256": "43448e68880e29658a435dac25148bec16ba5438c109c697f02195aa5c6a33e1"
   },
   "README_DATOS.md": {
     "bytes": 8006,
@@ -44,12 +44,12 @@
     "sha256": "181d331aeaa66172d35d8cc401f8a71a0393797cf8e1db26e55741abd7d94a29"
   },
   "codigo/referencias_salariales.py": {
-    "bytes": 11789,
-    "sha256": "7be041be2c33daff405f201a66f0d030469c7c0fdbf46c30cf8a4f2e38e8c6e1"
+    "bytes": 15619,
+    "sha256": "29e028598a6d28446c1362efb3594c22c4235cca698f9448221b3989230cb8b0"
   },
   "codigo/relato.py": {
-    "bytes": 10854,
-    "sha256": "d56fdd3c8e0678a9b31fe8f8b2531caddb490f7ea05add55062519d43af4b8fc"
+    "bytes": 10989,
+    "sha256": "214cd26d690fbeb905c549722fd18069f51e465c6e03a2d934a06c32d6fe93f3"
   },
   "codigo/seo_web.py": {
     "bytes": 12766,
@@ -87,6 +87,10 @@
     "bytes": 13533,
     "sha256": "e192f119bc9bac9bc7290bdcbba46d9412f356119558c07b6af4711a9ce4fbfb"
   },
+  "fuentes/autoridades_planta_2025.csv": {
+    "bytes": 367,
+    "sha256": "f85f0d9739c5b8702d7daf4121b75fc5382a1da4df97a320c38959a2e7e0324e"
+  },
   "fuentes/comprobacion_extracto.json": {
     "bytes": 528,
     "sha256": "cbf7e07e1a0d8fd9bf5f1f386a00d0e82278ad50d58c91b769f82b81a67f2b38"
@@ -112,8 +116,8 @@
     "sha256": "6761aa8a4091b2feceaec826419ea9f4d0b5562fd4df75953287cc25c66044dc"
   },
   "fuentes/referencias_salariales.json": {
-    "bytes": 10739,
-    "sha256": "091bc67616b197463d74c6ed33c2778a0c65d2942e05cbb9e5a9744f1daf8846"
+    "bytes": 22820,
+    "sha256": "b7bd0f75851f7e2ea153f9003c17d47555efa1591b9651f8bf9ac3bd2a0226e8"
   },
   "fuentes/universo_asalariados.json": {
     "bytes": 326,
@@ -124,20 +128,20 @@
     "sha256": "6a7f6f6692039812dfa0013ca84bb98ff5f1e2a528b4e72c85faed147c554d82"
   },
   "interfaz/carreras.css": {
-    "bytes": 2160,
-    "sha256": "ad29853271895561f55a9651c8a75ec4eee1f35889814e3fe48720ac25cad1fe"
+    "bytes": 3768,
+    "sha256": "d94923a6f19f69ed81722999a51907b011b075afcd1f36e8a8c3292963eacb77"
   },
   "interfaz/dashboard.css": {
-    "bytes": 20879,
-    "sha256": "6922fd32327538425faf7de774013d52cfa57797ad107bb46451c61713f24231"
+    "bytes": 23815,
+    "sha256": "73b88cb36e77be30261d79b86a4d55980f18b3e1990195dbdd03bc306aa36a68"
   },
   "interfaz/dashboard.html": {
-    "bytes": 16540,
-    "sha256": "da195cde5f6e521d78f8867b3ced672a2adf9f0e4b8c55d707deaa36a1468625"
+    "bytes": 16693,
+    "sha256": "d8d4e31b7b1f7f4112cb9cbdd010b5024d88d9b3fc285bb9304319d22c0bcb9b"
   },
   "interfaz/dashboard.js": {
-    "bytes": 34125,
-    "sha256": "65645c39df5bed508e5c56371f5bb2dc12ac27a7c88a0e133d9eebbe31243c39"
+    "bytes": 36816,
+    "sha256": "a73bb896ecea04950d8beaf3531e927916f0f0cac2ccacfcf41d922ea12aca7d"
   },
   "interfaz/favicon.svg": {
     "bytes": 295,
@@ -152,8 +156,8 @@
     "sha256": "172a384316e0f2fb44bb1ca9ce9ff658f377fdfd65deeb32fd4218123ae0b702"
   },
   "interfaz/seo.json": {
-    "bytes": 1000,
-    "sha256": "0b89b9193c8eaaa6da9c78f416212a48d2cacf90a2dff878a56e54e2e74c25f5"
+    "bytes": 983,
+    "sha256": "2f23e2c7c548e15228ea12d675d7b8ae2b76f097c62c86fdf863a5d4bb36f38e"
   },
   "netlify.toml": {
     "bytes": 174,
@@ -164,8 +168,8 @@
     "sha256": "aeb10a94042be30c39e735e15f5f8c3f902c002c46c19aac225272903e297bb9"
   },
   "qa/check_relato.cjs": {
-    "bytes": 6469,
-    "sha256": "6cf428a16f0f418cfd223dd957910cb933ad5a52e00c563e2ce7efd236780f99"
+    "bytes": 8099,
+    "sha256": "ca85a60bed2bc63ef08c6a34eb04d8cc69a8c81d25294a46c2717a9abe82a948"
   },
   "qa/check_seo.cjs": {
     "bytes": 9602,
@@ -212,8 +216,8 @@
     "sha256": "0cddfbe7374040edd8db79dc5c84bef88ce581c346bed8b4c141bd2b55ed109f"
   },
   "qa/run_dom_checks.cjs": {
-    "bytes": 12117,
-    "sha256": "e40ac435f92086b70527d30a8f117334ee74fa2b5beb8b96727af8ab5987f39f"
+    "bytes": 14159,
+    "sha256": "7329f0de52920166d2dbed5c51fccc28d4d67c99eab72480e38f029a51ce4725"
   },
   "qa/validacion_analytics.json": {
     "bytes": 426,
@@ -272,8 +276,8 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "site/index.html": {
-    "bytes": 4600973,
-    "sha256": "2b00e732893f514949bfa422098426d38212da19bb96e5304eda41ac986a91e6"
+    "bytes": 4630256,
+    "sha256": "f77bfc80264c77692c2a1e2a82d342e14ea6dc23cd9c40f1a6370ee65cf56171"
   },
   "site/robots.txt": {
     "bytes": 76,

@@ -47,6 +47,36 @@ api.setState({amount:20000000});
 assert(d.querySelector('#survival .survival-selected'),'Positive extreme tail remains visible');
 assert.equal(d.querySelectorAll('script[src],link[rel=stylesheet],img[src]:not([src^="data:image/"]),iframe').length,0);
 assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|https?:\/\/[^'"\s]*\.(?:js|css|woff)/.test(html),'No external runtime dependencies');
+// Income bars use the all-Chile median even when filtering sex or age.
+const nationalMedian=api.getDomain('all','all','all').median;
+for(const [sex,age,metric] of [['all','all','median'],['2','75_mas','median'],['1','35_39','mean']]){
+ api.setState({occupation:'2',sex,age,rank:metric});
+ assert.equal(d.querySelector('#rank-reference .cargo-row-head b').textContent,'1×');
+ const rows=[...d.querySelectorAll('#occupation-ranking .rank-row')];
+ assert.equal(rows.length,9);
+ const values=rows.map(row=>api.getDomain(row.dataset.rankOccupation,sex,age)[metric]);
+ assert.deepEqual(values,[...values].sort((a,b)=>b-a));
+ const maximum=Math.max(nationalMedian,...values);
+ assert(Math.abs(parseFloat(d.querySelector('#rank-reference .rank-fill').style.width)-100*nationalMedian/maximum)<1e-8);
+ for(const [i,row] of rows.entries()){
+  const value=values[i],sample=api.getDomain(row.dataset.rankOccupation,sex,age);
+  assert.equal(+row.dataset.multiple,value/nationalMedian);
+  assert.equal(+row.dataset.value,value);
+  assert(Math.abs(parseFloat(row.querySelector('.rank-fill').style.width)-100*value/maximum)<1e-8);
+  assert.equal(!!row.querySelector('.limited-text'),metric==='median'?sample.n<60||sample.df<9:sample.meanQ<2);
+ }
+ assert.equal(d.querySelector('#occupation-ranking [aria-pressed="true"]').dataset.rankOccupation,'2');
+}
+api.setState({occupation:'all',sex:'all',age:'all',amount:20000000,rank:'threshold'});
+assert(!d.querySelector('#occupation-ranking [data-multiple]'));
+assert(d.querySelector('#rank-reference .rank-fill').style.width.endsWith('%'));
+assert(d.getElementById('rank-title').textContent.includes('$20.000.000'));
+for(const row of d.querySelectorAll('#occupation-ranking .rank-row')){
+ const e=api.eventAt(api.getDomain(row.dataset.rankOccupation,'all','all'));
+ if(!e.n){assert.equal(row.querySelector('.rank-value').textContent,'Sin casos observados');assert(!row.hasAttribute('data-value'));}
+ else assert.equal(parseFloat(row.querySelector('.rank-fill').style.width),e.p);
+}
+api.setState({rank:'median'});
 // Exercise actual controls and representative edge cases.
 d.getElementById('occupation').value='6';d.getElementById('occupation').dispatchEvent(new w.Event('change'));
 d.querySelector('[data-sex="2"]').click();d.querySelector('[data-age="20_24"]').click();

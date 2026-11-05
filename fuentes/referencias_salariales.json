@@ -157,6 +157,222 @@
     "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
   },
   {
+    "paso": 2,
+    "nombre": "Ingeniería Civil en Computación e Informática",
+    "tipo": "Bruto",
+    "pesos": 2453084,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 164,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 64,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Ingeniería Civil en Minas",
+    "tipo": "Bruto",
+    "pesos": 2803526,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 165,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 178,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Ingeniería Civil Eléctrica",
+    "tipo": "Bruto",
+    "pesos": 2661878,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 161,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 239,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Química y Farmacia",
+    "tipo": "Bruto",
+    "pesos": 2273158,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 223,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 202,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Medicina Veterinaria",
+    "tipo": "Bruto",
+    "pesos": 1251232,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 200,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 65,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Odontología",
+    "tipo": "Bruto",
+    "pesos": 1689035,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 204,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 58,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Obstetricia y Puericultura",
+    "tipo": "Bruto",
+    "pesos": 1559825,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 203,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 68,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Arquitectura",
+    "tipo": "Bruto",
+    "pesos": 1373125,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 141,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 66,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Trabajo Social",
+    "tipo": "Bruto",
+    "pesos": 1150867,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 251,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 24,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Pedagogía en Educación de Párvulos",
+    "tipo": "Bruto",
+    "pesos": 1007648,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 208,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 90,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Periodismo",
+    "tipo": "Bruto",
+    "pesos": 1312880,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 218,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 55,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Diseño",
+    "tipo": "Bruto",
+    "pesos": 1298863,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 152,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 77,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
     "paso": 10,
     "nombre": "Presidente de la República en 2025",
     "tipo": "Líquido",
@@ -164,7 +380,12 @@
     "detalle": "Monto líquido de Gabriel Boric en noviembre de 2025.",
     "fuente": "T13, con datos de Transparencia",
     "url": "https://www.t13.cl/noticia/politica/cuanto-aumentara-sueldo-del-proximo-presidente-tras-decision-comision-24-12-2025",
-    "periodo": "Noviembre de 2025"
+    "periodo": "Noviembre de 2025",
+    "eleccion_popular": true,
+    "etiqueta_grafico": "Presidente de la República",
+    "contexto_grafico": "Gabriel Boric",
+    "pesos_brutos": 7033974,
+    "url_bruto": "https://comision38bis.gob.cl/registro-publico?reportes_publicos%5Bperiodo%5D=2025-11&reportes_publicos%5Bcargo%5D=100&reportes_publicos%5Bcalidad%5D=autoridad"
   },
   {
     "paso": 10,
@@ -224,7 +445,8 @@
     "etiqueta_grafico": "Jueces del Tribunal de Contratación Pública",
     "detalle": "Mediana de las seis remuneraciones líquidas mensualizadas informadas para los jueces del tribunal.",
     "fuente": "Unidad Administradora de Tribunales",
-    "url": "https://www.atta.gov.cl/remuneraciones-jueces-tcp-octubre-25/"
+    "url": "https://www.atta.gov.cl/remuneraciones-jueces-tcp-octubre-25/",
+    "contexto_grafico": "mediana de seis jueces"
   },
   {
     "paso": 10,
@@ -234,7 +456,11 @@
     "pesos": 6665791,
     "detalle": "La remuneración líquida de octubre incluye la cuota del incentivo por gestión municipal correspondiente a julio–septiembre.",
     "fuente": "Municipalidad de Melipilla",
-    "url": "https://transparencia.melipilla.cl/index.php?a=2025&action=plantillas_generar_plantilla&ia=21977&ig=202&m=10"
+    "url": "https://transparencia.melipilla.cl/index.php?a=2025&action=plantillas_generar_plantilla&ia=21977&ig=202&m=10",
+    "eleccion_popular": true,
+    "habitantes_censo2024": 136325,
+    "url_censo": "https://www.bcn.cl/siit/reportescomunales/comunas_v.html?anno=2025&idcom=13501",
+    "contexto_grafico": "incluye incentivo de gestión"
   },
   {
     "paso": 10,
@@ -244,7 +470,8 @@
     "pesos": 8138949,
     "detalle": "Remuneración líquida legal mensualizada del cargo de director del Hospital Clínico.",
     "fuente": "Universidad de Chile",
-    "url": "https://web.uchile.cl/transparencia/sueldos/directivos/DIR1025.pdf"
+    "url": "https://web.uchile.cl/transparencia/sueldos/directivos/DIR1025.pdf",
+    "contexto_grafico": "líquido legal"
   },
   {
     "paso": 10,
@@ -255,7 +482,8 @@
     "etiqueta_grafico": "Rectora de la Universidad de Chile",
     "detalle": "Remuneración líquida legal mensualizada que informa la Universidad de Chile. La liquidación distingue este monto del disponible después de otros descuentos personales.",
     "fuente": "Universidad de Chile",
-    "url": "https://web.uchile.cl/transparencia/sueldos/directivos/DIR1025.pdf"
+    "url": "https://web.uchile.cl/transparencia/sueldos/directivos/DIR1025.pdf",
+    "contexto_grafico": "líquido legal"
   },
   {
     "paso": 10,
@@ -284,5 +512,114 @@
     "detalle": "La renta líquida anual fue de $183.350.124, incluido el bono por cumplimiento de metas de 2024. Dividimos el total por doce.",
     "fuente": "Empresa Portuaria Valparaíso, remuneraciones 2025",
     "url": "https://www.puertovalparaiso.cl/remuneracion-y-otros-antecedentes-de-directores-y-trabajadores"
+  },
+  {
+    "paso": 10,
+    "nombre": "Senadoras y senadores",
+    "eleccion_popular": true,
+    "periodo": "Octubre de 2025",
+    "tipo": "Líquido",
+    "liquidos_individuales": [
+      5841748,
+      5862612,
+      5849037,
+      6178426,
+      4281251,
+      5865550,
+      4034615,
+      5547933,
+      5874395,
+      5262059,
+      5694207,
+      4093281,
+      6149361,
+      5880233,
+      4337084,
+      5294988,
+      5901600,
+      5049874,
+      4299856,
+      5557342,
+      5869663,
+      6347809,
+      6347809,
+      4810472,
+      5343332,
+      5766473,
+      6178426,
+      5604284,
+      5880233,
+      4315858,
+      4550125,
+      5703631,
+      5855175,
+      5371065,
+      4171724,
+      5882895,
+      5743049,
+      4247096,
+      6041655,
+      5789403,
+      5230960,
+      5393848,
+      6117762,
+      5481665,
+      5659741,
+      6347809,
+      5951571,
+      5779655,
+      5456498,
+      5276490
+    ],
+    "contexto_grafico": "mediana de 50 dietas",
+    "detalle": "Mediana del saldo de las 50 dietas del Senado, una vez descontados impuesto, salud y previsión. La dieta bruta fue de $7.348.983 por senador. El saldo excluye asignaciones para el trabajo parlamentario.",
+    "fuente": "Senado de Chile · Dieta parlamentaria",
+    "url": "https://tramitacion.senado.cl/appsenado/index.php?ac=informeTransparencia&anno=2025&mesid=10&mo=transparencia&tipo=7"
+  },
+  {
+    "paso": 10,
+    "nombre": "Diputado José Carlos Meza",
+    "eleccion_popular": true,
+    "periodo": "Octubre de 2025",
+    "tipo": "Líquido declarado",
+    "pesos": 4901449,
+    "contexto_grafico": "dieta individual declarada",
+    "detalle": "El diputado publicó esta liquidación individual. Las dietas líquidas varían según los descuentos de cada integrante de la Cámara. Los viáticos y los gastos de oficina y personal figuran por separado.",
+    "fuente": "José Carlos Meza · Transparencia 2025",
+    "url": "https://josecarlosmeza.cl/transparencia-2025/",
+    "pesos_brutos": 7348983,
+    "url_bruto": "https://comision38bis.gob.cl/registro-publico?reportes_publicos%5Bperiodo%5D=2025-10&reportes_publicos%5Bcargo%5D=800&reportes_publicos%5Bcalidad%5D=autoridad",
+    "etiqueta_grafico": "Diputados · caso de José Carlos Meza",
+    "personas_registro_bruto": 152
+  },
+  {
+    "paso": 10,
+    "nombre": "Alcalde de Curepto",
+    "eleccion_popular": true,
+    "periodo": "Octubre de 2025",
+    "tipo": "Líquido",
+    "pesos": 6841680,
+    "habitantes_censo2024": 9519,
+    "url_censo": "https://www.bcn.cl/siit/reportescomunales/comunas_v.html?anno=2025&idcom=7103",
+    "detalle": "Remuneración líquida mensualizada de Fernando Alcántara Barrios. La nómina también consigna bonos e incentivos en el mes.",
+    "fuente": "Municipalidad de Curepto · Personal de planta",
+    "url": "https://transparencia.curepto.cl/index.php?a=2025&action=plantillas_generar_plantilla&ia=45504&ig=173&m=10",
+    "contexto_grafico": "mes con incentivos"
+  },
+  {
+    "paso": 10,
+    "nombre": "Alcaldesa de Valparaíso",
+    "eleccion_popular": true,
+    "periodo": "Octubre de 2025",
+    "tipo": "Líquido",
+    "pesos": 7379305,
+    "habitantes_censo2024": 284938,
+    "url_censo": "https://www.bcn.cl/siit/reportescomunales/comunas_v.html?anno=2025&idcom=5101",
+    "contexto_grafico": "incluye incentivo de gestión",
+    "detalle": "Remuneración líquida mensual de Camila Nieto Hernández. La municipalidad consigna el pago del incentivo por mejoramiento de la gestión en octubre.",
+    "fuente": "Municipalidad de Valparaíso · fila de la nómina",
+    "url": "https://github.com/crcandia/ingresos/blob/main/fuentes/autoridades_planta_2025.csv",
+    "id_pagina_cplt": "61860108",
+    "archivo_cplt": "https://consejotransparencia.cl/transparencia_activa/datoabierto/archivos/TA_PersonalPlanta.csv"
   }
 ]

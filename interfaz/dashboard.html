@@ -71,9 +71,14 @@
  </section>
  <section class="surface sex-comparison" aria-labelledby="sex-title"><p class="eyebrow">04 &nbsp; / &nbsp; COMPARA POR SEXO</p><h2 id="sex-title">¿Cuánto ganan al mes las mujeres y los hombres?</h2><p id="sex-context" class="reading-context"></p><div id="sex-comparison"></div><p class="chart-note">La comparación mantiene la edad y la ocupación que elegiste. Las diferencias pueden reflejar, entre otras cosas, las horas trabajadas y las tareas que realiza cada persona.</p></section>
  <section class="surface occupations-card" aria-labelledby="occ-title">
-  <div class="section-head"><div><p class="eyebrow">05 &nbsp; / &nbsp; COMPARA TRABAJOS</p><h2 id="occ-title">¿Cuánto ganan y cuántas personas trabajan en cada ocupación?</h2></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Porcentaje que gana el monto elegido o más</option></select></label></div>
-  <div class="reading-context rank-context" id="occupation-context" aria-live="polite"></div>
-  <div id="occupation-ranking" class="ranking"></div><p class="chart-note">Los nueve grupos no incluyen ocupaciones sin clasificar. Selecciona una fila para explorar esa ocupación arriba. * Señala estimaciones exploratorias. Las categorías describen el trabajo realizado. No equivalen al nivel educativo.</p>
+  <div class="section-head"><div><p class="eyebrow">05 &nbsp; / &nbsp; COMPARA TRABAJOS</p><h2 id="occ-title">¿Cuánto se gana en cada ocupación?</h2><p class="section-description" id="occupation-context" aria-live="polite"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Porcentaje que gana el monto elegido o más</option></select></label></div>
+  <figure class="cargo-figure occupation-figure" aria-labelledby="rank-title">
+   <figcaption id="rank-title"></figcaption>
+   <div id="rank-reference" class="rank-reference cargo-reference"></div>
+   <div id="occupation-ranking" class="ranking"></div>
+   <p class="rank-reading" id="rank-reading"></p>
+  </figure>
+  <p class="chart-note">Selecciona una fila para explorar ese grupo. Las nueve ocupaciones describen el trabajo que se realiza. El total nacional incluye también los casos sin clasificar.</p>
  </section>
  <section class="method" id="method">
   <details id="method-details"><summary>Fuente, definiciones y precisión de las cifras <span>+</span></summary>
