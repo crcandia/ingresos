@@ -1,7 +1,71 @@
 [
- {"paso":1,"nombre":"Sueldo mínimo","tipo":"Bruto","pesos":529000,"detalle":"Monto legal vigente en octubre de 2025 para la jornada completa de quienes tienen entre 18 y 65 años.","fuente":"Dirección del Trabajo","url":"https://www.dt.gob.cl/legislacion/1624/w3-article-127969.html"},
- {"paso":2,"nombre":"Ingeniería Comercial","tipo":"Bruto","pesos":2203057,"detalle":"Promedio mensual al cuarto año de titulación universitaria. Titulados de 2018 a 2020; pesos de septiembre de 2025.","fuente":"Mi Futuro · Mineduc","url":"https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/","consulta":{"action":"detalleEstadisticas","id":172,"campo":"cuarto_ano"}},
- {"paso":2,"nombre":"Medicina","tipo":"Bruto","pesos":2758297,"detalle":"Promedio mensual del primer año después de titularse. Titulados de 2021 a 2023; pesos de septiembre de 2025. No es una oferta de primer sueldo.","fuente":"Mi Futuro · Mineduc","url":"https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/","consulta":{"action":"detalleEstadisticas","id":199,"campo":"primer_ano"}},
- {"paso":10,"nombre":"Presidente de la República","tipo":"Bruto","pesos":11070064,"detalle":"Remuneración de agosto de 2026, antes de descuentos y sin sumar gastos de representación.","fuente":"Comisión para la Fijación de Remuneraciones","url":"https://comision38bis.gob.cl/registro-publico"},
- {"paso":10,"nombre":"Presidente ejecutivo de Codelco","tipo":"Líquido","totales":[251806562,148257443],"meses":12,"detalle":"Promedio mensual del cargo, de noviembre de 2025 a octubre de 2026. Suma lo pagado a sus dos titulares y divide por 12; no es el sueldo fijo de una persona.","fuente":"Codelco · Transparencia","url":"https://www.codelco.com/transparencia/remuneraciones-presidente-ejecutivo"}
+  {
+    "paso": "minimo",
+    "nombre": "Sueldo mínimo",
+    "tipo": "Bruto",
+    "pesos": 529000,
+    "detalle": "Monto legal vigente en octubre de 2025 para la jornada completa de quienes tienen entre 18 y 65 años.",
+    "fuente": "Dirección del Trabajo",
+    "url": "https://www.dt.gob.cl/legislacion/1624/w3-article-127969.html",
+    "neto_esi": 430077,
+    "descuento_porcentual": 18.7,
+    "manual": "https://github.com/crcandia/ingresos/blob/main/fuentes/manual-usuario-esi-2025.txt",
+    "pagina_manual": 12
+  },
+  {
+    "paso": 2,
+    "nombre": "Ingeniería Comercial",
+    "tipo": "Bruto",
+    "pesos": 2203057,
+    "detalle": "Cuarto año después de titularse en Ingeniería Comercial. Titulados de 2018–2020. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 172,
+      "campo": "cuarto_ano"
+    },
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Medicina",
+    "tipo": "Bruto",
+    "pesos": 2758297,
+    "detalle": "Primer año después de titularse en Medicina. Titulados de 2021–2023. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 199,
+      "campo": "primer_ano"
+    },
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 10,
+    "nombre": "Presidente de la República en 2025",
+    "tipo": "Líquido",
+    "pesos": 5765081,
+    "detalle": "Monto líquido de Gabriel Boric en noviembre de 2025.",
+    "fuente": "T13, con datos de Transparencia",
+    "url": "https://www.t13.cl/noticia/politica/cuanto-aumentara-sueldo-del-proximo-presidente-tras-decision-comision-24-12-2025"
+  },
+  {
+    "paso": 10,
+    "nombre": "Presidente ejecutivo de Codelco",
+    "tipo": "Líquido",
+    "totales": [
+      251806562,
+      148257443
+    ],
+    "meses": 12,
+    "detalle": "Promedio mensual del cargo, de noviembre de 2025 a octubre de 2026. Suma lo pagado a sus dos titulares y divide por 12; no es el sueldo fijo de una persona.",
+    "fuente": "Codelco · Transparencia",
+    "url": "https://www.codelco.com/transparencia/remuneraciones-presidente-ejecutivo"
+  }
 ]

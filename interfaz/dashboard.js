@@ -234,17 +234,13 @@
  const story=$('relato'), steps=[...story.querySelectorAll('.story-step')];
  if('IntersectionObserver' in window && typeof window.requestAnimationFrame==='function'){
    story.classList.add('story-ready');
-   const dots=[...story.querySelectorAll('.dots i')];let previous=-1,scheduled=false;
+   const links=[...story.querySelectorAll('.story-index a')];let previous=-1,scheduled=false;
    function syncStory(){
      scheduled=false;
      const line=window.innerHeight*(window.innerWidth<=740?.47:.48);
      let index=0;steps.forEach((step,i)=>{if(step.getBoundingClientRect().top<=line)index=i;});
      if(index===previous)return;previous=index;
-     const step=steps[index],units=Number(step.dataset.units);
-     $('dot-label').textContent=step.dataset.monto+' o más';
-     $('dot-key').textContent=(step.dataset.base==='100'?'':'ZOOM DEL 1% · ')+'CADA PUNTO: 1 DE CADA '+step.dataset.base;
-     $('dot-count').textContent='≈ '+step.dataset.percent+' del total';
-     dots.forEach((dot,i)=>dot.classList.toggle('on',i<units));
+     links.forEach((link,i)=>{if(i===index)link.setAttribute('aria-current','step');else link.removeAttribute('aria-current');});
      steps.forEach((s,i)=>s.classList.toggle('current',i===index));
    }
    function queueStory(){if(!scheduled){scheduled=true;window.requestAnimationFrame(syncStory);}}

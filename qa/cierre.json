@@ -6,7 +6,7 @@
   "visual_validation": "Inspección estática de escritorio1400px y teléfono390px. Verificados el nuevo perfil y las doce tarjetas. Posiciones de filtros explícitas para evitar columnas implícitas en la representación estática.",
   "native_figure_export": "PDF de distribución y curvas lineal/logarítmica, y PDF independiente del perfil de ingresos por edad, desde los SVG de la interfaz.",
   "self_contained": "HTML descargable sin dependencias externas. La versión web añade Google Analytics autorizado por el usuario.",
-  "html_sha256": "c5352e1f520c9f648e0cf05e8346188dc92f6b5e3681a47b87175dc650ca58bc",
+  "html_sha256": "51cf26281a789c194ce8cfdb9bbf56dec900fa60a42e6810d71c65d2c696a09e",
   "siteMatchesDownload": false,
   "netlifyConfigParsed": true,
   "no_pending_data_or_functionality_fixes": true,
@@ -17,7 +17,7 @@
     "Máximos puntuales descriptivos, sin prueba de diferencias por edad ni inferencia de trayectorias individuales.",
     "Dominio HTTPS y recursos SEO confirmados el 16 de octubre de 2026. Indexación en Google y recepción de Analytics sin confirmar."
   ],
-  "web_sha256": "2830f255fbb9c68b40b28b0ce9c3d666d145de77f9e463674898d8d0fc297467",
+  "web_sha256": "59e3864bb68da3448ecfbaf1fe50b7a979143d5a3729bf9541636588bb6a3f25",
   "siteAndDownloadShareData": true,
   "analytics": {
     "measurementId": "G-XSFF2F0XKK",
@@ -111,6 +111,12 @@
       8,
       10
     ],
-    "referencias": "Cinco referencias externas con tipo de ingreso, periodo y fuente. $8M y $10M se identifican como exploratorios."
+    "referencias": "Mínimo neto ESI; restantes referencias en líquido publicado o equivalente asalariado simulado.",
+    "etapas": [
+      "minimo",
+      "mediana",
+      "1–4 millones",
+      "6–10 millones"
+    ]
   }
 }
