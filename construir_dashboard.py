@@ -35,7 +35,7 @@ web_csp = "default-src 'none'; script-src 'unsafe-inline' https://www.googletagm
 offline_csp = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'"
 web = html.replace('content="' + offline_csp + '"', 'content="' + web_csp + '"', 1)
 web = web.replace('</head>', (ROOT / 'interfaz/analytics.html').read_text() + '\n</head>', 1)
-web = web.replace('<span id="privacy-note">Archivo autocontenido. Funciona sin conexión y no envía información.</span>', '<span id="privacy-note">Esta versión web usa Google Analytics para medir visitas. “Guardar copia” descarga una versión sin Analytics.</span>', 1)
+web = web.replace('<span id="privacy-note">Archivo autocontenido. Funciona sin conexión y no envía información.</span>', '<span id="privacy-note">Montos de la encuesta en pesos de octubre de 2025.</span>', 1)
 web = preparar_web(ROOT, web, data)
 (site / 'index.html').write_text(web)
 print(f"Created {out.name}: {out.stat().st_size:,} bytes, {len(data['domains'])} aggregate domains. Web version adds Google Analytics G-XSFF2F0XKK.")

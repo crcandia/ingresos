@@ -15,7 +15,7 @@ for(const width of [390,1280]){
  assert.deepEqual(steps.map(x=>x.id),['relato-minimo','relato-mediana','relato-millones','relato-altos']);
  const rates=[...d.querySelectorAll('.rate-list li')].map(x=>+x.dataset.rate);
  const survey=app.getDomain('all','all','all');assert(Math.abs(rates[0]-78.924)<.001);assert(rates[1]>=50&&rates[1]<51);
- assert.deepEqual(rates.slice(2),[1,2,4,6,8,10].map(n=>survey.curve.p[n*20]));
+ assert.deepEqual(rates.slice(2),[1,2,3,4,6,8,10].map(n=>survey.curve.p[n*20]));
  assert.equal(steps[3].querySelectorAll('.rate-list li').length,3);
  for(const x of d.querySelectorAll('.salary-refs b'))assert(x.textContent.includes('líquido'));
  for(const row of d.querySelectorAll('.rate-list li')){const scale=row.closest('#relato-altos')?100:1;assert.equal(row.querySelectorAll('circle').length,100);assert.equal(row.querySelectorAll('circle[fill="#22694f"]').length,Math.round(+row.dataset.rate*scale));}

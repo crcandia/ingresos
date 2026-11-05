@@ -93,7 +93,7 @@
    const clippedNote=isLog&&positivePoints.some(i=>d.curve.lo[i]===0)?' Los límites del intervalo iguales a cero no son representables en escala logarítmica.':'';
    const example=eventAt(d,2000000);
    const group=[label('occupation',state.occupation),label('sex',state.sex),label('age',state.age)].join(' · ');
-   $('survival-example').textContent=group+'. Ejemplo: '+(example.n?`aproximadamente ${pct(example.p)} de este grupo gana $2 millones netos o más al mes. Aquí también cuentan quienes ganan $3 o $4 millones.${example.q===1?' Esta estimación tiene precisión limitada.':''}`:'en la muestra de este grupo nadie declaró ganar $2 millones netos o más al mes. Eso no descarta que haya personas con esos ingresos.');
+   $('survival-example').textContent=group+'. Ejemplo: '+(example.n?`aproximadamente ${pct(example.p)} de este grupo gana $2 millones netos o más al mes. El porcentaje incluye a quienes ganan exactamente $2 millones y a quienes ganan más.${example.q===1?' Esta estimación tiene precisión limitada.':''}`:'en la muestra de este grupo nadie declaró ganar $2 millones netos o más al mes. Eso no descarta que haya personas con esos ingresos.');
    $('survival-scale-note').textContent=scaleNote+tailNote+clippedNote;
    el.innerHTML=svgShell(w,h,`Proporción que gana cada monto o más, desde un millón de pesos. Escala ${isLog?'logarítmica':'lineal'}`,body,scaleNote+' Línea continua para mayor respaldo muestral y discontinua para precisión limitada. Las flechas consultan umbrales de $50.000.'+tailNote+clippedNote);
    makeTooltip(el,el.querySelector('svg'),i=>{const e=eventAt(d,i*50000);return `<strong>≥ ${exactMoney(i*50000)}</strong><br>${e.n?`≈ ${pct(e.p)} · ≈ ${people(e.persons)} personas`:'Sin casos observados'}<br>${num(e.n)} ${e.n===1?'encuestado':'encuestados'} · ${qualityText(e)}`;},{left:L,right:R,w,maxIndex:max,minIndex:min});
@@ -105,9 +105,9 @@
    $('threshold-percent').classList.toggle('no-cases',e.n===0);
    $('threshold-percent').innerHTML=e.n?`<span class="approx">≈</span>${pct(e.p)}`:'Sin casos observados';
    $('threshold-people').textContent=e.n?`≈ ${people(e.persons)} personas del grupo`:'Nadie en la muestra de este grupo declaró ese monto o más.';
-   $('threshold-interval').textContent=Number.isFinite(e.lo)&&Number.isFinite(e.hi)?`IC 95% de la proporción: ${pct(e.lo)} a ${pct(e.hi)}`:'Intervalo de confianza no estimable en este punto.';
+   $('threshold-interval').textContent=Number.isFinite(e.lo)&&Number.isFinite(e.hi)?`Intervalo de confianza del 95%: ${pct(e.lo)} a ${pct(e.hi)}`:'Intervalo de confianza no estimable en este punto.';
    $('threshold-quality').className='quality-box '+(e.q===2?'sufficient':'limited');
-   $('threshold-quality').innerHTML=`<strong>${qualityText(e)}</strong><br>${num(e.n)} de ${num(d.n)} encuestados cumplen el umbral.${e.q===0?' No implica que no existan personas con esos ingresos.':e.q===1?' Interpreta la cifra con cautela.':''}`;
+   $('threshold-quality').innerHTML=`<strong>${qualityText(e)}</strong><br>${num(e.n)} de ${num(d.n)} encuestados declararon ese ingreso o uno mayor.${e.q===0?' No implica que no existan personas con esos ingresos.':e.q===1?' Interpreta la cifra con cautela.':''}`;
  }
  function miniHist(d,ymax,w=210){
    const h=93,L=25,R=4,T=5,B=22,xx=i=>L+i/30*(w-L-R),yy=v=>h-B-v/ymax*(h-B-T);

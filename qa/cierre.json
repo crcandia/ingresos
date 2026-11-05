@@ -6,7 +6,7 @@
   "visual_validation": "Inspección estática de escritorio1400px y teléfono390px. Verificados el nuevo perfil y las doce tarjetas. Posiciones de filtros explícitas para evitar columnas implícitas en la representación estática.",
   "native_figure_export": "PDF de distribución y curvas lineal/logarítmica, y PDF independiente del perfil de ingresos por edad, desde los SVG de la interfaz.",
   "self_contained": "HTML descargable sin dependencias externas. La versión web añade Google Analytics autorizado por el usuario.",
-  "html_sha256": "942cc65ccef99b31ecfe25a8776c7ff58311e7b05051f0695fa8fad385bb22c8",
+  "html_sha256": "48ccdfb8fb9c767d6db27c554d6f548c39679e76423d67f45cea7dc681e46586",
   "siteMatchesDownload": false,
   "netlifyConfigParsed": true,
   "no_pending_data_or_functionality_fixes": true,
@@ -17,7 +17,7 @@
     "Máximos puntuales descriptivos, sin prueba de diferencias por edad ni inferencia de trayectorias individuales.",
     "Dominio HTTPS y recursos SEO confirmados el 16 de octubre de 2026. Indexación en Google y recepción de Analytics sin confirmar."
   ],
-  "web_sha256": "a730842c58bad59794a09f1f882d4b0828866c2f9378e6fe798eb3c3dbd1b28a",
+  "web_sha256": "2c8c5ca6ec535cd55de2844a8133a60ce42e8785cd7a8d8bf8cb072d0ec45efd",
   "siteAndDownloadShareData": true,
   "analytics": {
     "measurementId": "G-XSFF2F0XKK",
@@ -31,7 +31,7 @@
     "tagOnWebOnly": true,
     "configQueued": true,
     "cspAllowsBasicAnalytics": true,
-    "webDisclosure": true,
+    "footerCreditsVerified": true,
     "savedCopyOmitsAnalytics": true,
     "savedStatePreserved": true,
     "offlineConnectionsBlocked": true,
@@ -106,6 +106,7 @@
     "umbrales_en_millones": [
       1,
       2,
+      3,
       4,
       6,
       8,

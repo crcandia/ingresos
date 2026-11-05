@@ -20,7 +20,7 @@ def respuestas_ingresos(data: dict) -> str:
   <details open id="sueldo-promedio-chile"><summary>¿Cuál es el sueldo promedio en Chile según este análisis?</summary><p>El ingreso neto mensual promedio de la ocupación principal es de aproximadamente <strong>{money(total['mean'])}</strong> entre las personas ocupadas de 20 años o más. Esta estimación ponderada se calcula con los microdatos de la ESI 2025 del INE. Incluye asalariados e independientes, por lo que no es exclusivamente un promedio de sueldos de asalariados ni el total oficial de todas las edades.</p></details>
   <details open id="sueldo-mediano-chile"><summary>¿Cuál es el ingreso mediano en Chile para personas ocupadas de 20 años o más?</summary><p>La mediana es de aproximadamente <strong>{money(total['median'])}</strong> mensuales en este universo de la ESI 2025. Al menos la mitad de las personas representadas gana ese monto o menos. La mediana ayuda a describir el centro de la distribución sin que los ingresos más altos la eleven como ocurre con el promedio.</p></details>
   <details id="personas-un-millon"><summary>¿Cuántas personas ganan un millón de pesos o más en Chile?</summary><p>Entre las personas ocupadas de 20 años o más, aproximadamente el <strong>{percent_text}%</strong>, unas <strong>{people} personas</strong>, recibe $1.000.000 o más al mes en su ocupación principal, según este cálculo con la ESI 2025. Se incluyen quienes ganan exactamente ese monto. Son ingresos netos y estimaciones redondeadas. <a href="#threshold-title">Consulta otros montos y su precisión</a>.</p></details>
-  <details><summary>¿Cómo comparar los sueldos por edad, sexo y ocupación en Chile?</summary><p>El <a href="#age-profile-title">gráfico de ingresos por edad</a> compara promedio, mediana y percentiles 25 y 75 en tramos de cinco años, desde 20–24 hasta 70–74, y un grupo final de 75 años o más. Puedes filtrar por sexo y grandes grupos de ocupación. Es una comparación de personas distintas en 2025, no una predicción de cómo cambiará tu sueldo al envejecer.</p></details>'''
+  <details><summary>¿Cómo comparar los sueldos por edad, sexo y ocupación en Chile?</summary><p>El <a href="#age-profile-title">gráfico de ingresos por edad</a> compara promedio, mediana y percentiles 25 y 75 en tramos de cinco años, desde 20–24 hasta 70–74, y un grupo final de 75 años o más. También puedes comparar <a href="#sex-title">mujeres y hombres</a> para la misma selección de edad y ocupación, o ver <a href="#occ-title">los nueve grupos de ocupación</a> para la edad y el sexo elegidos. Es una comparación de personas distintas en 2025, no una predicción de cómo cambiará tu sueldo al envejecer.</p></details>'''
 
 
 def preparar_web(root: Path, html: str, data: dict) -> str:
@@ -77,8 +77,8 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     )
     graph = [
         {'@type': 'Person', '@id': person_id, 'name': config['author'],
-         'sameAs': ['https://github.com/crcandia'],
-         'affiliation': {'@type': 'Organization', 'name': 'CRISS-LAB', 'url': 'https://criss-lab.com/'}},
+         'url': 'https://www.crcandia.com/', 'sameAs': ['https://github.com/crcandia'],
+         'affiliation': {'@type': 'Organization', 'name': 'CRiSS-LAB', 'url': 'https://criss-lab.com/'}},
         {'@type': 'WebSite', '@id': site_id, 'url': canonical, 'name': 'Ingresos en Chile',
          'inLanguage': 'es-CL', 'publisher': {'@id': person_id}},
         {'@type': 'WebPage', '@id': page_id, 'url': canonical, 'name': config['title'],

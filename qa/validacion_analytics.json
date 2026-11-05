@@ -4,7 +4,7 @@
   "tagOnWebOnly": true,
   "configQueued": true,
   "cspAllowsBasicAnalytics": true,
-  "webDisclosure": true,
+  "footerCreditsVerified": true,
   "savedCopyOmitsAnalytics": true,
   "savedStatePreserved": true,
   "offlineConnectionsBlocked": true,

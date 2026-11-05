@@ -63,7 +63,7 @@ La inspección usa WeasyPrint. Los controles se sustituyen por elementos estáti
 
 En la primera página del PDF, la línea verde discontinua marca la mediana y la ocre punteada marca el promedio. Las barras oscuras empiezan en el umbral consultado, $1 millón en la vista inicial. En la segunda y tercera páginas, la banda es el IC puntual del 95% y el trazo discontinuo identifica precisión limitada. Las tres páginas corresponden a todas las ocupaciones, ambos sexos y edades de 20 años o más.
 
-El proyecto también incluye la configuración de Netlify y la copia web en `site/index.html`. `construir_dashboard.py` actualiza ambas versiones del HTML. La versión web incorpora Google Analytics con el identificador `G-XSFF2F0XKK` suministrado por el autor. Su política de contenido permite los dominios de Google necesarios para cargar la etiqueta y enviar mediciones. El pie de página informa de Analytics. El archivo descargable y las copias generadas con “Guardar copia” omiten Analytics y bloquean conexiones externas. Ver `PUBLICACION.md` para el destino solicitado y la configuración de dominio.
+El proyecto también incluye la configuración de Netlify y la copia web en `site/index.html`. `construir_dashboard.py` actualiza ambas versiones del HTML. La versión web incorpora Google Analytics con el identificador `G-XSFF2F0XKK` suministrado por el autor. Su política de contenido permite los dominios de Google necesarios para cargar la etiqueta y enviar mediciones. El pie identifica al laboratorio y al autor. El archivo descargable y las copias generadas con “Guardar copia” omiten Analytics y bloquean conexiones externas. Ver `PUBLICACION.md` para el destino solicitado y la configuración de dominio.
 
 ## Comprobaciones incluidas
 

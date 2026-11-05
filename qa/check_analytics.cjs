@@ -19,7 +19,11 @@ assert(tag.hasAttribute('async'));
 assert.deepEqual(Array.from(w.dataLayer[1]),['config','G-XSFF2F0XKK']);
 const policy=d.querySelector('meta[http-equiv="Content-Security-Policy"]').content;
 for(const allowed of ['https://www.googletagmanager.com','https://*.google-analytics.com','https://*.google.com'])assert(policy.includes(allowed));
-assert(d.querySelector('footer').textContent.includes('usa Google Analytics'));
+assert(!d.querySelector('footer').textContent.includes('Analytics'));
+for(const footer of [d.querySelector('footer'),new JSDOM(offline).window.document.querySelector('footer')]){
+ assert(footer.querySelector('a[href="https://www.crcandia.com/"][rel="author"]'));
+ assert(footer.querySelector('a[href="https://criss-lab.com/es/"]'));
+}
 w.ESI_DASHBOARD.setState({occupation:'2',age:'40_44',sex:'2',amount:2000000,survivalScale:'log'});
 d.getElementById('save').click();
 const saved=downloads.at(-1).parts.join(''),copy=make(saved,'file:///Ingresos_Chile_ESI2025.html');
@@ -35,6 +39,6 @@ assert.equal(local.window.dataLayer,undefined);
 assert.equal(local.window.ESI_DASHBOARD.getDomain().n,38380);
 assert.equal(d.getElementById('dashboard-data').textContent,local.window.document.getElementById('dashboard-data').textContent);
 assert.equal(errors.length,0,errors.join('\n'));
-const report={pass:true,measurementId:'G-XSFF2F0XKK',tagOnWebOnly:true,configQueued:true,cspAllowsBasicAnalytics:true,webDisclosure:true,savedCopyOmitsAnalytics:true,savedStatePreserved:true,offlineConnectionsBlocked:true,statisticalDataUnchanged:true,scope:'DOM and source validation only. No requests sent to Google. Production event receipt not yet verified.'};
+const report={pass:true,measurementId:'G-XSFF2F0XKK',tagOnWebOnly:true,configQueued:true,cspAllowsBasicAnalytics:true,footerCreditsVerified:true,savedCopyOmitsAnalytics:true,savedStatePreserved:true,offlineConnectionsBlocked:true,statisticalDataUnchanged:true,scope:'DOM and source validation only. No requests sent to Google. Production event receipt not yet verified.'};
 fs.writeFileSync(path.join(__dirname,'validacion_analytics.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));[online,copy,local].forEach(x=>x.window.close());
