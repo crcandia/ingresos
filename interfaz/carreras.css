@@ -1,0 +1,68 @@
+/* Two career references share one national population and one hundred dots. */
+.career-story {
+  margin-block: clamp(1.6rem, 3.2vw, 2.7rem) 0;
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+.career-story h4 { max-width: 22ch; }
+.career-hundred {
+  display: grid;
+  grid-template-columns: minmax(6rem, 10rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem clamp(1rem, 3.5vw, 2.5rem);
+  margin: 1rem 0;
+  padding: 1rem 0 .8rem;
+  border-block: 1px solid #c7d3c9;
+}
+.career-people { display: block; inline-size: 100%; block-size: auto; }
+.career-dot-both { fill: #24664e; }
+.career-dot-first-only { fill: #f5e8ce; stroke: #8c6528; stroke-width: 1.1; }
+.career-dot-rest { fill: #d3ddd4; }
+.career-outcomes { display: grid; gap: .9rem; }
+.career-outcome {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: .4rem;
+  color: #284b3e;
+}
+.career-key { display: flex; align-items: center; gap: .12rem; height: 2rem; }
+.career-key i {
+  display: block;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: #24664e;
+}
+.career-key .career-key-ring { background: #f5e8ce; border: 1.5px solid #8c6528; }
+.career-count {
+  display: block;
+  font: 500 clamp(1.8rem, 3.8vw, 2.6rem)/1 var(--serif);
+  letter-spacing: -.04em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.career-count small { font: 550 .4em/1.2 var(--sans); letter-spacing: 0; }
+.career-outcome div > span {
+  display: block;
+  margin-block-start: .2rem;
+  max-width: 31ch;
+  font-size: .95rem;
+  line-height: 1.35;
+}
+.career-hundred figcaption {
+  grid-column: 1 / -1;
+  max-width: 65ch;
+  color: #4c6257;
+  font-size: .84rem;
+  line-height: 1.45;
+}
+.story-step .career-story .career-next { margin-block: 1rem 1.2rem; }
+@media (max-width: 520px) {
+  .career-hundred { grid-template-columns: minmax(5.7rem, 31%) minmax(0, 1fr); gap: .85rem .7rem; }
+  .career-outcome { grid-template-columns: 1.15rem minmax(0, 1fr); gap: .3rem; }
+  .career-key i { width: .48rem; height: .48rem; }
+  .career-outcome div > span { font-size: .88rem; }
+}
+@media print {
+  .career-hundred { break-inside: avoid; }
+  .career-people, .career-key { print-color-adjust: exact; }
+}

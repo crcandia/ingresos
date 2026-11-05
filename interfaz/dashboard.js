@@ -219,7 +219,6 @@
  $('occupation-ranking').addEventListener('click',e=>{const b=e.target.closest('[data-rank-occupation]');if(b){setState({occupation:b.dataset.rankOccupation});$('explorar').scrollIntoView?.({behavior:'smooth',block:'start'});$('occupation').focus({preventScroll:true});}});
  $('rank-metric').addEventListener('change',e=>setState({rank:e.target.value}));
  $('reset').addEventListener('click',()=>setState(DEFAULT));
- $('about').addEventListener('click',()=>{$('method-details').open=true;$('method').scrollIntoView?.({behavior:'smooth',block:'start'});$('method-details').querySelector('summary').focus({preventScroll:true});});
  $('export-csv').addEventListener('click',()=>{download('ingresos_ESI2025_vista.csv',csvText(),'text/csv;charset=utf-8');toast('Datos de esta vista descargados. Las cifras del CSV conservan la precisión del cálculo.');});
  $('save').addEventListener('click',()=>{
    const clone=document.documentElement.cloneNode(true);

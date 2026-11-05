@@ -5,6 +5,7 @@ import json
 import shutil
 import struct
 from urllib.parse import urlparse
+from .referencias_salariales import TITULO_CARRERAS
 
 
 def respuestas_ingresos(data: dict) -> str:
@@ -88,7 +89,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
          'dateModified': config['modified'], 'isPartOf': {'@id': site_id},
          'author': {'@id': person_id}, 'mainEntity': {'@id': dataset_id},
          'hasPart': {'@type': 'WebPageElement', '@id': canonical + '#sueldos-por-carrera',
-                     'name': '¿Cuánto se gana al tercer año de titularse?',
+                     'name': TITULO_CARRERAS,
                      'description': 'Sueldos líquidos estimados con los ingresos brutos promedio por carrera de Mi Futuro.'},
          'primaryImageOfPage': {'@type': 'ImageObject', 'url': canonical + config['image'],
                                 'width': width, 'height': height, 'caption': config['imageAlt']}},
@@ -116,8 +117,8 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     resources = f'''<section class="public-data surface" id="datos" aria-labelledby="datos-title">
  <p class="eyebrow">FUENTES Y DESCARGAS</p><h2 id="datos-title">Datos para explorar y reproducir</h2>
  <p>Descarga el resumen de las {len(data["domains"])} combinaciones de ocupación, sexo y edad. Incluye personas ocupadas de 20 años o más, con ingresos expresados en pesos de octubre de 2025. El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral y población expandida.</p>
- <p>Elaboración independiente de <strong>Cristian Candia</strong>, <a href="https://criss-lab.com/es/">CRiSS-LAB</a>, a partir de microdatos públicos del INE. Las categorías y reglas de cálculo están documentadas en el repositorio.</p>
- <div class="public-data-links"><a href="{canonical + config['dataset']}" download>Descargar resumen completo · CSV</a><a href="{config['repository']}" target="_blank" rel="noopener noreferrer">Código y metodología · GitHub</a></div>
+ <p>Elaboración independiente de <strong>Cristian Candia</strong>, <a href="https://criss-lab.com/es/" target="_blank" rel="noopener noreferrer">CRiSS-LAB</a>, a partir de microdatos públicos del INE. Las categorías y reglas de cálculo están documentadas en el repositorio.</p>
+ <div class="public-data-links"><a href="{canonical + config['dataset']}" download target="_blank" rel="noopener noreferrer">Descargar resumen completo · CSV</a><a href="{config['repository']}" target="_blank" rel="noopener noreferrer">Código y metodología · GitHub</a></div>
 </section>'''
     html = html.replace('<!--__WEB_RESOURCES__-->', resources, 1)
     (site / 'datos').mkdir(exist_ok=True)
@@ -139,5 +140,5 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, follow"><title>Página no encontrada | Ingresos en Chile</title>
 <style>body{margin:0;background:#f5f4ed;color:#193d3b;font:18px/1.6 system-ui,sans-serif}main{max-width:640px;margin:15vh auto;padding:24px}h1{font:48px/1.1 Georgia,serif}a{color:#216c63}small{letter-spacing:.15em}</style></head>
-<body><main><small>INGRESOS EN CHILE · ESI 2025</small><h1>Esta página no existe.</h1><p>Puedes volver al dashboard para explorar los ingresos por ocupación, edad y sexo.</p><a href="/">Volver al dashboard</a></main></body></html>\n''')
+<body><main><small>INGRESOS EN CHILE · ESI 2025</small><h1>Esta página no existe.</h1><p>Puedes volver al dashboard para explorar los ingresos por ocupación, edad y sexo.</p><a href="/" target="_blank" rel="noopener noreferrer">Volver al dashboard</a></main></body></html>\n''')
     return html

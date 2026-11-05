@@ -15,6 +15,11 @@ if (errors.length || !dom.window.ESI_DASHBOARD || !document.querySelector('#medi
   throw new Error('Could not prerender dashboard: ' + errors.join('\n'));
 }
 document.querySelectorAll('.tooltip').forEach(node => node.remove());
+// Apply the same navigation behavior to authored, generated, and offline links.
+for (const anchor of document.querySelectorAll('a[href]')) {
+  anchor.target = '_blank';
+  anchor.relList.add('noopener', 'noreferrer');
+}
 document.documentElement.dataset.prerendered = 'true';
 process.stdout.write(dom.serialize());
 dom.window.close();

@@ -45,7 +45,7 @@ assert(d.querySelectorAll('#survival .survival-band').length>0);
 for(const band of d.querySelectorAll('#survival .survival-band'))assert(/[HV]/.test(band.getAttribute('d'))&&!/[CQ]/.test(band.getAttribute('d')));
 api.setState({amount:20000000});
 assert(d.querySelector('#survival .survival-selected'),'Positive extreme tail remains visible');
-assert.equal(d.querySelectorAll('script[src],link[rel=stylesheet],img[src],iframe').length,0);
+assert.equal(d.querySelectorAll('script[src],link[rel=stylesheet],img[src]:not([src^="data:image/"]),iframe').length,0);
 assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|https?:\/\/[^'"\s]*\.(?:js|css|woff)/.test(html),'No external runtime dependencies');
 // Exercise actual controls and representative edge cases.
 d.getElementById('occupation').value='6';d.getElementById('occupation').dispatchEvent(new w.Event('change'));
@@ -70,7 +70,9 @@ d.querySelector('[data-range="21"]').click();assert.equal(api.getState().range,2
 d.querySelector('[data-age-panel="40_44"]').click();assert.equal(api.getState().age,'40_44');
 d.querySelector('[data-rank-occupation="1"]').click();assert.equal(api.getState().occupation,'1');
 d.getElementById('rank-metric').value='threshold';d.getElementById('rank-metric').dispatchEvent(new w.Event('change'));assert.equal(api.getState().rank,'threshold');
-d.getElementById('about').click();assert.equal(d.getElementById('method-details').open,true);
+const helpLink=d.getElementById('about');
+assert.equal(helpLink.tagName,'A');assert.equal(helpLink.target,'_blank');
+assert.equal(d.querySelector(helpLink.hash).closest('details').id,'method-details');
 d.getElementById('print').click();assert.equal(w.printCalls,1);
 // All 390 selection domains must render their own denominators and valid SVG geometry.
 let checked=0;

@@ -150,7 +150,7 @@
   font-weight: 750;
   letter-spacing: .015em;
 }
-.footer-footnote a[rel="author"] { font-family: var(--serif); font-size: 1rem }
+.footer-footnote a[rel~="author"] { font-family: var(--serif); font-size: 1rem }
 .footnote-credit a + a::before {
   content: "";
   width: 1px;
@@ -219,7 +219,7 @@
   .footnote-credit { gap: .55rem }
   .footnote-credit a + a::before { margin-right: .55rem }
   .footer-footnote a { font-size: .75rem }
-  .footer-footnote a[rel="author"] { font-size: .91rem }
+  .footer-footnote a[rel~="author"] { font-size: .91rem }
   .footnote-source {
     flex-direction: column;
     align-items: flex-end;
@@ -300,3 +300,39 @@
   .career-figure, .career-table tr { break-inside: avoid; }
   .career-figure, .career-track, .career-track i { print-color-adjust: exact; }
 }
+
+.public-salaries h4 { max-width: 19ch; }
+.public-salaries h4 em { color: #24664e; font-style: normal; }
+.cargo-figure { margin: 1.05rem 0 1.5rem; padding: clamp(.95rem, 2.4vw, 1.6rem); border: 1px solid #c7d5c9; border-radius: .65rem; background: #edf2e9; }
+.cargo-figure figcaption { font: 500 clamp(1.08rem, 2vw, 1.35rem)/1.28 var(--serif); color: #214a39; }
+.cargo-bars { padding: 0; margin: 1rem 0 .85rem; list-style: none; display: grid; gap: .8rem; }
+.cargo-bars li { min-width: 0; }
+.cargo-row-head { display: flex; align-items: baseline; justify-content: space-between; gap: .65rem; }
+.cargo-row-head span { font-size: .92rem; font-weight: 600; }
+.cargo-row-head b { font: 550 1.05rem/1 var(--serif); color: #175a42; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cargo-track { display: block; height: .53rem; margin-block: .22rem .1rem; background: #d5dfd1; border-radius: .16rem; overflow: hidden; }
+.cargo-track i { display: block; height: 100%; background: #297354; }
+.cargo-reference .cargo-track i { background: #93612d; }
+.cargo-bars small, .story-step .cargo-figure p { font-size: .79rem; line-height: 1.48; color: #435c4e; }
+.story-step .cargo-figure p { max-width: 62ch; border-top: 1px solid #c8d5c6; margin: 0; padding-top: .75rem; }
+.story-step .public-salaries .cargo-tail { margin-block: .9rem 1.15rem; padding-inline-start: 1rem; border-inline-start: 3px solid #ae844b; }
+.cargo-tail strong { display: block; margin-bottom: .2rem; font: 500 clamp(1.45rem, 2.9vw, 2.1rem)/1.15 var(--serif); color: #214e3c; }
+.cargo-table { width: 100%; margin-top: 1rem; border-collapse: collapse; color: #2e4c3f; font-size: .84rem; font-variant-numeric: tabular-nums; }
+.cargo-table caption { text-align: left; font-weight: 600; padding-bottom: .5rem; }
+.cargo-table td, .cargo-table th { padding: .6rem .4rem; text-align: left; vertical-align: top; border-bottom: 1px solid #d3ddd2; }
+.cargo-table th[scope="row"] { width: 28%; font-weight: 650; }
+.cargo-table td:last-child { width: 24%; }
+.cargo-table small, .cargo-table a { display: block; margin-top: .2rem; color: #425c4e; font-weight: 400; font-size: .77rem; line-height: 1.42; }
+.cargo-table td > strong { white-space: nowrap; }
+@media (max-width: 565px) {
+  .cargo-table { display: block; }
+  .cargo-table caption { display: block; }
+  .cargo-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cargo-table tbody { display: block; }
+  .cargo-table tr { display: grid; grid-template-columns: 1fr; padding: .65rem .1rem .8rem; border-top: 1px solid #c5d2c5; }
+  .cargo-table th[scope="row"], .cargo-table td, .cargo-table td:last-child { width: auto; padding: .15rem 0; border: none; }
+  .cargo-table td:last-child::before { content: "ESI 2025 · "; font-weight: 650; }
+}
+@media print { .cargo-track, .cargo-track i { print-color-adjust: exact; } .cargo-bars li, .cargo-table tr { break-inside: avoid; } }
+
+.topbar #about { text-underline-offset: .18em; }

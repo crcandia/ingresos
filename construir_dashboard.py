@@ -1,5 +1,6 @@
 """Bundle the dashboard into an offline HTML and a web version with Analytics."""
 from pathlib import Path
+from base64 import b64encode
 import json
 import subprocess
 from html import escape
@@ -11,13 +12,17 @@ template = (ROOT / 'interfaz/dashboard.html').read_text()
 data = json.loads((ROOT / 'datos/dashboard.json').read_text())
 seo = json.loads((ROOT / 'interfaz/seo.json').read_text())
 portada, historia = relato(data)
+# Inline the small artwork so every saved copy keeps it, even when saved offline.
+ilustracion = (ROOT / 'site/assets/ingresos-chile-trabajo.webp').read_bytes()
+portada = portada.replace('__PORTADA_IMAGEN__', 'data:image/webp;base64,' + b64encode(ilustracion).decode('ascii'))
 template = template.replace('<!--__COVER__-->', portada).replace('<!--__STORY__-->', historia)
 template = template.replace('__PAGE_TITLE__', escape(seo['title']))
 template = template.replace('__PAGE_DESCRIPTION__', escape(seo['description'], quote=True))
 template = template.replace('<!--__INCOME_ANSWERS__-->', respuestas_ingresos(data))
 assert len(data['domains']) == len(data['meta']['age']) * len(data['meta']['sex']) * len(data['meta']['occupation'])
 embedded = json.dumps(data, ensure_ascii=False, separators=(',', ':'), allow_nan=False).replace('</', '<\\/')
-styles = (ROOT / 'interfaz/dashboard.css').read_text() + '\n' + (ROOT / 'interfaz/seo.css').read_text()
+styles = '\n'.join((ROOT / 'interfaz' / name).read_text()
+                   for name in ('dashboard.css', 'seo.css', 'relato.css', 'carreras.css'))
 html = template.replace('/*__STYLES__*/', styles)
 html = html.replace('__DASHBOARD_DATA__', embedded)
 html = html.replace('/*__SCRIPT__*/', (ROOT / 'interfaz/dashboard.js').read_text())

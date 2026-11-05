@@ -21,7 +21,7 @@ const policy=d.querySelector('meta[http-equiv="Content-Security-Policy"]').conte
 for(const allowed of ['https://www.googletagmanager.com','https://*.google-analytics.com','https://*.google.com'])assert(policy.includes(allowed));
 assert(!d.querySelector('footer').textContent.includes('Analytics'));
 for(const footer of [d.querySelector('footer'),new JSDOM(offline).window.document.querySelector('footer')]){
- assert(footer.querySelector('a[href="https://www.crcandia.com/"][rel="author"]'));
+ assert(footer.querySelector('a[href="https://www.crcandia.com/"][rel~="author"]'));
  assert(footer.querySelector('a[href="https://criss-lab.com/es/"]'));
 }
 w.ESI_DASHBOARD.setState({occupation:'2',age:'40_44',sex:'2',amount:2000000,survivalScale:'log'});

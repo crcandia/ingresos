@@ -1,0 +1,160 @@
+/* The illustration and the editorial finding share one panel, in the reading
+   order of the source on phones and beside the title on larger screens. */
+.cover {
+  align-items: start;
+  row-gap: clamp(.95rem, 2.1vw, 1.7rem);
+}
+.cover-copy { align-self: end; }
+.cover-actions { grid-area: 2 / 1 / 3 / 2; margin-top: 0; }
+.cover-figure {
+  grid-area: 1 / 2 / 3 / 3;
+  align-self: stretch;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.cover-source { grid-area: 3 / 1 / 4 / 3; }
+.cover-illustration {
+  display: block;
+  width: 100%;
+  height: clamp(7rem, 11.5vw, 10.5rem);
+  object-fit: cover;
+  object-position: 50% 50%;
+  background-color: #e6e3d0;
+}
+.cover-figure-detail { padding: clamp(1.05rem, 2.2vw, 1.9rem); }
+.cover-figure-detail h2 {
+  max-width: 25ch;
+  margin: 0 0 1rem;
+  font: 450 clamp(1.12rem, 1.55vw, 1.48rem)/1.2 var(--serif);
+  letter-spacing: -.025em;
+}
+.cover-figure-detail h2 strong {
+  display: block;
+  margin-bottom: .18rem;
+  font: 450 clamp(2.65rem, 4.4vw, 4.8rem)/1.05 var(--serif);
+  letter-spacing: -.06em;
+}
+.cover-figure-detail > p { max-width: 50ch; margin: .8rem 0 0; font-size: .86rem; line-height: 1.48; color: #41584a; }
+
+.read-story > h2 { max-width: 23ch; text-wrap: balance; }
+.income-band {
+  margin: 1.4rem 0 0;
+  padding: clamp(1.15rem, 3.2vw, 2.55rem);
+  color: #203e35;
+  background-color: #e9eee4;
+  border-radius: .7rem;
+}
+.income-band > figcaption {
+  max-width: 38ch;
+  margin: 0 0 1.1rem;
+  font: 450 clamp(1.5rem, 2.6vw, 2.45rem)/1.14 var(--serif);
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.income-band-strip {
+  display: flex;
+  height: clamp(1.45rem, 3vw, 2.35rem);
+  border-radius: .22rem;
+  overflow: hidden;
+}
+.income-band-strip i + i { border-left: 1px solid #f5f6ed; }
+.income-band-key {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .8rem 1.1rem;
+  margin: 1.05rem 0;
+  padding: 0;
+  list-style: none;
+}
+.income-band-key li {
+  display: grid;
+  grid-template-columns: .63rem 1fr;
+  gap: .17rem .4rem;
+  align-content: start;
+  font-size: .85rem;
+  line-height: 1.3;
+}
+.income-band-key li::before {
+  content: "";
+  align-self: center;
+  width: .61rem;
+  height: .61rem;
+  border-radius: 2px;
+  background-color: var(--band-color);
+  border: 1px solid #344e4426;
+}
+.income-band-key strong { font-size: clamp(1.06rem, 1.55vw, 1.36rem); font-variant-numeric: tabular-nums; }
+.income-band-key span { grid-column: 2; color: #405448; }
+.income-band > p { margin: .95rem 0 0; max-width: 75ch; font-size: .84rem; color: #41584a; }
+.read-story details.survey-universe {
+  max-width: none;
+  margin-top: .35rem;
+  padding: .25rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.survey-universe summary {
+  width: fit-content;
+  min-height: 40px;
+  padding: .55rem .1rem;
+  color: #2d5d47;
+  font-size: .87rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.read-story .survey-universe p { max-width: 78ch; color: #45594c; }
+
+.read-story .story-step > h3 {
+  max-width: 23ch;
+  margin: .4rem 0 .95rem;
+  font: 450 clamp(2rem, 3.65vw, 3.45rem)/1.05 var(--serif);
+  letter-spacing: -.05em;
+  text-wrap: balance;
+}
+.story-step > h3 em { font-style: normal; color: #176148; }
+.threshold-figure { margin: 0; }
+.story-step .threshold-figure .story-scale {
+  margin: 0 0 .45rem;
+  max-width: none;
+  font-size: .79rem;
+  font-weight: 600;
+  color: #425b4c;
+}
+.threshold-figure .rate-list { margin: .45rem 0 .6rem; }
+.story-step .threshold-figure .story-caption {
+  max-width: 66ch;
+  margin: .55rem 0;
+  font-size: .88rem;
+  line-height: 1.48;
+  color: #43594c;
+}
+.story-step p.story-foot:not(.kicker) { max-width: 70ch; font-size: .82rem; line-height: 1.5; color: #4e6056; }
+.story-step .story-precision { margin: .65rem 0; }
+.story-step .story-precision p { max-width: 68ch; font-size: .87rem; }
+@media (max-width: 740px) {
+  .cover h1 { margin: .6rem 0 .85rem; }
+  .cover-lead { margin-bottom: .45rem; }
+  .cover-definition { font-size: .88rem; }
+  .cover-figure { margin: 1rem 0; }
+  .cover-illustration { height: clamp(5.2rem, 25vw, 8rem); }
+  .cover-figure-detail { padding: .85rem 1.1rem 1.05rem; }
+  .cover-figure-detail h2 { margin-bottom: .6rem; }
+  .cover-figure-detail > p { font-size: .81rem; }
+  .cover-figure-detail .income-row { margin: .52rem 0; }
+  .cover-actions { margin-bottom: 1rem; }
+  .income-band-key { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 500px) {
+  .income-band-key { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .income-band-key li:last-child { grid-column: 1/-1; }
+}
+@media print {
+  .cover-illustration { max-height: 75pt; }
+  .cover-figure { border: 1px solid var(--line); break-inside: avoid; }
+  .cover-figure-detail h2 strong { font-size: 26pt; }
+  .income-band, .income-band-strip, .income-band-key li, .threshold-figure { print-color-adjust: exact; }
+  .income-band, .threshold-figure { break-inside: avoid; }
+  .read-story .story-step { break-inside: auto; }
+}

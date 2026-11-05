@@ -79,7 +79,8 @@ assert.equal(sitemap.window.document.querySelector('loc').textContent,config.can
 assert.equal(sitemap.window.document.querySelector('lastmod').textContent,config.modified);
 assert(fs.readFileSync(path.join(site,'robots.txt'),'utf8').includes('Sitemap: '+config.canonical+'sitemap.xml'));
 assert.equal(fs.readFileSync(path.join(site,'_redirects'),'utf8'),'/index.html / 301!\n');
-assert(new JSDOM(fs.readFileSync(path.join(site,'404.html'),'utf8')).window.document.querySelector('meta[name="robots"]').content.includes('noindex'));
+const missing=new JSDOM(fs.readFileSync(path.join(site,'404.html'),'utf8'));
+assert(missing.window.document.querySelector('meta[name="robots"]').content.includes('noindex'));
 const errors=[],downloads=[];
 const make=(source,url)=>new JSDOM(source,{url,runScripts:'dangerously',virtualConsole:new VirtualConsole().on('jsdomError',e=>errors.push(e.message)),beforeParse(w){
  w.HTMLElement.prototype.scrollIntoView=function(){};
@@ -100,10 +101,21 @@ assert.equal(c.getElementById('structured-data'),null);
 assert.equal(copy.window.ESI_DASHBOARD.getState().age,'50_54');
 assert.equal(copy.window.ESI_DASHBOARD.getState().survivalScale,'log');
 const plain=new JSDOM(offline);
+for(const variant of [raw,missing,active,savedStatic,copy,plain]){
+ const document=variant.window.document;
+ const links=document.querySelectorAll('a[href]');
+ assert(links.length>0,'Missing page links');
+ for(const link of links){
+  const href=link.getAttribute('href');
+  assert.equal(link.target,'_blank',href);
+  assert(link.relList.contains('noopener') && link.relList.contains('noreferrer'),href);
+  if(href.startsWith('#'))assert(document.getElementById(decodeURIComponent(href.slice(1))),'Missing fragment '+href);
+ }
+}
 assert.equal(plain.window.document.querySelectorAll('[data-web-meta],[data-web-analytics],script[src]').length,0);
 assert(plain.window.document.getElementById('median').textContent.length>0);
 assert.equal(d.getElementById('dashboard-data').textContent,plain.window.document.getElementById('dashboard-data').textContent);
 assert.equal(errors.length,0,errors.join('\n'));
 const report={pass:true,canonical:config.canonical,socialImage:{width:+meta('og:image:width'),height:+meta('og:image:height'),bytes:image.length},preRenderedInitialView:true,hydrationMatchesSource:true,metadataAndSchemaPassed:true,publicResourcesPresent:true,csvMatchesSource:true,savedCopyRemainsOffline:true,savedControlsMatchWithoutJavaScript:true,statisticalDataUnchanged:true,scope:'Source and DOM checks. No production HTTP, crawler indexing or social platform cache verification.'};
 fs.writeFileSync(path.join(__dirname,'validacion_seo.json'),JSON.stringify(report,null,2)+'\n');
-console.log(JSON.stringify(report));[raw,sitemap,active,savedStatic,copy,plain].forEach(x=>x.window.close());
+console.log(JSON.stringify(report));[raw,sitemap,missing,active,savedStatic,copy,plain].forEach(x=>x.window.close());

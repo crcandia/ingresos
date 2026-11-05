@@ -9,7 +9,7 @@ const careers=refs.filter(ref=>ref.paso===2);
 const narrative=document.getElementById('sueldos-por-carrera');
 const tableRows=[...narrative.querySelectorAll('tbody tr')];
 assert.equal(tableRows.length,8);
-assert.equal(narrative.querySelectorAll(':scope > p > a[href^="https://lixandria.cl/preferences/"]').length,4);
+assert.equal(narrative.querySelectorAll(':scope > p > a[href^="https://lixandria.cl/preferences/"], :scope > figure a[href^="https://lixandria.cl/preferences/"]').length,4);
 for(const ref of careers){
   assert.equal(ref.consulta.campo,'tercer_ano');
   const expected='https://lixandria.cl/preferences/'+ref.lixandria_id+'%7C%7C0';
@@ -22,8 +22,33 @@ assert.equal(new Set(careers.map(ref=>ref.lixandria_id)).size,careers.length);
 assert.equal(narrative.querySelector('a[href="https://lixandria.cl/preferences/63%7C%7C0"]').textContent,'Ingeniería Comercial');
 assert(narrative.textContent.includes('$976.000') && narrative.textContent.includes('$1.396.000'));
 assert(narrative.textContent.includes('31 de 100') && narrative.textContent.includes('18 de 100'));
-assert(document.getElementById('public-salary-title').closest('section').textContent.includes('12 casos'));
-assert(document.querySelector('.footer-footnote a[rel="author"]'));
+const roles=refs.filter(ref=>ref.paso===10);
+const salaries=document.getElementById('sueldos-de-altos-cargos');
+const caseRows=[...salaries.querySelectorAll('tbody tr')];
+assert.equal(caseRows.length,roles.length);
+assert.equal(roles.length,10);
+for(const role of roles){
+ const row=caseRows.find(el=>el.querySelector('th').textContent.includes(role.nombre));
+ assert(row && row.querySelector('a').href === role.url,role.nombre);
+ assert(row.cells[1].textContent.includes(role.periodo),role.nombre);
+}
+assert(salaries.textContent.includes('12 casos') && salaries.textContent.includes('6 casos'));
+assert(salaries.textContent.includes('Ningún caso en la muestra'));
+assert(Math.abs(+salaries.querySelector('.cargo-reference').dataset.multiple-1)<.0001);
+assert(salaries.querySelector('#public-salary-title').textContent.includes('19 veces'));
+const careerDots=narrative.querySelector('.career-people');
+assert.equal(careerDots.querySelectorAll('circle').length,100);
+assert.equal(careerDots.querySelectorAll('.career-dot-both').length,18);
+assert.equal(careerDots.querySelectorAll('.career-dot-first-only').length,13);
+const band=[...document.querySelectorAll('.income-band-key [data-share]')].map(b=>Number(b.dataset.share));
+assert.equal(band.length,5);
+assert(Math.abs(band.reduce((sum,x)=>sum+x,0)-100)<.00001);
+assert(Math.abs(band[0]-1.1723)<.0001);
+assert(document.getElementById('story-title').textContent.includes('de menor a mayor'));
+const art=document.querySelector('.cover-illustration');
+const bytes=fs.readFileSync(path.join(__dirname,'../site/assets/ingresos-chile-trabajo.webp'));
+assert.equal(art.getAttribute('src'),'data:image/webp;base64,'+bytes.toString('base64'));
+assert(document.querySelector('.footer-footnote a[rel~="author"]'));
 assert(document.querySelector(document.querySelector('.footnote-source').getAttribute('href')));
 assert(document.querySelector('a[href="#sueldos-por-carrera"]'));
 for(const width of [390,1280]){
@@ -36,7 +61,7 @@ for(const width of [390,1280]){
  const before=app.getState();fn([{isIntersecting:true}]);
  assert.deepEqual(steps.map(x=>x.id),['relato-minimo','relato-mediana','relato-millones','relato-altos']);
  const rates=[...d.querySelectorAll('.rate-list li')].map(x=>+x.dataset.rate);
- const survey=app.getDomain('all','all','all');assert(Math.abs(rates[0]-78.924)<.001);assert(rates[1]>=50&&rates[1]<51);
+ const survey=app.getDomain('all','all','all');assert(Math.abs(rates[0]-21.076)<.001);assert(Math.abs(rates[1]-50.02536)<.001);
  assert.deepEqual(rates.slice(2),[1,2,3,4,6,8,10].map(n=>survey.curve.p[n*20]));
  assert.equal(steps[3].querySelectorAll('.rate-list li').length,3);
  for(const row of d.querySelectorAll('.rate-list li')){const scale=row.closest('#relato-altos')?100:1;assert.equal(row.querySelectorAll('circle').length,100);assert.equal(row.querySelectorAll('circle[fill="#22694f"]').length,Math.round(+row.dataset.rate*scale));}
