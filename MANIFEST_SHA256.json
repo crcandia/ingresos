@@ -4,16 +4,16 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 4312073,
-    "sha256": "51cf26281a789c194ce8cfdb9bbf56dec900fa60a42e6810d71c65d2c696a09e"
+    "bytes": 4368732,
+    "sha256": "942cc65ccef99b31ecfe25a8776c7ff58311e7b05051f0695fa8fad385bb22c8"
   },
   "PUBLICACION.md": {
     "bytes": 2176,
     "sha256": "251e049e30d472e1a62364585792d7285d82bc65571a7cc927408953d03514cd"
   },
   "README.md": {
-    "bytes": 8992,
-    "sha256": "264e629fdf009732bf473a0142cf7b125b363abaf2435a4f6ebdb136b39caab6"
+    "bytes": 9550,
+    "sha256": "fae6a9c1a2c2c6635ba98e56e64f1bb244361ada7ca1275f4f66da626497efa3"
   },
   "README_DATOS.md": {
     "bytes": 8006,
@@ -26,6 +26,10 @@
   "codigo/analizar_dashboard.py": {
     "bytes": 21616,
     "sha256": "b9a8f74e76c23231cd8a7a71a03ef7408a859f111b8085b570a9134258249742"
+  },
+  "codigo/contar_asalariados.py": {
+    "bytes": 1147,
+    "sha256": "f7922be601847a13893f1ba3a1a79559037867c476904d87c366f425507e2b36"
   },
   "codigo/diseno_encuesta.py": {
     "bytes": 3184,
@@ -40,8 +44,8 @@
     "sha256": "d3f272a73ded32672fdabacefe6f99a1ee3a982fc0950263c6b12dd6a8063674"
   },
   "codigo/relato.py": {
-    "bytes": 8030,
-    "sha256": "cd98bb7296541f558ada1a69308bf4a6da6a43e5ecae2db874f9718ea1ec695b"
+    "bytes": 10590,
+    "sha256": "9c609e3a1e3ad50b5bc0f71f7f84b2e6cd0966f5ebc9a8cfa5a9907cb98405a7"
   },
   "codigo/seo_web.py": {
     "bytes": 11573,
@@ -104,8 +108,12 @@
     "sha256": "6761aa8a4091b2feceaec826419ea9f4d0b5562fd4df75953287cc25c66044dc"
   },
   "fuentes/referencias_salariales.json": {
-    "bytes": 2612,
-    "sha256": "93755a8dc28d5033f59d30d1f582f494c759eca6676a1d3dccc3773b82e6f106"
+    "bytes": 6147,
+    "sha256": "359cb176dd576e9b3575851255f7003fb819bac223e846d97588b55881f5d3b0"
+  },
+  "fuentes/universo_asalariados.json": {
+    "bytes": 326,
+    "sha256": "3af24a8ea7e195fbc733e935676519d43b6ea0e900ed181483c41127a0f38c8f"
   },
   "interfaz/analytics.html": {
     "bytes": 350,
@@ -116,20 +124,20 @@
     "sha256": "6922fd32327538425faf7de774013d52cfa57797ad107bb46451c61713f24231"
   },
   "interfaz/dashboard.html": {
-    "bytes": 15045,
-    "sha256": "b5ef48957201617d7620e262fbf9fbb82465951ae98d50cd96141e114ef4a4a2"
+    "bytes": 15768,
+    "sha256": "70acec8efede2a89b0562d022358f9a94c9086014531045d933ab70f87303584"
   },
   "interfaz/dashboard.js": {
-    "bytes": 31614,
-    "sha256": "102c716f8f17a67998f2187055b423e09078b082961c56d26aadf7926c140729"
+    "bytes": 34284,
+    "sha256": "58018b746cfc7bc350dd0cfa9430acbe273105cdaf71a7a274249bf3595b2237"
   },
   "interfaz/favicon.svg": {
     "bytes": 295,
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "interfaz/seo.css": {
-    "bytes": 8782,
-    "sha256": "d8e30f83e2ac8ea9b07b074c750b2356194f808d3c4f84b3507aac62380f2ba9"
+    "bytes": 10541,
+    "sha256": "581119b3f91ede26419d3df399762cb00fa5680bd0dde46677e3985cf4e34d66"
   },
   "interfaz/seo.json": {
     "bytes": 921,
@@ -144,16 +152,16 @@
     "sha256": "08be78437523550ad1c3068c89d6f7f0d613d89673d02b093f0b0acbaafd7a12"
   },
   "qa/check_relato.cjs": {
-    "bytes": 2320,
-    "sha256": "e02a39a9e66d8393e7ce0c86e226a24e771335dedded818367fc71ca85f35700"
+    "bytes": 3364,
+    "sha256": "16113212b0057589ae918ec49b6a30924a247c5d821052242b0d998b6f2042c0"
   },
   "qa/check_seo.cjs": {
     "bytes": 7967,
     "sha256": "c41f5663b6a252b6595eddb33e6cde23fe50b812e17a195d9e8af219f7484558"
   },
   "qa/cierre.json": {
-    "bytes": 5434,
-    "sha256": "73a258aed74af331f2af1fa17bf2473f70cb91422f491b5376f2c5dce1638a41"
+    "bytes": 5546,
+    "sha256": "bda4d0ad2b81dfdcc2476de351e9d91043ec5bc26d20316deb7b9dd533789a9c"
   },
   "qa/package.json": {
     "bytes": 135,
@@ -193,7 +201,7 @@
   },
   "qa/run_dom_checks.cjs": {
     "bytes": 11983,
-    "sha256": "fd2bc9fe15be94998593ea05408de3cbbad522553fdeb37efcfe45db47fe6fa0"
+    "sha256": "593b03bb9eaec75e41fed379dc1bb9982780f9736afe3c642f36c4ec1dba595c"
   },
   "qa/validacion_analytics.json": {
     "bytes": 418,
@@ -248,8 +256,8 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "site/index.html": {
-    "bytes": 4319638,
-    "sha256": "59e3864bb68da3448ecfbaf1fe50b7a979143d5a3729bf9541636588bb6a3f25"
+    "bytes": 4376297,
+    "sha256": "a730842c58bad59794a09f1f882d4b0828866c2f9378e6fe798eb3c3dbd1b28a"
   },
   "site/robots.txt": {
     "bytes": 76,

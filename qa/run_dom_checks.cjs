@@ -99,7 +99,7 @@ d.getElementById('save').click();const saved=downloads.at(-1).parts.join('');ass
 const reopened=makeDOM(saved),ra=reopened.window.ESI_DASHBOARD;
 assert.deepEqual(JSON.parse(JSON.stringify(ra.getState())),JSON.parse(JSON.stringify(api.getState())));
 assert.equal(ra.getDomain().n,api.getDomain().n);reopened.window.close();
-d.getElementById('export-csv').click();const csv=downloads.at(-1).parts.join('');assert.equal(csv.split('\r\n').length,23);assert(csv.includes('comparacion_edades')&&csv.includes('comparacion_ocupaciones'));assert(csv.includes('2000000'));assert(csv.includes('percentil25_clp')&&csv.includes('percentil75_clp'));
+d.getElementById('export-csv').click();const csv=downloads.at(-1).parts.join('');assert.equal(csv.split('\r\n').length,25);assert(csv.includes('comparacion_edades')&&csv.includes('comparacion_ocupaciones'));assert(csv.includes('2000000'));assert(csv.includes('percentil25_clp')&&csv.includes('percentil75_clp'));
 d.getElementById('reset').click();assert.equal(api.getState().occupation,'all');assert.equal(api.getState().sex,'all');assert.equal(api.getState().age,'all');assert.equal(api.getState().amount,1000000);assert.equal(api.getState().survivalScale,'linear');
 const graph=d.querySelector('#distribution svg');graph.dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));assert(d.querySelector('#distribution .tooltip').classList.contains('visible'));
 const width=+graph.getAttribute('viewBox').split(' ')[2];

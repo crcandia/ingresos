@@ -53,6 +53,8 @@
    for(const [value,c,dash] of [[d.median,color.teal,'5 4'],[d.mean,color.gold,'2 3']])if(value>=0&&value<=xmax)body+=line(x(value),T,x(value),h-B,c,`stroke-width="1.6" stroke-dasharray="${dash}"`);
    el.innerHTML=svgShell(w,h,'Distribución del ingreso del grupo seleccionado',body,'Intervalos de $100.000. Usa las flechas del teclado para consultar cada intervalo.');
    makeTooltip(el,el.querySelector('svg'),i=>`<strong>${exactMoney(i*100000)} a menos de ${exactMoney((i+1)*100000)}</strong><br>`+(bins[i]>0?`≈ ${pct(bins[i])} del grupo<br>≈ ${people(d.N*bins[i]/100)} personas`:'Sin casos observados en este intervalo.'),{left:L,right:R,w,maxIndex:bins.length-1,intervals:true});
+   const mode=bins.indexOf(Math.max(...bins));
+   $('distribution-example').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+' · '+label('age',state.age)+'. Por ejemplo, la barra más alta de esta vista reúne a quienes ganan desde '+exactMoney(mode*100000)+' hasta menos de '+exactMoney((mode+1)*100000)+' netos al mes: ≈ '+pct(bins[mode])+' del grupo (≈ '+people(d.N*bins[mode]/100)+' personas). Cada persona cuenta en una sola barra.';
    const outside=eventAt(d,3000000);
    $('distribution-note').textContent='Cada barra muestra el porcentaje del grupo que gana dentro de un tramo mensual de $100.000. '+(state.range===3?(outside.n?`Fuera de esta vista: ≈ ${pct(outside.p)} gana $3 millones o más.`:'No se observaron casos de $3 millones o más en este grupo.'):'Se muestra el rango completo de ingresos observados.')+' Tonos oscuros: intervalos completos a partir del monto consultado.';
  }
@@ -128,7 +130,7 @@
    const ages=DATA.meta.age.filter(a=>a.id!=='all'),ds=ages.map(a=>domain(state.occupation,state.sex,a.id));
    const el=$('age-profile'),w=Math.max(760,chartWidth(el,1180)),h=330,L=70,R=32,T=24,B=55;
    const x=i=>L+i/(ages.length-1)*(w-L-R),ymax=roundUp(Math.max(...ds.flatMap(d=>[d.mean,d.p75]))*1.12),y=v=>h-B-v/ymax*(h-T-B);
-   $('age-profile-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+' · Ingreso neto mensual. Aquí se comparan todas las edades, aunque arriba hayas seleccionado solo una.';
+   $('age-profile-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex) +'. Cada punto resume a personas distintas: a la izquierda están las más jóvenes. Por ejemplo, entre los '+ages[1].label+' la mediana es ≈ '+money(ds[1].median)+' al mes; entre los '+ages[4].label+', ≈ '+money(ds[4].median)+'. Se comparan todas las edades, manteniendo la ocupación y el sexo que elegiste.';
    let body=txt(L,12,'Ingreso neto mensual · millones de pesos','start',10);
    const selected=ages.findIndex(a=>a.id===state.age);
    if(selected>=0)body+=`<rect x="${x(selected)-17}" y="${T}" width="34" height="${h-T-B}" fill="${color.pale}" opacity=".7"/>`;
@@ -153,11 +155,18 @@
    }).join('');
    $('age-profile-table').innerHTML='<table><caption>Estimaciones ponderadas. Montos aproximados en pesos mensuales.</caption><thead><tr><th scope="col">Edad</th><th scope="col">P25</th><th scope="col">Mediana</th><th scope="col">Promedio</th><th scope="col">P75</th><th scope="col">Encuestados</th><th scope="col">Nota</th></tr></thead><tbody>'+ages.map((a,i)=>{const d=ds[i];return `<tr><th scope="row">${esc(a.label)}</th><td>≈ ${money(d.p25)}</td><td>≈ ${money(d.median)}</td><td>≈ ${money(d.mean)}</td><td>≈ ${money(d.p75)}</td><td>${num(d.n)}</td><td>${poorDomain(d)||d.meanQ<2?'Exploratorio':'—'}</td></tr>`;}).join('')+'</tbody></table>';
  }
+ function renderSexComparison(){
+   const data=[['2','Mujeres'],['1','Hombres']].map(([id,name])=>({name,d:domain(state.occupation,id,state.age)}));
+   $('sex-context').textContent='Estás comparando ambos sexos · '+label('age',state.age)+' · '+label('occupation',state.occupation)+'. Si cambias la edad o la ocupación, cambian ambas columnas.';
+   $('sex-comparison').innerHTML='<table><caption class="sr-only">Ingresos netos de mujeres y hombres para la selección</caption><thead><tr><th>Indicador</th>'+data.map(o=>'<th scope="col">'+o.name+'</th>').join('')+'</tr></thead><tbody>'+[['Mediana mensual',d=>'≈ '+money(d.median)+(poorDomain(d)?' · exploratorio':'')],['Promedio mensual',d=>'≈ '+money(d.mean)+(d.meanQ<2?' · exploratorio':'')],['Gana '+exactMoney(state.amount)+' o más',d=>{const e=eventAt(d);return e.n?'≈ '+pct(e.p)+(e.q<2?' · exploratorio':''):'Sin casos observados';}],['Personas representadas',d=>'≈ '+people(d.N)]].map(([name,read])=>'<tr><th scope="row">'+name+'</th>'+data.map(o=>'<td>'+read(o.d)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+ }
  function renderRanking(){
-   $('occupation-context').textContent=label('age',state.age)+' · '+label('sex',state.sex)+'. '+(state.rank==='threshold'?'Personas que ganan ≥ '+exactMoney(state.amount)+', dentro de cada ocupación.':'El filtro de ocupación no se aplica aquí: comparamos los nueve trabajos para la edad y el sexo indicados.');
+   const national=domain('all','all','all').N,within=domain('all',state.sex,state.age).N,filtered=state.age!=='all'||state.sex!=='all';
+   const metric=state.rank==='threshold'?'porcentaje que gana '+exactMoney(state.amount)+' netos o más':state.rank==='mean'?'ingreso neto promedio':'ingreso neto mediano';
+   $('occupation-context').innerHTML='<b>Estás comparando: '+esc(label('age',state.age))+' · '+esc(label('sex',state.sex))+'</b><span>≈ '+people(within)+' personas en esta selección. Orden: '+metric+'. Al cambiar la edad o el sexo, se recalculan las nueve filas. Elegir una ocupación resalta su fila.</span><span>El porcentaje del total nacional usa como base a los ≈ '+people(national)+' ocupados del estudio.'+(filtered?' También mostramos el porcentaje dentro de tu selección.':'')+'</span>';
    const rows=DATA.meta.occupation.filter(o=>o.id!=='all').map(o=>{const d=domain(o.id,state.sex,state.age),e=eventAt(d);return{o,d,e,v:state.rank==='threshold'?e.p:d[state.rank]};}).sort((a,b)=>b.v-a.v);
    const max=Math.max(...rows.map(r=>r.v),1);
-   $('occupation-ranking').innerHTML=rows.map(({o,d,e,v})=>{const limited=state.rank==='threshold'?e.q<2:state.rank==='mean'?d.meanQ<2:poorDomain(d);const no=state.rank==='threshold'&&e.n===0;return `<button class="rank-row ${o.id===state.occupation?'active':''}" data-rank-occupation="${o.id}" aria-label="Seleccionar ${esc(o.label)}. ${no?'Sin casos observados':state.rank==='threshold'?'Aproximadamente '+pct(v):'Aproximadamente '+money(v)}"><span class="rank-label">${esc(o.label)}</span><span class="rank-track" aria-hidden="true"><span class="rank-fill" style="display:block;width:${Math.max(0,v/max*100)}%"></span></span><span class="rank-value">${no?'Sin casos':'≈ '+(state.rank==='threshold'?pct(v):money(v))}${limited&&!no?'*':''}</span><span class="rank-n">n = ${num(d.n)}${limited?'<span class="limited-text">Exploratorio</span>':''}</span></button>`;}).join('');
+   $('occupation-ranking').innerHTML=rows.map(({o,d,e,v})=>{const limited=state.rank==='threshold'?e.q<2:state.rank==='mean'?d.meanQ<2:poorDomain(d);const no=state.rank==='threshold'&&e.n===0;return `<button class="rank-row ${o.id===state.occupation?'active':''}" data-rank-occupation="${o.id}" aria-label="Seleccionar ${esc(o.label)}, aproximadamente ${people(d.N)} personas, ${pct(100*d.N/national)} del total nacional. ${no?'Sin casos observados':state.rank==='threshold'?'Aproximadamente '+pct(v):'Aproximadamente '+money(v)}"><span class="rank-label">${esc(o.label)}</span><span class="rank-track" aria-hidden="true"><span class="rank-fill" style="display:block;width:${Math.max(0,v/max*100)}%"></span></span><span class="rank-value">${no?'Sin casos':'≈ '+(state.rank==='threshold'?pct(v):money(v))}${limited&&!no?'*':''}</span><span class="rank-n"><b>≈ ${people(d.N)} personas</b><small>≈ ${pct(100*d.N/national)} del total nacional</small>${filtered?`<small>≈ ${pct(100*d.N/within)} de la selección</small>`:''}<small>Muestra: ${num(d.n)} encuestados</small>${limited?'<span class="limited-text">Exploratorio</span>':''}</span></button>`;}).join('');
  }
  function render(){
    const d=domain();
@@ -174,7 +183,7 @@
    $('population-note').textContent=num(d.n)+' encuestados en este grupo.';
    $('sample-warning').hidden=!poorDomain(d);
    $('sample-warning').textContent=`Muestra limitada: este grupo tiene ${num(d.n)} encuestados y ${num(d.df)} grados de libertad. Sus cifras son exploratorias. Las colas de ingresos pueden apoyarse en muy pocas observaciones.`;
-   renderThreshold(d);renderDistribution(d);renderSurvival(d);renderAges();renderAgeProfile();renderRanking();
+   renderThreshold(d);renderDistribution(d);renderSurvival(d);renderAges();renderAgeProfile();renderSexComparison();renderRanking();
  }
  function setState(change){
    for(const k of ['occupation','sex','age'])if(change[k]!==undefined&&valid(k,String(change[k])))state[k]=String(change[k]);
@@ -191,6 +200,7 @@
    function add(view,o,s,a){const d=domain(o,s,a),e=eventAt(d);rows.push([view,label('occupation',o),label('sex',s),label('age',a),d.n,d.N,d.median,d.mean,d.p25,d.p75,d.meanSE,state.amount,e.p,e.persons,e.n,e.lo,e.hi,qualityText(e)]);}
    add('seleccion',state.occupation,state.sex,state.age);
    for(const a of DATA.meta.age.filter(x=>x.id!=='all'))add('comparacion_edades',state.occupation,state.sex,a.id);
+   for(const s of ['1','2'])add('comparacion_sexos',state.occupation,s,state.age);
    for(const o of DATA.meta.occupation.filter(x=>x.id!=='all'))add('comparacion_ocupaciones',o.id,state.sex,state.age);
    return '\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v===null?'':v).replace(/"/g,'""')+'"').join(';')).join('\r\n');
  }

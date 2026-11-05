@@ -67,5 +67,103 @@
     "detalle": "Promedio mensual del cargo, de noviembre de 2025 a octubre de 2026. Suma lo pagado a sus dos titulares y divide por 12; no es el sueldo fijo de una persona.",
     "fuente": "Codelco · Transparencia",
     "url": "https://www.codelco.com/transparencia/remuneraciones-presidente-ejecutivo"
+  },
+  {
+    "paso": 2,
+    "nombre": "Pedagogía en Educación Básica",
+    "tipo": "Bruto",
+    "pesos": 1012768,
+    "detalle": "Primer año después de titularse. Titulados de 2021–2023; pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 207,
+      "campo": "primer_ano"
+    },
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
+    "extra": true
+  },
+  {
+    "paso": 2,
+    "nombre": "Psicología",
+    "tipo": "Bruto",
+    "pesos": 1203197,
+    "detalle": "Tercer año después de titularse. Titulados de 2019–2021; pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 220,
+      "campo": "tercer_ano"
+    },
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
+    "extra": true
+  },
+  {
+    "paso": 2,
+    "nombre": "Enfermería",
+    "tipo": "Bruto",
+    "pesos": 1740235,
+    "detalle": "Tercer año después de titularse. Titulados de 2019–2021; pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 155,
+      "campo": "tercer_ano"
+    },
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
+    "extra": true
+  },
+  {
+    "paso": 2,
+    "nombre": "Derecho",
+    "tipo": "Bruto",
+    "pesos": 2426582,
+    "detalle": "Quinto año después de titularse. Titulados de 2017–2019; pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 151,
+      "campo": "quinto_ano"
+    },
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
+    "extra": true
+  },
+  {
+    "paso": 10,
+    "nombre": "Directora laboral del Consejo Directivo de BancoEstado",
+    "tipo": "Líquido",
+    "totales": [
+      78909000
+    ],
+    "meses": 12,
+    "detalle": "Promedio mensual: remuneración líquida de enero a diciembre de 2025 dividida por doce.",
+    "fuente": "BancoEstado · Memoria Integrada 2025, §2.1.7",
+    "url": "https://www.bancoestado.cl/content/dam/bancoestado-public/portal-corporativo/pdf/documentos/memorias-bancoestado/2025/Anexo_Memoria_Integrada_BE_2025.pdf",
+    "extra": true
+  },
+  {
+    "paso": 10,
+    "nombre": "Presidente del Consejo Directivo de BancoEstado",
+    "tipo": "Líquido",
+    "totales": [
+      151964600
+    ],
+    "meses": 12,
+    "detalle": "Promedio mensual: remuneración líquida de enero a diciembre de 2025 dividida por doce.",
+    "fuente": "BancoEstado · Memoria Integrada 2025, §2.1.7",
+    "url": "https://www.bancoestado.cl/content/dam/bancoestado-public/portal-corporativo/pdf/documentos/memorias-bancoestado/2025/Anexo_Memoria_Integrada_BE_2025.pdf",
+    "extra": true
   }
 ]
