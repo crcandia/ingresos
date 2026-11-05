@@ -46,6 +46,23 @@ assert.equal(structured['@context'],'https://schema.org');
 const graph=structured['@graph'];
 for(const type of ['WebSite','WebPage','Person','Dataset'])assert(graph.some(x=>x['@type']===type));
 assert(!graph.some(x=>['FAQPage','Review','AggregateRating'].includes(x['@type'])));
+const website=graph.find(x=>x['@type']==='WebSite');
+assert.equal(website.name,d.querySelector('.brand span').textContent);
+assert.equal(meta('og:site_name'),website.name);
+const page=graph.find(x=>x['@type']==='WebPage');
+assert.equal(page.name,d.title);
+assert.equal(page.description,meta('description'));
+const careers=page.hasPart;
+const careerId=new URL(careers['@id']).hash.slice(1);
+const careerSection=d.getElementById(careerId);
+assert(careerSection&&d.querySelector(`.faq a[href="#${careerId}"]`),'Missing link to the career comparison');
+const careerHeading=careerSection.querySelector('h2,h3,h4,h5') || careerSection;
+assert.equal(careerHeading.textContent.trim(),careers.name);
+// Googlebot reads the first 2 MB uncompressed. All editorial content and links
+// must precede the large JSON payload, with room for HTTP response headers.
+const mainEnd=html.indexOf('</main>');
+assert(mainEnd>0 && mainEnd<html.indexOf('<script id="dashboard-data"'));
+assert(Buffer.byteLength(html.slice(0,mainEnd+7))<1_900_000,'Initial editorial content exceeds the crawl budget');
 const dataset=graph.find(x=>x['@type']==='Dataset');
 assert(dataset.description.length>=50&&dataset.description.includes('20 años o más'));
 assert.equal(dataset.distribution.contentUrl,config.canonical+config.dataset);

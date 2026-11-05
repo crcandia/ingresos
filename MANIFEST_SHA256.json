@@ -4,24 +4,24 @@
     "sha256": "21bd885863a73d148e5df0e41ae27cc614aba7c701027c5ea841acb47071341e"
   },
   "Ingresos_Chile_ESI2025.html": {
-    "bytes": 4375222,
-    "sha256": "48ccdfb8fb9c767d6db27c554d6f548c39679e76423d67f45cea7dc681e46586"
+    "bytes": 4385238,
+    "sha256": "421ff1f43779b357377253dd83ebb51b6434c17016f3cea4645814213ab03f47"
   },
   "PUBLICACION.md": {
     "bytes": 2200,
     "sha256": "ebcf080eb6e62b1cf1a98d116ccb9568fabb38e6b3cfc3c5c14a575d44e75790"
   },
   "README.md": {
-    "bytes": 9555,
-    "sha256": "66ea185727bb2f30ed536cc1fc236da31ad444d2b3bdfcedbe6f3032e8f496e3"
+    "bytes": 10003,
+    "sha256": "16aaf3fd785c0c83ad5c4ce2bd1df6b420c1bfab8a671acccbee3eae02cf3c6d"
   },
   "README_DATOS.md": {
     "bytes": 8006,
     "sha256": "2193332441b0f110eb4370510cdfae9d81effaa36cf3d1ac8be6aea42b300510"
   },
   "SEO.md": {
-    "bytes": 5150,
-    "sha256": "f1d1ebe93c3105e211df4926e1a7410556a5aee48799cc7f4ef12e988cef0ad2"
+    "bytes": 5743,
+    "sha256": "867cb85c716f5ce4d12a8a453f0d8b6bfcc988d96bb73fbce70ae7fef58d44bd"
   },
   "codigo/analizar_dashboard.py": {
     "bytes": 21616,
@@ -43,13 +43,17 @@
     "bytes": 1001,
     "sha256": "d3f272a73ded32672fdabacefe6f99a1ee3a982fc0950263c6b12dd6a8063674"
   },
+  "codigo/referencias_salariales.py": {
+    "bytes": 8756,
+    "sha256": "1d092975f90bed22e6ea26df48c6b7cb73bb103cc415bc4d332cedc0981876d1"
+  },
   "codigo/relato.py": {
-    "bytes": 10660,
-    "sha256": "40fd421fc13f362cf3bd0bfed99e7bfc9a1d7ee40aec117411b43751993ca623"
+    "bytes": 8126,
+    "sha256": "e5641b67f2d3ceeca9e48a72709ce57e26023878951d749d1b115a7c5c181384"
   },
   "codigo/seo_web.py": {
-    "bytes": 11763,
-    "sha256": "46347a7b06220315fc4e982cfc8f2fefeaf918b39e867ce71359e10afec8df83"
+    "bytes": 12621,
+    "sha256": "76ec089bbcb7689d0bb7031aed45a86538bb37b7d685d83b99a9d3ef88688eb3"
   },
   "construir_dashboard.py": {
     "bytes": 3117,
@@ -108,8 +112,8 @@
     "sha256": "6761aa8a4091b2feceaec826419ea9f4d0b5562fd4df75953287cc25c66044dc"
   },
   "fuentes/referencias_salariales.json": {
-    "bytes": 6147,
-    "sha256": "359cb176dd576e9b3575851255f7003fb819bac223e846d97588b55881f5d3b0"
+    "bytes": 7443,
+    "sha256": "ce365f8238c87ca5ac65b548c22c579e7d9654eaac7bb1c01c71c609d2ab89c7"
   },
   "fuentes/universo_asalariados.json": {
     "bytes": 326,
@@ -124,8 +128,8 @@
     "sha256": "6922fd32327538425faf7de774013d52cfa57797ad107bb46451c61713f24231"
   },
   "interfaz/dashboard.html": {
-    "bytes": 16079,
-    "sha256": "382b75bfece5f9658e75c37e149dfd8624eeaf6c4dc67e726018c978a4d7ac5b"
+    "bytes": 16529,
+    "sha256": "617372115bcf288349271d3a22735971f8c4bdb31b818563a9a15f9238b93b89"
   },
   "interfaz/dashboard.js": {
     "bytes": 34338,
@@ -136,12 +140,12 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "interfaz/seo.css": {
-    "bytes": 10818,
-    "sha256": "4c5b545e0c6c3b62a131fcb6fc2206acfb1faaff7d34db06cf20e5fa7e9040ab"
+    "bytes": 18266,
+    "sha256": "dc1d8ab8e70e6de5224648d270d451ef1370cbe0eb90aff961d63917074d7ab4"
   },
   "interfaz/seo.json": {
-    "bytes": 921,
-    "sha256": "ab03cd0135ddbdcc0bd117daea491aecfeb3928682d18de3b079d2eec137e36e"
+    "bytes": 1000,
+    "sha256": "0b89b9193c8eaaa6da9c78f416212a48d2cacf90a2dff878a56e54e2e74c25f5"
   },
   "netlify.toml": {
     "bytes": 174,
@@ -152,12 +156,12 @@
     "sha256": "3d248e279f6980af7cc2312e54488e706a53cd37d80b07e8808e37ae991842c1"
   },
   "qa/check_relato.cjs": {
-    "bytes": 3366,
-    "sha256": "cb4aefe9ea3fc0db420cf6bb7f669459bbf91d8702042b22829843089e9b9ecc"
+    "bytes": 4819,
+    "sha256": "7676bddf51178a56bd726fd53c79f7344cfa2cb621111c29bc6f1f4ebf2ffd5e"
   },
   "qa/check_seo.cjs": {
-    "bytes": 7967,
-    "sha256": "c41f5663b6a252b6595eddb33e6cde23fe50b812e17a195d9e8af219f7484558"
+    "bytes": 9043,
+    "sha256": "5f092f860726db4f16caff33c4af74a11de6f1526fe423deeb84f2acf936e9c3"
   },
   "qa/cierre.json": {
     "bytes": 5563,
@@ -256,8 +260,8 @@
     "sha256": "0db1bb3d26686fbe25b206c2866f6e22216e8563eb9919f96886fe0ec95fc776"
   },
   "site/index.html": {
-    "bytes": 4382756,
-    "sha256": "2c8c5ca6ec535cd55de2844a8133a60ce42e8785cd7a8d8bf8cb072d0ec45efd"
+    "bytes": 4393161,
+    "sha256": "4d3c7bb6c5b3f7e6e635997f772b9f770fdbe73c74b6e0f627051d6e8a410142"
   },
   "site/robots.txt": {
     "bytes": 76,

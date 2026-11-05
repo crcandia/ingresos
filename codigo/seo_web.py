@@ -20,7 +20,8 @@ def respuestas_ingresos(data: dict) -> str:
   <details open id="sueldo-promedio-chile"><summary>¿Cuál es el sueldo promedio en Chile según este análisis?</summary><p>El ingreso neto mensual promedio de la ocupación principal es de aproximadamente <strong>{money(total['mean'])}</strong> entre las personas ocupadas de 20 años o más. Esta estimación ponderada se calcula con los microdatos de la ESI 2025 del INE. Incluye asalariados e independientes, por lo que no es exclusivamente un promedio de sueldos de asalariados ni el total oficial de todas las edades.</p></details>
   <details open id="sueldo-mediano-chile"><summary>¿Cuál es el ingreso mediano en Chile para personas ocupadas de 20 años o más?</summary><p>La mediana es de aproximadamente <strong>{money(total['median'])}</strong> mensuales en este universo de la ESI 2025. Al menos la mitad de las personas representadas gana ese monto o menos. La mediana ayuda a describir el centro de la distribución sin que los ingresos más altos la eleven como ocurre con el promedio.</p></details>
   <details id="personas-un-millon"><summary>¿Cuántas personas ganan un millón de pesos o más en Chile?</summary><p>Entre las personas ocupadas de 20 años o más, aproximadamente el <strong>{percent_text}%</strong>, unas <strong>{people} personas</strong>, recibe $1.000.000 o más al mes en su ocupación principal, según este cálculo con la ESI 2025. Se incluyen quienes ganan exactamente ese monto. Son ingresos netos y estimaciones redondeadas. <a href="#threshold-title">Consulta otros montos y su precisión</a>.</p></details>
-  <details><summary>¿Cómo comparar los sueldos por edad, sexo y ocupación en Chile?</summary><p>El <a href="#age-profile-title">gráfico de ingresos por edad</a> compara promedio, mediana y percentiles 25 y 75 en tramos de cinco años, desde 20–24 hasta 70–74, y un grupo final de 75 años o más. También puedes comparar <a href="#sex-title">mujeres y hombres</a> para la misma selección de edad y ocupación, o ver <a href="#occ-title">los nueve grupos de ocupación</a> para la edad y el sexo elegidos. Es una comparación de personas distintas en 2025, no una predicción de cómo cambiará tu sueldo al envejecer.</p></details>'''
+  <details><summary>¿Cómo comparar los sueldos por edad, sexo y ocupación en Chile?</summary><p>El <a href="#age-profile-title">gráfico de ingresos por edad</a> compara promedio, mediana y percentiles 25 y 75 en tramos de cinco años, desde 20–24 hasta 70–74, y un grupo final de 75 años o más. También puedes comparar <a href="#sex-title">mujeres y hombres</a> para la misma selección de edad y ocupación, o ver <a href="#occ-title">los nueve grupos de ocupación</a> para la edad y el sexo elegidos. Es una comparación de personas distintas en 2025, no una predicción de cómo cambiará tu sueldo al envejecer.</p></details>
+  <details><summary>¿De dónde salen los sueldos por carrera y con quién se comparan?</summary><p>En la <a href="#sueldos-por-carrera">comparación de sueldos por carrera</a> tomamos el ingreso bruto promedio que Mi Futuro informa para el tercer año y estimamos cuánto recibiría en líquido una persona asalariada con ese promedio. La ESI 2025 permite ver cuántas personas ocupadas de 20 años o más en Chile ganaban ese monto o más en su trabajo principal, con cualquier nivel de estudios.</p></details>'''
 
 
 def preparar_web(root: Path, html: str, data: dict) -> str:
@@ -48,7 +49,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     meta('theme-color', '#193d3b')
     meta('color-scheme', 'light')
     for key, value in {
-        'og:type': 'website', 'og:site_name': 'Ingresos en Chile', 'og:locale': 'es_CL',
+        'og:type': 'website', 'og:site_name': config['siteName'], 'og:locale': 'es_CL',
         'og:title': config['socialTitle'], 'og:description': config['socialDescription'],
         'og:url': canonical, 'og:image': canonical + config['image'],
         'og:image:secure_url': canonical + config['image'], 'og:image:type': 'image/png',
@@ -79,12 +80,16 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
         {'@type': 'Person', '@id': person_id, 'name': config['author'],
          'url': 'https://www.crcandia.com/', 'sameAs': ['https://github.com/crcandia'],
          'affiliation': {'@type': 'Organization', 'name': 'CRiSS-LAB', 'url': 'https://criss-lab.com/'}},
-        {'@type': 'WebSite', '@id': site_id, 'url': canonical, 'name': 'Ingresos en Chile',
+        {'@type': 'WebSite', '@id': site_id, 'url': canonical, 'name': config['siteName'],
+         'alternateName': 'Ingresos en Chile',
          'inLanguage': 'es-CL', 'publisher': {'@id': person_id}},
         {'@type': 'WebPage', '@id': page_id, 'url': canonical, 'name': config['title'],
          'description': config['description'], 'inLanguage': 'es-CL',
          'dateModified': config['modified'], 'isPartOf': {'@id': site_id},
          'author': {'@id': person_id}, 'mainEntity': {'@id': dataset_id},
+         'hasPart': {'@type': 'WebPageElement', '@id': canonical + '#sueldos-por-carrera',
+                     'name': '¿Cuánto se gana al tercer año de titularse?',
+                     'description': 'Sueldos líquidos estimados con los ingresos brutos promedio por carrera de Mi Futuro.'},
          'primaryImageOfPage': {'@type': 'ImageObject', 'url': canonical + config['image'],
                                 'width': width, 'height': height, 'caption': config['imageAlt']}},
         {'@type': 'Dataset', '@id': dataset_id,
@@ -111,7 +116,7 @@ def preparar_web(root: Path, html: str, data: dict) -> str:
     resources = f'''<section class="public-data surface" id="datos" aria-labelledby="datos-title">
  <p class="eyebrow">FUENTES Y DESCARGAS</p><h2 id="datos-title">Datos para explorar y reproducir</h2>
  <p>Descarga el resumen de las {len(data["domains"])} combinaciones de ocupación, sexo y edad. Incluye personas ocupadas de 20 años o más, con ingresos expresados en pesos de octubre de 2025. El CSV contiene mediana, promedio, intervalos del promedio, cuantiles, tamaño muestral y población expandida.</p>
- <p>Elaboración independiente de <strong>Cristian Candia</strong>, <a href="https://criss-lab.com/">CRISS-LAB</a>, a partir de microdatos públicos del INE. Las categorías y reglas de cálculo están documentadas en el repositorio.</p>
+ <p>Elaboración independiente de <strong>Cristian Candia</strong>, <a href="https://criss-lab.com/es/">CRiSS-LAB</a>, a partir de microdatos públicos del INE. Las categorías y reglas de cálculo están documentadas en el repositorio.</p>
  <div class="public-data-links"><a href="{canonical + config['dataset']}" download>Descargar resumen completo · CSV</a><a href="{config['repository']}" target="_blank" rel="noopener noreferrer">Código y metodología · GitHub</a></div>
 </section>'''
     html = html.replace('<!--__WEB_RESOURCES__-->', resources, 1)

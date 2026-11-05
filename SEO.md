@@ -4,7 +4,7 @@ La versión web usa `https://ingresos.criss-lab.com/` como URL canónica. La con
 
 Incluye título y descripción, Open Graph, Twitter Card grande, autor, iconos, datos estructurados de WebSite, WebPage, Person y Dataset, sitemap y robots.txt. No se añaden reseñas, calificaciones, licencias, cuentas sociales, traducciones ni servicios de búsqueda inexistentes. Las preguntas frecuentes son contenido visible y no se marcan como un resultado enriquecido de FAQ.
 
-`codigo/prerenderizar_dashboard.cjs` ejecuta el mismo JavaScript de la aplicación con jsdom y sin recursos externos. La vista inicial contiene cifras, gráficos y comparaciones antes de ejecutar JavaScript en el navegador. Al abrir la página, los filtros funcionan con los mismos datos. El archivo descargable también contiene esa vista inicial. Al guardar desde la web se eliminan Analytics, los metadatos web y los iconos remotos, y se restablece la política offline.
+`codigo/prerenderizar_dashboard.cjs` ejecuta el mismo JavaScript de la aplicación con jsdom y sin recursos externos. La vista inicial contiene cifras, gráficos y comparaciones antes de ejecutar JavaScript en el navegador. La sección `#sueldos-por-carrera` compara estimaciones a partir de Mi Futuro. El marcado de la página identifica esa sección por separado del conjunto de datos de la ESI. Al abrir la página, los filtros funcionan con los mismos datos. El archivo descargable también contiene esa vista inicial. Al guardar desde la web se eliminan Analytics, los metadatos web y los iconos remotos, y se restablece la política offline.
 
 ## Miniatura
 
@@ -26,6 +26,8 @@ node qa/check_seo.cjs
 ```
 
 El resumen CSV publicado se copia directamente de `tablas/resumen_dominios.csv`. No contiene microdatos. Los archivos `_headers`, `_redirects` y `404.html` están dentro del directorio publicado. No hay una regla que convierta cualquier ruta inexistente en la página principal.
+
+Las cifras, las fuentes y los enlaces internos aparecen en el HTML antes del bloque de datos de los filtros. La prueba de SEO comprueba que el contenido de `main` se entregue dentro de los primeros 1,9 MB sin comprimir. Así queda margen para las cabeceras HTTP dentro del límite de rastreo de Googlebot. [Documentación de Google Search Central](https://developers.google.com/search/blog/2026/03/crawler-blog-post).
 
 `modified` debe cambiarse solo cuando se actualice contenido relevante. No se cambia automáticamente en cada compilación. Al cambiar la miniatura conviene usar otro nombre de archivo y actualizar la configuración, porque las redes pueden conservar la imagen anterior en caché.
 

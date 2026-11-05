@@ -14,17 +14,108 @@
   },
   {
     "paso": 2,
+    "nombre": "Psicología",
+    "tipo": "Bruto",
+    "pesos": 1203197,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 220,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 56,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
     "nombre": "Ingeniería Comercial",
     "tipo": "Bruto",
-    "pesos": 2203057,
-    "detalle": "Cuarto año después de titularse en Ingeniería Comercial. Titulados de 2018–2020. Pesos de septiembre de 2025.",
+    "pesos": 2004607,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
     "fuente": "Mi Futuro · Mineduc",
     "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
     "consulta": {
       "action": "detalleEstadisticas",
       "id": 172,
-      "campo": "cuarto_ano"
+      "campo": "tercer_ano"
     },
+    "lixandria_id": 63,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Derecho",
+    "tipo": "Bruto",
+    "pesos": 2050181,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 151,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 72,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Enfermería",
+    "tipo": "Bruto",
+    "pesos": 1740235,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 155,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 70,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Ingeniería Civil Industrial",
+    "tipo": "Bruto",
+    "pesos": 2508603,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 167,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 62,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Kinesiología",
+    "tipo": "Bruto",
+    "pesos": 1321490,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 197,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 71,
     "tipo_vista": "Líquido estimado",
     "supuesto_cotizacion": 0.187,
     "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
@@ -33,15 +124,34 @@
     "paso": 2,
     "nombre": "Medicina",
     "tipo": "Bruto",
-    "pesos": 2758297,
-    "detalle": "Primer año después de titularse en Medicina. Titulados de 2021–2023. Pesos de septiembre de 2025.",
+    "pesos": 3363001,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
     "fuente": "Mi Futuro · Mineduc",
     "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
     "consulta": {
       "action": "detalleEstadisticas",
       "id": 199,
-      "campo": "primer_ano"
+      "campo": "tercer_ano"
     },
+    "lixandria_id": 67,
+    "tipo_vista": "Líquido estimado",
+    "supuesto_cotizacion": 0.187,
+    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
+  },
+  {
+    "paso": 2,
+    "nombre": "Pedagogía en Educación Básica",
+    "tipo": "Bruto",
+    "pesos": 1175781,
+    "detalle": "Ingreso bruto mensual promedio al tercer año, universidades. Pesos de septiembre de 2025.",
+    "fuente": "Mi Futuro · Mineduc",
+    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
+    "consulta": {
+      "action": "detalleEstadisticas",
+      "id": 207,
+      "campo": "tercer_ano"
+    },
+    "lixandria_id": 38,
     "tipo_vista": "Líquido estimado",
     "supuesto_cotizacion": 0.187,
     "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm"
@@ -67,78 +177,6 @@
     "detalle": "Promedio mensual del cargo, de noviembre de 2025 a octubre de 2026. Suma lo pagado a sus dos titulares y divide por 12; no es el sueldo fijo de una persona.",
     "fuente": "Codelco · Transparencia",
     "url": "https://www.codelco.com/transparencia/remuneraciones-presidente-ejecutivo"
-  },
-  {
-    "paso": 2,
-    "nombre": "Pedagogía en Educación Básica",
-    "tipo": "Bruto",
-    "pesos": 1012768,
-    "detalle": "Primer año después de titularse. Titulados de 2021–2023; pesos de septiembre de 2025.",
-    "fuente": "Mi Futuro · Mineduc",
-    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
-    "consulta": {
-      "action": "detalleEstadisticas",
-      "id": 207,
-      "campo": "primer_ano"
-    },
-    "tipo_vista": "Líquido estimado",
-    "supuesto_cotizacion": 0.187,
-    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
-    "extra": true
-  },
-  {
-    "paso": 2,
-    "nombre": "Psicología",
-    "tipo": "Bruto",
-    "pesos": 1203197,
-    "detalle": "Tercer año después de titularse. Titulados de 2019–2021; pesos de septiembre de 2025.",
-    "fuente": "Mi Futuro · Mineduc",
-    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
-    "consulta": {
-      "action": "detalleEstadisticas",
-      "id": 220,
-      "campo": "tercer_ano"
-    },
-    "tipo_vista": "Líquido estimado",
-    "supuesto_cotizacion": 0.187,
-    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
-    "extra": true
-  },
-  {
-    "paso": 2,
-    "nombre": "Enfermería",
-    "tipo": "Bruto",
-    "pesos": 1740235,
-    "detalle": "Tercer año después de titularse. Titulados de 2019–2021; pesos de septiembre de 2025.",
-    "fuente": "Mi Futuro · Mineduc",
-    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
-    "consulta": {
-      "action": "detalleEstadisticas",
-      "id": 155,
-      "campo": "tercer_ano"
-    },
-    "tipo_vista": "Líquido estimado",
-    "supuesto_cotizacion": 0.187,
-    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
-    "extra": true
-  },
-  {
-    "paso": 2,
-    "nombre": "Derecho",
-    "tipo": "Bruto",
-    "pesos": 2426582,
-    "detalle": "Quinto año después de titularse. Titulados de 2017–2019; pesos de septiembre de 2025.",
-    "fuente": "Mi Futuro · Mineduc",
-    "url": "https://www.mifuturo.cl/buscador-de-estadisticas-por-carrera/",
-    "consulta": {
-      "action": "detalleEstadisticas",
-      "id": 151,
-      "campo": "quinto_ano"
-    },
-    "tipo_vista": "Líquido estimado",
-    "supuesto_cotizacion": 0.187,
-    "tabla_sii": "https://www.sii.cl/valores_y_fechas/impuesto_2da_categoria/impuesto2025.htm",
-    "extra": true
   },
   {
     "paso": 10,

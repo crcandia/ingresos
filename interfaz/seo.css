@@ -37,12 +37,266 @@
 
 .salary-refs{background:#f1f2e9;border-left:3px solid #a78241;padding:.85rem 1.15rem;margin:.95rem 0 0;border-radius:0 8px 8px 0}.salary-refs>div+div{border-top:1px solid #d4d9ca;padding-top:.65rem;margin-top:.65rem}.salary-refs h4{font-size:1rem;margin:.35rem 0 .12rem}.salary-refs b{color:#245345}.salary-refs small{font-size:.85em;font-weight:550}.salary-refs p,.story-step .salary-refs p{font-size:.88rem;line-height:1.45;margin:.25rem 0}.quick-amounts{flex-wrap:wrap}.curve-reading{margin:.5rem 0 1rem;padding:.7rem 1rem;border-left:3px solid #739885;background:#f0f4ed}
 
-.read-story .story-layout{display:grid;grid-template-columns:minmax(160px,.42fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,4.5rem)}.read-story .story-steps{grid-column:2;grid-row:1}.story-index{position:sticky;top:8vh;display:grid;gap:4px}.story-index a{padding:.65rem .8rem;border-radius:5px;color:#36534b;text-decoration:none;font-weight:600}.story-index a small{color:#527469;margin-right:.35rem}.story-index a[aria-current],.story-index a:hover{background:#e1eadf;color:#184833}.story-step .story-caption,.story-step .story-foot{font-size:.83rem;color:#455c52}.rate-list{list-style:none;padding:0;margin:.3rem 0 1rem}.rate-list li{display:grid;grid-template-columns:minmax(6.6rem,1fr) minmax(30px,1fr) auto;align-items:center;gap:.2rem .65rem;padding:.55rem 0;border-bottom:1px solid #d7e0d7}.rate-list b{font-size:.91rem;color:#184c3e;font-variant-numeric:tabular-nums}.rate-list small{grid-column:1/-1;color:#4c6057}.r-label{font-weight:650}.r-track{height:.5rem;border-radius:4px;background:#dfe8df;overflow:hidden}.r-track i{display:block;height:100%;background:#32775d}.story-precision{font-size:.87rem}.story-precision summary{cursor:pointer;color:#235e4b}.read-story .story-step{scroll-margin-top:1rem}
-@media(max-width:740px){.read-story .story-layout{display:block}.story-index{position:static;display:flex;flex-wrap:wrap;gap:.2rem .55rem;margin-bottom:1rem}.story-index a{padding:.35rem .2rem;font-size:.84rem}.read-story .story-step{padding:1.2rem 0}.rate-list li{column-gap:.4rem}.rate-list b{font-size:.85rem}}
+.read-story .story-layout{display:grid;grid-template-columns:minmax(160px,.42fr) minmax(0,1fr);gap:clamp(1.5rem,5vw,4.5rem)}.read-story .story-steps{grid-column:2;grid-row:1}.story-index{position:sticky;top:8vh;display:grid;gap:4px}.story-index a{padding:.65rem .8rem;border-radius:5px;color:#36534b;text-decoration:none;font-weight:600}.story-index a small{color:#527469;margin-right:.35rem}.story-index a[aria-current],.story-index a:hover{background:#e1eadf;color:#184833}.story-step .story-caption,.story-step .story-foot{font-size:.83rem;color:#455c52}.r-track{height:.5rem;border-radius:4px;background:#dfe8df;overflow:hidden}.r-track i{display:block;height:100%;background:#32775d}.story-precision{font-size:.87rem}.story-precision summary{cursor:pointer;color:#235e4b}.read-story .story-step{scroll-margin-top:1rem}
+@media(max-width:740px){.read-story .story-layout{display:block}.story-index{position:static;display:flex;flex-wrap:wrap;gap:.2rem .55rem;margin-bottom:1rem}.story-index a{padding:.35rem .2rem;font-size:.84rem}.read-story .story-step{padding:1.2rem 0}}
 @media print{.story-index{display:none}.read-story .story-layout{display:block}}
 @media(min-width:741px){.read-story:not(.story-ready) .story-layout .story-steps{grid-column:2}}
 
-.survey-universe,.reading-context{background:#edf3eb;border-left:3px solid #4b856d;border-radius:0 .5rem .5rem 0;padding:.7rem 1rem;color:#294e40}.survey-universe{max-width:76ch}.survey-universe p{margin:.35rem 0;font-size:.95rem}.rate-list li{grid-template-columns:55px 1fr auto}.rate-list .proportion-dots{grid-area:1/1/3/2;width:52px;height:52px}.rate-list .r-label{grid-area:1/2}.rate-list li>b{grid-area:1/3}.rate-list li>small{grid-area:2/2/3/4}.anchor-count{color:#254e3f}.extra-refs{margin:.7rem 0}.extra-refs summary,.story-precision summary{cursor:pointer;font-weight:600}.extra-refs>div{border-top:1px solid #d4d9ca;margin-top:.6rem}.sex-comparison{margin:1.35rem 0}.sex-comparison table{width:100%;border-collapse:collapse;font-size:.94rem}.sex-comparison th,.sex-comparison td{padding:.55rem .4rem;text-align:left;border-bottom:1px solid var(--line)}.sex-comparison tbody th{font-weight:500}.reading-context{font-size:.94rem}.rank-context b,.rank-context span,.rank-n b,.rank-n small{display:block}.rank-context b{font-size:1.12rem}.rank-context span{margin:.25rem 0}.rank-n{display:block;font-size:.85rem}.rank-n small{font-size:.75rem}.rank-row{grid-template-columns:minmax(130px,1.1fr) minmax(65px,1fr) minmax(80px,.6fr) minmax(158px,.85fr)}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-@media(max-width:740px){.rank-row{grid-template-columns:minmax(95px,1fr) minmax(25px,.4fr) auto}.rank-n{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .65rem;text-align:left}.rate-list li{grid-template-columns:44px 1fr auto}.rate-list .proportion-dots{width:42px;height:42px}.sex-comparison th,.sex-comparison td{padding:.45rem .2rem;font-size:.83rem}.rate-list .r-label{font-size:.88rem}}
+.survey-universe,.reading-context{background:#edf3eb;border-left:3px solid #4b856d;border-radius:0 .5rem .5rem 0;padding:.7rem 1rem;color:#294e40}.survey-universe{max-width:76ch}.survey-universe p{margin:.35rem 0;font-size:.95rem}.anchor-count{color:#254e3f}.extra-refs{margin:.7rem 0}.extra-refs summary,.story-precision summary{cursor:pointer;font-weight:600}.extra-refs>div{border-top:1px solid #d4d9ca;margin-top:.6rem}.sex-comparison{margin:1.35rem 0}.sex-comparison table{width:100%;border-collapse:collapse;font-size:.94rem}.sex-comparison th,.sex-comparison td{padding:.55rem .4rem;text-align:left;border-bottom:1px solid var(--line)}.sex-comparison tbody th{font-weight:500}.reading-context{font-size:.94rem}.rank-context b,.rank-context span,.rank-n b,.rank-n small{display:block}.rank-context b{font-size:1.12rem}.rank-context span{margin:.25rem 0}.rank-n{display:block;font-size:.85rem}.rank-n small{font-size:.75rem}.rank-row{grid-template-columns:minmax(130px,1.1fr) minmax(65px,1fr) minmax(80px,.6fr) minmax(158px,.85fr)}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:740px){.rank-row{grid-template-columns:minmax(95px,1fr) minmax(25px,.4fr) auto}.rank-n{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .65rem;text-align:left}.sex-comparison th,.sex-comparison td{padding:.45rem .2rem;font-size:.83rem}}
 
-.footer-credit>strong{font-family:var(--serif);font-size:1.24rem;font-weight:600}.footer-credit p{line-height:1.65}.footer-credit a{color:var(--teal);font-weight:650;text-decoration-thickness:1px;text-underline-offset:3px}.footer-credit a:hover{text-decoration-thickness:2px}
+.footer-credit>strong{font-family:var(--serif);font-size:1.24rem;font-weight:600}.footer-credit p{line-height:1.65}
+
+/* Each figure keeps the same ten-by-ten lattice as the threshold changes. */
+.rate-list {
+  --dot-size: clamp(7.5rem, 11vw, 9rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.3rem), 1fr));
+  gap: .65rem;
+  list-style: none;
+  margin: .7rem 0 1.25rem;
+  padding: 0;
+}
+.rate-list > li {
+  display: grid;
+  grid-template-areas: "amount" "dots" "ratio" "people";
+  grid-template-rows: auto auto auto 1fr;
+  align-content: start;
+  justify-items: start;
+  gap: .5rem;
+  min-width: 0;
+  padding: clamp(.75rem, 1.25vw, 1.1rem);
+  background: #fafbf5;
+  border: 1px solid #cbd7cc;
+  border-radius: .6rem;
+}
+.rate-list .r-label {
+  grid-area: amount;
+  color: #365649;
+  font-weight: 650;
+  line-height: 1.3;
+}
+.rate-list .proportion-dots {
+  grid-area: dots;
+  align-self: center;
+  display: block;
+  width: min(100%, var(--dot-size));
+  height: auto;
+  margin-block: .2rem;
+}
+.proportion-dots circle[fill="#d5dfd5"] { fill: #c8d6c9 }
+.rate-list li > b {
+  grid-area: ratio;
+  color: #174736;
+  font: 500 clamp(1.06rem, 1.55vw, 1.4rem)/1.15 var(--serif);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.rate-list li > small {
+  grid-area: people;
+  color: #455c52;
+  font-size: .81rem;
+  line-height: 1.45;
+}
+.rate-list > li:only-child {
+  grid-template-areas: "dots amount" "dots ratio" "dots people";
+  grid-template-columns: var(--dot-size) minmax(0, 1fr);
+  grid-template-rows: 1fr auto 1fr;
+  column-gap: clamp(.9rem, 2.5vw, 2rem);
+  align-items: start;
+}
+.rate-list > li:only-child .r-label { align-self: end }
+.rate-list > li:only-child > b { font-size: clamp(1.3rem, 2.6vw, 2.1rem) }
+
+@media (max-width: 740px) {
+  .rate-list { --dot-size: clamp(6.5rem, 29vw, 8.5rem) }
+  .rate-list .r-label { font-size: .93rem }
+}
+@media (max-width: 354px) {
+  .rate-list { grid-template-columns: minmax(0, 1fr) }
+  .rate-list > li {
+    grid-template-areas: "dots amount" "dots ratio" "dots people";
+    grid-template-columns: var(--dot-size) minmax(0, 1fr);
+    grid-template-rows: 1fr auto 1fr;
+    column-gap: .8rem;
+  }
+  .rate-list .r-label { align-self: end }
+}
+
+.footnote-inner, .footnote-credit, .footnote-source, .footnote-method {
+  display: flex;
+  align-items: center;
+}
+.footnote-inner {
+  justify-content: space-between;
+  gap: .9rem;
+  max-width: 1416px;
+  margin-inline: auto;
+}
+.footnote-credit, .footnote-source { gap: .8rem }
+.site-footer .footnote-credit {
+  margin: 0;
+  line-height: 1.2;
+}
+.footer-footnote a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: #294f42;
+  font-size: .81rem;
+  text-decoration: none;
+}
+.footnote-credit .footnote-lab {
+  color: #194937;
+  font-weight: 750;
+  letter-spacing: .015em;
+}
+.footer-footnote a[rel="author"] { font-family: var(--serif); font-size: 1rem }
+.footnote-credit a + a::before {
+  content: "";
+  width: 1px;
+  height: .8em;
+  margin-right: .8rem;
+  background: #afc0b2;
+}
+.footnote-survey { color: #4e6558; white-space: nowrap }
+.footnote-method { gap: .3rem; font-weight: 650 }
+.footnote-method svg {
+  width: .85rem;
+  height: .85rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.footer-footnote a:hover, .footer-footnote a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: .22em;
+}
+@media screen {
+  :root {
+    --footnote-height: 2.8rem;
+    --footnote-clearance: calc(var(--footnote-height) + env(safe-area-inset-bottom, 0px) + .6rem);
+    scroll-padding-bottom: var(--footnote-clearance);
+  }
+  body { padding-bottom: var(--footnote-clearance) }
+  .footer-footnote {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 8;
+    padding: 0 max(1rem, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(1rem, env(safe-area-inset-left, 0px));
+    border-top: 1px solid #bdccbe;
+    background: #f5f7f0;
+    box-shadow: 0 -3px 16px #163c2f0b;
+  }
+  .footnote-inner {
+    min-height: var(--footnote-height);
+    padding-inline: clamp(0rem, 2vw, 1.5rem);
+  }
+  #toast { bottom: calc(var(--footnote-clearance) + .4rem) }
+}
+@supports (animation-timeline: scroll()) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .footer-footnote::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      inset-inline: 0;
+      height: 2px;
+      background: #53836b;
+      transform-origin: left;
+      animation: footnote-progress 1s linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes footnote-progress {
+      from { transform: scaleX(0) }
+      to { transform: scaleX(1) }
+    }
+  }
+}
+@media screen and (max-width: 540px) {
+  .footnote-inner { gap: .5rem; padding-inline: 0 }
+  .footnote-credit { gap: .55rem }
+  .footnote-credit a + a::before { margin-right: .55rem }
+  .footer-footnote a { font-size: .75rem }
+  .footer-footnote a[rel="author"] { font-size: .91rem }
+  .footnote-source {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: .05rem;
+    line-height: 1.2;
+  }
+  .footnote-survey { font-size: .7rem }
+}
+@media print {
+  .rate-list { --dot-size: 60pt; gap: 6pt }
+  .rate-list > li { break-inside: avoid; background: white; padding: 6pt }
+  .site-footer { display: block }
+  .footnote-inner { display: block; margin-top: 4pt }
+  .footnote-source { display: none }
+}
+
+/* Salary examples run alongside the national thresholds in the reading guide. */
+.salary-story {
+  margin-block: clamp(1.75rem, 4vw, 3.25rem) .5rem;
+  padding-block-start: 1.2rem;
+  border-top: 2px solid #a8844b;
+}
+.salary-story h4 {
+  margin: .35rem 0 .85rem;
+  max-width: 25ch;
+  color: var(--ink);
+  font: 400 clamp(1.65rem, 3vw, 2.4rem)/1.1 var(--serif);
+  letter-spacing: -.035em;
+}
+.story-step .salary-story p:not(.kicker) { max-width: 65ch; }
+.salary-story a { color: #205c47; text-underline-offset: .16em; text-decoration-thickness: 1px; }
+.salary-story a:hover { text-decoration-thickness: 2px; }
+.career-figure {
+  margin: 1.2rem 0;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  border-radius: .55rem;
+  background: #eaf0e7;
+  color: #214535;
+}
+.career-figure figcaption { max-width: 40ch; margin-bottom: .9rem; font: 500 1.22rem/1.3 var(--serif); }
+.career-mark {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(2rem, 1fr) 5rem;
+  align-items: center;
+  gap: .6rem;
+  margin: .45rem 0;
+  font-size: .92rem;
+  font-variant-numeric: tabular-nums;
+}
+.career-mark strong { text-align: right; }
+.career-track { height: .52rem; background: #cedacb; border-radius: .16rem; overflow: hidden; }
+.career-track i { display: block; height: 100%; background: #22694f; }
+.career-figure > small { display: block; margin-top: .9rem; color: #455d50; font-size: .78rem; }
+.story-step .salary-story p.salary-source { font-size: .85rem; color: #435c4f; margin-block: .8rem 1.1rem; }
+.salary-detail { border-top: 1px solid #c5d2c7; padding: .1rem 0; }
+.salary-detail summary { min-height: 44px; padding: .7rem .2rem; cursor: pointer; font-weight: 650; color: #245842; }
+.salary-detail[open] { padding-bottom: .9rem; }
+.story-step .salary-detail p { font-size: .92rem; }
+.career-table { width: 100%; margin-top: .9rem; border-collapse: collapse; font-size: .88rem; font-variant-numeric: tabular-nums; }
+.career-table caption { padding-bottom: .55rem; text-align: left; color: #485c4e; }
+.career-table th, .career-table td { padding: .5rem .4rem; border-bottom: 1px solid #d4ddd3; text-align: right; vertical-align: middle; }
+.career-table thead th { font-weight: 600; font-size: .8rem; color: #425c4b; vertical-align: bottom; }
+.career-table tr > :first-child { text-align: left; padding-left: 0; }
+.career-table tr > :last-child { padding-right: 0; }
+.career-table th[scope="row"] { font-weight: 550; }
+.career-table small { display: block; margin-top: .05rem; color: #4d6254; font-size: .77rem; }
+.public-salaries { border-top-width: 1px; }
+@media (max-width: 520px) {
+  .career-mark { grid-template-columns: minmax(0,1fr) auto; gap: .15rem .55rem; margin: .8rem 0; }
+  .career-track { grid-column: 1/-1; grid-row: 2; }
+  .career-mark strong { grid-column: 2; grid-row: 1; }
+  .career-table { font-size: .81rem; }
+  .career-table td, .career-table th { padding: .45rem .22rem; }
+  .career-table thead th, .career-table small { font-size: .73rem; }
+}
+@media print {
+  .career-figure, .career-table tr { break-inside: avoid; }
+  .career-figure, .career-track, .career-track i { print-color-adjust: exact; }
+}
