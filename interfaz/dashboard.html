@@ -35,23 +35,24 @@
  </section>
  <section class="analysis-grid" aria-label="Distribución y consulta por ingreso">
   <article class="surface distribution-card">
-   <div class="section-head"><div><p class="eyebrow">DISTRIBUCIÓN</p><h2>¿Dónde se concentran los ingresos?</h2></div><div class="small-segmented" id="range-buttons" aria-label="Rango del gráfico"><button data-range="3" aria-pressed="true">Hasta $3M</button><button data-range="21" aria-pressed="false">Todo</button></div></div>
+   <div class="section-head"><div><p class="eyebrow">DISTRIBUCIÓN</p><h2>¿En qué tramos de ingreso se concentra este grupo?</h2></div><div class="small-segmented" id="range-buttons" aria-label="Rango del gráfico"><button data-range="3" aria-pressed="true">Hasta $3M</button><button data-range="21" aria-pressed="false">Todo</button></div></div>
    <div class="legend"><span><i class="swatch"></i>Personas del grupo</span><span><i class="line-key median-key"></i>Mediana</span><span><i class="line-key mean-key"></i>Promedio</span></div>
    <div class="plot" id="distribution"></div>
    <p class="chart-note" id="distribution-note"></p>
   </article>
   <article class="threshold-card" aria-labelledby="threshold-title">
-   <p class="eyebrow">CONSULTA UN INGRESO</p><h2 id="threshold-title">¿Cuántas personas ganan <br>este monto o más?</h2>
+   <p class="eyebrow">CONSULTA UN INGRESO</p><h2 id="threshold-title">¿Cuántas personas del grupo ganan este monto neto o más al mes?</h2>
    <label class="amount-label" for="amount">Ingreso neto mensual</label><div class="amount-field"><span>$</span><input id="amount" type="number" value="1000000" min="0" max="20000000" step="50000" inputmode="numeric" aria-describedby="amount-help"><span>CLP</span></div>
    <input class="amount-slider" id="amount-slider" type="range" min="0" max="20000000" step="50000" value="1000000" aria-label="Elegir ingreso mensual">
-   <div class="quick-amounts" id="quick-amounts"><button data-amount="1000000">$1M</button><button data-amount="2000000">$2M</button><button data-amount="3000000">$3M</button><button data-amount="4000000">$4M</button><button data-amount="5000000">$5M</button></div>
+   <div class="quick-amounts" id="quick-amounts"><button data-amount="1000000">$1M</button><button data-amount="2000000">$2M</button><button data-amount="3000000">$3M</button><button data-amount="4000000">$4M</button><button data-amount="5000000">$5M</button><button data-amount="6000000">$6M</button><button data-amount="8000000">$8M</button><button data-amount="10000000">$10M</button></div>
    <div class="threshold-result" aria-live="polite" aria-atomic="true"><div id="threshold-percent" class="threshold-percent"></div><p id="threshold-people" class="threshold-people"></p><p id="threshold-interval" class="threshold-interval"></p></div>
    <div id="threshold-quality" class="quality-box"></div><p id="amount-help" class="microcopy">Consulta en pasos de $50.000. Incluye a quienes ganan exactamente el monto.</p>
   </article>
  </section>
  <section class="surface survival-card" aria-labelledby="survival-title">
-  <div class="section-head"><div><p class="eyebrow">INGRESOS ALTOS · DESDE $1 MILLÓN</p><h2 id="survival-title">Cuántos alcanzan cada monto</h2></div><fieldset class="scale-control"><legend>Escala del porcentaje</legend><div class="small-segmented" id="survival-scale-buttons" aria-describedby="survival-scale-note"><button data-survival-scale="linear" aria-pressed="true">Lineal</button><button data-survival-scale="log" aria-pressed="false">Logarítmica</button></div></fieldset></div>
-  <div class="plot" id="survival"></div><p class="chart-note" id="survival-scale-note" aria-live="polite"></p><p class="chart-note" id="survival-note">La curva muestra quiénes ganan el monto del eje o más. Banda: intervalo de confianza puntual del 95%. Trazo discontinuo: precisión limitada. Consulta los puntos con el cursor o las flechas del teclado.</p>
+  <div class="section-head"><div><p class="eyebrow">INGRESOS ALTOS · DESDE $1 MILLÓN</p><h2 id="survival-title">¿Qué porcentaje del grupo gana ese monto neto o más al mes?</h2></div><fieldset class="scale-control"><legend>Escala del porcentaje</legend><div class="small-segmented" id="survival-scale-buttons" aria-describedby="survival-scale-note"><button data-survival-scale="linear" aria-pressed="true">Lineal</button><button data-survival-scale="log" aria-pressed="false">Logarítmica</button></div></fieldset></div>
+  <p id="survival-example" class="curve-reading"></p>
+  <div class="plot" id="survival"></div><p class="chart-note" id="survival-scale-note" aria-live="polite"></p><p class="chart-note" id="survival-note">El eje horizontal muestra el ingreso mensual; la altura de la curva, el porcentaje del grupo que gana al menos ese monto. La franja indica el intervalo de confianza del 95% en cada punto. La línea de guiones indica menor precisión. Consulta los puntos con el cursor o las flechas del teclado.</p>
  </section>
  <section class="surface age-profile-card" aria-labelledby="age-profile-title">
   <div class="section-head"><div><p class="eyebrow">03 &nbsp; / &nbsp; COMPARA EDADES</p><h2 id="age-profile-title">¿A qué edades son más altos los ingresos netos?</h2><p class="section-description" id="age-profile-context"></p></div></div>
@@ -64,11 +65,11 @@
   <details class="profile-table-details"><summary>Ver cifras por tramo de edad</summary><div class="profile-table-wrap" id="age-profile-table"></div></details>
  </section>
  <section class="age-section" aria-labelledby="age-title">
-  <div class="section-head"><div><p class="eyebrow">DISTRIBUCIONES POR EDAD</p><h2 id="age-title">Tramos de cinco años, una misma escala</h2><p class="section-description" id="age-context"></p></div><p class="instruction">Selecciona una tarjeta<br>para ver ese grupo arriba.</p></div>
+  <div class="section-head"><div><p class="eyebrow">DISTRIBUCIONES POR EDAD</p><h2 id="age-title">¿Cómo se reparten los ingresos dentro de cada tramo de edad?</h2><p class="section-description" id="age-context"></p></div><p class="instruction">Selecciona una tarjeta<br>para ver ese grupo arriba.</p></div>
   <div class="age-grid" id="age-panels"></div>
  </section>
  <section class="surface occupations-card" aria-labelledby="occ-title">
-  <div class="section-head"><div><p class="eyebrow">04 &nbsp; / &nbsp; COMPARA TRABAJOS</p><h2 id="occ-title">¿Cómo cambia el ingreso neto según el trabajo?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Proporción sobre el monto elegido</option></select></label></div>
+  <div class="section-head"><div><p class="eyebrow">04 &nbsp; / &nbsp; COMPARA TRABAJOS</p><h2 id="occ-title">¿Cómo cambia el ingreso neto según el trabajo?</h2><p class="section-description" id="occupation-context"></p></div><label class="compact-select">Comparar por<select id="rank-metric"><option value="median">Ingreso mediano</option><option value="mean">Ingreso promedio</option><option value="threshold">Porcentaje que gana el monto elegido o más</option></select></label></div>
   <div id="occupation-ranking" class="ranking"></div><p class="chart-note">Selecciona una ocupación para explorarla. * Señala estimaciones exploratorias. Las categorías describen el trabajo realizado. No equivalen al nivel educativo.</p>
  </section>
  <section class="method" id="method">
@@ -80,7 +81,7 @@
   <!--__INCOME_ANSWERS__-->
   <details><summary>¿Cuál es la diferencia entre ingreso mediano y promedio?</summary><p>La mediana es el punto medio de la distribución ponderada. El promedio suma los ingresos y los divide por la población representada. Los ingresos muy altos pueden elevar el promedio. Por eso el dashboard muestra ambos.</p></details>
   <details><summary>¿El ingreso neto es lo mismo que el sueldo líquido?</summary><p>Para asalariados, corresponde al ingreso de la ocupación principal después de descuentos legales e impuestos. También se incluyen independientes, cuyo ingreso descuenta los costos de su actividad, y componentes en especie definidos por la ESI. No es el ingreso total del hogar.</p></details>
-  <details><summary>¿Qué significa ganar $1 millón o más?</summary><p>La consulta incluye a quienes ganan exactamente el monto indicado. Puedes elegir $1, $2, $3, $4 o $5 millones y ver la proporción y la cantidad aproximada de personas del grupo que alcanzan ese ingreso neto mensual.</p></details>
+  <details><summary>¿Qué significa ganar $1 millón o más?</summary><p>La consulta incluye a quienes ganan exactamente el monto indicado. Puedes consultar desde $0 hasta $20 millones, en pasos de $50.000, y ver la proporción y la cantidad aproximada de personas del grupo que alcanzan ese ingreso neto mensual.</p></details>
   <details><summary>¿Estas cifras representan a toda la población de Chile?</summary><p>No. El universo del dashboard son las personas ocupadas de referencia ESI de 20 años o más. Los filtros de edad, sexo y ocupación restringen ese grupo. Las cifras corresponden a la ESI 2025, en pesos de octubre de 2025, y no se han actualizado por inflación.</p></details>
  </section>
 <!--__WEB_RESOURCES__-->

@@ -54,7 +54,7 @@
    el.innerHTML=svgShell(w,h,'Distribución del ingreso del grupo seleccionado',body,'Intervalos de $100.000. Usa las flechas del teclado para consultar cada intervalo.');
    makeTooltip(el,el.querySelector('svg'),i=>`<strong>${exactMoney(i*100000)} a menos de ${exactMoney((i+1)*100000)}</strong><br>`+(bins[i]>0?`≈ ${pct(bins[i])} del grupo<br>≈ ${people(d.N*bins[i]/100)} personas`:'Sin casos observados en este intervalo.'),{left:L,right:R,w,maxIndex:bins.length-1,intervals:true});
    const outside=eventAt(d,3000000);
-   $('distribution-note').textContent='Cada barra reúne $100.000. '+(state.range===3?(outside.n?`Fuera de esta vista: ≈ ${pct(outside.p)} gana $3 millones o más.`:'No se observaron casos de $3 millones o más en este grupo.'):'Se muestra el rango completo de ingresos observados.')+' Tonos oscuros: intervalos completos a partir del monto consultado.';
+   $('distribution-note').textContent='Cada barra muestra el porcentaje del grupo que gana dentro de un tramo mensual de $100.000. '+(state.range===3?(outside.n?`Fuera de esta vista: ≈ ${pct(outside.p)} gana $3 millones o más.`:'No se observaron casos de $3 millones o más en este grupo.'):'Se muestra el rango completo de ingresos observados.')+' Tonos oscuros: intervalos completos a partir del monto consultado.';
  }
  function renderSurvival(d){
    const el=$('survival'),w=chartWidth(el,1220),h=260,L=68,R=17,T=26,B=44,plotW=w-L-R,plotH=h-T-B,min=20,max=420,isLog=state.survivalScale==='log';
@@ -89,6 +89,9 @@
    const scaleNote=isLog?`Escala logarítmica del porcentaje: cada marca sube ×10. Mismo eje de ${num(10**logMinExponent,-logMinExponent)}% a 100% para todos los grupos.`:'Escala lineal del porcentaje. El eje vertical se ajusta al grupo seleccionado.';
    const tailNote=firstZero!==undefined?` Desde ${exactMoney(firstZero*50000)} no hay casos observados. La curva se interrumpe, sin asumir ausencia en la población.`:'';
    const clippedNote=isLog&&positivePoints.some(i=>d.curve.lo[i]===0)?' Los límites del intervalo iguales a cero no son representables en escala logarítmica.':'';
+   const example=eventAt(d,2000000);
+   const group=[label('occupation',state.occupation),label('sex',state.sex),label('age',state.age)].join(' · ');
+   $('survival-example').textContent=group+'. Ejemplo: '+(example.n?`aproximadamente ${pct(example.p)} de este grupo gana $2 millones netos o más al mes. Aquí también cuentan quienes ganan $3 o $4 millones.${example.q===1?' Esta estimación tiene precisión limitada.':''}`:'en la muestra de este grupo nadie declaró ganar $2 millones netos o más al mes. Eso no descarta que haya personas con esos ingresos.');
    $('survival-scale-note').textContent=scaleNote+tailNote+clippedNote;
    el.innerHTML=svgShell(w,h,`Proporción que gana cada monto o más, desde un millón de pesos. Escala ${isLog?'logarítmica':'lineal'}`,body,scaleNote+' Línea continua para mayor respaldo muestral y discontinua para precisión limitada. Las flechas consultan umbrales de $50.000.'+tailNote+clippedNote);
    makeTooltip(el,el.querySelector('svg'),i=>{const e=eventAt(d,i*50000);return `<strong>≥ ${exactMoney(i*50000)}</strong><br>${e.n?`≈ ${pct(e.p)} · ≈ ${people(e.persons)} personas`:'Sin casos observados'}<br>${num(e.n)} ${e.n===1?'encuestado':'encuestados'} · ${qualityText(e)}`;},{left:L,right:R,w,maxIndex:max,minIndex:min});
@@ -99,7 +102,7 @@
    document.querySelectorAll('[data-amount]').forEach(b=>{b.classList.toggle('active',+b.dataset.amount===state.amount);b.setAttribute('aria-pressed',String(+b.dataset.amount===state.amount));});
    $('threshold-percent').classList.toggle('no-cases',e.n===0);
    $('threshold-percent').innerHTML=e.n?`<span class="approx">≈</span>${pct(e.p)}`:'Sin casos observados';
-   $('threshold-people').textContent=e.n?`≈ ${people(e.persons)} personas del grupo`:'La muestra no permite cuantificar esta cola.';
+   $('threshold-people').textContent=e.n?`≈ ${people(e.persons)} personas del grupo`:'Nadie en la muestra de este grupo declaró ese monto o más.';
    $('threshold-interval').textContent=Number.isFinite(e.lo)&&Number.isFinite(e.hi)?`IC 95% de la proporción: ${pct(e.lo)} a ${pct(e.hi)}`:'Intervalo de confianza no estimable en este punto.';
    $('threshold-quality').className='quality-box '+(e.q===2?'sufficient':'limited');
    $('threshold-quality').innerHTML=`<strong>${qualityText(e)}</strong><br>${num(e.n)} de ${num(d.n)} encuestados cumplen el umbral.${e.q===0?' No implica que no existan personas con esos ingresos.':e.q===1?' Interpreta la cifra con cautela.':''}`;
@@ -114,7 +117,7 @@
  function renderAges(){
    const ages=DATA.meta.age.filter(a=>a.id!=='all'),ds=ages.map(a=>domain(state.occupation,state.sex,a.id));
    const ymax=roundUp(Math.max(...ds.flatMap(d=>d.hist.slice(0,30)))*1.05);
-   $('age-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+'. Histogramas hasta $3 millones, con la misma escala vertical.';
+   $('age-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+'. Cada tarjeta muestra porcentajes dentro de su propio grupo de edad. Una barra más alta indica que más de ellas están en ese tramo de ingreso. Todas usan la misma escala y muestran ingresos menores a $3 millones.';
    $('age-panels').innerHTML=ages.map((a,i)=>{const d=ds[i],e=eventAt(d),q=poorDomain(d)||e.q<2;return `<button class="age-panel" data-age-panel="${a.id}" aria-pressed="${a.id===state.age}" aria-label="Explorar ${esc(a.label)}. Mediana aproximada ${money(d.median)}. ${num(d.n)} encuestados."><div class="age-header"><span>${esc(a.label)}</span><span aria-hidden="true">↗</span></div><div class="age-median">≈ ${money(d.median)}</div><p class="age-meta">Ingreso mediano<br>Promedio ≈ ${money(d.mean)}${d.meanQ<2?' · exploratorio':''}</p><div class="spark">${miniHist(d,ymax)}</div><div class="age-threshold"><span class="label">Gana ≥ ${exactMoney(state.amount)}</span><strong>${e.n?'≈ '+pct(e.p):'Sin casos'}</strong><small>${e.n?'≈ '+people(e.persons)+' personas':'No equivale a cero en la población'}<br>${num(d.n)} encuestados en el grupo</small></div>${q?`<span class="limited-tag">${poorDomain(d)?'Muestra del grupo limitada':e.n?'Umbral exploratorio':'Sin casos para este umbral'}</span>`:''}</button>`;}).join('');
    // Match each sparkline to its actual container without shrinking axis text.
    $('age-panels').querySelectorAll('.spark').forEach((el,i)=>{el.innerHTML=miniHist(ds[i],ymax,Math.max(115,Math.round(el.getBoundingClientRect().width||180)));});
@@ -125,7 +128,7 @@
    const ages=DATA.meta.age.filter(a=>a.id!=='all'),ds=ages.map(a=>domain(state.occupation,state.sex,a.id));
    const el=$('age-profile'),w=Math.max(760,chartWidth(el,1180)),h=330,L=70,R=32,T=24,B=55;
    const x=i=>L+i/(ages.length-1)*(w-L-R),ymax=roundUp(Math.max(...ds.flatMap(d=>[d.mean,d.p75]))*1.12),y=v=>h-B-v/ymax*(h-T-B);
-   $('age-profile-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+' · Ingreso neto mensual. Se muestran todos los tramos.';
+   $('age-profile-context').textContent=label('occupation',state.occupation)+' · '+label('sex',state.sex)+' · Ingreso neto mensual. Aquí se comparan todas las edades, aunque arriba hayas seleccionado solo una.';
    let body=txt(L,12,'Ingreso neto mensual · millones de pesos','start',10);
    const selected=ages.findIndex(a=>a.id===state.age);
    if(selected>=0)body+=`<rect x="${x(selected)-17}" y="${T}" width="34" height="${h-T-B}" fill="${color.pale}" opacity=".7"/>`;
@@ -151,7 +154,7 @@
    $('age-profile-table').innerHTML='<table><caption>Estimaciones ponderadas. Montos aproximados en pesos mensuales.</caption><thead><tr><th scope="col">Edad</th><th scope="col">P25</th><th scope="col">Mediana</th><th scope="col">Promedio</th><th scope="col">P75</th><th scope="col">Encuestados</th><th scope="col">Nota</th></tr></thead><tbody>'+ages.map((a,i)=>{const d=ds[i];return `<tr><th scope="row">${esc(a.label)}</th><td>≈ ${money(d.p25)}</td><td>≈ ${money(d.median)}</td><td>≈ ${money(d.mean)}</td><td>≈ ${money(d.p75)}</td><td>${num(d.n)}</td><td>${poorDomain(d)||d.meanQ<2?'Exploratorio':'—'}</td></tr>`;}).join('')+'</tbody></table>';
  }
  function renderRanking(){
-   $('occupation-context').textContent=label('age',state.age)+' · '+label('sex',state.sex)+'. '+(state.rank==='threshold'?'Personas que ganan ≥ '+exactMoney(state.amount)+', dentro de cada ocupación.':'Misma edad y sexo en las nueve ocupaciones.');
+   $('occupation-context').textContent=label('age',state.age)+' · '+label('sex',state.sex)+'. '+(state.rank==='threshold'?'Personas que ganan ≥ '+exactMoney(state.amount)+', dentro de cada ocupación.':'El filtro de ocupación no se aplica aquí: comparamos los nueve trabajos para la edad y el sexo indicados.');
    const rows=DATA.meta.occupation.filter(o=>o.id!=='all').map(o=>{const d=domain(o.id,state.sex,state.age),e=eventAt(d);return{o,d,e,v:state.rank==='threshold'?e.p:d[state.rank]};}).sort((a,b)=>b.v-a.v);
    const max=Math.max(...rows.map(r=>r.v),1);
    $('occupation-ranking').innerHTML=rows.map(({o,d,e,v})=>{const limited=state.rank==='threshold'?e.q<2:state.rank==='mean'?d.meanQ<2:poorDomain(d);const no=state.rank==='threshold'&&e.n===0;return `<button class="rank-row ${o.id===state.occupation?'active':''}" data-rank-occupation="${o.id}" aria-label="Seleccionar ${esc(o.label)}. ${no?'Sin casos observados':state.rank==='threshold'?'Aproximadamente '+pct(v):'Aproximadamente '+money(v)}"><span class="rank-label">${esc(o.label)}</span><span class="rank-track" aria-hidden="true"><span class="rank-fill" style="display:block;width:${Math.max(0,v/max*100)}%"></span></span><span class="rank-value">${no?'Sin casos':'≈ '+(state.rank==='threshold'?pct(v):money(v))}${limited&&!no?'*':''}</span><span class="rank-n">n = ${num(d.n)}${limited?'<span class="limited-text">Exploratorio</span>':''}</span></button>`;}).join('');
@@ -239,6 +242,7 @@
      if(index===previous)return;previous=index;
      const step=steps[index],units=Number(step.dataset.units);
      $('dot-label').textContent=step.dataset.monto+' o más';
+     $('dot-key').textContent=(step.dataset.base==='100'?'':'ZOOM DEL 1% · ')+'CADA PUNTO: 1 DE CADA '+step.dataset.base;
      $('dot-count').textContent='≈ '+step.dataset.percent+' del total';
      dots.forEach((dot,i)=>dot.classList.toggle('on',i<units));
      steps.forEach((s,i)=>s.classList.toggle('current',i===index));
